@@ -1,0 +1,131 @@
+.headerImg img{
+    max-width: 100%;
+    margin-bottom: 50px;
+}
+
+.layer1{
+    margin-left: 80px;
+
+}
+.layer1 .flex{
+    color: rgb(143, 143, 143);
+    font-size: 22px;
+    display: flex;
+}
+
+/*CSS cho product*/
+.product-container{
+	justify-content: center;
+	align-items: center;
+	display: flex;
+}
+.product {
+	width: 32%; /* Đặt chiều rộng của mỗi sản phẩm */
+	display: inline-block;
+	margin: 0.3%; /* Khoảng cách giữa các sản phẩm */
+	border: 1px solid #ccc; /* Đường viền sản phẩm */
+	padding: 0px;
+	text-align: center;
+	box-sizing: border-box;
+}
+.product-content{
+    padding-top: 24px;
+	padding-bottom: 8px;
+}
+.product-content b{
+    font-size: 20px;
+}
+.product img {
+	max-width: 80%;
+	height: 30%;
+}
+.horizontal-line {
+	width: 80%;
+	height: 1px; /* Tăng chiều rộng và độ dày của đường kẻ ngang */
+	background-color: black;
+}
+
+
+/*CSS cho filter*/
+.ap-filter__category-open-button {
+	background-color: rgb(243, 243, 243);
+	border: none;
+	cursor: pointer;
+	margin-left: 2px;
+	font-size: 16px;
+	font-family: 'Times New Roman', Times, serif;
+    padding: 25px;
+}
+.ap-filter__category-open-button2 {
+	background-color: rgb(243, 243, 243);
+	border: none;
+	cursor: pointer;
+	margin-left: 2px;
+	font-size: 16px;
+	font-family: 'Times New Roman', Times, serif;
+    padding: 25px 25px 25px 680px;
+}
+.filter-format{
+	display: flex;
+	justify-content: center;
+	margin-top: 40px;
+	margin-bottom: 0px;
+}
+.filter-bar{
+	display: flex;
+	align-items: center;
+	width: 90%;
+	background: #fff;
+	border-bottom: 1px solid rgb(42, 41, 41);
+	padding: 10px;	
+}
+.option-content {
+	display: none;
+	justify-content: center;
+	align-items: center;
+	padding: 10px;
+	background: rgba(255, 255, 255, 0.9);
+	border-bottom: 1px solid rgb(42, 41, 41);
+	width: 100%;
+}
+.filter-format-option{
+	display: flex;
+	justify-content: center;
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+.filter-bar-option{	
+	width: 90%;
+}
+.flex-row {
+	display: flex;
+	justify-content: start;
+}
+.filter-option-right{
+	margin-right: 150px;
+}
+.image-filter-container {
+	display: flex;
+	margin-top: 30px;
+	align-items: left;
+}
+.image-filter-collection-item{
+	margin-right: 5px;
+	
+}
+.image-filter-collection{
+	height: 90%;
+	width: 100%;
+}
+.div-left{
+	
+	float: left;
+	text-align: left;
+}
+.complication-text-item{
+	height: 60px;
+	width: 300px;
+}.image-filter-material{
+	height: 75%;
+	width: 80%;
+}
