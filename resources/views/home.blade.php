@@ -8,6 +8,8 @@
     <title>Home</title>
 </head>
 <body>
+    @extends('layouts.app')
+    @section('content')
     <div class="tbody">
         <div class="banner">
             <img src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fcms.curnonwatch.com%2Fuploads%2FWeb_2_dd00957b0f.jpg&w=3840&q=100">
@@ -98,5 +100,6 @@
         </div> 
 	</div>
     </div>
+    @endsection
 </body>
 </html>
