@@ -93,7 +93,7 @@ a{
 }
 
 .cart{
-    margin-left: 35%;
+    margin-left: 32%;
     margin-top: 3%;
 }
 .cart a:hover{
@@ -106,7 +106,7 @@ a{
     align-items: center;
 }
 .cart-align img{
-    margin-left: 10px;
+    margin-left: 20px;
 }
 .user{
     margin-left: 7%;

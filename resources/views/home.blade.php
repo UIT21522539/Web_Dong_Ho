@@ -11,13 +11,25 @@
     @extends('layouts.app')
     @section('content')
     <div class="tbody">
+        <div class="banner-button">
+            <h2 style="font-size: 16px">SIÊU SALE -50% BLACK FRIDAY</h2>
+            <h2 style="font-size: 38px">22.11-27.11</h2>
+            <h2 style="font-weight: 100; letter-spacing: 3px; margin-bottom: 10%">ƯU ĐÃI LỚN NHẤT NĂM</h2>
+            <button class="button-57" role="button"><span class="text">MUA NGAY</span><span>MUA ĐI</span></button>
+        </div>
         <div class="banner">
             <img src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fcms.curnonwatch.com%2Fuploads%2FWeb_2_dd00957b0f.jpg&w=3840&q=100">
         </div>
         <div class="info">
-            <h2>FREESHIP ĐƠN HÀNG > 700K</h2>
-            <h2>BẢO HÀNH 10 NĂM</h2>
-            <h2>ĐỔI TRẢ MIỄN PHÍ TRONG VÒNG 3 NGÀY</h2>
+            <div>
+                <h2>FREESHIP ĐƠN HÀNG > 700K</h2>
+            </div>
+            <div>
+                <h2>BẢO HÀNH 10 NĂM</h2>
+            </div>
+            <div>
+                <h2>ĐỔI TRẢ MIỄN PHÍ TRONG VÒNG 3 NGÀY</h2>
+            </div>
         </div>
         <div class="categoryCard">
             <a class="cat1" href="#"> 

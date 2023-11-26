@@ -56,7 +56,7 @@
                         <div>
                             <a href="#">
                                 <div class="cart-align">
-                                    <p>GIỎ HÀNG</p>
+                                    <p style="font-weight: lighter">GIỎ HÀNG</p>
                                     <img width="24px" height="24px" src="{{ asset('assets/img/User/layouts/cart.png') }}">
                                 </div>
                             </a>
