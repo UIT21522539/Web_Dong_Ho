@@ -1,0 +1,133 @@
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400,500,300,700);
+
+* {
+  font-family: Open Sans;
+}
+
+.footer-distributed{
+	background: rgb(245, 245, 245);
+	box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.12);
+	box-sizing: border-box;
+	width: 100%;
+    height: 380px;
+	text-align: left;
+	font: bold 16px sans-serif;
+	padding: 55px 50px;
+}
+
+.footer-distributed .footer-left,
+.footer-distributed .footer-center,
+.footer-distributed .footer-right{
+	display: inline-block;
+	vertical-align: top;
+}
+
+/* Footer left */
+
+.footer-distributed .footer-left{
+    margin-left: 1%;
+	width: 40%;
+}
+
+/* The company logo */
+
+.footer-distributed img{
+    margin-bottom: 12px;
+}
+
+h3{
+	color:  black;
+	font: normal 20px 'Open Sans', cursive;
+    font-weight: 400;
+	margin-bottom: 12px;
+}
+
+/* Footer links */
+
+.footer-distributed .footer-links{
+	color:  black;
+	margin: 8px 0 12px;
+	padding: 0;
+}
+
+.footer-distributed .footer-links a{
+	display:inline-block;
+	line-height: 1.8;
+    font-weight:400;
+	text-decoration: none;
+	color:  inherit;
+    margin-bottom: 12px;
+}
+
+.footer-distributed .footer-company-name{
+	color:  #222;
+	font-size: 14px;
+	font-weight: normal;
+	margin-bottom: 24px;
+}
+
+/* Footer Center */
+
+.footer-distributed .footer-center{
+	width: 33%;
+}
+
+.footer-distributed .footer-center p{
+	color: black;
+    font-weight:400;
+	vertical-align: middle;
+	margin-bottom: 24px;
+}
+
+.footer-distributed .footer-center p a{
+	text-decoration: none;;
+}
+
+.footer-distributed .footer-links a:before {
+  content: "|";
+  font-weight:300;
+  font-size: 20px;
+  left: 0;
+  color: black;
+  display: inline-block;
+  padding-right: 5px;
+}
+
+.footer-distributed .footer-links .link-1:before {
+  content: none;
+}
+
+/* Footer Right */
+
+.footer-distributed .footer-right{
+	width: 22%;
+}
+
+.footer-distributed .footer-company-about h3{
+    margin-bottom: 24px;
+}
+.footer-distributed .footer-company-about p{
+	font: normal 14px 'Open Sans', cursive;
+    margin-bottom: 20px;
+    font-weight: 400;
+}
+
+
+.footer-distributed .footer-icons{
+	margin-top: 25px;
+}
+
+.footer-distributed .footer-icons a{
+	display: inline-block;
+	width: 35px;
+	height: 35px;
+	cursor: pointer;
+	background-color:  #33383b;
+	border-radius: 2px;
+	font-size: 20px;
+	color: white;
+	text-align: center;
+	line-height: 35px;
+	margin-right: 3px;
+	margin-bottom: 5px;
+}
