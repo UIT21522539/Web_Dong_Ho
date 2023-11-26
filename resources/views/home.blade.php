@@ -31,7 +31,7 @@
             </a>
         </div>
     <div class="bestSell">
-        <h1>BEST SELLER</h1>
+        <h1>MEN'S BEST SELLERS</h1>
         <a href="#">XEM TẤT CẢ</a>
     </div>
     <div class="product-container">
@@ -94,6 +94,76 @@
                 <p>KABHMIR</p>
                 <div  style="margin-bottom: 5px;">
                     <p>CALM</p>
+                </div>
+                <p><b>2.124.000 đ</b></p>
+            </div>
+        </div> 
+	</div>
+    </div>
+    <div class="bestSell">
+        <h1>WOMEN'S BEST SELLERS</h1>
+        <a href="#">XEM TẤT CẢ</a>
+    </div>
+    <div class="product-container">
+        <div class="product-container">
+        <div class="product" data-index="0">
+            <a href="#" target="_self">
+            <div>
+                <figure>
+                    <picture>
+                        <source media="(min-width: 1025px)" data-srcset="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fb%2Ft%2Fbt.calm.png&w=640&q=75">
+                        <source media="(min-width: 768px)" data-srcset="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fb%2Ft%2Fbt.calm.png&w=640&q=75">
+                        <source media="(min-width: 0px)" data-srcset="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fb%2Ft%2Fbt.calm.png&w=640&q=75">
+                        <img  alt="Standup image of Ultra-Complication Universelle (RD#4)" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fb%2Fe%2Fbellini_2.png&w=640&q=75" loading="lazy">
+                    </picture>
+                </figure>
+            </div>
+            </a>
+            <div class="product-content" >
+                <p>SICILY</p>
+                <div  style="margin-bottom: 5px;">
+                    <p>BELLINI</p>
+                </div>
+                <p><b>2.124.000 đ</b></p>
+            </div>
+        </div>
+        <div  class="product" data-index="1">
+            <a href="#" target="_self">
+            <div>
+                <figure>
+                    <picture>
+                            <source media="(min-width: 1025px)" data-srcset="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fb%2Fx%2Fbx.swank.png&w=640&q=75">
+                            <source media="(min-width: 768px)" data-srcset="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fb%2Fx%2Fbx.swank.png&w=640&q=75">
+                            <source media="(min-width: 0px)" data-srcset="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fb%2Fx%2Fbx.swank.png&w=640&q=75">
+                            <img alt="Standup image of Ultra-Complication Universelle (RD#4)" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2F3%2F_%2F3_2.png&w=640&q=75" loading="lazy">
+                    </picture>
+                </figure>	
+            </div></a>
+            <div class="product-content" >
+                <p>AURORA</p>
+                <div  style="margin-bottom: 5px;">
+                    <p>MORGANITE</p>
+                </div>
+                <p><b>2.124.000 đ</b></p>
+            </div>
+        </div>
+        <div class="product" data-index="2">
+            <a href="#" target="_self">
+                <div>
+                    <figure>
+                        <picture>
+                            <source media="(min-width: 1025px)" data-srcset="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fv%2Fd%2Fvd.dapper.png&w=640&q=75">
+                            <source media="(min-width: 768px)" data-srcset="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fv%2Fd%2Fvd.dapper.png&w=640&q=75">
+                            <source media="(min-width: 0px)" data-srcset="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fv%2Fd%2Fvd.dapper.png&w=640&q=75">
+                            <img alt="Standup image of Ultra-Complication Universelle (RD#4)" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fc%2Fh%2Fcharm.png&w=640&q=75" loading="lazy">
+                        </picture>
+                    </figure>
+                </div>
+            </a>
+            <div class="product-content" >
+                <p>MORAINE</p>
+                <div  style="margin-bottom: 5px;">
+                    <p>CHARM</p>
                 </div>
                 <p><b>2.124.000 đ</b></p>
             </div>
