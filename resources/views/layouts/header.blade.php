@@ -39,7 +39,6 @@
                                     <div class="column2">
                                         <a href="#"><h3>Blog</h3></a>
                                         <a href="#"><h3>Về chúng tôi</h3></a>
-                                        <a href="#"><h3>Long & Short</h3></a>
                                     </div>
                                 </div>
                             </div>
