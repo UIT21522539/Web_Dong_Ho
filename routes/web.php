@@ -32,3 +32,7 @@ Route::get('/blog', function () {
 Route::get('/aboutMe', function () {
     return view('aboutMe');
 });
+
+Route::get('/checkout', function () {
+    return view('checkout');
+});
