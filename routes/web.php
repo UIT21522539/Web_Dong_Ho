@@ -24,6 +24,11 @@ Route::get('/product', function () {
 Route::get('/home', function () {
     return view('home');
 });
+
 Route::get('/blog', function () {
     return view('blog');
+});
+
+Route::get('/aboutMe', function () {
+    return view('aboutMe');
 });
