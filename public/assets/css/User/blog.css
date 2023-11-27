@@ -1,0 +1,144 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+.banner-content{
+    position: absolute;
+    text-align: center;
+    margin-left: 22%;
+    margin-top: 10%;
+    color: white;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+.banner-img{
+    width: 100%;
+    height: 20%;
+    z-index: -99;
+    margin-bottom: 5%;
+}
+.newest-new{
+    margin-bottom: 10%;
+}
+.newest-new-content{
+    width: 40%;
+    position: absolute;
+    background-color: white;
+    margin-top: 32%;
+    margin-left: 14%;
+}
+.newest-new-title{
+    padding: 10px 10px 10px 22px;
+}
+.newest-new-title h2{
+    padding-top:10px;
+    color: black;
+    font-size: 33px;
+    letter-spacing: 1px;
+    font-weight: 400;
+    margin-bottom: 18px;
+}
+.newest-new-title .title-info{
+    display: flex;
+    margin-bottom: 8px;
+}
+.newest-new-title .title-info .title-info-time{
+    display: flex;
+}
+.newest-new-title .title-info .title-info-readmore{
+    display: flex;
+    margin-left: 320px;
+}
+.newest-new-img {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.newest-new-img img{
+    width:100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.news-popular{
+    margin-bottom: 10%;
+}
+.news-popular h2{
+    text-align: center;
+    font-size: 38px;
+    font-weight: 200;
+    margin-bottom: 3%;
+}
+.newest-popular-content{
+    width: 500px;
+}
+.newest-popular-content p a{
+    font-size: 22px;
+    letter-spacing: 1px;
+    color: black;
+}
+.newest-popular-time{
+    display: flex;
+    margin: 0;
+}
+
+.category{
+    width: 80%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+.category .category-header{
+    display: flex;
+    align-items: center;
+}
+.category .category-header h3{
+    padding: 10px;
+    font-size: 18px;
+    margin-top: 12px;
+    color: white;
+    background-color: black;
+}
+.category-header-more{
+    margin-left: 79%;
+    display: flex;
+    color: black;
+}
+.category hr{
+    width: 100%;
+}
+.category-grid{
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-bottom: 14%;
+}
+.category-grid-time{
+    display: flex;
+    width: 370px;
+    margin-bottom: 3%;
+}
+.category-grid-content{
+    width: 370px;
+    font-size: 18px;
+    letter-spacing: 1px;
+}
+
+.curnon-family-content{
+    text-align: center;
+    margin-bottom: 3%;
+}
+.curnon-family-content h2{
+    font-size: 32px;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+.curnon-family-content p{
+    font-weight: 200;
+    font-size: 15px;
+    letter-spacing: 1px;
+}
+
