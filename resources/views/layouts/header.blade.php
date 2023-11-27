@@ -54,7 +54,7 @@
                     </li>
                     <li class="cart">
                         <div>
-                            <a href="#">
+                            <a href="#" onclick="openNav()">
                                 <div class="cart-align">
                                     <p style="font-weight: lighter">GIỎ HÀNG</p>
                                     <img width="24px" height="24px" src="{{ asset('assets/img/User/layouts/cart.png') }}">
@@ -75,6 +75,74 @@
         </nav>
     </div>
 </header>
+
+<div>
+    <div id="mySidebar" class="sidebar">
+        <div class="sidebar-header">
+            <p style="font-size: 25px; margin-left: 40px; font-weight: 600">GIỎ HÀNG CỦA BẠN</p>
+            <p style="font-size: 45px; margin-left: 60px"><a href="javascript:void(0)" class="closebtn" onclick="closeNav()">×</a></p>
+        </div>
+        <div class="sidebar-shipping">
+            <p><img width="26px" height="26px" src="{{ asset('assets/img/User/Home/shipped.png') }}"></p>
+            <p style="font-size:12px; color: black; margin-left: 12px">MIỄN PHÍ VẬN CHUYỂN ĐƠN HÀNG > 700K</p>
+        </div>
+        <div class="sidebar-product">
+            <div  class="product01">
+                <div class="pd01">
+                    <button>×</button>
+                    <img width="84px" height="84px" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fh%2Fe%2Fherbert.png&w=640&q=75">
+                </div>
+                <div class="pd02">
+                    <p>HERBERT</p>
+                    <p style="margin-top: 60%">40MM</p>
+                </div>
+                <div class="pd03">
+                    <p><b>2.124.000 ₫</b></p>
+                    <div class="Qty">
+                        <p><button>-</button></p>
+                        <p style="margin-left: 22%">Qty: 1</p>
+                        <p><button>+</button></p>
+                    </div>
+                </div>
+            </div>
+
+            <div  class="product01">
+                <div class="pd01">
+                    <button>×</button>
+                    <img width="84px" height="84px" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fb%2Fx%2Fbx.swank.png&w=640&q=75">
+                </div>
+                <div class="pd02">
+                    <p>HERBERT</p>
+                    <p style="margin-top: 60%">40MM</p>
+                </div>
+                <div class="pd03">
+                    <p><b>2.124.000 ₫</b></p>
+                    <div class="Qty">
+                        <p><button>-</button></p>
+                        <p style="margin-left: 22%">Qty: 1</p>
+                        <p><button>+</button></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="sidebar-total">
+            <hr>
+            <div class="sidebar-total-content">
+                <div style="display: flex; margin-bottom: 10%">
+                    <p style="color:black">Thành tiền:</p>
+                    <p style="color:red; margin-left: 45%"><b>4.248.000 ₫</b></p>
+                </div>
+                <div class="sidebar-total-purchase">
+                    <button>
+                        THANH TOÁN NGAY
+                        <img width="12px" height="12px" src="{{ asset('assets/img/User/Blog/arrow.png') }}">
+                    </button>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</div>
 <script>
     const body = document.body;
     let lastScroll = 0;
@@ -97,4 +165,12 @@
         }
         lastScroll = currentScroll;
     });
+
+    function openNav() {
+      document.getElementById("mySidebar").style.width = "400px";
+    }
+    
+    function closeNav() {
+      document.getElementById("mySidebar").style.width = "0";
+    }
 </script>
