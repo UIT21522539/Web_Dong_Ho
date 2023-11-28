@@ -32,3 +32,15 @@ Route::get('/blog', function () {
 Route::get('/aboutMe', function () {
     return view('aboutMe');
 });
+
+Route::get('/checkout', function () {
+    return view('checkout');
+});
+
+Route::get('/checkout-done', function () {
+    return view('checkout-done');
+});
+
+Route::get('/user-info', function () {
+    return view('user-info');
+});
