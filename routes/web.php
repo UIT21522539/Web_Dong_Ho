@@ -36,3 +36,7 @@ Route::get('/aboutMe', function () {
 Route::get('/checkout', function () {
     return view('checkout');
 });
+
+Route::get('/checkout-done', function () {
+    return view('checkout-done');
+});
