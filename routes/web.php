@@ -40,3 +40,7 @@ Route::get('/checkout', function () {
 Route::get('/checkout-done', function () {
     return view('checkout-done');
 });
+
+Route::get('/user-info', function () {
+    return view('user-info');
+});
