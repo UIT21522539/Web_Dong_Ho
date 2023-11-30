@@ -52,7 +52,7 @@
                                 <td>Thành tiền</td>
                                 <td>Tình trạng</td>
                             </tr>
-                            <tr>
+                            <tr class="order-info" data-modal="modalOne">
                                 <td>#12345</td>
                                 <td style="display: flex">
                                     <img width="84px" height="84px" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fcache%2Fd96eb53c23516f6ca600411b8495131f%2Fh%2Fe%2Fheinz_1.png&w=1920&q=75">
@@ -66,7 +66,7 @@
                                     <input class="pretending" type="button" value="Chờ lấy hàng">
                                 </td>
                             </tr>
-                            <tr>
+                            <tr class="order-info">
                                 <td>#12345</td>
                                 <td style="display: flex">
                                     <img width="84px" height="84px" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fcache%2Fd96eb53c23516f6ca600411b8495131f%2Fh%2Fe%2Fheinz_1.png&w=1920&q=75">
@@ -77,10 +77,10 @@
                                 </td>
                                 <td>2.469.000 ₫</td>
                                 <td>
-                                    <input class="delivering" type="button" value="Đang giao hàng">
+                                    <input class="pretending" type="button" value="Chờ lấy hàng">
                                 </td>
                             </tr>
-                            <tr>
+                            <tr class="order-info">
                                 <td>#12345</td>
                                 <td style="display: flex">
                                     <img width="84px" height="84px" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fcache%2Fd96eb53c23516f6ca600411b8495131f%2Fh%2Fe%2Fheinz_1.png&w=1920&q=75">
@@ -94,7 +94,7 @@
                                     <input class="asking" type="button" value="Đã nhận được hàng">
                                 </td>
                             </tr>
-                            <tr>
+                            <tr class="order-info">
                                 <td>#12345</td>
                                 <td style="display: flex">
                                     <img width="84px" height="84px" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fcache%2Fd96eb53c23516f6ca600411b8495131f%2Fh%2Fe%2Fheinz_1.png&w=1920&q=75">
@@ -154,6 +154,72 @@
             </div>
         </div>
     </div>
+    <div id="modalOne" class="modal">
+        <div class="modal-content">
+            <div class="modal-content-info">
+                <div class="information">
+                    <div class="information-text">
+                        <p>Người bán đang chuẩn bị đơn hàng</p>
+                        <p>Đơn hàng của bạn sẽ được chuẩn bị và chuyển đi trước <br> <span>15-12-2023</span></p>
+                    </div>
+                    <img width="74px" height="74px" src="{{ asset('assets/img/User/user-info/delivery-truck.png') }}">
+                </div>
+                <div class="delivery-info">
+                    <div style="display: flex">
+                        <img width="26px" height="26px"src="{{ asset('assets/img/User/user-info/delivery-van.png') }}">
+                        <div class="info-content">
+                            <p>Thông tin vận chuyển</p>
+                            <p>Mã đơn hàng: <span>#12345</span></p>
+                            <p style="color: rgb(22, 178, 134);">Đơn hàng đang chờ được lấy</p>
+                        </div>  
+                    </div>
+                </div>
+                <div class="location-info">
+                    <div style="display: flex">
+                        <img width="20px" height="20px" src="{{ asset('assets/img/User/user-info/location.png') }}">
+                        <div class="info-content">
+                            <p>Nguyễn Sơn Hà</p>
+                            <p>0367306824</p>
+                            <p>Tạ Quang Bửu, Ký túc xá Khu A, Đại học quốc gia TP.HCM</p>
+                        </div>  
+                    </div>
+                </div>
+                <div class="product-info">
+                    <div style="display: flex; align-content: center">
+                        <img width="84px" height="84px" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fcache%2Fd96eb53c23516f6ca600411b8495131f%2Fh%2Fe%2Fheinz_1.png&w=1920&q=75">
+                        <div class="info-content">
+                            <p>HEINZ</p>
+                            <div style="display: flex">
+                                <div >
+                                    <p style="margin-bottom: 12%">40MM</p>
+                                    <p class="sevendays">7 ngày trả hàng</p>
+                                </div>
+                                <div style="margin-left: 40%">
+                                    <p style="margin-bottom: 12%">x1</p>
+                                    <p>2.469.000 ₫</p>
+                                </div>
+                            </div>
+                        </div>  
+                    </div>
+                </div>
+                <div class="payment-info">
+                    <div style="display: flex">
+                        <img width="20px" height="20px" src="{{ asset('assets/img/User/user-info/payment.png') }}">
+                        <div class="info-content">
+                            <p style="font-weight: 500">Phương thức thanh toán</p>
+                            <p class="payment-type">Thanh toán khi nhận hàng</p>
+                        </div>  
+                    </div>
+                </div>
+                <div class="button-contact">
+                    <div class="button-area">
+                        <button class="button-contact1">Yêu cầu Trả hàng/Hoàn tiền</button>
+                        <button class="button-contact2">Đã nhận được hàng</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <script>
         function openCity(evt, cityName) {
           var i, tabcontent, tablinks;
@@ -168,6 +234,25 @@
           document.getElementById(cityName).style.display = "block";
           evt.currentTarget.className += " active";
         }
+        let modalBtns = [...document.querySelectorAll(".order-info")];
+        modalBtns.forEach(function (btn) {
+            btn.onclick = function () {
+            let modal = btn.getAttribute("data-modal");
+            document.getElementById(modal).style.display = "block";
+            };
+        });
+        let closeBtns = [...document.querySelectorAll(".close")];
+        closeBtns.forEach(function (btn) {
+            btn.onclick = function () {
+            let modal = btn.closest(".modal");
+            modal.style.display = "none";
+            };
+        });
+        window.onclick = function (event) {
+            if (event.target.className === "modal") {
+            event.target.style.display = "none";
+            }
+      };
     </script>
     @endsection
 </body>
