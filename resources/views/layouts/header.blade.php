@@ -6,12 +6,28 @@
                     <li>
                         <div class="d">
                             <button class="d-btn">NAM GIỚI</button>
-                            <div class="d-content">
-                                <div class="row">
-                                    <div class="column">
-                                        <a href="#"><h3>ĐỒNG HỒ</h3></a>
-                                        <a href="#"><h3>PHỤ KIỆN</h3></a>
-                                        <a href="#"><h3>DÂY ĐỒNG HỒ</h3></a>
+                            <div class='d-content'>
+                                <div class='row'>
+                                    <div class='column'>
+                                        <a onmouseover="openCity(event, 'London')" href='#'><h3>ĐỒNG HỒ</h3></a>
+                                        <a onmouseover="openCity(event, 'Paris')" href='#'><h3>PHỤ KIỆN</h3></a>
+                                        <a onmouseover="openCity(event, 'Tokyo')" href='#'><h3>DÂY ĐỒNG HỒ</h3></a>
+                                    </div>
+                                    <div class='row-content'>
+                                        <div id="London" class="tabcontent">
+                                            <h3>London</h3>
+                                            <p>London is the capital city of England.</p>
+                                        </div>
+                                        
+                                        <div id="Paris" class="tabcontent">
+                                            <h3>Paris</h3>
+                                            <p>Paris is the capital of France.</p> 
+                                        </div>
+                                        
+                                        <div id="Tokyo" class="tabcontent">
+                                            <h3>Tokyo</h3>
+                                            <p>Tokyo is the capital of Japan.</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -20,15 +36,12 @@
                     <li>
                         <div class="d">
                             <button class="d-btn">NỮ GIỚI</button>
-                            <div class="d-content">
-                                <div class="row">
-                                    <div class="column">
-                                        <a href="#"><h3>ĐỒNG HỒ</h3></a>
-                                        <a href="#"><h3>PHỤ KIỆN</h3></a>
-                                        <a href="#"><h3>DÂY ĐỒNG HỒ</h3></a>
-                                    </div>
-                                </div>
-                            </div>
+                            <div class="divTable"></div>
+                            <script>
+                                window.onload = function() {
+                                openDivHeader();
+                            };
+                            </script>
                         </div>
                     </li>
                     <li>
@@ -97,11 +110,13 @@
                     <p style="margin-top: 60%">40MM</p>
                 </div>
                 <div class="pd03">
-                    <p><b>2.124.000 ₫</b></p>
+                    <p id="tien">2.124.000</p>
                     <div class="Qty">
-                        <p><button>-</button></p>
-                        <p style="margin-left: 22%">Qty: 1</p>
-                        <p><button>+</button></p>
+                        <div class="quantity-container">
+                            <button onclick="decreaseQuantity()">-</button>
+                            <input type="text" value="1" name="so" id="so" class="quantity-input" oninput="updateResult()">
+                            <button onclick="increaseQuantity()">+</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -116,11 +131,13 @@
                     <p style="margin-top: 60%">40MM</p>
                 </div>
                 <div class="pd03">
-                    <p><b>2.124.000 ₫</b></p>
+                    <p id="tien">2124000</p>
                     <div class="Qty">
-                        <p><button>-</button></p>
-                        <p style="margin-left: 22%">Qty: 1</p>
-                        <p><button>+</button></p>
+                        <div class="quantity-container">
+                            <button onclick="decreaseQuantity()">-</button>
+                            <input type="text" value="1" name="so" id="so" class="quantity-input" oninput="updateResult()">
+                            <button onclick="increaseQuantity()">+</button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -130,7 +147,7 @@
             <div class="sidebar-total-content">
                 <div style="display: flex; margin-bottom: 10%">
                     <p style="color:black">Thành tiền:</p>
-                    <p style="color:red; margin-left: 45%"><b>4.248.000 ₫</b></p>
+                    <p style="color:red; margin-left: 45%"><b id="result">2.124.000</b></p>
                 </div>
                 <div class="sidebar-total-purchase">
                     <button>
@@ -144,6 +161,36 @@
     </div>
 </div>
 <script>
+    function openDivHeader(){
+        var divTables = document.getElementsByClassName('divTable');
+        var html = `<div class='d-content'>
+                                <div class='row'>
+                                    <div class='column'>
+                                        <a href='#'><h3>ĐỒNG HỒ</h3></a>
+                                        <a href='#'><h3>PHỤ KIỆN</h3></a>
+                                        <a href='#'><h3>DÂY ĐỒNG HỒ</h3></a>
+                                    </div>
+                                </div>
+                            </div>`
+        for (var i = 0; i < divTables.length; i++) {
+            divTables[i].innerHTML = html;
+        }
+    }
+
+    function openCity(evt, cityName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+    for (i = 0; i < tabcontent.length; i++) {
+        tabcontent[i].style.display = "none";
+    }
+    tablinks = document.getElementsByClassName("tablinks");
+    for (i = 0; i < tablinks.length; i++) {
+        tablinks[i].className = tablinks[i].className.replace(" active", "");
+    }
+    document.getElementById(cityName).style.display = "block";
+    evt.currentTarget.className += " active";
+    }
+    
     const body = document.body;
     let lastScroll = 0;
     window.addEventListener("scroll", () => {
@@ -172,5 +219,35 @@
     
     function closeNav() {
       document.getElementById("mySidebar").style.width = "0";
+    }
+
+    // Lấy thẻ input và phần hiển thị kết quả
+    const inputElement = document.getElementById('so');
+    const resultElement = document.getElementById('result');
+
+    // Hàm giảm giá trị của input
+    function decreaseQuantity() {
+        let currentValue = parseInt(inputElement.value);
+        if (currentValue > 1) {
+            currentValue--;
+        }
+        inputElement.value = currentValue;
+        updateResult();
+    }
+
+    // Hàm tăng giá trị của input
+    function increaseQuantity() {
+        let currentValue = parseInt(inputElement.value);
+        currentValue++;
+        inputElement.value = currentValue;
+        updateResult();
+    }
+
+    // Hàm cập nhật kết quả dựa trên giá trị mới
+    function updateResult() {
+        const value = parseInt(inputElement.value);
+        const tienValue = parseFloat(document.getElementById('tien').textContent.replace(/\./g, '').replace(',', '.')) || 0; 
+        const result = value * tienValue || 0;
+        resultElement.textContent = `${result.toLocaleString('vi-VN',)}`;
     }
 </script>
