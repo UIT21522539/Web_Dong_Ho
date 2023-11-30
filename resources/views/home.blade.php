@@ -53,9 +53,6 @@
             <div>
                 <figure>
                     <picture>
-                        <source media="(min-width: 1025px)" data-srcset="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fb%2Ft%2Fbt.calm.png&w=640&q=75">
-                        <source media="(min-width: 768px)" data-srcset="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fb%2Ft%2Fbt.calm.png&w=640&q=75">
-                        <source media="(min-width: 0px)" data-srcset="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fb%2Ft%2Fbt.calm.png&w=640&q=75">
                         <img  alt="Standup image of Ultra-Complication Universelle (RD#4)" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fb%2Ft%2Fbt.calm.png&w=640&q=75" loading="lazy">
                     </picture>
                 </figure>
@@ -74,9 +71,6 @@
             <div>
                 <figure>
                     <picture>
-                            <source media="(min-width: 1025px)" data-srcset="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fb%2Fx%2Fbx.swank.png&w=640&q=75">
-                            <source media="(min-width: 768px)" data-srcset="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fb%2Fx%2Fbx.swank.png&w=640&q=75">
-                            <source media="(min-width: 0px)" data-srcset="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fb%2Fx%2Fbx.swank.png&w=640&q=75">
                             <img alt="Standup image of Ultra-Complication Universelle (RD#4)" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fb%2Fx%2Fbx.swank.png&w=640&q=75" loading="lazy">
                     </picture>
                 </figure>	
@@ -94,9 +88,6 @@
                 <div>
                     <figure>
                         <picture>
-                            <source media="(min-width: 1025px)" data-srcset="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fv%2Fd%2Fvd.dapper.png&w=640&q=75">
-                            <source media="(min-width: 768px)" data-srcset="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fv%2Fd%2Fvd.dapper.png&w=640&q=75">
-                            <source media="(min-width: 0px)" data-srcset="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fv%2Fd%2Fvd.dapper.png&w=640&q=75">
                             <img alt="Standup image of Ultra-Complication Universelle (RD#4)" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fv%2Fd%2Fvd.dapper.png&w=640&q=75" loading="lazy">
                         </picture>
                     </figure>
@@ -123,9 +114,6 @@
             <div>
                 <figure>
                     <picture>
-                        <source media="(min-width: 1025px)" data-srcset="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fb%2Ft%2Fbt.calm.png&w=640&q=75">
-                        <source media="(min-width: 768px)" data-srcset="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fb%2Ft%2Fbt.calm.png&w=640&q=75">
-                        <source media="(min-width: 0px)" data-srcset="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fb%2Ft%2Fbt.calm.png&w=640&q=75">
                         <img  alt="Standup image of Ultra-Complication Universelle (RD#4)" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fb%2Fe%2Fbellini_2.png&w=640&q=75" loading="lazy">
                     </picture>
                 </figure>
@@ -144,9 +132,6 @@
             <div>
                 <figure>
                     <picture>
-                            <source media="(min-width: 1025px)" data-srcset="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fb%2Fx%2Fbx.swank.png&w=640&q=75">
-                            <source media="(min-width: 768px)" data-srcset="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fb%2Fx%2Fbx.swank.png&w=640&q=75">
-                            <source media="(min-width: 0px)" data-srcset="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fb%2Fx%2Fbx.swank.png&w=640&q=75">
                             <img alt="Standup image of Ultra-Complication Universelle (RD#4)" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2F3%2F_%2F3_2.png&w=640&q=75" loading="lazy">
                     </picture>
                 </figure>	
@@ -164,9 +149,6 @@
                 <div>
                     <figure>
                         <picture>
-                            <source media="(min-width: 1025px)" data-srcset="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fv%2Fd%2Fvd.dapper.png&w=640&q=75">
-                            <source media="(min-width: 768px)" data-srcset="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fv%2Fd%2Fvd.dapper.png&w=640&q=75">
-                            <source media="(min-width: 0px)" data-srcset="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fv%2Fd%2Fvd.dapper.png&w=640&q=75">
                             <img alt="Standup image of Ultra-Complication Universelle (RD#4)" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fc%2Fh%2Fcharm.png&w=640&q=75" loading="lazy">
                         </picture>
                     </figure>
