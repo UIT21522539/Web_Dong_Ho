@@ -1,6 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\ProductsController;
+use app\Http\Requests\ProductRequest;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,17 +15,14 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+// Đường dẫn trang home
+Route::get('/', [ProductsController::class,'home']);
+Route::get('/home', [ProductsController::class,'home'])->name('product.home');
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-
+// Đường dẫn trang danh sách sản phẩm
 Route::get('/product', function () {
     return view('product');
 });
 
-Route::get('/home', function () {
-    return view('home');
-});
+
 
