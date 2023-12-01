@@ -1,9 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\Controller;
-use App\Http\Controllers\ProductsController;
-use app\Http\Requests\ProductRequest;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\OrderController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\DashBoardController;
+use App\Http\Controllers\SupplierController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,8 +18,8 @@ use app\Http\Requests\ProductRequest;
 |
 */
 // Đường dẫn trang home
-Route::get('/', [ProductsController::class,'home']);
-Route::get('/home', [ProductsController::class,'home'])->name('product.home');
+Route::get('/', [ProductController::class,'home']);
+Route::get('/home', [ProductController::class,'home'])->name('product.home');
 
 
 //Đường dẫn vào admin

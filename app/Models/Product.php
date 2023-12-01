@@ -17,6 +17,30 @@ class Product extends Model
         return $product;
     }
 
+    public function getTop3Product(){
+        // Lấy danh sách id_product từ truy vấn ban đầu
+        $idProducts = DB::select(
+            "SELECT product.id_product, COUNT(ct_order.id_order) AS order_count
+            FROM product
+            JOIN ct_order ON product.id_product = ct_order.id_product
+            GROUP BY product.id_product
+            ORDER BY order_count DESC
+            LIMIT 3;
+            ");
+
+        // Trích xuất danh sách id_product
+        $idProducts = array_map(function ($product) {
+            return $product->id_product;
+        }, $idProducts);
+
+        // Lấy thông tin chi tiết của các id_product từ bảng product
+        $productDetails = DB::table('product')
+            ->whereIn('id_product', $idProducts)
+            ->get();
+
+        // $productDetails bây giờ chứa thông tin chi tiết của các id_product
+        return $productDetails;
+    }
     public function getCountProduct(){
         $productCount = DB::table('product')->count();
         return $productCount;

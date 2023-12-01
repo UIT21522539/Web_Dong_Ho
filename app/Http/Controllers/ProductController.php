@@ -18,6 +18,13 @@ use App\Http\Requests\ProductRequest;
 
 class ProductController extends Controller
 {
+
+        public function home(){
+            $product = new Product();
+            $productList = $product->getTop3Product();
+            return view('users.home',['productList'=>$productList]);
+
+        }
     //Admin
         //Xem danh sách
         public function productList(){
