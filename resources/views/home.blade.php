@@ -46,22 +46,23 @@
         <h1>MEN'S BEST SELLERS</h1>
         <a href="#">XEM TẤT CẢ</a>
     </div>
+    <div id="product-button" style="display:none;">
+        <button>THÊM VÀO GIỎ</button>
+    </div>
     <div class="product-container">
         <div class="product-container">
+            {{-- san pham 1 --}}
         <div class="product" data-index="0">
             <a href="#" target="_self">
             <div>
                 <figure>
                     <picture>
-                        <source media="(min-width: 1025px)" data-srcset="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fb%2Ft%2Fbt.calm.png&w=640&q=75">
-                        <source media="(min-width: 768px)" data-srcset="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fb%2Ft%2Fbt.calm.png&w=640&q=75">
-                        <source media="(min-width: 0px)" data-srcset="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fb%2Ft%2Fbt.calm.png&w=640&q=75">
                         <img  alt="Standup image of Ultra-Complication Universelle (RD#4)" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fb%2Ft%2Fbt.calm.png&w=640&q=75" loading="lazy">
                     </picture>
                 </figure>
             </div>
             </a>
-            <div class="product-content" >
+            <div class="product-content" onmouseover="showButton()" onmouseout="hideButton()">
                 <p>KABHMIR</p>
                 <div  style="margin-bottom: 5px;">
                     <p>CALM</p>
@@ -69,14 +70,12 @@
                 <p><b>2.124.000 đ</b></p>
             </div>
         </div>
+          {{-- san pham 2 --}}
         <div  class="product" data-index="1">
             <a href="#" target="_self">
             <div>
                 <figure>
                     <picture>
-                            <source media="(min-width: 1025px)" data-srcset="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fb%2Fx%2Fbx.swank.png&w=640&q=75">
-                            <source media="(min-width: 768px)" data-srcset="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fb%2Fx%2Fbx.swank.png&w=640&q=75">
-                            <source media="(min-width: 0px)" data-srcset="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fb%2Fx%2Fbx.swank.png&w=640&q=75">
                             <img alt="Standup image of Ultra-Complication Universelle (RD#4)" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fb%2Fx%2Fbx.swank.png&w=640&q=75" loading="lazy">
                     </picture>
                 </figure>	
@@ -89,22 +88,20 @@
                 <p><b>2.124.000 đ</b></p>
             </div>
         </div>
+        {{-- san pham 3--}}
         <div class="product" data-index="2">
             <a href="#" target="_self">
                 <div>
                     <figure>
                         <picture>
-                            <source media="(min-width: 1025px)" data-srcset="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fv%2Fd%2Fvd.dapper.png&w=640&q=75">
-                            <source media="(min-width: 768px)" data-srcset="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fv%2Fd%2Fvd.dapper.png&w=640&q=75">
-                            <source media="(min-width: 0px)" data-srcset="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fv%2Fd%2Fvd.dapper.png&w=640&q=75">
                             <img alt="Standup image of Ultra-Complication Universelle (RD#4)" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fv%2Fd%2Fvd.dapper.png&w=640&q=75" loading="lazy">
                         </picture>
                     </figure>
                 </div>
             </a>
-            <div class="product-content" >
+            <div class="product-content">
                 <p>KABHMIR</p>
-                <div  style="margin-bottom: 5px;">
+                <div style="margin-bottom: 5px;">
                     <p>CALM</p>
                 </div>
                 <p><b>2.124.000 đ</b></p>
@@ -123,9 +120,6 @@
             <div>
                 <figure>
                     <picture>
-                        <source media="(min-width: 1025px)" data-srcset="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fb%2Ft%2Fbt.calm.png&w=640&q=75">
-                        <source media="(min-width: 768px)" data-srcset="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fb%2Ft%2Fbt.calm.png&w=640&q=75">
-                        <source media="(min-width: 0px)" data-srcset="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fb%2Ft%2Fbt.calm.png&w=640&q=75">
                         <img  alt="Standup image of Ultra-Complication Universelle (RD#4)" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fb%2Fe%2Fbellini_2.png&w=640&q=75" loading="lazy">
                     </picture>
                 </figure>
@@ -144,9 +138,6 @@
             <div>
                 <figure>
                     <picture>
-                            <source media="(min-width: 1025px)" data-srcset="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fb%2Fx%2Fbx.swank.png&w=640&q=75">
-                            <source media="(min-width: 768px)" data-srcset="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fb%2Fx%2Fbx.swank.png&w=640&q=75">
-                            <source media="(min-width: 0px)" data-srcset="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fb%2Fx%2Fbx.swank.png&w=640&q=75">
                             <img alt="Standup image of Ultra-Complication Universelle (RD#4)" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2F3%2F_%2F3_2.png&w=640&q=75" loading="lazy">
                     </picture>
                 </figure>	
@@ -164,9 +155,6 @@
                 <div>
                     <figure>
                         <picture>
-                            <source media="(min-width: 1025px)" data-srcset="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fv%2Fd%2Fvd.dapper.png&w=640&q=75">
-                            <source media="(min-width: 768px)" data-srcset="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fv%2Fd%2Fvd.dapper.png&w=640&q=75">
-                            <source media="(min-width: 0px)" data-srcset="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fv%2Fd%2Fvd.dapper.png&w=640&q=75">
                             <img alt="Standup image of Ultra-Complication Universelle (RD#4)" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fc%2Fh%2Fcharm.png&w=640&q=75" loading="lazy">
                         </picture>
                     </figure>
@@ -182,6 +170,18 @@
         </div> 
 	</div>
     </div>
+    
+    <script>
+        function showButton(){
+            var productbutton = document.getElementById("product-button");
+            productbutton.style.display="";
+        }
+        function hideButton(){
+            var productbutton = document.getElementById("product-button");
+            productbutton.style.display="none";
+        }
+
+    </script>
     @endsection
 </body>
 </html>
