@@ -11,7 +11,7 @@ class CategoryReceiptRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,6 +23,13 @@ class CategoryReceiptRequest extends FormRequest
     {
         return [
             //
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            
         ];
     }
 }

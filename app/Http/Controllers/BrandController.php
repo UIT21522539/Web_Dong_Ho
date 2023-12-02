@@ -27,7 +27,7 @@ class BrandController extends Controller
         $title = "Thêm thương hiệu";
         return view('admin.brand.brandadd', compact('title'));
     }
-    public function addBrand(Request $request){
+    public function addBrand(BrandRequest $request){
         $dataInsert =[
             $request->name,
         ];

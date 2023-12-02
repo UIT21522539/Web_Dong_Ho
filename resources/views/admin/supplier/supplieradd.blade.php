@@ -7,6 +7,7 @@
 @if ($errors->any())
 <div class="alert alert-danger">Dữ liệu nhập vào không hợp lệ</div>
 @endif
+
 <h1>{{ $title }}</h1>
 
 <div class="mb-3">

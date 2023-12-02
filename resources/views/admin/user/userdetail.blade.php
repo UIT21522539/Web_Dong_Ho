@@ -33,7 +33,7 @@
         </div>
         <div class="mb-3">
             <label for="password" class="form-label">Password</label>
-            <input type="password" name="password" value="{{ old('password') ?? $userDetail->password }}" class="form-control" id="password" readonly>
+            <input type="text" name="password" value="{{ old('password') ?? $userDetail->password }}" class="form-control" id="password" readonly>
             @error('password')
             <span style="color: red">{{ $message }}</span>
             @enderror
@@ -52,6 +52,9 @@
             <span style="color: red">{{ $message }}</span>
             @enderror
         </div>
+        
+        @csrf 
+    </form>
 
         <table border="1">
             <tr>
@@ -81,6 +84,5 @@
             </tr>
             @endforeach 
         </table>
-        @csrf 
-    </form>
+        
 @endsection

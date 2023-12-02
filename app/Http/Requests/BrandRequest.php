@@ -11,7 +11,7 @@ class BrandRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,15 @@ class BrandRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'name'=> 'required|min:5',
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'name.required' => 'Tên sản phẩm không được để trống.',
+            'name.min' => 'Tên sản phẩm phải có ít nhất :min ký tự.',
         ];
     }
 }
