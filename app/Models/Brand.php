@@ -22,4 +22,15 @@ class Brand extends Model
         $brandLCount = DB::table('brand')->count();
         return $brandLCount;
     }
+
+    public function addBrand( $data){
+        DB::insert('INSERT INTO brand (name ) VALUES (?)', $data);
+    }
+
+    public function searchBrand($searchKeyword){
+        $results = DB::table('brand')
+            ->where('name', 'LIKE', '%' . $searchKeyword . '%')
+            ->get();
+        return $results;
+    }
 }

@@ -30,44 +30,41 @@ class ProductRequest extends FormRequest
             'pty_store'=> 'required|min:1',
             'discount'=> 'required|integer|min:5|max:50',
             'isdiscount' => 'required|in:0,1',
-            'status'=> 'required|min:5',
-            'image' => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'status' => 'required|in:Đang bán,Ngừng bán,Hết hàng',
+            'img_main' => 'required|url',
+            'img'=>'url'
         ];
     }
 
     public function messages(): array{
         return [
-            'id_brand.required' => 'Thương hiệu là trường bắt buộc.',
-            'id_brand.exists' => 'Thương hiệu không tồn tại trong cơ sở dữ liệu.',
-
-            'id_category.required' => 'Danh mục là trường bắt buộc.',
-            'id_category.exists' => 'Danh mục không tồn tại trong cơ sở dữ liệu.',
-
-            'name.required' => 'Tên sản phẩm là trường bắt buộc.',
-            'name.min' => 'Tên sản phẩm phải có ít nhất 5 ký tự.',
-
-            'description.required' => 'Mô tả là trường bắt buộc.',
-            'description.min' => 'Mô tả phải có ít nhất 5 ký tự.',
-
-            'sellprice.required' => 'Giá bán là trường bắt buộc.',
-            'sellprice.integer' => 'Giá bán phải là số nguyên.',
-            'sellprice.min' => 'Giá bán phải lớn hơn hoặc bằng 10,000.',
-
-            'pty_store.required' => 'Số lượng tồn kho là trường bắt buộc.',
-            'pty_store.min' => 'Số lượng tồn kho phải lớn hơn 0.',
-
-            'discount.required' => 'Phần trăm giảm giá là trường bắt buộc.',
-            'discount.integer' => 'Phần trăm giảm giá phải là số nguyên.',
-            'discount.min' => 'Phần trăm giảm giá phải lớn hơn hoặc bằng 5.',
-            'discount.max' => 'Phần trăm giảm giá không được lớn hơn 50.',
-
-            'isdiscount.required' => 'Trường isdiscount là bắt buộc.',
-            'isdiscount.in' => 'Trường isdiscount chỉ có thể là 0 hoặc 1.',
-
-            'status.required' => 'Trạng thái là trường bắt buộc.',
-            'status.min' => 'Trạng thái phải có ít nhất 5 ký tự.',
-
-            'image' => 'The :attribute must be an image file (jpeg, png, jpg, gif) and not exceed 2048 kilobytes.',
+            'messages' => [
+                'id_brand.required' => 'Trường thương hiệu không được để trống.',
+                'id_brand.exists' => 'Thương hiệu không tồn tại.',
+                'id_category.required' => 'Trường danh mục không được để trống.',
+                'id_category.exists' => 'Danh mục không tồn tại.',
+                'name.required' => 'Tên sản phẩm không được để trống.',
+                'name.min' => 'Tên sản phẩm phải có ít nhất :min ký tự.',
+                'description.required' => 'Mô tả không được để trống.',
+                'description.min' => 'Mô tả phải có ít nhất :min ký tự.',
+                'sellprice.required' => 'Giá bán không được để trống.',
+                'sellprice.integer' => 'Giá bán phải là một số nguyên.',
+                'sellprice.min' => 'Giá bán phải ít nhất là :min.',
+                'pty_store.required' => 'Số lượng trong kho không được để trống.',
+                'pty_store.min' => 'Số lượng trong kho phải ít nhất là :min.',
+                'discount.required' => 'Giảm giá không được để trống.',
+                'discount.integer' => 'Giảm giá phải là một số nguyên.',
+                'discount.min' => 'Giảm giá phải ít nhất là :min.',
+                'discount.max' => 'Giảm giá không được vượt quá :max.',
+                'isdiscount.required' => 'Trường giảm giá có sẵn không được để trống.',
+                'isdiscount.in' => 'Giá trị của trường giảm giá có sẵn không hợp lệ.',
+                'status.required' => 'Trạng thái không được để trống.',
+                'status.in' => 'Trạng thái không hợp lệ. Chỉ chấp nhận "Đang bán", "Ngừng bán", hoặc "Hết hàng".',
+                'img_main.required' => 'Ảnh chính không được để trống.',
+                'img_main.url' => 'Đường link ảnh chính không hợp lệ.',
+                'img.url' => 'Đường link ảnh không hợp lệ.',
+            ],
+            
         ];
     }
 }

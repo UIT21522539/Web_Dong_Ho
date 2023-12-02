@@ -6,6 +6,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashBoardController;
 use App\Http\Controllers\SupplierController;
+use App\Http\Controllers\BrandController;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,6 +73,14 @@ Route::prefix('admin')->group(function () {
         //Thêm
     Route::get('/suppliers/adddetail', [SupplierController::class, 'addSupplier'])->name('suppliers.add');
         
+    //Quản lí danh sách brand
+    Route::get('/brands', [BrandController::class, 'brandList'])->name('brands.list');
+        //Tìm kiếm theo tên
+    Route::get('/brands/search', [BrandController::class, 'searchBrand'])->name('brands.search');
+        //Hiện trang thêm brand
+    Route::get('/brands/add', [BrandController::class, 'addDetailBrand'])->name('brands.detailadd');
+        //post update brand
+    Route::post('/brands/add', [BrandController::class, 'addBrand'])->name('brands.add');
 });
 
 
