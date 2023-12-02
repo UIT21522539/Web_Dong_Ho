@@ -81,9 +81,15 @@
             <p style="font-size:12px; color: black; margin-left: 12px">MIỄN PHÍ VẬN CHUYỂN ĐƠN HÀNG > 700K</p>
         </div>
         <div class="sidebar-product">
+            <div class="show-product-close">
+                <script>
+                    deleteProduct(0);
+                </script>
+            </div>
+            
             <div  class="product01">
                 <div class="pd01">
-                    <button>×</button>
+                    <button onclick="deleteProduct(0)">×</button>
                     <img width="84px" height="84px" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fh%2Fe%2Fherbert.png&w=640&q=75">
                 </div>
                 <div class="pd02">
@@ -101,10 +107,14 @@
                     </div>
                 </div>
             </div>
-
+            <div class="show-product-close">
+                <script>
+                    deleteProduct(1);
+                </script>
+            </div>
             <div  class="product01">
                 <div class="pd01">
-                    <button>×</button>
+                    <button onclick="deleteProduct(1)">×</button>
                     <img width="84px" height="84px" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fb%2Fx%2Fbx.swank.png&w=640&q=75">
                 </div>
                 <div class="pd02">
@@ -298,4 +308,31 @@
         const result = value * tienValue || 0;
         resultElement.textContent = `${result.toLocaleString('vi-VN',)}`;
     }
+
+    function deleteProduct(productIndex) {
+        var divTables = document.getElementsByClassName('show-product-close');
+        var html = `<div class="product-close">
+                    <h3>Đừng làm thế, xin bạn đấy!</h3>
+                        <div>
+                            <button class="bt01" onclick="turnback(${productIndex})">QUAY LẠI</button>
+                            <button class="bt02">XOÁ SẢN PHẨM</button>
+                        </div>
+                    </div>`
+        for (var i = 0; i < divTables.length; i++) {
+            if (i === productIndex) {
+                divTables[i].innerHTML = html;
+            }
+        }
+    }
+
+    function turnback(productIndex){
+        var divTables = document.getElementsByClassName('product-close');
+        for (var i = 0; i < divTables.length; i++) {
+            if (i === productIndex) {
+                divTables[i].style.display = 'none';
+            }
+        }
+    }
+        
+
 </script>

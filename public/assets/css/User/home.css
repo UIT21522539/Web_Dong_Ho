@@ -1,6 +1,10 @@
 *{
     margin: 0;
 }
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+  }
 .banner-button{
     color: white;
     position: absolute;
@@ -192,4 +196,31 @@
 	width: 80%;
 	height: 1px; /* Tăng chiều rộng và độ dày của đường kẻ ngang */
 	background-color: black;
+}
+#product-button{
+    position: absolute;
+    width: 22%;
+    margin-left: 16.4%;
+    margin-top: 15%;
+    animation: fadeIn 1s; 
+}
+#product-button button{
+    width: 100%;
+    background-color: rgb(238, 238, 238);
+    padding: 16px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    border: none;
+    color: rgb(0, 0, 0);
+}
+#product-button button{
+    width: 100%;
+    background-color: rgb(238, 238, 238);
+    padding: 16px;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    border: none;
+    color: rgb(0, 0, 0);
 }

@@ -46,8 +46,12 @@
         <h1>MEN'S BEST SELLERS</h1>
         <a href="#">XEM TẤT CẢ</a>
     </div>
+    <div id="product-button" style="display:none;">
+        <button>THÊM VÀO GIỎ</button>
+    </div>
     <div class="product-container">
         <div class="product-container">
+            {{-- san pham 1 --}}
         <div class="product" data-index="0">
             <a href="#" target="_self">
             <div>
@@ -58,7 +62,7 @@
                 </figure>
             </div>
             </a>
-            <div class="product-content" >
+            <div class="product-content" onmouseover="showButton()" onmouseout="hideButton()">
                 <p>KABHMIR</p>
                 <div  style="margin-bottom: 5px;">
                     <p>CALM</p>
@@ -66,6 +70,7 @@
                 <p><b>2.124.000 đ</b></p>
             </div>
         </div>
+          {{-- san pham 2 --}}
         <div  class="product" data-index="1">
             <a href="#" target="_self">
             <div>
@@ -83,6 +88,7 @@
                 <p><b>2.124.000 đ</b></p>
             </div>
         </div>
+        {{-- san pham 3--}}
         <div class="product" data-index="2">
             <a href="#" target="_self">
                 <div>
@@ -93,9 +99,9 @@
                     </figure>
                 </div>
             </a>
-            <div class="product-content" >
+            <div class="product-content">
                 <p>KABHMIR</p>
-                <div  style="margin-bottom: 5px;">
+                <div style="margin-bottom: 5px;">
                     <p>CALM</p>
                 </div>
                 <p><b>2.124.000 đ</b></p>
@@ -164,6 +170,18 @@
         </div> 
 	</div>
     </div>
+    
+    <script>
+        function showButton(){
+            var productbutton = document.getElementById("product-button");
+            productbutton.style.display="";
+        }
+        function hideButton(){
+            var productbutton = document.getElementById("product-button");
+            productbutton.style.display="none";
+        }
+
+    </script>
     @endsection
 </body>
 </html>
