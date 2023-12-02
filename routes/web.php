@@ -44,3 +44,10 @@ Route::get('/checkout-done', function () {
 Route::get('/user-info', function () {
     return view('user-info');
 });
+
+Route::get('/login', function () {
+    return view('login');
+});
+Route::get('/sign-up', function () {
+    return view('sign-up');
+});
