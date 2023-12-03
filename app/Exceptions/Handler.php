@@ -28,10 +28,5 @@ class Handler extends ExceptionHandler
         });
     }
 
-    public function render($request,\Throwable $expectation)
-    {
-        dd($expectation);
-        
-        return parent::render($request, $expectation);
-    }
+    
 }

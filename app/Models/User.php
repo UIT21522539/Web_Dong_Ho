@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 
+use DB;
 class User extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
@@ -42,4 +43,23 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function getAllUser(){
+        $user = DB::select("SELECT * FROM user");
+        return $user;
+    }
+
+    public function getUser($id){
+        return DB::select("SELECT * FROM user WHERE id_user = ?",[$id]);
+    }
+
+    public function searchUser($searchKeyword){
+        $results = DB::table('user')
+        ->where('first_name', 'LIKE', '%' . $searchKeyword . '%')
+        ->orWhere('last_name', 'LIKE', '%' . $searchKeyword . '%')
+        ->get();
+        
+    return $results;
+    }
+    
 }
