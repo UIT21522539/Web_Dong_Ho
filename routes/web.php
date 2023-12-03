@@ -19,8 +19,6 @@ use App\Http\Controllers\BrandController;
 |
 */
 // Đường dẫn trang home
-Route::get('/', [ProductController::class,'home']);
-Route::get('/home', [ProductController::class,'home'])->name('product.home');
 
 
 //Đường dẫn vào admin
@@ -85,3 +83,33 @@ Route::prefix('admin')->group(function () {
 
 
 
+Route::get('/home', function () {
+    return view('home');
+});
+
+Route::get('/blog', function () {
+    return view('blog');
+});
+
+Route::get('/aboutMe', function () {
+    return view('aboutMe');
+});
+
+Route::get('/checkout', function () {
+    return view('checkout');
+});
+
+Route::get('/checkout-done', function () {
+    return view('checkout-done');
+});
+
+Route::get('/user-info', function () {
+    return view('user-info');
+});
+
+Route::get('/login', function () {
+    return view('login');
+});
+Route::get('/sign-up', function () {
+    return view('sign-up');
+});
