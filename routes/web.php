@@ -82,7 +82,7 @@ Route::prefix('admin')->group(function () {
 });
 
 
-Route::get('/home', [ProductController::class, 'home'])->name('/users/home');
+Route::get('/home', [ProductController::class, 'combinedHome'])->name('/users/home');
 
 Route::get('/blog', function () {
     return view('blog');
