@@ -82,13 +82,16 @@ Route::prefix('admin')->group(function () {
 });
 
 
-
-Route::get('/home', function () {
-    return view('/users/home');
-});
+Route::get('/home', [ProductController::class, 'home'])->name('/users/home');
 
 Route::get('/blog', function () {
     return view('blog');
+});
+Route::get('/product', function () {
+    return view('/users/product');
+});
+Route::get('/detailproduct', function () {
+    return view('/detailproduct');
 });
 
 Route::get('/aboutMe', function () {

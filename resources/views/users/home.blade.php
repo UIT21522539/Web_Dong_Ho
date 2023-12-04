@@ -51,25 +51,29 @@
     </div>
     <div class="product_wrapper">
         <div class="product_top">
+        {{-- discount --}}
+            @foreach ($productList as $productItem)    
             <a href="#">
                 <div class="product_info product_highlight">
-                        <img  alt="Standup image of Ultra-Complication Universelle (RD#4)" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fb%2Ft%2Fbt.gallant.png&w=640&q=75">
-                        <b class="product_image_discount">-8%</b>
-                        <a class="product_addToCard" href="#" target="_self">
-                            <span class="product_addToCard_font">THÊM VÀO GIỎ</span>
-                        </a>
-                        <p class="product_ref_kind">KABHMIR</p>
-                        <span class="product_ref_name">CALM</span>
+                    <img src="{{ $productItem->img_main }}">
+                    <b class="product_image_discount">-{{ $productItem->discount }}%</b>
+                    <a class="product_addToCard" href="#" target="_self">
+                        <span class="product_addToCard_font">THÊM VÀO GIỎ</span>
+                    </a>
+                    <p class="product_ref_kind">{{ $productItem->name }}</p>
+                    <span class="product_ref_name">CALM</span>
                     <div class="product_font_price">
-                        <b>2.124.000 đ</b>
+                        <b>{{ $productItem->sellprice }}</b>
                         <del class="product_font_price_discount">2.499.000 đ</del>
                     </div>
                 </div>
             </a>
+            @endforeach
+
+            {{-- Không discount --}}
             <a href="#">
                 <div class="product_info product_highlight">
                         <img  alt="Standup image of Ultra-Complication Universelle (RD#4)" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fh%2Fe%2Fherbert.png&w=640&q=75">
-                        <b class="product_image_discount">-8%</b>
                         <a class="product_addToCard" href="#" target="_self">
                             <span class="product_addToCard_font">THÊM VÀO GIỎ</span>
                         </a>
@@ -77,11 +81,10 @@
                         <span class="product_ref_name">CALM</span>
                     <div class="product_font_price">
                         <b>2.124.000 đ</b>
-                        <del class="product_font_price_discount">2.499.000 đ</del>
                     </div>
                 </div>
             </a>
-            <a href="#">
+            {{-- <a href="#">
                 <div class="product_info product_highlight">
                         <img  alt="Standup image of Ultra-Complication Universelle (RD#4)" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fh%2Fe%2Fheinz_1.png&w=640&q=75">
                         <b class="product_image_discount">-8%</b>
@@ -110,7 +113,7 @@
                         <del class="product_font_price_discount">2.499.000 đ</del>
                     </div>
                 </div>
-            </a>
+            </a> --}}
         </div>
     </div>
     <div class="bestSell">

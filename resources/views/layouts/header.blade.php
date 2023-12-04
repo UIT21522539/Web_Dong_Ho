@@ -108,12 +108,12 @@
             </div>
             <div class="show-product-close">
                 <script>
-                    deleteProduct(0);
+                    deleteProduct(1);
                 </script>
             </div>
             <div class="product01">
                 <div class="pd01">
-                    <button onclick="deleteProduct(0)">×</button>
+                    <button onclick="deleteProduct(1)">×</button>
                     <img width="84px" height="84px" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fb%2Fx%2Fbx.swank.png&w=640&q=75">
                 </div>
                 <div class="pd02">

@@ -16,7 +16,7 @@ class ProductsController extends Controller
 {
     public function home(){
         $product = new Product();
-        $productList = $product->getTop3Product();
+        $productList = $product->getAllProduct();
         return view('users.home',['productList'=>$productList]);
 
     }
