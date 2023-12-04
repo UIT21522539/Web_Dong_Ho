@@ -139,10 +139,6 @@
                     <p>Nữ</p> 
                 </div>
                 <div>
-                    <p>ZIP code</p> 
-                    <p>710000</p>
-                </div>
-                <div>
                     <p>Quốc gia</p>
                     <p>Việt Nam</p> 
                 </div>         

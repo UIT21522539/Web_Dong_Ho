@@ -1,17 +1,22 @@
+*{
+	margin: 0;
+	padding: 0;
+}
 body{
 	background-color:rgb(235, 238, 238);
 }
 .detailproduct_container{
 	display:flex;
-	margin: 40px 100px;
+	margin-top: 10%;
+	margin-bottom: 6%;
 	justify-content:center;
-	
 }
 
 .detailproduct_info{
 	text-align:center;
 	background-color: white;
 	max-width: 40%;
+	height: 840px;
 }
 .detailproduct_info .detailproduct_kind{
 	font-weight:normal;
@@ -193,7 +198,7 @@ body{
 	justify-content:space-around;
 	display:flex;
 	margin-top:70px;
-	margin-bottom:100px;
+	margin-bottom:60px;
 	align-items: center;
 }
 .product_policy div {
@@ -219,4 +224,42 @@ body{
 }
 .oveoverall_text_info{
 	margin-top:50px;
+}
+
+.ct-product-info{
+	margin-bottom: 10%;
+	margin-left: auto;
+	margin-right: auto;
+	width: 80%;
+	
+}
+.ct-product-tab{
+	text-align: center;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 1px 8px; 
+}
+.ct-product-info button{
+	padding: 1.5%;
+	font-size: 19px;
+	cursor: pointer;
+	border: none;
+	margin: 2%;
+}
+.info-tag{
+	text-align: center;
+	margin-top: 4%;
+}
+.info-tag .tabcontent h2{
+	margin-top: 2%;
+	margin-bottom: 2%;
+}
+.info-tag .tabcontent p{
+	margin-top: 1%;
+}
+.info-tag #description p{
+	margin-right: auto;
+	margin-left: auto;
+	width: 60%;
+	letter-spacing: 1.5px;
+	line-height: 28px;
+	font-size: 20px;
 }

@@ -14,6 +14,8 @@
 	<title>Sản phẩm</title>
 </head>
 <body>
+	@extends('layouts.app')
+    @section('content')
 	<div class="detailproduct_container">
 		<div class="detailproduct_choose">
 			<div class="hinhTron" onclick="showImage(0)">
@@ -116,8 +118,53 @@
 			<span class="product_policy_text">ĐỔI TRẢ MIỄN PHÍ TRONG VÒNG 3 NGÀY</span>
 		</div>
 	</div>
-	
-		
+	<div class="ct-product-info">
+		<div class="ct-product-tab">
+			<button class="tablinks" onclick="openCity(event, 'description')">THÔNG TIN SẢN PHẨM</button>
+			<button class="tablinks" onclick="openCity(event, 'delivering')">CHÍNH SÁCH VẬN CHUYỂN</button>
+			<button class="tablinks" onclick="openCity(event, 'return')">ĐỔI TRẢ & BẢO HÀNH</button>
+		</div>
+		<hr>
+		<div class="info-tag">
+			<div style="display: none" id="description" class="tabcontent" >
+				<p>Đồng hồ nam Curnon Colosseum Mortar - Thiết kế mạnh mẽ cho người trẻ Việt; Dây da, Kích thước mặt lớn 42mm, Chống nước đến 5ATM, Mặt kính Sapphire chống xước vượt trội...</p>
+			</div>
+			<div style="display: none" id="delivering" class="tabcontent" >
+				<h2>Phí vận chuyển:</h2>
+				<p>- MIỄN PHÍ VẬN CHUYỂN với đơn hàng từ 500,000đ trở lên</p>
+				<p>- 30,000đ với đơn hàng có giá trị thấp hơn 500,000đ</p>
+				<h2>Thời gian vận chuyển:</h2>
+				<p>- Nội thành TP.HCM: 1-2 ngày</p>
+				<p>- Miền Trung: 3-5 ngày</p>
+				<p>- Miền Bắc: 5-7 ngày</p>
+			</div>
+			<div style="display: none" id="return" class="tabcontent">
+				<h2>Chính sách đổi trả:</h2>
+				<p>- 1 ĐỔI 1 trong vòng 3 ngày kể từ khi nhận hàng (kèm theo các điều kiện)</p>
+				<h2>Chính sách bảo hành:</h2>
+				<p>- BẢO HÀNH 10 NĂM đối với những lỗi từ nhà sản xuất</p>
+				<p>- BẢO HÀNH MIỄN PHÍ (1 lần) trong 1 năm đầu tiên với những lỗi người dùng như: vỡ, nứt kính, hấp hơi nước, va đập mạnh, rơi linh kiện bên trong mặt đồng hồ...</p>
+				<p>- THAY PIN MIỄN PHÍ TRỌN ĐỜI</p>
+			</div>
+		</div>
 	</div>
+</div>
+
+<script>
+	function openCity(evt, cityName) {
+          var i, tabcontent, tablinks;
+          tabcontent = document.getElementsByClassName("tabcontent");
+          for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+          }
+          tablinks = document.getElementsByClassName("tablinks");
+          for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+          }
+          document.getElementById(cityName).style.display = "block";
+          evt.currentTarget.className += " active";
+        }
+</script>
+@endsection
 </body>
 </html>
