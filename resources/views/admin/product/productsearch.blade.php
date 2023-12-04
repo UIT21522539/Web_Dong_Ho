@@ -1,3 +1,4 @@
+
 @extends('layouts.admin.sidebar')
 @section('content')
     <h2>Danh sách sản phẩm</h2>

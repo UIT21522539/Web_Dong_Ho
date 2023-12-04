@@ -86,8 +86,7 @@
                     deleteProduct(0);
                 </script>
             </div>
-            
-            <div  class="product01">
+            <div class="product01">
                 <div class="pd01">
                     <button onclick="deleteProduct(0)">×</button>
                     <img width="84px" height="84px" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fh%2Fe%2Fherbert.png&w=640&q=75">
@@ -97,24 +96,24 @@
                     <p style="margin-top: 60%">40MM</p>
                 </div>
                 <div class="pd03">
-                    <p id="tien">2.124.000</p>
+                    <p class="tien">2.124.000</p>
                     <div class="Qty">
-                        <div class="quantity-container">
-                            <button onclick="decreaseQuantity()">-</button>
-                            <input type="text" value="1" name="so" id="so" class="quantity-input" oninput="updateResult()">
-                            <button onclick="increaseQuantity()">+</button>
-                        </div>
+                        <form id='myform' method='POST' class='quantity' action='#'>
+                            <input type='button' value='-' class='qtyminus minus' field='quantity' />
+                            <input type='text' name='quantity' value='1' class='qty' />
+                            <input type='button' value='+' class='qtyplus plus' field='quantity' />
+                        </form>
                     </div>
                 </div>
             </div>
             <div class="show-product-close">
                 <script>
-                    deleteProduct(1);
+                    deleteProduct(0);
                 </script>
             </div>
-            <div  class="product01">
+            <div class="product01">
                 <div class="pd01">
-                    <button onclick="deleteProduct(1)">×</button>
+                    <button onclick="deleteProduct(0)">×</button>
                     <img width="84px" height="84px" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fb%2Fx%2Fbx.swank.png&w=640&q=75">
                 </div>
                 <div class="pd02">
@@ -122,23 +121,24 @@
                     <p style="margin-top: 60%">40MM</p>
                 </div>
                 <div class="pd03">
-                    <p id="tien">2124000</p>
+                    <p class="tien">8.124.000</p>
                     <div class="Qty">
-                        <div class="quantity-container">
-                            <button onclick="decreaseQuantity()">-</button>
-                            <input type="text" value="1" name="so" id="so" class="quantity-input" oninput="updateResult()">
-                            <button onclick="increaseQuantity()">+</button>
-                        </div>
+                        <form id='myform' method='POST' class='quantity' action='#'>
+                            <input type='button' value='-' class='qtyminus minus' field='quantity' />
+                            <input type='text' name='quantity' value='1' class='qty' />
+                            <input type='button' value='+' class='qtyplus plus' field='quantity' />
+                        </form>
                     </div>
                 </div>
             </div>
+            
         </div>
         <div class="sidebar-total">
             <hr>
             <div class="sidebar-total-content">
                 <div style="display: flex; margin-bottom: 10%">
                     <p style="color:black">Thành tiền:</p>
-                    <p style="color:red; margin-left: 45%"><b id="result">2.124.000</b></p>
+                    <p style="color:red; margin-left: 45%"><b id="result">10.248.000</b></p>
                 </div>
                 <div class="sidebar-total-purchase">
                     <button>
@@ -147,7 +147,6 @@
                     </button>
                 </div>
             </div>
-            
         </div>
     </div>
 </div>
@@ -279,35 +278,38 @@
       document.getElementById("mySidebar").style.width = "0";
     }
 
-    // Lấy thẻ input và phần hiển thị kết quả
-    const inputElement = document.getElementById('so');
-    const resultElement = document.getElementById('result');
+    jQuery(document).ready(($) => {
+        $('.quantity').on('click', '.plus, .minus', function (e) {
+            let $form = $(this).closest('form.quantity');
+            let $input = $form.find('input.qty');
+            let val = parseInt($input.val());
+            let price = parseInt($form.closest('.pd03').find('.tien').text().replace(/\D/g, '')); // Lấy giá trị thành tiền
 
-    // Hàm giảm giá trị của input
-    function decreaseQuantity() {
-        let currentValue = parseInt(inputElement.value);
-        if (currentValue > 1) {
-            currentValue--;
+            if ($(this).hasClass('plus')) {
+                $input.val(val + 1).change();
+            } else {
+                if (val > 1) {
+                    $input.val(val - 1).change();
+                }
+            }
+
+            // Cập nhật thành tiền
+            let newTotal = $input.val() * price;
+            updateTotal();
+        });
+
+        function updateTotal() {
+            let total = 0;
+            $('.pd03').each(function () {
+                let $form = $(this).find('form.quantity');
+                let quantity = parseInt($form.find('input.qty').val());
+                let price = parseInt($(this).find('.tien').text().replace(/\D/g, ''));
+                total += quantity * price;
+            });
+
+            $('#result').text(total.toLocaleString('vi-VN'));
         }
-        inputElement.value = currentValue;
-        updateResult();
-    }
-
-    // Hàm tăng giá trị của input
-    function increaseQuantity() {
-        let currentValue = parseInt(inputElement.value);
-        currentValue++;
-        inputElement.value = currentValue;
-        updateResult();
-    }
-
-    // Hàm cập nhật kết quả dựa trên giá trị mới
-    function updateResult() {
-        const value = parseInt(inputElement.value);
-        const tienValue = parseFloat(document.getElementById('tien').textContent.replace(/\./g, '').replace(',', '.')) || 0; 
-        const result = value * tienValue || 0;
-        resultElement.textContent = `${result.toLocaleString('vi-VN',)}`;
-    }
+    });
 
     function deleteProduct(productIndex) {
         var divTables = document.getElementsByClassName('show-product-close');

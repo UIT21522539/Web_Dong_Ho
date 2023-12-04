@@ -84,7 +84,7 @@ Route::prefix('admin')->group(function () {
 
 
 Route::get('/home', function () {
-    return view('home');
+    return view('/users/home');
 });
 
 Route::get('/blog', function () {

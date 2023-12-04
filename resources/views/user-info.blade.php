@@ -66,7 +66,7 @@
                                     <input class="pretending" type="button" value="Chờ lấy hàng">
                                 </td>
                             </tr>
-                            <tr class="order-info">
+                            <tr class="order-info" data-modal="modalOne">
                                 <td>#12345</td>
                                 <td style="display: flex">
                                     <img width="84px" height="84px" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fcache%2Fd96eb53c23516f6ca600411b8495131f%2Fh%2Fe%2Fheinz_1.png&w=1920&q=75">
@@ -80,7 +80,7 @@
                                     <input class="pretending" type="button" value="Chờ lấy hàng">
                                 </td>
                             </tr>
-                            <tr class="order-info">
+                            <tr class="order-info" data-modal="modalOne">
                                 <td>#12345</td>
                                 <td style="display: flex">
                                     <img width="84px" height="84px" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fcache%2Fd96eb53c23516f6ca600411b8495131f%2Fh%2Fe%2Fheinz_1.png&w=1920&q=75">
@@ -94,7 +94,7 @@
                                     <input class="asking" type="button" value="Đã nhận được hàng">
                                 </td>
                             </tr>
-                            <tr class="order-info">
+                            <tr class="order-info" data-modal="modalOne">
                                 <td>#12345</td>
                                 <td style="display: flex">
                                     <img width="84px" height="84px" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fcache%2Fd96eb53c23516f6ca600411b8495131f%2Fh%2Fe%2Fheinz_1.png&w=1920&q=75">
