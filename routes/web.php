@@ -4,9 +4,13 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\DashBoardController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\LogInController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\ThanhToanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -93,6 +97,11 @@ Route::get('/product', function () {
 Route::get('/detailproduct', function () {
     return view('/detailproduct');
 });
+Route::get('/carts', [CartController::class, 'getProduct']);
+// Theem gior hangf
+Route::post('/carts', [CartController::class, 'addProduct'])->middleware('auth');
+// login
+Route::post('/login', [AuthenticatedSessionController::class, 'store']);
 
 Route::get('/aboutMe', function () {
     return view('aboutMe');
@@ -112,7 +121,11 @@ Route::get('/user-info', function () {
 
 Route::get('/login', function () {
     return view('login');
-});
+})->name('login');
 Route::get('/sign-up', function () {
     return view('sign-up');
 });
+
+Route::post('/thanhtoan', [ThanhToanController::class, 'paymentProcessing']);
+
+require __DIR__.'/auth.php';

@@ -13,6 +13,17 @@ class Order extends Model
 {
     use HasFactory;
 
+    public $fillable = [
+        'id_user',
+        'first_name',
+        'last_name',
+        'email',
+        'location',
+        'phone',
+        'total_order',
+        'status'
+    ];
+
     public function getAllOrder(){
         $order = DB::select("SELECT * FROM `order`");
         return $order;
@@ -38,4 +49,10 @@ class Order extends Model
     public function cancelOrder( $id ){
         return DB::update("UPDATE `order` SET status = 'Cancel' WHERE id_order = ?", [$id]);
     }
+
+    public $primaryKey = 'id_order';
+
+    public $timestamps = false;
+
+    protected $table = 'order';
 }

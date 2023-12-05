@@ -8,6 +8,7 @@
     <title>Checkout</title>
 </head>
 <body>
+    <div style="display: none">{{ $user = auth()->user() }}</div>
     <div class="checkout">
         <div class="customer-info">
             <div class="customer-info-header">
@@ -16,27 +17,28 @@
             </div>
 
             <div class="customer-info-input">
-                <form>
+                <form action='/thanhtoan' method="POST">
+                    @csrf
                     <table>
                         <tr>
                             <td colspan="2">                
-                                <input style="width: 90%;"type="text" placeholder="Email">
+                                <input style="width: 90%;"type="text" placeholder="Email" value='{{ $user->email }}'>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <input type="text" placeholder="Họ tên">
+                                <input type="text" placeholder="Họ tên" value="{{ $user->first_name . " " . $user->last_name }}">
                             </td>
                             <td>
-                                <input type="text" placeholder="Số điện thoại">
+                                <input type="text" placeholder="Số điện thoại" value="{{ $user->phone }}">
                             </td>
                         </tr>
                         <tr>
                             <td colspan="2">
-                                <input style="width: 90%" type="text" placeholder="Địa chỉ nhận hàng">
+                                <input style="width: 90%" type="text" placeholder="Địa chỉ nhận hàng" value="{{ $user->location }}">
                             </td>
                         </tr>
-                        <tr>
+                        {{-- <tr>
                             <td>
                                 <select id="city" name="city">
                                     <option value="hcm">Hồ Chí Minh</option>
@@ -53,7 +55,7 @@
                                     <option value="dn">Đà Nẵng</option>
                                 </select>
                             </td>
-                        </tr>
+                        </tr> --}}
                         <tr>
                             <td colspan="2">
                                 <textarea rows="10" cols="72" placeholder="Nhập ghi chú nếu cần"></textarea>
@@ -63,7 +65,8 @@
                             <td colspan="2"><p class="info-remind">Phương thức vận chuyển là <span style="color:rgba(0, 188, 38, 0.645)">FREESHIP</span> với đơn hàng từ 700.000đ</p></td>
                         </tr>
                         <tr>
-                            <td colspan="2" ><input style="width: 40%" type="button" value="THANH TOÁN NGAY"></td>
+                                <td colspan="2" ><input style="width: 40%" type="submit" value="THANH TOÁN NGAY"></td>
+                            
                         </tr>
                     </table>
                 </form>
@@ -79,6 +82,8 @@
                 <div class="order-update">
                     <a  href="#" onclick="toggleProduct()">Sửa</a>
                 </div>
+                <div style="display: none;">{{ $price = 0 }}</div>
+                @foreach ($user->cartProducts as $product)
                 <div class="show-product-close">
                     <script>
                         deleteProduct(0);
@@ -88,53 +93,22 @@
                     <div>
                         <button onclick="deleteProduct(0)" style="display: none;" class="showBTN">×</button>
                     </div>
-                    <img width="84px" height="84px" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fh%2Fe%2Fherbert.png&w=640&q=75">
+                    <img width="84px" height="84px" src="{{ $product->img_main }}">
                     <div class="pd02">
-                        <p style="margin-bottom: 3%">HERBERT</p>
+                        <p style="margin-bottom: 3%">{{ $product->name }}</p>
+                        <div style="display: none"> {{ $price += $product->sellprice }}</div>
                         <p style="margin-bottom: 32%">40MM</p>
                         <p>Qty: 1</p>
                     </div>
-                   <p style="margin-left: 50%; margin-top: 4%; font-size: 18px"><b>2.499.000 ₫</b></p>
+                   <p style="margin-left: 50%; margin-top: 4%; font-size: 18px"><b>{{ $product->sellprice }} ₫</b></p>
                 </div>
-                <div class="show-product-close">
-                    <script>
-                        deleteProduct(1);
-                    </script>
-                </div>
-                <div class="order-product">
-                    <div>
-                        <button onclick="deleteProduct(1)" style="display: none;" class="showBTN">×</button>
-                    </div>
-                    <img width="84px" height="84px" src="https://shop.curnonwatch.com/media/catalog/product/cache/d96eb53c23516f6ca600411b8495131f/b/x/bx.swank.png">
-                    <div class="pd02">
-                        <p style="margin-bottom: 3%">HERBERT</p>
-                        <p style="margin-bottom: 32%">40MM</p>
-                        <p>Qty: 1</p>
-                    </div>
-                   <p style="margin-left: 50%; margin-top: 4%; font-size: 18px"><b>2.499.000 ₫</b></p>
-                </div>
-                <div class="show-product-close">
-                    <script>
-                        deleteProduct(2);
-                    </script>
-                </div>
-                <div class="order-product">
-                    <div>
-                        <button onclick="deleteProduct(2)" style="display: none;" class="showBTN">×</button>
-                    </div>
-                    <img width="84px" height="84px" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fh%2Fe%2Fherbert.png&w=640&q=75">
-                    <div class="pd02">
-                        <p style="margin-bottom: 3%">HERBERT</p>
-                        <p style="margin-bottom: 32%">40MM</p>
-                        <p>Qty: 1</p>
-                    </div>
-                   <p style="margin-left: 50%; margin-top: 4%; font-size: 18px"><b>2.499.000 ₫</b></p>
-                </div>
+                @endforeach
+                
                 <hr style="margin-top: 6%; margin-bottom: 5%">
                 <div class="bill">
                     <div class="bill-total">
                         <p style="display: flex;font-size: 18px; margin-bottom: 12px">Thành tiền</p>
-                        <p><b style="right:0; margin-left: 400px" > 4.998.000 ₫</b></p>
+                        <p><b style="right:0; margin-left: 400px" > {{ $price }} ₫</b></p>
                     </div>
                     <div class="bill-shipped">
                         <p>Phí ship</p>
@@ -144,7 +118,7 @@
                 </div>
                 <div class="order-product-sum">
                     <p style="font-size: 20px">TỔNG:</p>
-                    <p><h1 style="margin-left: 370px">4.998.000 ₫</h1></p>
+                    <p><h1 style="margin-left: 370px">{{ $price }} ₫</h1></p>
                  </div>
         </div>
             

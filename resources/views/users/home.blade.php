@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="{{ asset('assets/css/User/home.css') }}" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/lightslider/lightslider.css')}}">
     <script type="text/javascript" src="{{ asset('assets/js/lightslider/Jquery.js')}}"></script>
@@ -53,13 +54,20 @@
         <div class="product_top">
         {{-- discount --}}
             @foreach ($productListB as $productItem)    
-            <a href="#">
+            <a >
                 <div class="product_info product_highlight">
                     <img src="{{ $productItem->img_main }}">
                     <b class="product_image_discount">-{{ $productItem->discount }}%</b>
-                    <a class="product_addToCard" href="#" target="_self">
-                        <span class="product_addToCard_font">THÊM VÀO GIỎ</span>
-                    </a>
+                    <form action="/carts" method='POST'>
+                        @csrf
+                        <a class="product_addToCard" target="_self">
+                            <span class="product_addToCard_font">
+                                <input type="text" name='id' style="display: none;" value="{{ $productItem->id_product }}">
+                                <input type="submit" value="THÊM VÀO GIỎ">
+                            </span>
+                        </a>
+                    </form>
+                    
                     <p class="product_ref_kind">{{ $productItem->brName }}</p>
                     <span class="product_ref_name">{{ $productItem->pdName }}</span>
                     <div class="product_font_price">
@@ -74,7 +82,7 @@
             <a href="#">
                 <div class="product_info product_highlight">
                         <img  alt="Standup image of Ultra-Complication Universelle (RD#4)" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fh%2Fe%2Fherbert.png&w=640&q=75">
-                        <a class="product_addToCard" href="#" target="_self">
+                        <a class="product_addToCard" target="_self">
                             <span class="product_addToCard_font">THÊM VÀO GIỎ</span>
                         </a>
                         <p class="product_ref_kind">KABHMIR</p>
@@ -127,7 +135,7 @@
                 <div class="product_info product_highlight">
                     <img src="{{ $productItem->img_main }}">
                     <b class="product_image_discount">-{{ $productItem->discount }}%</b>
-                    <a class="product_addToCard" href="#" target="_self">
+                    <a class="product_addToCard" target="_self">
                         <span class="product_addToCard_font">THÊM VÀO GIỎ</span>
                     </a>
                     <p class="product_ref_kind">{{ $productItem->brName }}</p>
@@ -203,7 +211,31 @@
     </div>
     <script type="text/javascript" src="{{ asset('assets/js/lightslider/script2.js') }}"></script>  
     </div>
-    
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    {{-- Them gio hang --}}
+    {{-- <script>
+        $(document).ready(function(){
+            var csrf = $('meta[name="csrf-token"]').attr('content');
+            console.log(csrf);
+
+            $(".product_addToCard").click(function(){
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': csrf
+                    }
+                });
+                $.ajax({
+                    method: 'POST',
+                    url: '/carts',  
+                    data: {'id': 4},
+                    error:  function () {
+                        windows.location = '/login'
+                    },
+        
+                })
+            });
+        }); 
+    </script> --}}
     <script>
         function showButton(){
             var productbutton = document.getElementById("product-button");
