@@ -15,6 +15,7 @@ class Carts extends Model
     ];
 
     // protected $primaryKey = ['id_user', 'id_product'];
+    
 
     public $timestamps = false;
 

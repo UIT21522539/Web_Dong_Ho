@@ -162,68 +162,6 @@
     text-decoration: none;
     color: black;
 }
-/*CSS cho product*/
-/* .product-container{
-	justify-content: center;
-	align-items: center;
-	display: flex;
-    margin-bottom: 20px;
-}
-.product {
-	width: 22%; 
-	display: inline-block;
-	margin: 0.3%;
-	border: 1px solid #ccc;
-	padding-top: 16px;
-	text-align: center;
-	box-sizing: border-box;
-}
-.product-content{
-    padding-top: 24px;
-	padding-bottom: 8px;
-}
-.product-content p{
-    padding-top: 8px;
-}
-.product-content b{
-    font-size: 20px;
-}
-.product img {
-	max-width: 80%;
-	height: 30%;
-}
-.horizontal-line {
-	width: 80%;
-	height: 1px; 
-	background-color: black;
-}
-#product-button{
-    position: absolute;
-    width: 22%;
-    margin-left: 16.4%;
-    margin-top: 15%;
-    animation: fadeIn 1s; 
-}
-#product-button button{
-    width: 100%;
-    background-color: rgb(238, 238, 238);
-    padding: 16px;
-    font-size: 14px;
-    font-weight: 500;
-    letter-spacing: 1px;
-    border: none;
-    color: rgb(0, 0, 0);
-}
-#product-button button{
-    width: 100%;
-    background-color: rgb(238, 238, 238);
-    padding: 16px;
-    font-size: 14px;
-    font-weight: 500;
-    letter-spacing: 1px;
-    border: none;
-    color: rgb(0, 0, 0);
-} */
 
 .product_wrapper{
     margin-left: auto;
@@ -241,7 +179,8 @@
     margin-right: auto;
 }
 .product_top a{
-	padding: 10px;
+	padding:  20px 20px 20px 0px;
+    cursor: pointer;
 }
 .product_top div{
 	flex-basis:24%;
@@ -252,11 +191,13 @@
 	height:auto;
 	display:block;
 }
-.product_top .product_info .product_addToCard{
+.product_top .product_info .product_addToCard input{
 	background-color: rgb(244, 244, 244);
 	color: black;
 	text-decoration: none;
-	padding: 13px 45px;
+	padding: 13px;
+    border: none;
+    cursor: pointer;
 	font-family: Arial;
 	font-weight: bold;
 	font-size: 13px;
@@ -268,12 +209,16 @@
     transform: translate(-50%, -50%);/* Dịch chữ chiều ngang và dọc */
 	
 }
-.product_info:hover .product_addToCard {
+.product_info:hover .product_addToCard input {
 	opacity: 1;
+    border: none;
 }
-.product_top .product_info .product_addToCard:hover{
-	background-color:black;
-	color:white;
+
+.product_top .product_info .product_addToCard input:hover{
+	border: none;
+    cursor: pointer;
+    background-color: black;
+    color: white;
 }
 .product_ref_kind {
     margin-bottom: 2%;

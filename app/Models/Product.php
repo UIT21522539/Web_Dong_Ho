@@ -24,7 +24,7 @@ class Product extends Model
             INNER JOIN brand
             ON product.id_brand = brand.id_brand
             WHERE gender = 'nam'
-            LIMIT 3;
+            LIMIT 4;
             ");
         return $product;
     }

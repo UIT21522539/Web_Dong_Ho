@@ -277,10 +277,11 @@ input.qtyminus { width:25px; height:25px;}
 }
 .sidebar-product .pd02{
     margin-left: 10%;
+    width: 35%;
     letter-spacing: 1px;
 }
 .sidebar-product .pd03{
-    margin-left: 10%;
+    margin-left: 2%;
     letter-spacing: 1px;
     text-align: center;
 }

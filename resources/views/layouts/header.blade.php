@@ -84,33 +84,32 @@
         <div class="sidebar-product">
             @if (auth()->user())
             @foreach (auth()->user()->cartProducts as $product)
-            <div class="show-product-close">
-                <script>
-                    deleteProduct(0);
-                </script>
-            </div>
-            
-            <div class="product01">
-                <div class="pd01">
-                    <button onclick="deleteProduct(0)">×</button>
-                    <img width="84px" height="84px" src="{{ $product->img_main }}">
+                <div class="show-product-close">
+                    <script>
+                        deleteProduct(0);
+                    </script>
                 </div>
-                <div class="pd02">
-                    <p>{{ $product->name }}</p>
-                    <p style="margin-top: 60%">40MM</p>
-                </div>
-                <div class="pd03">
-                    <p class="tien">{{ $product->sellprice }}</p>
-                    <div style="display: none;">{{ $price += $product->sellprice }}</div>
-                    <div class="Qty">
-                        <form id='myform' method='POST' class='quantity' action='#'>
-                            <input type='button' value='-' class='qtyminus minus' field='quantity' />
-                            <input type='text' name='quantity' value='1' class='qty' />
-                            <input type='button' value='+' class='qtyplus plus' field='quantity' />
-                        </form>
+                
+                <div class="product01">
+                    <div class="pd01">
+                        <button onclick="deleteProduct(0)">×</button>
+                        <img width="84px" height="84px" src="{{ $product->img_main }}">
+                    </div>
+                    <div class="pd02">
+                        <p>{{ $product->name }}</p>
+                    </div>
+                    <div class="pd03">
+                        <p class="tien">{{ $product->sellprice }} đ</p>
+                        <div style="display: none;">{{ $price += $product->sellprice }}</div>
+                        <div class="Qty">
+                            <form id='myform' method='POST' class='quantity' action='#'>
+                                <input type='button' value='-' class='qtyminus minus' field='quantity' />
+                                <input type='text' name='quantity' value='1' class='qty' />
+                                <input type='button' value='+' class='qtyplus plus' field='quantity' />
+                            </form>
+                        </div>
                     </div>
                 </div>
-            </div>
             @endforeach
             @endif
             
@@ -121,7 +120,7 @@
             <div class="sidebar-total-content">
                 <div style="display: flex; margin-bottom: 10%">
                     <p style="color:black">Thành tiền:</p>
-                    <p style="color:red; margin-left: 45%"><b id="result">{{ $price }}</b></p>
+                    <p style="color:red; margin-left: 45%"><b id="result">{{ $price }} đ</b></p>
                 </div>
                 <div class="sidebar-total-purchase">
                     <a href="/checkout">
@@ -299,16 +298,15 @@
     function deleteProduct(productIndex) {
         var divTables = document.getElementsByClassName('show-product-close');
         var html = `<div class="product-close">
-                    <h3>Đừng làm thế, xin bạn đấy!</h3>
+            <h3>Đừng làm thế, xin bạn đấy!</h3>
                         <div>
                             <button class="bt01" onclick="turnback(${productIndex})">QUAY LẠI</button>
                             <button class="bt02">XOÁ SẢN PHẨM</button>
                         </div>
                     </div>`
         for (var i = 0; i < divTables.length; i++) {
-            if (i === productIndex) {
-                divTables[i].innerHTML = html;
-            }
+            if(i == productIndex)
+                divTables[i].innerHTML += html;
         }
     }
 

@@ -95,12 +95,11 @@
                     </div>
                     <img width="84px" height="84px" src="{{ $product->img_main }}">
                     <div class="pd02">
-                        <p style="margin-bottom: 3%">{{ $product->name }}</p>
+                        <p style="margin-bottom: 3%;">{{ $product->name }}</p>
                         <div style="display: none"> {{ $price += $product->sellprice }}</div>
-                        <p style="margin-bottom: 32%">40MM</p>
-                        <p>Qty: 1</p>
+                        <p style="margin-top: 10%">Qty: 1</p>
                     </div>
-                   <p style="margin-left: 50%; margin-top: 4%; font-size: 18px"><b>{{ $product->sellprice }} ₫</b></p>
+                   <p style=" margin-top: 2%; font-size: 18px; position: absolute; margin-left: 500px"><b>{{ $product->sellprice }} ₫</b></p>
                 </div>
                 @endforeach
                 
@@ -108,7 +107,7 @@
                 <div class="bill">
                     <div class="bill-total">
                         <p style="display: flex;font-size: 18px; margin-bottom: 12px">Thành tiền</p>
-                        <p><b style="right:0; margin-left: 400px" > {{ $price }} ₫</b></p>
+                        <p><b style="right:0; margin-left: 430px" > {{ $price }} ₫</b></p>
                     </div>
                     <div class="bill-shipped">
                         <p>Phí ship</p>
