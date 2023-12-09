@@ -1,0 +1,149 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.banner{
+    margin-top: 8%;
+    margin-bottom: 14%;
+}
+.banner-content{
+    width: 35%;
+    background-color: white;
+    margin-top: 25%;
+    margin-left: 25%;
+    position: absolute;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    padding: 3% 6% 6% 6%;
+}
+.banner-content h2{
+    font-size: 32px;
+    margin-bottom: 1%;
+}
+.banner-content h3{
+    font-size: 32px;
+    margin-bottom: 4%;
+}
+.banner-content p{
+    font-size: 14px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    font-weight: 400;
+    letter-spacing: 1px;
+    line-height: 22px;
+}
+.banner .banner-img img{
+    max-width: 94%;
+    display: block;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.whyCurnon{
+    width: 80%;
+    display: flex;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 10%;
+}
+.whyCurnon .whyCurnon-content{
+    margin-left: 12%;
+    margin-top: 10%;
+    width: 38%;
+}
+.whyCurnon .whyCurnon-content .p01{
+    font-size: 18px;
+    letter-spacing: 10px;
+    font-weight: 400;
+    margin-bottom: 2%;
+}
+.whyCurnon .whyCurnon-content .p02{
+    font-size: 15px;
+    letter-spacing: 1px;
+    font-weight: 400;
+    margin-bottom: 6%;
+}
+.whyCurnon .whyCurnon-content .p03{
+    font-size: 33px;
+    margin-bottom: 4%;
+}
+.whyCurnon .whyCurnon-content .p04{
+    font-size: 14px;
+    line-height: 24px;
+    letter-spacing: 1px;
+    font-weight: 300;
+    margin-bottom: 6%;
+}
+
+.core-value{
+    width: 80%;
+    display: flex;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 10%;
+}
+.core-value .core-value-content{
+    margin-top: 20%;
+    margin-left: 10%;
+    width: 35%;
+}
+.core-value .core-value-content h2{
+    font-size: 34px;
+    letter-spacing: 1px;
+    margin-bottom: 4%;
+}
+.core-value .core-value-content p{
+    font-size: 16px;
+    letter-spacing: 1px;
+    line-height: 32px;
+}
+.core-value-img{
+    margin-left: 14%;
+}
+
+.grid-img{
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 80%;
+}
+
+.grid-element{
+    text-align: center;
+    width: 88%;
+    margin-bottom: 50%;
+}
+.grid-element img{
+    margin-bottom: 4%;
+}
+.grid-element h3{
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 4%;
+}
+.grid-element p{
+    font-size: 14px;
+    font-weight: 300;
+    letter-spacing: 1px;
+    line-height: 26px;
+}
+
+.curnon-family-content{
+    text-align: center;
+    margin-bottom: 3%;
+}
+.curnon-family-content h2{
+    font-size: 32px;
+    font-weight: 400;
+    letter-spacing: 1px;
+}
+.curnon-family-content p{
+    font-weight: 200;
+    font-size: 15px;
+    letter-spacing: 1px;
+}

@@ -15,7 +15,6 @@
         <a href="{{ route('users.list') }}">Quản lí khách hàng</a>
         <a href="{{ route('suppliers.list') }}">Quản lí nhập hàng</a>
         <a href="{{ route('brands.list') }}">Quản lí brand</a>
-        <a href="{{ route('logout') }}">Đăng xuất</a>
     </div>
     <div class="content">
         @if(session('content'))

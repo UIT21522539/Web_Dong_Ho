@@ -6,29 +6,23 @@
                     <li>
                         <div class="d">
                             <button class="d-btn">NAM GIỚI</button>
-                            <div class="d-content">
-                                <div class="row">
-                                    <div class="column">
-                                        <a href="#"><h3>ĐỒNG HỒ</h3></a>
-                                        <a href="#"><h3>PHỤ KIỆN</h3></a>
-                                        <a href="#"><h3>DÂY ĐỒNG HỒ</h3></a>
-                                    </div>
-                                </div>
-                            </div>
+                            <div class="divTable"></div>
+                            <script>
+                                window.onload = function() {
+                                openDivHeader();
+                            };
+                            </script>
                         </div>
                     </li>
                     <li>
                         <div class="d">
                             <button class="d-btn">NỮ GIỚI</button>
-                            <div class="d-content">
-                                <div class="row">
-                                    <div class="column">
-                                        <a href="#"><h3>ĐỒNG HỒ</h3></a>
-                                        <a href="#"><h3>PHỤ KIỆN</h3></a>
-                                        <a href="#"><h3>DÂY ĐỒNG HỒ</h3></a>
-                                    </div>
-                                </div>
-                            </div>
+                            <div class="divTable"></div>
+                            <script>
+                                window.onload = function() {
+                                openDivHeader();
+                            };
+                            </script>
                         </div>
                     </li>
                     <li>
@@ -54,7 +48,7 @@
                     </li>
                     <li class="cart">
                         <div>
-                            <a href="#">
+                            <a href="#" onclick="openNav()">
                                 <div class="cart-align">
                                     <p style="font-weight: lighter">GIỎ HÀNG</p>
                                     <img width="24px" height="24px" src="{{ asset('assets/img/User/layouts/cart.png') }}">
@@ -77,7 +71,7 @@
 </header>
 
 <div>
-    {{ $price = 0 }}
+    {{ $price = 0; }}
     <div id="mySidebar" class="sidebar">
         <div class="sidebar-header">
             <p style="font-size: 25px; margin-left: 40px; font-weight: 600">GIỎ HÀNG CỦA BẠN</p>
@@ -141,6 +135,103 @@
     </div>
 </div>
 <script>
+    function openDivHeader(){
+        var divTables = document.getElementsByClassName('divTable');
+        var html = `<div class='d-content'>
+                                <div class='row'>
+                                    <div class='column'>
+                                        <a onmouseover="openCity(event, 'watch')" href='#'><h3>ĐỒNG HỒ</h3></a>
+                                        <a onmouseover="openCity(event, 'accessories')" href='#'><h3>PHỤ KIỆN</h3></a>
+                                        <a onmouseover="openCity(event, 'leather')" href='#'><h3>DÂY ĐỒNG HỒ</h3></a>
+                                    </div>
+                                    <div class='row-content'>
+                                        <div id="watch" class="tabcontent">
+                                            <div class="tabcontent-watch">
+                                                <img width="114px" height="114px" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fcategory%2FKashmir.png&w=128&q=75">
+                                                <p>KASHMIR</p>
+                                            </div>
+                                            <div class="tabcontent-watch">
+                                                <img width="114px" height="114px" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fcategory%2FKashmir.png&w=128&q=75">
+                                                <p>KASHMIR</p>
+                                            </div>
+                                            <div class="tabcontent-watch">
+                                                <img width="114px" height="114px" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fcategory%2FKashmir.png&w=128&q=75">
+                                                <p>KASHMIR</p>
+                                            </div>
+                                            <div class="tabcontent-watch">
+                                                <img width="114px" height="114px" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fcategory%2FKashmir.png&w=128&q=75">
+                                                <p>KASHMIR</p>
+                                            </div>
+                                            <div class="tabcontent-watch">
+                                                <img width="114px" height="114px" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fcategory%2FKashmir.png&w=128&q=75">
+                                                <p>KASHMIR</p>
+                                            </div>
+                                            <div class="tabcontent-watch">
+                                                <img width="114px" height="114px" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fcategory%2FKashmir.png&w=128&q=75">
+                                                <p>KASHMIR</p>
+                                            </div>
+                                            <div class="tabcontent-watch">
+                                                <img width="114px" height="114px" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fcategory%2FKashmir.png&w=128&q=75">
+                                                <p>KASHMIR</p>
+                                            </div>
+                                            <div class="tabcontent-watch">
+                                                <img width="114px" height="114px" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fcategory%2FKashmir.png&w=128&q=75">
+                                                <p>KASHMIR</p>
+                                            </div>
+                                            <div class="tabcontent-watch">
+                                                <p style="margin-bottom: 12%; margin-top: 50%">XEM TẤT CẢ</p>
+                                                <img width="24px" height="24px" src="{{ asset('assets/img/User/Blog/arrow.png') }}" >
+                                            </div>
+                                        </div>
+                                        <div id="accessories" class="tabcontent">
+                                            <div class="tabcontent-all">
+                                                <div class="tabcontent-accessories">
+                                                    <img width="114px" height="114px" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fcategory%2FCuff_1.png&w=128&q=75">
+                                                    <p>VÒNG TAY</p>
+                                                </div>
+                                                <div class="tabcontent-watch">
+                                                    <img width="114px" height="114px" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fcategory%2FDa_y_ba_t_gia_c_che_o.jpg&w=128&q=75">
+                                                    <p>VÒNG CỔ</p>
+                                                </div>
+                                            </div>
+                                            <div class="tabcontent-watch">
+                                                <p style="margin-bottom: 12%; margin-top: 140%">XEM TẤT CẢ</p>
+                                                <img width="24px" height="24px" src="{{ asset('assets/img/User/Blog/arrow.png') }}" >
+                                            </div>
+                                        </div>
+                                        <div id="leather" class="tabcontent">
+                                            <img width="310px" height="310px" style="margin-left: 8%; margin-top: 4%" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fcms.curnonwatch.com%2Fuploads%2F3_ebc2dc50c4.jpeg&w=384&q=75">
+                                            <div class="leather-content">
+                                                <p>Từ nay bạn đã có thể biến một thành nhiều chiếc đồng hồ để thay đổi phong cách thời trang của bản thân với dây đồng hồ Curnon.
+                                                </p>
+                                                <button>MUA NGAY</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>`
+        for (var i = 0; i < divTables.length; i++) {
+            divTables[i].innerHTML = html;
+        }
+    }
+
+    function openCity(evt, cityName) {
+        var i, tabcontent, tablinks;
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            if (tabcontent[i].id === cityName) {
+                tabcontent[i].style.display = "flex";
+            } else {
+                tabcontent[i].style.display = "none";
+            }
+        }
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+        evt.currentTarget.className += " active";
+    }
+
     const body = document.body;
     let lastScroll = 0;
     window.addEventListener("scroll", () => {
