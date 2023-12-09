@@ -11,7 +11,7 @@ class CT_Product extends Model
     use HasFactory;
 
     public function getAllCtProduct($id){
-        $ct_product = DB::select("SELECT * FROM ct_product where id_product = ?", [$id]);
+        $ct_product = DB::select("SELECT * FROM product where id_product = ?", [$id]);
         return $ct_product;
     }
 }

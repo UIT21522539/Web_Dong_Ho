@@ -83,8 +83,7 @@
             <span style="color: red">{{ $message }}</span>
             @enderror
         </div>
-        
-
+    
         {{-- hiện ảnh --}}
         <div class="mb-3">
             <label for="img" class="form-label">Image main</label>
@@ -127,7 +126,7 @@
                 <tr>
                     
                     <td>{{ $item->size }}</td>
-                    <td>{{ $item->qty }}</td>
+                    <td>{{ $item->qty_store}}</td>
                     
                     
                 </tr>
