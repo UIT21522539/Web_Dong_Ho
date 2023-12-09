@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="{{ asset('assets/css/Admin/userlist.css')}}">
+<link rel="stylesheet" href="{{ asset('assets/css/Admin/user/userlist.css')}}">
 @extends('layouts.admin.sidebar')
 @section('content')
 <div class="user-header">  

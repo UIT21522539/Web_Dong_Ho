@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="{{ asset('assets/css/Admin/orderlist.css')}}">
+<link rel="stylesheet" href="{{ asset('assets/css/Admin/order/orderlist.css')}}">
 @extends('layouts.admin.sidebar')
 @section('content')
 <div class="order-header">  

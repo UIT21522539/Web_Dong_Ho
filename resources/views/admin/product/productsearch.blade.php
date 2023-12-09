@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="{{ asset('assets/css/Admin/productlist.css')}}">
+<link rel="stylesheet" href="{{ asset('assets/css/Admin/product/productlist.css')}}">
 @extends('layouts.admin.sidebar')
 @section('content')
 <div class="product-header">  

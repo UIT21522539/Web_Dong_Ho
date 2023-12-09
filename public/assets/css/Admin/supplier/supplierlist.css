@@ -48,7 +48,6 @@ body{
 }
 table{
     width: 90%;
-    height: 90%;
     text-align: center;
     background-color: white;
     border-collapse:separate; 
@@ -57,7 +56,11 @@ table{
 }
 table .table-content{
     width: 100%;
+    height: 70px;
     background-color: rgb(244, 244, 244);
+}
+table .table-header{
+    height: 70px;
 }
 table .table-content a{
     color: brown;

@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="{{ asset('assets/css/Admin/brandlist.css')}}">
+<link rel="stylesheet" href="{{ asset('assets/css/Admin/brand/brandlist.css')}}">
 @extends('layouts.admin.sidebar')
 @section('content')
 <div class="brand-header">  
