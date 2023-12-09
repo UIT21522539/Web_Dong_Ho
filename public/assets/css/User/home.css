@@ -1,10 +1,6 @@
 *{
     margin: 0;
 }
-@keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-  }
 .banner-button{
     color: white;
     position: absolute;
@@ -163,17 +159,17 @@
     color: black;
 }
 /*CSS cho product*/
-/* .product-container{
+.product-container{
 	justify-content: center;
 	align-items: center;
 	display: flex;
     margin-bottom: 20px;
 }
 .product {
-	width: 22%; 
+	width: 22%; /* Đặt chiều rộng của mỗi sản phẩm */
 	display: inline-block;
-	margin: 0.3%;
-	border: 1px solid #ccc;
+	margin: 0.3%; /* Khoảng cách giữa các sản phẩm */
+	border: 1px solid #ccc; /* Đường viền sản phẩm */
 	padding-top: 16px;
 	text-align: center;
 	box-sizing: border-box;
@@ -194,142 +190,6 @@
 }
 .horizontal-line {
 	width: 80%;
-	height: 1px; 
+	height: 1px; /* Tăng chiều rộng và độ dày của đường kẻ ngang */
 	background-color: black;
-}
-#product-button{
-    position: absolute;
-    width: 22%;
-    margin-left: 16.4%;
-    margin-top: 15%;
-    animation: fadeIn 1s; 
-}
-#product-button button{
-    width: 100%;
-    background-color: rgb(238, 238, 238);
-    padding: 16px;
-    font-size: 14px;
-    font-weight: 500;
-    letter-spacing: 1px;
-    border: none;
-    color: rgb(0, 0, 0);
-}
-#product-button button{
-    width: 100%;
-    background-color: rgb(238, 238, 238);
-    padding: 16px;
-    font-size: 14px;
-    font-weight: 500;
-    letter-spacing: 1px;
-    border: none;
-    color: rgb(0, 0, 0);
-} */
-
-.product_wrapper{
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 4%;
-    
-}
-.product_top{
-	display:flex;
-    width: 70%;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-    margin-left: auto;
-    margin-right: auto;
-}
-.product_top a{
-	padding: 10px;
-}
-.product_top div{
-	flex-basis:24%;
-	box-sizing: border-box;
-}
-.product_info img{
-	max-width: 100%;
-	height:auto;
-	display:block;
-}
-.product_top .product_info .product_addToCard{
-	background-color: rgb(244, 244, 244);
-	color: black;
-	text-decoration: none;
-	padding: 13px 45px;
-	font-family: Arial;
-	font-weight: bold;
-	font-size: 13px;
-	opacity: 0; 
-	transition: opacity 0.3s ease-in-out;
-	position: absolute;
-    width:100%;
-	top:65%;
-    transform: translate(-50%, -50%);/* Dịch chữ chiều ngang và dọc */
-	
-}
-.product_info:hover .product_addToCard {
-	opacity: 1;
-}
-.product_top .product_info .product_addToCard:hover{
-	background-color:black;
-	color:white;
-}
-.product_ref_kind {
-    text-decoration: none;
-    font-family: arial;
-    font-weight: lighter;
-	font-size:13px;
-	color:grey;
-}
-.product_ref_name{
-	text-decoration: none;
-    font-style:normal;
-	font-size:17px;
-	color: black;
-	font-weight: normal;
-}
-.product_font_price{
-	font-size:17px;
-	margin-top:10px;
-    margin-bottom: 8%;
-}
-.product_font_price_discount{
-	font-size:13px;
-}
-.product_highlight {
-	position: relative;
-	overflow: hidden;
-	transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  }
-  
- .product_highlight:hover {
-	box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-}
-.product_image_discount{
-	text-decoration: none;
-	border-radius: 150px;
-	background-color: red;
-	color: white;
-	padding: 8px;
-	font-family: Tahoma;
-	position:absolute;
-	top:5%;
-	left: 5%;
-	font-size:16px;
-}
-
-.curnon-family-content{
-    text-align: center;
-    margin-bottom: 3%;
-}
-.curnon-family-content h2{
-    font-size: 32px;
-    font-weight: 400;
-    letter-spacing: 1px;
-}
-.curnon-family-content p{
-    font-weight: 200;
-    font-size: 15px;
-    letter-spacing: 1px;
 }

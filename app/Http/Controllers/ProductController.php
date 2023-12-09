@@ -16,9 +16,12 @@ use App\Models\CT_Product;
 
 use App\Http\Requests\ProductRequest;
 
+
+
 class ProductController extends Controller
 {
 
+    
         public function home(){
             $product = new Product();
             $productList = $product->getTop3Product();
