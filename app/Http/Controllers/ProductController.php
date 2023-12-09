@@ -21,13 +21,13 @@ use App\Http\Requests\ProductRequest;
 class ProductController extends Controller
 {
 
-    
-        public function home(){
-            $product = new Product();
-            $productList = $product->getTop3Product();
-            return view('users.home',['productList'=>$productList]);
-
-        }
+    public function combinedHome()
+    {
+        $product = new Product();
+        $productListB = $product->getTop3ProductB();
+        $productListW = $product->getTop3ProductW();
+        return view('users.home', ['productListB' => $productListB, 'productListW' => $productListW]);
+    }
     //Admin
         //Xem danh sách
         public function productList(){

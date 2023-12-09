@@ -4,10 +4,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\DashBoardController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\LogInController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\ThanhToanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -97,4 +101,57 @@ Route::middleware(['auth'])->group(function () {
     
     
     
+    //Quản lí danh sách brand
+    Route::get('/brands', [BrandController::class, 'brandList'])->name('brands.list');
+        //Tìm kiếm theo tên
+    Route::get('/brands/search', [BrandController::class, 'searchBrand'])->name('brands.search');
+        //Hiện trang thêm brand
+    Route::get('/brands/add', [BrandController::class, 'addDetailBrand'])->name('brands.detailadd');
+        //post update brand
+    Route::post('/brands/add', [BrandController::class, 'addBrand'])->name('brands.add');
 });
+
+
+Route::get('/home', [ProductController::class, 'combinedHome'])->name('/users/home');
+
+Route::get('/blog', function () {
+    return view('blog');
+});
+Route::get('/product', function () {
+    return view('/users/product');
+});
+Route::get('/detailproduct', function () {
+    return view('/detailproduct');
+});
+Route::get('/carts', [CartController::class, 'getProduct']);
+// Theem gior hangf
+Route::post('/carts', [CartController::class, 'addProduct'])->middleware('auth');
+// login
+Route::post('/login', [AuthenticatedSessionController::class, 'store']);
+
+Route::get('/aboutMe', function () {
+    return view('aboutMe');
+});
+
+Route::get('/checkout', function () {
+    return view('checkout');
+});
+
+Route::get('/checkout-done', function () {
+    return view('checkout-done');
+});
+
+Route::get('/user-info', function () {
+    return view('user-info');
+});
+
+Route::get('/login', function () {
+    return view('login');
+})->name('login');
+Route::get('/sign-up', function () {
+    return view('sign-up');
+});
+
+Route::post('/thanhtoan', [ThanhToanController::class, 'paymentProcessing']);
+
+require __DIR__.'/auth.php';

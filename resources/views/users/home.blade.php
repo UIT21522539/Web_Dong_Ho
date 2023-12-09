@@ -4,7 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="{{ asset('assets/css/User/home.css') }}" rel="stylesheet">
+<<<<<<< HEAD
+=======
+    <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/lightslider/lightslider.css')}}">
+    <script type="text/javascript" src="{{ asset('assets/js/lightslider/Jquery.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/lightslider/lightslider.js') }}"></script>
+    <script src="https://code.jquery.com/jquery-migrate-3.4.1.js" integrity="sha256-CfQXwuZDtzbBnpa5nhZmga8QAumxkrhOToWweU52T38=" crossorigin="anonymous"></script>
+>>>>>>> 6633ae973e0d2ab111164a8877702bf6292c6242
     <title>Home</title>
 </head>
 <body>
@@ -46,6 +54,7 @@
         <h1>MEN'S BEST SELLERS</h1>
         <a href="#">XEM TẤT CẢ</a>
     </div>
+<<<<<<< HEAD
     <div class="product-container">
         <div class="product-container">
         @foreach ($productList as $product)
@@ -72,11 +81,42 @@
         </div> 
         @endforeach
 	</div>
+=======
+    <div class="product_wrapper">
+        <div class="product_top">
+        {{-- discount --}}
+            @foreach ($productListB as $productItem)    
+            <a >
+                <div class="product_info product_highlight">
+                    <img src="{{ $productItem->img_main }}">
+                    <b class="product_image_discount">-{{ $productItem->discount }}%</b>
+                    <form action="/carts" method='POST'>
+                        @csrf
+                        <a class="product_addToCard" target="_self">
+                            <span class="product_addToCard_font">
+                                <input type="text" name='id' style="display: none;" value="{{ $productItem->id_product }}">
+                                <input type="submit" value="THÊM VÀO GIỎ">
+                            </span>
+                        </a>
+                    </form>
+                    
+                    <p class="product_ref_kind">{{ $productItem->brName }}</p>
+                    <span class="product_ref_name">{{ $productItem->pdName }}</span>
+                    <div class="product_font_price">
+                        <b>{{ $productItem->sellprice }}</b>
+                        <del class="product_font_price_discount">2.499.000 đ</del>
+                    </div>
+                </div>
+            </a>
+            @endforeach
+        </div>
+>>>>>>> 6633ae973e0d2ab111164a8877702bf6292c6242
     </div>
     <div class="bestSell">
         <h1>WOMEN'S BEST SELLERS</h1>
         <a href="#">XEM TẤT CẢ</a>
     </div>
+<<<<<<< HEAD
     <div class="product-container">
         <div class="product-container">
         <div class="product" data-index="0">
@@ -99,6 +139,34 @@
                 </div>
                 <p><b>2.124.000 đ</b></p>
             </div>
+=======
+    <div class="product_wrapper">
+        <div class="product_top">
+            @foreach ($productListW as $productItem)    
+            <a >
+                <div class="product_info product_highlight">
+                    <img src="{{ $productItem->img_main }}">
+                    <b class="product_image_discount">-{{ $productItem->discount }}%</b>
+                    <form action="/carts" method='POST'>
+                        @csrf
+                        <a class="product_addToCard" target="_self">
+                            <span class="product_addToCard_font">
+                                <input type="text" name='id' style="display: none;" value="{{ $productItem->id_product }}">
+                                <input type="submit" value="THÊM VÀO GIỎ">
+                            </span>
+                        </a>
+                    </form>
+                    
+                    <p class="product_ref_kind">{{ $productItem->brName }}</p>
+                    <span class="product_ref_name">{{ $productItem->pdName }}</span>
+                    <div class="product_font_price">
+                        <b>{{ $productItem->sellprice }}</b>
+                        <del class="product_font_price_discount">2.499.000 đ</del>
+                    </div>
+                </div>
+            </a>
+            @endforeach
+>>>>>>> 6633ae973e0d2ab111164a8877702bf6292c6242
         </div>
         <div  class="product" data-index="1">
             <a href="#" target="_self">
@@ -143,6 +211,47 @@
         </div> 
 	</div>
     </div>
+<<<<<<< HEAD
+=======
+    <script type="text/javascript" src="{{ asset('assets/js/lightslider/script2.js') }}"></script>  
+    </div>
+    
+    {{-- Them gio hang --}}
+    {{-- <script>
+        $(document).ready(function(){
+            var csrf = $('meta[name="csrf-token"]').attr('content');
+            console.log(csrf);
+
+            $(".product_addToCard").click(function(){
+                $.ajaxSetup({
+                    headers: {
+                        'X-CSRF-TOKEN': csrf
+                    }
+                });
+                $.ajax({
+                    method: 'POST',
+                    url: '/carts',  
+                    data: {'id': 4},
+                    error:  function () {
+                        windows.location = '/login'
+                    },
+        
+                })
+            });
+        }); 
+    </script> --}}
+    <script>
+        function showButton(){
+            var productbutton = document.getElementById("product-button");
+            productbutton.style.display="";
+        }
+        function hideButton(){
+            var productbutton = document.getElementById("product-button");
+            productbutton.style.display="none";
+        }
+
+    </script>
+>>>>>>> 6633ae973e0d2ab111164a8877702bf6292c6242
     @endsection
 </body>
 </html>

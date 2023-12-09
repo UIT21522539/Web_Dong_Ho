@@ -1,0 +1,265 @@
+*{
+	margin: 0;
+	padding: 0;
+}
+body{
+	background-color:rgb(235, 238, 238);
+}
+.detailproduct_container{
+	display:flex;
+	margin-top: 10%;
+	margin-bottom: 6%;
+	justify-content:center;
+}
+
+.detailproduct_info{
+	text-align:center;
+	background-color: white;
+	max-width: 40%;
+	height: 840px;
+}
+.detailproduct_info .detailproduct_kind{
+	font-weight:normal;
+	color:rgb(56, 56, 56);
+	font-size:13px;
+	margin-top: 25px;
+	margin-bottom: 10px;
+}
+.detailproduct_info .detailproduct_name{
+	font-size: 30px;
+	font-weight:normal;
+	margin-bottom: 20px;
+	font-family: courier new;
+}
+.detailproduct_font_price{
+	margin-bottom:20px;
+}
+.detailproduct_price{
+	font-size: 20px;
+	font-family: arial;
+}
+.detailproduct_delprice{
+	font-size:13px;
+}
+.detailproduct_situation{
+	font-size: 15px;
+	font-family: sans-serif;
+	font-weight: thin;
+	margin-bottom: 30px;
+	margin-top:30px;
+}
+.detailproduct_stocking{
+	color:green;
+	margin-right:20px;
+}
+.detailproduct_situation_line{
+	width:3%;
+	margin-right:15px;
+}
+.detailproduct_situation_size{
+	text-decoration: underline;
+	border:none;
+	font-style: italic;
+	background-color:white;
+}
+.detailproduct_text_discount{
+	margin-bottom:30px;
+	font-family: Noto Sans;
+	margin-top:50px;
+	font-size:15px;
+}
+.text_discount{
+	color:red;
+}
+.detailproduct_moreitem{
+	display:flex;
+	margin: 50px 70px;
+	border:2px;
+}
+.detailproduct_image_moreitem{
+	
+	max-width:50%;
+	margin:4px;
+}
+.detailproduct_image_moreitem img{
+	width:50%;
+}
+.moreitem_name{
+	font-weight:thin;
+	color: grey;
+	text-decoration:none;
+	font-size:13px;
+}
+.moreitem_add{
+	padding: 10px 60px;
+	margin:20px;
+	background-color:rgb(228, 226, 226);
+	color:black;
+	font-family:sans-serif;
+	font-size:12px;
+	border:none;
+	cursor:pointer;
+	font-weight:bold;
+}
+.moreitem_discount{
+	display: block;
+	font-family:arial;
+	font-size:13px;
+}
+.moreitem_price{
+	font-family: arial;
+	font-size:13px;
+}
+.payment{
+	border:none;
+	padding: 20px 150px;
+	background-color:rgb(79, 221, 91);
+	color:white;
+	font-size:20px;
+	font-family:arial;
+	font-weight:bold;
+	margin-bottom:10px;
+	cursor:pointer;
+}
+.addToCart{
+	padding: 17px 167px;
+	font-size:20px;
+	font-family:arial;
+	font-weight:bold;
+	cursor:pointer;
+}
+.addToCart:hover{
+	background-color:black;
+	color:white;
+}
+.highlight {
+	position: relative;
+	overflow: hidden;
+	transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+.highlight:hover {
+	
+	transform: scale(1.01)
+}
+.detailproduct_image_moreitem {
+	box-sizing: border-box;
+    display: inline-block;
+    overflow: hidden;
+    width: initial;
+    height: initial;
+    background: none;
+    opacity: 1;
+    border: 0px;
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+    max-width: 100%;
+}
+.hinhTron {
+    width: 70px; /* Đặt kích thước của khung hình tròn */
+    height: 70px; /* Đặt kích thước của khung hình tròn */
+    overflow: hidden; /* Ẩn phần nội dung vượt quá kích thước của khung */
+    border-radius: 50%; /* Tạo hình tròn cho khung */
+	box-sizing: border-box;
+	margin:30px;
+	margin-top:40px;
+	cursor: pointer;
+	box-shadow: 0 0 0 0.5px black; /* Số 0.5px là kích thước của đường viền màu đen */
+	
+}
+.hinhTron:hover {
+	box-shadow: 0 0 5px 5px rgba(0, 0, 0, 0.5); /* Thêm đổ bóng khi rê chuột vào */
+}
+
+.hinhTron img {
+    width: 100%; /* Đặt kích thước của hình ảnh bằng kích thước của khung hình tròn */
+    height: auto; /* Đảm bảo tỷ lệ khung hình tròn không bị méo */
+    border-radius: 50%; /* Tạo hình tròn cho hình ảnh */
+    object-fit: cover; /* Đảm bảo hình ảnh không bị biến dạng */
+}
+.detailproduct_choose{
+	flex-direction:column;
+	
+}
+
+.detailproduct_image img{
+	width:98%;
+	margin-top: 40px;
+}
+.product_policy{
+	width:97.5%;
+	height:50%;
+	background-color:#DDDDDD;
+	color:black;
+	padding:20px 20px;
+	font-size: 15px;
+	font-family:arial;
+	font-weight:lighter;
+	justify-content:space-around;
+	display:flex;
+	margin-top:70px;
+	margin-bottom:60px;
+	align-items: center;
+}
+.product_policy div {
+    display: flex;
+}
+.product_policy_text{
+	margin: 0;
+}
+.material-symbols-outlined{
+	font-size: 20px;
+	margin: -5px 5px;
+}
+.detailproduct_overall_box{
+	display:flex;
+	margin-top:50px;
+	margin: 0px 120px;
+	justify-content:space-between;
+}
+.overall_text{
+	font-size:20px;
+	margin:10px;
+	display:inline-block;
+}
+.oveoverall_text_info{
+	margin-top:50px;
+}
+
+.ct-product-info{
+	margin-bottom: 10%;
+	margin-left: auto;
+	margin-right: auto;
+	width: 80%;
+	
+}
+.ct-product-tab{
+	text-align: center;
+	box-shadow: rgba(0, 0, 0, 0.24) 0px 1px 8px; 
+}
+.ct-product-info button{
+	padding: 1.5%;
+	font-size: 19px;
+	cursor: pointer;
+	border: none;
+	margin: 2%;
+}
+.info-tag{
+	text-align: center;
+	margin-top: 4%;
+}
+.info-tag .tabcontent h2{
+	margin-top: 2%;
+	margin-bottom: 2%;
+}
+.info-tag .tabcontent p{
+	margin-top: 1%;
+}
+.info-tag #description p{
+	margin-right: auto;
+	margin-left: auto;
+	width: 60%;
+	letter-spacing: 1.5px;
+	line-height: 28px;
+	font-size: 20px;
+}
