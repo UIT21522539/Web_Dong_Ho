@@ -23,10 +23,6 @@ use App\Http\Controllers\ThanhToanController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-// Đường dẫn trang home
-Route::get('/', [ProductController::class,'home']);
-Route::get('/home', [ProductController::class,'home'])->name('product.home');
-
 
 
 
@@ -113,6 +109,7 @@ Route::middleware(['auth'])->group(function () {
 
 
 Route::get('/home', [ProductController::class, 'combinedHome'])->name('/users/home');
+Route::get('/', [ProductController::class, 'combinedHome'])->name('users.home');
 
 Route::get('/blog', function () {
     return view('blog');
