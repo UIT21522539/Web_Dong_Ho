@@ -16,8 +16,6 @@ use App\Models\CT_Product;
 
 use App\Http\Requests\ProductRequest;
 
-
-
 class ProductController extends Controller
 {
 

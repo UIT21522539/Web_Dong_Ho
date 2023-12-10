@@ -111,8 +111,66 @@
             </a>
             @endforeach
         </div>
-        
-	</div>
+    </div>
+    <div class="curnon-family">
+        <div class="curnon-family-content">
+            <h2 style="margin-bottom: 1%">BE PART OF CURNON</h2>
+            <p>Ai nói bạn không thể lựa chọn gia đình</p>
+        </div>
+        <div class="curnon-family-img">
+            <ul id="autoWidth2" class="cs-hidden">
+                <li class="item-a">
+                    <div class="rightImg">
+                        <img width="275px" height="274px" src="https://curnonwatch.com/blog/wp-content/themes/ashe/assets/images/Background-1.jpg">
+                    </div>
+                </li>
+                <li class="item-b">
+                    <div class="rightImg">
+                        <img width="275px" height="274px" src="https://curnonwatch.com/blog/wp-content/themes/ashe/assets/images/Background-2.jpg">
+                    </div>
+                </li>
+                <li class="item-c">
+                    <div class="rightImg">
+                        <img width="275px" height="274px" src="https://curnonwatch.com/blog/wp-content/themes/ashe/assets/images/Background-3.jpg">
+                    </div>
+                </li>
+                <li class="item-d">
+                    <div class="rightImg">
+                        <img width="275px" height="274px" src="https://curnonwatch.com/blog/wp-content/themes/ashe/assets/images/Background-4.jpg">
+                    </div>
+                </li>
+                <li class="item-e">
+                    <div class="rightImg">
+                        <img width="275px" height="274px" src="https://curnonwatch.com/blog/wp-content/themes/ashe/assets/images/Background-5.jpg">
+                    </div>
+                </li>
+                <li class="item-f">
+                    <div class="rightImg">
+                        <img width="275px" height="274px" src="https://curnonwatch.com/blog/wp-content/themes/ashe/assets/images/Background-6.jpg">
+                    </div>
+                </li>
+                <li class="item-g">
+                    <div class="rightImg">
+                        <img width="275px" height="274px" src="https://curnonwatch.com/blog/wp-content/themes/ashe/assets/images/Background-7.jpg">
+                    </div>
+                </li>
+                <li class="item-h">
+                    <div class="rightImg">
+                        <img width="275px" height="274px" src="https://curnonwatch.com/blog/wp-content/themes/ashe/assets/images/Background-8.jpg">
+                    </div>
+                </li>
+                <li class="item-i">
+                    <div class="rightImg">
+                        <img width="275px" height="274px" src="https://curnonwatch.com/blog/wp-content/themes/ashe/assets/images/Background-9.jpg">
+                    </div>
+                </li>
+                <li class="item-j">
+                    <div class="rightImg">
+                        <img width="275px" height="274px" src="https://curnonwatch.com/blog/wp-content/themes/ashe/assets/images/Background-10.jpg">
+                    </div>
+                </li>
+            </ul>
+        </div>
     </div>
     <script type="text/javascript" src="{{ asset('assets/js/lightslider/script2.js') }}"></script>  
     </div>
