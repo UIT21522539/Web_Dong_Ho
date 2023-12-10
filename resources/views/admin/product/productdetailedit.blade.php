@@ -165,7 +165,7 @@
             <tr>
                 
                 <td>{{ $item->size }}</td>
-                <td>{{ $item->qty }}</td>
+                <td>{{ $item->qty_store }}</td>
                 <td>
                     <a href="{{ route('products.detail',['id'=>$item->id_product]) }}" >Edit</a>
                     
