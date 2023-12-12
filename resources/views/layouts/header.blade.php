@@ -5,22 +5,22 @@
                 <ul class="menu">
                     <li>
                         <div class="d">
-                            <button class="d-btn">NAM GIỚI</button>
+                            <button class="d-btn" href = {{ route('products.men') }}>NAM GIỚI</button>
                             <div class="divTable"></div>
                             <script>
                                 window.onload = function() {
-                                openDivHeader();
+                                openDivHeaderMan();
                             };
                             </script>
                         </div>
                     </li>
                     <li>
                         <div class="d">
-                            <button class="d-btn">NỮ GIỚI</button>
+                            <button class="d-btn" href = {{ route('products.woman') }}>NỮ GIỚI</button>
                             <div class="divTable"></div>
                             <script>
                                 window.onload = function() {
-                                openDivHeader();
+                                openDivHeaderWoman();
                             };
                             </script>
                         </div>
@@ -31,8 +31,8 @@
                             <div class="d2-content">
                                 <div class="row2">
                                     <div class="column2">
-                                        <a href="#"><h3>Blog</h3></a>
-                                        <a href="#"><h3>Về chúng tôi</h3></a>
+                                        <a href="{{ route('blog') }}"><h3>Blog</h3></a>
+                                        <a href="{{ route('aboutMe') }}"><h3>Về chúng tôi</h3></a>
                                     </div>
                                 </div>
                             </div>
@@ -41,7 +41,7 @@
                     <div style="display: flex">
                     <li>
                         <div>
-                            <a href="#">
+                            <a href="{{ route('users.home') }}">
                                 <img class="nav-img" src="{{ asset('assets/img/User/layouts/curnonlogo.svg') }}">
                             </a>
                         </div>
@@ -58,7 +58,7 @@
                     </li>
                     <li class="user">
                         <div>
-                            <a href="#">
+                            <a href="{{ route('userinfo') }}">
                                 <img width="24px" height="24px" src="{{ asset('assets/img/User/layouts/user.png') }}">
                             </a>
                         </div>
@@ -135,13 +135,13 @@
     </div>
 </div>
 <script>
-    function openDivHeader(){
+    function openDivHeaderMan(){
         var divTables = document.getElementsByClassName('divTable');
         var html = `<div class='d-content'>
                                 <div class='row'>
                                     <div class='column'>
-                                        <a onmouseover="openCity(event, 'watch')" href='#'><h3>ĐỒNG HỒ</h3></a>
-                                        <a onmouseover="openCity(event, 'accessories')" href='#'><h3>PHỤ KIỆN</h3></a>
+                                        <a onmouseover="openCity(event, 'watch')" href='{{ route('products.men.clock') }}'><h3>ĐỒNG HỒ</h3></a>
+                                        <a onmouseover="openCity(event, 'accessories')" href='{{ route('products.men.jewelry') }}'><h3>PHỤ KIỆN</h3></a>
                                         <a onmouseover="openCity(event, 'leather')" href='#'><h3>DÂY ĐỒNG HỒ</h3></a>
                                     </div>
                                     <div class='row-content'>
@@ -214,7 +214,85 @@
             divTables[i].innerHTML = html;
         }
     }
-
+    function openDivHeaderWoman(){
+        var divTables = document.getElementsByClassName('divTable');
+        var html = `<div class='d-content'>
+                                <div class='row'>
+                                    <div class='column'>
+                                        <a onmouseover="openCity(event, 'watch')" href='{{ route('products.woman.clock') }}'><h3>ĐỒNG HỒ</h3></a>
+                                        <a onmouseover="openCity(event, 'accessories')" href='{{ route('products.woman.jewelry') }}'><h3>PHỤ KIỆN</h3></a>
+                                        <a onmouseover="openCity(event, 'leather')" href='#'><h3>DÂY ĐỒNG HỒ</h3></a>
+                                    </div>
+                                    <div class='row-content'>
+                                        <div id="watch" class="tabcontent">
+                                            <div class="tabcontent-watch">
+                                                <img width="114px" height="114px" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fcategory%2FKashmir.png&w=128&q=75">
+                                                <p>KASHMIR</p>
+                                            </div>
+                                            <div class="tabcontent-watch">
+                                                <img width="114px" height="114px" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fcategory%2FKashmir.png&w=128&q=75">
+                                                <p>KASHMIR</p>
+                                            </div>
+                                            <div class="tabcontent-watch">
+                                                <img width="114px" height="114px" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fcategory%2FKashmir.png&w=128&q=75">
+                                                <p>KASHMIR</p>
+                                            </div>
+                                            <div class="tabcontent-watch">
+                                                <img width="114px" height="114px" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fcategory%2FKashmir.png&w=128&q=75">
+                                                <p>KASHMIR</p>
+                                            </div>
+                                            <div class="tabcontent-watch">
+                                                <img width="114px" height="114px" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fcategory%2FKashmir.png&w=128&q=75">
+                                                <p>KASHMIR</p>
+                                            </div>
+                                            <div class="tabcontent-watch">
+                                                <img width="114px" height="114px" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fcategory%2FKashmir.png&w=128&q=75">
+                                                <p>KASHMIR</p>
+                                            </div>
+                                            <div class="tabcontent-watch">
+                                                <img width="114px" height="114px" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fcategory%2FKashmir.png&w=128&q=75">
+                                                <p>KASHMIR</p>
+                                            </div>
+                                            <div class="tabcontent-watch">
+                                                <img width="114px" height="114px" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fcategory%2FKashmir.png&w=128&q=75">
+                                                <p>KASHMIR</p>
+                                            </div>
+                                            <div class="tabcontent-watch">
+                                                <p style="margin-bottom: 12%; margin-top: 50%">XEM TẤT CẢ</p>
+                                                <img width="24px" height="24px" src="{{ asset('assets/img/User/Blog/arrow.png') }}" >
+                                            </div>
+                                        </div>
+                                        <div id="accessories" class="tabcontent">
+                                            <div class="tabcontent-all">
+                                                <div class="tabcontent-accessories">
+                                                    <img width="114px" height="114px" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fcategory%2FCuff_1.png&w=128&q=75">
+                                                    <p>VÒNG TAY</p>
+                                                </div>
+                                                <div class="tabcontent-watch">
+                                                    <img width="114px" height="114px" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fcategory%2FDa_y_ba_t_gia_c_che_o.jpg&w=128&q=75">
+                                                    <p>VÒNG CỔ</p>
+                                                </div>
+                                            </div>
+                                            <div class="tabcontent-watch">
+                                                <p style="margin-bottom: 12%; margin-top: 140%">XEM TẤT CẢ</p>
+                                                <img width="24px" height="24px" src="{{ asset('assets/img/User/Blog/arrow.png') }}" >
+                                            </div>
+                                        </div>
+                                        <div id="leather" class="tabcontent">
+                                            <img width="310px" height="310px" style="margin-left: 8%; margin-top: 4%" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fcms.curnonwatch.com%2Fuploads%2F3_ebc2dc50c4.jpeg&w=384&q=75">
+                                            <div class="leather-content">
+                                                <p>Từ nay bạn đã có thể biến một thành nhiều chiếc đồng hồ để thay đổi phong cách thời trang của bản thân với dây đồng hồ Curnon.
+                                                </p>
+                                                <button>MUA NGAY</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>`
+        for (var i = 0; i < divTables.length; i++) {
+            divTables[i].innerHTML = html;
+        }
+    }
     function openCity(evt, cityName) {
         var i, tabcontent, tablinks;
         tabcontent = document.getElementsByClassName("tabcontent");

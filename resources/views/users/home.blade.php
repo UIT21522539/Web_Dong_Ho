@@ -55,9 +55,9 @@
         <div class="product_top">
         {{-- discount --}}
             @foreach ($productListB as $productItem)    
-            <a >
-                <div class="product_info product_highlight">
-                    <img src="{{ $productItem->img_main }}">
+            <a href="{{ route('user.products.detail',['id'=>$productItem->id_product])}}">
+                <div class="product_info product_highlight" >
+                    <img src="{{ $productItem->img_main }} " >
                     <b class="product_image_discount">-{{ $productItem->discount }}%</b>
                     <form action="/carts" method='POST'>
                         @csrf
@@ -87,7 +87,7 @@
     <div class="product_wrapper">
         <div class="product_top">
             @foreach ($productListW as $productItem)    
-            <a >
+            <a href="{{ route('user.products.detail',['id'=>$productItem->id_product])}}">
                 <div class="product_info product_highlight">
                     <img src="{{ $productItem->img_main }}">
                     <b class="product_image_discount">-{{ $productItem->discount }}%</b>
@@ -175,7 +175,7 @@
     <script type="text/javascript" src="{{ asset('assets/js/lightslider/script2.js') }}"></script>  
     </div>
     
-     Them gio hang
+     {{-- Them gio hang --}}
     <script>
         $(document).ready(function(){
             var csrf = $('meta[name="csrf-token"]').attr('content');
@@ -209,6 +209,12 @@
             productbutton.style.display="none";
         }
 
+    </script>
+    <script>
+        function Detail(id) {
+            // Sử dụng window.location.href để chuyển hướng đến route với tham số id
+            window.location.href = "{{ route('user.products.detail', ['id' => ':id']) }}".replace(':id', id);
+        }   
     </script>
     @endsection
 </body>

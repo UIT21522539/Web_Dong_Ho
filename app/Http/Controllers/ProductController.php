@@ -198,4 +198,31 @@ class ProductController extends Controller
 
         return view('admin.product.productsearch', ['results' => $results, 'searchKeyword' => $searchKeyword]);
         }
+
+        public function productDetailUser($id){
+            $product = new Product();
+            $productDetails = $product->getProduct($id);
+        
+            // Kiểm tra xem sản phẩm có tồn tại không
+            if (empty($productDetails) || !is_array($productDetails) || empty($productDetails[0])) {
+                abort(404);
+            }
+        
+            $productDetail = $productDetails[0]; // Lấy phần tử đầu tiên trong mảng
+        
+            // Kiểm tra sự tồn tại của các thuộc tính trong đối tượng
+            if (isset($productDetail->qty_store, $productDetail->status) && $productDetail->qty_store > 0 && $productDetail->status == 'Đang bán') {
+                $status = 'Còn hàng';
+            } else {
+                $status = 'Hết hàng';
+            }
+        
+            // Kiểm tra sự tồn tại của các thuộc tính trong đối tượng
+            $price = (isset($productDetail->isdiscount, $productDetail->sellprice))
+                ? ($productDetail->isdiscount == 1 ? $productDetail->discount / 100 * $productDetail->sellprice : $productDetail->sellprice)
+                : 0; // Giá trị mặc định nếu 'isdiscount' hoặc 'sellprice' không tồn tại
+        
+            return view('detailproduct', compact('productDetail', 'status', 'price'));
+        }
+        
 }

@@ -19,15 +19,15 @@
 	<div class="detailproduct_container">
 		<div class="detailproduct_choose">
 			<div class="hinhTron" onclick="showImage(0)">
-				<img src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fb%2Ft%2Fbt.calm.png&w=640&q=75">
+				{{-- <img src="{{ $productDetail->img1 }}"> --}}
 			</div>
 			<div class="hinhTron" onclick="showImage(1)">
-				<img src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fb%2Fr%2Fbr.dapper.2.png&w=640&q=75">
+				{{-- <img src="{{ $productDetail->img2 }}"> --}}
 			</div>
 			<div class="hinhTron" onclick="showImage(2)">
-				<img src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2F2%2F_%2F2_1_2_.jpg&w=640&q=75">
+				{{-- <img src="{{ $productDetail->img3 }}"> --}}
 			</div>
-			<div class="hinhTron" onclick="showImage(3)">
+			{{-- <div class="hinhTron" onclick="showImage(3)">
 				<img src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fc%2Fa%2Fcalm_3.jpg&w=640&q=75">
 			</div>
 			<div class="hinhTron" onclick="showImage(4)">
@@ -35,22 +35,20 @@
 			</div>
 			<div class="hinhTron" onclick="showImage(5)">
 				<img src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fi%2Fm%2Fimg_1423.jpg&w=640&q=75">
-			</div>
+			</div> --}}
 		</div>
 		<div class="detailproduct_image">
-				<img id="mainImageDisplay" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fb%2Ft%2Fbt.calm.png&w=640&q=75">
+				<img id="mainImageDisplay" src="{{ $productDetail->img_main }}">
 		</div>
 
 		<script>
 			function showImage(index) {
 				// Array of main image URLs
 				var mainImages = [
-					"https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fb%2Ft%2Fbt.calm.png&w=640&q=75",
-					"https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fb%2Fr%2Fbr.dapper.2.png&w=640&q=75",
-					"https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2F2%2F_%2F2_1_2_.jpg&w=640&q=75",
-					"https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fc%2Fa%2Fcalm_3.jpg&w=640&q=75",
-					"https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fc%2Fa%2Fcalm.jpg.jpg&w=640&q=75",
-					"https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fi%2Fm%2Fimg_1423.jpg&w=640&q=75",					
+					"{{ $productDetail->img_main }}",
+					"{{ $productDetail->img1 }}",
+					"{{ $productDetail->img2 }}",
+					"{{ $productDetail->img3 }}"
 				];
 				// Display the selected image in the mainImageDisplay element
 				document.getElementById("mainImageDisplay").src = mainImages[index];
@@ -58,15 +56,15 @@
 		</script>
 		
 		<div class="detailproduct_info">
-			<div class="detailproduct_kind">KASHMIR</div>
-			<div class="detailproduct_name">CALM</div>
+			<div class="detailproduct_kind"></div>
+			<div class="detailproduct_name">{{ $productDetail-> name }}</div>
 			<div class="detailproduct_font_price">
-				<b class="detailproduct_price">2.324.000 đ</b> 
-				<del class="detailproduct_delprice">2.499.000 đ</del><br>
+				<b class="detailproduct_price">{{ $price}} đ</b> 
+				<del class="detailproduct_delprice">{{ $price}}đ</del><br>
 			</div>
 			<div class="detailproduct_situation">
 				<span>Tình trạng:  </span>
-				<span class="detailproduct_stocking">Còn hàng</span>
+				<span class="detailproduct_stocking">{{ $status }}</span>
 				<img class="detailproduct_situation_line" src="{{ asset('assets/img/User/line.png') }}"> 
 				<i class="fa fa-ruler-vertical"></i>
 				<button class="detailproduct_situation_size" >Cỡ cổ tay </button>
@@ -93,8 +91,17 @@
 					<button class="moreitem_add">+THÊM</button>
 				</div>
 			</div>
-			<button class="payment highlight">Thanh Toán Ngay</button> <br>
-			<button class="addToCart">Thêm vào giỏ</button><br>
+			<button class="payment highlight" >Thanh Toán Ngay</button> <br>
+			{{-- <button class="addToCart">Thêm vào giỏ</button><br> --}}
+			<form action="/carts" method='POST'>
+				@csrf
+				<a class="product_addToCard" target="_self">
+					<span class="product_addToCard_font">
+						<input type="text" name='id' style="display: none;" value="{{ $productDetail->id_product }}">
+						<input type="submit" value="Thêm vào giỏ">
+					</span>
+				</a>
+			</form>
 		</div>
 		
 	</div>
@@ -127,7 +134,7 @@
 		<hr>
 		<div class="info-tag">
 			<div style="display: none" id="description" class="tabcontent" >
-				<p>Đồng hồ nam Curnon Colosseum Mortar - Thiết kế mạnh mẽ cho người trẻ Việt; Dây da, Kích thước mặt lớn 42mm, Chống nước đến 5ATM, Mặt kính Sapphire chống xước vượt trội...</p>
+				<p>{{ $productDetail->description }}</p>
 			</div>
 			<div style="display: none" id="delivering" class="tabcontent" >
 				<h2>Phí vận chuyển:</h2>
@@ -164,6 +171,40 @@
           document.getElementById(cityName).style.display = "block";
           evt.currentTarget.className += " active";
         }
+</script>
+<script>
+	$(document).ready(function(){
+		var csrf = $('meta[name="csrf-token"]').attr('content');
+		console.log(csrf);
+
+		$(".product_addToCard").click(function(){
+			$.ajaxSetup({
+				headers: {
+					'X-CSRF-TOKEN': csrf
+				}
+			});
+			$.ajax({
+				method: 'POST',
+				url: '/carts',  
+				data: {'id': 4},
+				error:  function () {
+					windows.location = '/login'
+				},
+	
+			})
+		});
+	}); 
+</script>
+<script>
+	function showButton(){
+		var productbutton = document.getElementById("product-button");
+		productbutton.style.display="";
+	}
+	function hideButton(){
+		var productbutton = document.getElementById("product-button");
+		productbutton.style.display="none";
+	}
+
 </script>
 @endsection
 </body>
