@@ -87,12 +87,10 @@ Route::prefix('admin')->group(function () {
 
 
 Route::get('/home', [ProductController::class, 'combinedHome'])->name('/users/home');
+Route::get('/product', [ProductController::class, 'productList2'])->name('/users/product');
 
 Route::get('/blog', function () {
     return view('blog');
-});
-Route::get('/product', function () {
-    return view('/users/product');
 });
 Route::get('/detailproduct', function () {
     return view('/detailproduct');

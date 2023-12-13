@@ -28,6 +28,14 @@ class ProductController extends Controller
     }
     //Admin
         //Xem danh sách
+        public function productList2(){
+
+            $product = new Product();
+            $product = $product->getAllProduct();
+    
+            return view('users.product', ['product' => $product]);
+        }
+
         public function productList(){
 
             $product = new Product();

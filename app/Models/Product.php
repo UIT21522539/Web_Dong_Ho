@@ -13,7 +13,9 @@ class Product extends Model
     use HasFactory;
 
     public function getAllProduct(){
-        $product = DB::select("SELECT * FROM product");
+        $product = DB::select("SELECT *, product.name AS name, brand.name AS brName FROM product
+        INNER JOIN brand
+        ON product.id_brand = brand.id_brand");
         return $product;
     }
 
