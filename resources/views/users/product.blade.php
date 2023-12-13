@@ -245,7 +245,7 @@
 			<div class="product_top">
 				@foreach ($product as $productItem)  
 				<div class="pd-area">
-					<a>
+					<a href="{{ route('detailProduct',['id'=>$productItem->id_product]) }}">
 						<div class="product_info product_highlight">
 							<img src="{{ $productItem->img_main }}">
 							<b class="product_image_discount">-{{ $productItem->discount }}%</b>

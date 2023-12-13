@@ -12,6 +12,7 @@ body{
 	justify-content:center;
 }
 
+
 .detailproduct_info{
 	text-align:center;
 	background-color: white;
@@ -179,11 +180,15 @@ body{
 }
 .detailproduct_choose{
 	flex-direction:column;
-	
+	margin-top: 6%;
 }
 
+.detailproduct_image{
+	margin-right: 3%;
+} 
+
 .detailproduct_image img{
-	width:98%;
+	width: 600px;
 	margin-top: 40px;
 }
 .product_policy{

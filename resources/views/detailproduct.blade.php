@@ -19,38 +19,30 @@
 	<div class="detailproduct_container">
 		<div class="detailproduct_choose">
 			<div class="hinhTron" onclick="showImage(0)">
-				<img src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fb%2Ft%2Fbt.calm.png&w=640&q=75">
+				<img src="{{ $productDetail->img_main }}">
 			</div>
 			<div class="hinhTron" onclick="showImage(1)">
-				<img src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fb%2Fr%2Fbr.dapper.2.png&w=640&q=75">
+				<img src="{{ $productDetail->img1 }}">
 			</div>
 			<div class="hinhTron" onclick="showImage(2)">
-				<img src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2F2%2F_%2F2_1_2_.jpg&w=640&q=75">
+				<img src="{{ $productDetail->img2 }}">
 			</div>
 			<div class="hinhTron" onclick="showImage(3)">
-				<img src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fc%2Fa%2Fcalm_3.jpg&w=640&q=75">
-			</div>
-			<div class="hinhTron" onclick="showImage(4)">
-				<img src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fc%2Fa%2Fcalm.jpg.jpg&w=640&q=75">
-			</div>
-			<div class="hinhTron" onclick="showImage(5)">
-				<img src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fi%2Fm%2Fimg_1423.jpg&w=640&q=75">
+				<img src="{{ $productDetail->img3 }}">
 			</div>
 		</div>
 		<div class="detailproduct_image">
-				<img id="mainImageDisplay" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fb%2Ft%2Fbt.calm.png&w=640&q=75">
+				<img id="mainImageDisplay" src="{{ $productDetail->img_main }}">
 		</div>
 
 		<script>
 			function showImage(index) {
 				// Array of main image URLs
 				var mainImages = [
-					"https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fb%2Ft%2Fbt.calm.png&w=640&q=75",
-					"https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fb%2Fr%2Fbr.dapper.2.png&w=640&q=75",
-					"https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2F2%2F_%2F2_1_2_.jpg&w=640&q=75",
-					"https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fc%2Fa%2Fcalm_3.jpg&w=640&q=75",
-					"https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fc%2Fa%2Fcalm.jpg.jpg&w=640&q=75",
-					"https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fi%2Fm%2Fimg_1423.jpg&w=640&q=75",					
+					"{{ $productDetail->img_main }}",
+					"{{ $productDetail->img1 }}",
+					"{{ $productDetail->img2 }}",
+					"{{ $productDetail->img3 }}",	
 				];
 				// Display the selected image in the mainImageDisplay element
 				document.getElementById("mainImageDisplay").src = mainImages[index];
@@ -58,18 +50,16 @@
 		</script>
 		
 		<div class="detailproduct_info">
-			<div class="detailproduct_kind">KASHMIR</div>
-			<div class="detailproduct_name">CALM</div>
+			<div class="detailproduct_kind"><p>{{$productDetail->name }}</p></div>
+			<div class="detailproduct_name">{{ $brandDetail->name }}</div>
 			<div class="detailproduct_font_price">
-				<b class="detailproduct_price">2.324.000 đ</b> 
+				<b class="detailproduct_price">{{$productDetail->sellprice }} đ</b> 
 				<del class="detailproduct_delprice">2.499.000 đ</del><br>
 			</div>
 			<div class="detailproduct_situation">
 				<span>Tình trạng:  </span>
-				<span class="detailproduct_stocking">Còn hàng</span>
-				<img class="detailproduct_situation_line" src="{{ asset('assets/img/User/line.png') }}"> 
-				<i class="fa fa-ruler-vertical"></i>
-				<button class="detailproduct_situation_size" >Cỡ cổ tay </button>
+				<span class="detailproduct_stocking">{{ $status }}</span>
+				<button class="detailproduct_situation_size" >{{ $categoryDetail->name }}</button>
 			</div>
 			<hr  width="90%" align="center" color="black" size="1px"/>
 			<div class="detailproduct_text_discount">

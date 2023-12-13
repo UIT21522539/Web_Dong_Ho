@@ -92,9 +92,7 @@ Route::get('/product', [ProductController::class, 'productList2'])->name('/users
 Route::get('/blog', function () {
     return view('blog');
 });
-Route::get('/detailproduct', function () {
-    return view('/detailproduct');
-});
+Route::get('/detailProduct/{id}', [ProductController::class, 'detailProduct'])->name('detailProduct');
 Route::get('/carts', [CartController::class, 'getProduct']);
 // Theem gior hangf
 Route::post('/carts', [CartController::class, 'addProduct'])->middleware('auth');

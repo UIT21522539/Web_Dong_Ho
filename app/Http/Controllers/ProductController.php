@@ -26,16 +26,40 @@ class ProductController extends Controller
         $productListW = $product->getTop3ProductW();
         return view('users.home', ['productListB' => $productListB, 'productListW' => $productListW]);
     }
+
+    public function productList2(){
+
+        $product = new Product();
+        $product = $product->getAllProduct();
+        return view('users.product', ['product' => $product]);
+    }
+
+    public function detailProduct(Request $request,$id){
+            $product = new Product();
+            $productDetail = $product->getProduct($id);
+            $request->session()->put('id',$id);
+            $productDetail = $productDetail[0];
+            $status="Hết hàng";
+            if($productDetail->status == 1){
+                $status="Còn hàng";
+            }
+
+            $brand = new Brand();
+            $id_brand = $productDetail->id_brand;
+            $brandDetail = $brand->getBrand($id_brand);
+            $brands = $brand->getAllBrand();
+
+            $category = new Category();
+            $id_category = $productDetail->id_category;
+            $categoryDetail = $category->getCategory($id_category);
+            $categories = $category->getAllCategory();
+
+            $ct_product = new CT_Product();
+            $ct_productList = $ct_product ->getAllCtProduct($id);
+        return view('detailproduct',compact('productDetail','status','brands','categories','brandDetail','categoryDetail','ct_productList'));
+    }
     //Admin
         //Xem danh sách
-        public function productList2(){
-
-            $product = new Product();
-            $product = $product->getAllProduct();
-    
-            return view('users.product', ['product' => $product]);
-        }
-
         public function productList(){
 
             $product = new Product();
