@@ -1,79 +1,97 @@
+<link rel="stylesheet" href="{{ asset('assets/css/Admin/supplier/supplieradd.css')}}">
 @extends('layouts.admin.sidebar')
 @section('content')
 @if (session('msg'))
 <div class="alert alert-success"> {{ session('msg') }}</div>
 @endif
 
-@if ($errors->any())
-<div class="alert alert-danger">Dữ liệu nhập vào không hợp lệ</div>
-@endif
+<div class="supplier-header">  
+    <div class="supplier-header-img">
+        <img width="38px"src="{{ asset('assets/img/Admin/product/tag.png')}}">
+    </div>
+    <div class="supplier-header-content">
+        @if ($errors->any())
+        <div class="alert alert-danger">Dữ liệu nhập vào không hợp lệ</div>
+        @endif
+        <h2>{{ $title }}</h2>
+    </div>
+</div>
+<div class="supplier-choose">
+    <div class="mb-3">
+        <label for="product" class="form-label">Product Name</label>
+        <select name="id_product" class="form-control" id="product">
+            @foreach($products as $item)
+                <option value="{{ $item->id_product }}">{{ $item->name }}</option>
+            @endforeach
+        </select>
+        @error('id_product')
+            <span style="color: red">{{ $message }}</span>
+        @enderror
 
-<h1>{{ $title }}</h1>
+        
+        <select id="size" name="size">
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+        </select>
+        <button onclick="addRow()">
+            Thêm
+        </button>
 
-<div class="mb-3">
-    <label for="product" class="form-label">Product Name</label>
-    <select name="id_product" class="form-control" id="product">
-        @foreach($products as $item)
-            <option value="{{ $item->id_product }}">{{ $item->name }}</option>
-        @endforeach
-    </select>
-    @error('id_product')
-        <span style="color: red">{{ $message }}</span>
-    @enderror
-
-    <select id="size" name="size">
-        <option value="S">S</option>
-        <option value="M">M</option>
-        <option value="L">L</option>
-    </select>
-    <button onclick="addRow()">
-        Thêm
-    </button>
+    </div>
 </div>
 
-<table border="1" id="productTable">
-    <thead>
-        <tr>
-            <th>Id</th>
-            <th>Product</th>
-            <th>Size</th>
-            <th>Quantity</th>
-            <th>Import price</th>
-            <th>Total</th>
-            <th>Sell price</th>
-        </tr>
-    </thead>
-    <tbody>
-        <!-- Các dòng sản phẩm sẽ được thêm vào đây -->
-    </tbody>
-</table>
+<div class="supplier-body">
+    <div class="supplier-body-content"> 
+        <table  id="productTable">
+            <thead>
+                <tr class="table-header">
+                    <th>Id</th>
+                    <th>Product</th>
+                    <th>Size</th>
+                    <th>Quantity</th>
+                    <th>Import price</th>
+                    <th>Total</th>
+                    <th>Sell price</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+            
+            </tbody>
+            
+        </table>
 
-<p id="amount"> </p>
-<button onclick="createInvoice()">Tạo phiếu nhập</button>
+        <p id="amount"> </p>
+        <button class="create-invoice" onclick="createInvoice()">Tạo phiếu nhập</button>
 
-<div id="result" style="display:none;">
-    <h2>Bảng đã nhập:</h2>
-    <table border="1" id="resultTable">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Product</th>
-                <th>Size</th>
-                <th>Quantity</th>
-                <th>Import price</th>
-                <th>Total</th>
-                <th>Sell price</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- Các dòng sản phẩm sẽ được thêm vào đây -->
-        </tbody>
-    </table>
+        <div id="result" style="display:none;">
+            <div class="input-table">
+                <h3>Bảng đã nhập:</h3>
+            </div>
+            
+            <table id="resultTable">
+                <thead>
+                    <tr class="table-header">
+                        <th>Id</th>
+                        <th>Product</th>
+                        <th>Size</th>
+                        <th>Quantity</th>
+                        <th>Import price</th>
+                        <th>Total</th>
+                        <th>Sell price</th>
+                    </tr>
+                </thead>
+                <tbody>
 
-    <p id="resultAmount"> </p>
-    <button onclick="confirmInvoice()">Xác nhận</button>
+                </tbody>
+            </table>
+
+            <p id="resultAmount"> </p>
+            <button class="approve" onclick="confirmInvoice()">Xác nhận</button>
+        </div>
+    </div>
 </div>
-
 
 
 <script>
@@ -102,6 +120,7 @@
 
         // Nếu không có sự trùng lặp, thêm dòng mới vào bảng
         var newRow = table.insertRow(table.rows.length);
+        newRow.className = "table-content";
         var cellId = newRow.insertCell(0);
         var cellProduct = newRow.insertCell(1);
         var cellSize = newRow.insertCell(2);
@@ -114,10 +133,10 @@
         cellId.innerHTML = '#' + selectedIdProduct;
         cellProduct.innerHTML = selectedProduct;
         cellSize.innerHTML = selectedSize;
-        cellQuantity.innerHTML = '<input type="number" name="quantity[]" value="0" oninput="updateTotal(this)">';
-        cellImportPrice.innerHTML = '<input type="text" name="import_price[]" value="0" oninput="updateTotal(this)" onkeypress="return isNumberKey(event)">';
-        cellTotal.innerHTML = '<input type="text" name="total[]" value="0" readonly>';
-        cellSellPrice.innerHTML = '<input type="text" name="sell_price[]" value="0" oninput="validateNumberInput(this)" onkeypress="return isNumberKey(event)">';
+        cellQuantity.innerHTML = '<input class="number-input" type="number" name="quantity[]" value="0" oninput="updateTotal(this)">';
+        cellImportPrice.innerHTML = '<input class="number-input" type="text" name="import_price[]" value="0" oninput="updateTotal(this)" onkeypress="return isNumberKey(event)">';
+        cellTotal.innerHTML = '<input class="number-input" type="text" name="total[]" value="0" readonly>';
+        cellSellPrice.innerHTML = '<input class="number-input" type="text" name="sell_price[]" value="0" oninput="validateNumberInput(this)" onkeypress="return isNumberKey(event)">';
         cellDelete.innerHTML = '<button onclick="deleteRow(this)">Xóa</button>';
 
     }
@@ -215,6 +234,7 @@
         // Thêm dữ liệu mới từ invoiceData vào bảng kết quả
         for (var i = 0; i < invoiceData.length; i++) {
             var newRow = resultTable.insertRow(resultTable.rows.length);
+            newRow.className = "table-content";
             var cellId = newRow.insertCell(0);
             var cellProduct = newRow.insertCell(1);
             var cellSize = newRow.insertCell(2);

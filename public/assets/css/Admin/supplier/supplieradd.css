@@ -1,0 +1,142 @@
+*{
+    padding:0;
+    margin: 0;
+}
+.supplier-header{
+    display: flex;
+    background-color: rgb(246, 246, 246);
+    align-items: center;
+    margin-bottom: 3%;
+    margin-top: 2%;
+}
+.supplier-header .supplier-header-img{
+    background-color: white;
+    margin-left: 2%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 4px; 
+    padding: 1.7%;
+}
+.supplier-header .supplier-header-content{
+    margin-left: 4%;
+}
+.supplier-header .supplier-header-content h2{
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.supplier-choose{
+    background-color: rgb(244, 244, 244);
+    padding: 1%;
+}
+.supplier-choose label{
+    font-weight: 600;
+    background-color: rgb(9, 61, 145);
+    color: white;
+    padding: 15px;
+    cursor: pointer;
+}
+.supplier-choose select{
+    height: 50px;
+}
+.supplier-choose .form-control{
+    padding-left: 10px;
+    width: 20%;
+}
+.supplier-choose #size{
+    padding-left: 10px;
+    width: 4%;
+}
+.supplier-choose button{
+    height: 50px;
+    width: 8%;
+    border: none;
+    font-weight: 600;
+    background-color: rgb(8, 120, 113);
+    color: white;
+    cursor: pointer;
+}
+
+.supplier-body{
+    background-color: white;
+    width: 100%;
+    margin: auto;
+}
+.supplier-body-content{
+    padding-top: 1%;
+    
+}
+.supplier-body-content table{
+    width: 100%;
+    text-align: center;
+    background-color: white;
+    border-collapse:separate; 
+    border-spacing: 0 1em;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; 
+    margin-bottom: 2%;
+}
+
+.supplier-body-content table .table-header{
+    height: 70px;
+}
+.supplier-body-content table .table-content{
+    width: 100%;
+    height: 70px;
+    background-color: rgb(244, 244, 244);
+}
+.supplier-body-content table .table-content .number-input{
+    width: 50%;
+    height: 40px;
+}
+.supplier-body-content table .table-content input[type=number]{
+    padding: 12px 12px;
+}
+.supplier-body-content table .table-content input[type=text]{
+    padding: 12px 12px;
+}
+.supplier-body-content table .table-content button{
+    width: 50px;
+    background-color: brown;
+    color: white;
+    border: none;
+    height: 40px;
+}
+
+.create-invoice{
+    height: 55px;
+    font-size: 14px;
+    font-weight: 600;
+    width: 10%;
+    margin-left: 45%;
+    color: white;
+    border: none;
+    background-color: rgb(8, 120, 113);
+    margin-bottom: 2%;
+    cursor: pointer;
+}   
+
+.input-table{
+    background-color: rgb(244, 244, 244);
+    padding: 1%;
+    margin-bottom: 1%;
+}
+
+#resultAmount{
+    margin-top: 6%;
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 2%;
+}
+.approve{
+    display: block;
+    height: 55px;
+    font-size: 14px;
+    font-weight: 600;
+    width: 10%;
+    margin: auto;
+    text-align: center;
+    justify-content: center;
+    color: white;
+    border: none;
+    background-color: rgb(8, 120, 113);
+    margin-bottom: 2%;
+    cursor: pointer;
+}
