@@ -21,7 +21,7 @@ class CT_Order extends Model
         $productNames = DB::table('product')->whereIn('id_product', $idProducts)->pluck('name', 'id_product');
 
         // Thay đổi giá trị trong mảng $order
-        foreach ($order as &$item) {
+        foreach ($order as $item) {
             $item->product_name = $productNames[$item->id_product] ?? null;
             // Xóa trường id_product nếu bạn không muốn giữ lại nó trong mảng
             unset($item->id_product);
