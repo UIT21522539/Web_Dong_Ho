@@ -55,6 +55,9 @@
     font-weight: 200;
     margin-bottom: 3%;
 }
+.form-button{
+    margin-left: 30%;
+}
 .button-49,
 .button-49:after {
     cursor: pointer;
@@ -177,6 +180,10 @@
 }
 .order-product .pd02{
     margin-left: 16px;
+    width: 200px;
+}
+.order-product .pd02 p{
+    width: 200px;
 }
 .bill-total{
     display: flex;

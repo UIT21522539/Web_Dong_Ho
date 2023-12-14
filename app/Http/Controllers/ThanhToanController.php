@@ -41,10 +41,10 @@ class ThanhToanController extends Controller
                 'total_item' => $product->sellprice 
             ]);
             $price += $product->sellprice ;
-            Carts::where('id_product', $product->id_product)->delete();
+        
         }
         $order->total_order = $price;
         $order->save();
-        return redirect('home');
+        return redirect('checkoutdone');
     }
 }

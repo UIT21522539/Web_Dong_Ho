@@ -31,6 +31,10 @@ class Order extends Model
 
     public function getOrderById( $id ){
         return DB::select("SELECT * FROM `order` WHERE id_order = ?",[$id]);
+    } 
+
+    public function getCT_OrderById( $id ){
+        return DB::select("SELECT *, `ct_order.total_item` as `TongTien` FROM `ct_order` INNER JOIN `product` ON `ct_order.id_product` = `product.id_product` WHERE id_order = ?",[$id]);
     }
 
     public function getOrderByIdUser( $id ){

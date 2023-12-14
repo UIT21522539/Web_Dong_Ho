@@ -22,43 +22,25 @@
                     <table>
                         <tr>
                             <td colspan="2">                
-                                <input style="width: 90%;"type="text" placeholder="Email" value='{{ $user->email }}'>
+                                <input style="width: 90%;"type="text" name="email" placeholder="Email" value='{{ $user->email }}'>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <input type="text" placeholder="Họ tên" value="{{ $user->first_name . " " . $user->last_name }}">
+                                <input type="text" placeholder="Họ tên" name="name" value="{{ $user->first_name . " " . $user->last_name }}">
                             </td>
                             <td>
-                                <input type="text" placeholder="Số điện thoại" value="{{ $user->phone }}">
+                                <input type="text" placeholder="Số điện thoại" name="phone" value="{{ $user->phone }}">
                             </td>
                         </tr>
                         <tr>
                             <td colspan="2">
-                                <input style="width: 90%" type="text" placeholder="Địa chỉ nhận hàng" value="{{ $user->location }}">
+                                <input style="width: 90%" type="text" name="location" placeholder="Địa chỉ nhận hàng" value="{{ $user->location }}">
                             </td>
                         </tr>
-                        {{-- <tr>
-                            <td>
-                                <select id="city" name="city">
-                                    <option value="hcm">Hồ Chí Minh</option>
-                                    <option value="hn">Hà Nội</option>
-                                    <option value="vt">Vũng Tàu</option>
-                                    <option value="dn">Đà Nẵng</option>
-                                </select>
-                            </td>
-                            <td>
-                                <select id="city" name="city">
-                                    <option value="hcm">Hồ Chí Minh</option>
-                                    <option value="hn">Hà Nội</option>
-                                    <option value="vt">Vũng Tàu</option>
-                                    <option value="dn">Đà Nẵng</option>
-                                </select>
-                            </td>
-                        </tr> --}}
                         <tr>
                             <td colspan="2">
-                                <textarea rows="10" cols="72" placeholder="Nhập ghi chú nếu cần"></textarea>
+                                <textarea rows="10" cols="72" name="note" placeholder="Nhập ghi chú nếu cần"></textarea>
                             </td>
                         </tr>
                         <tr>
@@ -66,7 +48,6 @@
                         </tr>
                         <tr>
                                 <td colspan="2" ><input style="width: 40%" type="submit" value="THANH TOÁN NGAY"></td>
-                            
                         </tr>
                     </table>
                 </form>

@@ -11,6 +11,7 @@ use App\Http\Controllers\BrandController;
 use App\Http\Controllers\LogInController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\ThanhToanController;
+use App\Http\Controllers\CT_ThanhToanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -106,10 +107,11 @@ Route::get('/aboutMe', function () {
 Route::get('/checkout', function () {
     return view('checkout');
 });
-
-Route::get('/checkout-done', function () {
-    return view('checkout-done');
+Route::get('/checkoutdone', function () {
+    return view('checkoutdone');
 });
+
+Route::post('/ct_thanhtoan', [CT_ThanhToanController::class, 'paymentProcessed']);
 
 Route::get('/user-info', function () {
     return view('user-info');
