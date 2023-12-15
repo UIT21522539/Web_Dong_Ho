@@ -1,82 +1,101 @@
-*{
+* {
     margin: 0;
     padding: 0;
 }
-
+/* 
 /* Style the tab */
-.tab {
-    float: left;
+/* .tab {
+ 
     border: 1px solid #ccc;
     width: 50%;
     margin-top: 10%;
     height: 480px;
-  }
-.tag-menu{
+} */
+/* .tag-menu {
     width: 60%;
     margin-right: auto;
     margin-left: auto;
 }
-.tag-button{
+.tag-button {
     display: flex;
 }
-.tag-info{
+.tag-info {
     text-align: center;
     margin-bottom: 6%;
 }
-.info-tag{
+.info-tag {
     margin-top: 10%;
     width: 50%;
 }
-#order table{
-  width: 100%;
-  border-collapse:separate; 
-  border-spacing: 0 1em;
+.info-tag.order {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#order table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 1em;
 }
 #order table tr {
-  background-color: white;
-  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; 
-  border-radius: 25px;
-  
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 25px;
 }
 #order table .order-info {
-  cursor: pointer;
+    cursor: pointer;
+}
+.table-order {
+
+    border-collapse: separate;
+    border-spacing: 0 15px;
+    width: 100%;
+}
+.table-order tr td {
+    border-bottom: 1px solid #cdcdcd;
+    border-top: 1px solid #cdcdcd;
+    border-collapse: collapse;
+    padding: 5px 10px;
 }
 td:first-child {
-  border-left-style: solid;
-  border-top-left-radius: 20px; 
-  border-bottom-left-radius: 20px;
+    border-left: 1px solid #cdcdcd;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
 }
 td:last-child {
-  border-right-style: solid;
-  border-bottom-right-radius: 20px; 
-  border-top-right-radius: 20px; 
+    border-right: 1px solid #cdcdcd;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
 }
 #order table td {
-  border: solid 0px #000;
-  border-style: none solid solid none;
-  padding-left: 2%;
-  padding-top: 4%;
-  padding-bottom: 4%;
+    border: solid 0px #000;
+    border-style: none solid solid none;
+    padding-left: 2%;
+    padding-top: 4%;
+    padding-bottom: 4%;
 }
-#order input[type=button], input[type=submit], input[type=reset]{
-  border: none;
-  border-radius: 16px;
-  color: white;
-  padding: 12px 20px;
-  text-decoration: none;
-  margin: 4px 2px;
+#order input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+    border: none;
+    border-radius: 16px;
+    color: white;
+    padding: 12px 20px;
+    text-decoration: none;
+    margin: 4px 2px;
 }
-#order .pretending{
-  background-color: gray;
+#order .pretending {
+    background-color: gray;
 }
-#order .asking{
-  background-color: #ff8800;
-  cursor: pointer;
+#order .asking {
+    background-color: #ff8800;
+    cursor: pointer;
 }
-#order .done{
-  background-color: #00b61b;
+#order .done {
+    background-color: #00b61b;
 }
-#user button{
+#user button {
     font-size: 12pt;
     margin-left: 90%;
     padding: 0;
@@ -85,17 +104,17 @@ td:last-child {
     text-decoration: underline;
     cursor: pointer;
 }
-#user div{
+#user div {
     margin-bottom: 3%;
     border-style: solid;
     border-width: 1px 0px 1px 0px;
 }
-#user div p{
+#user div p {
     padding: 1%;
     margin-bottom: 1%;
-}
-  /* Style the buttons inside the tab */
-.tab button {
+} */
+/* Style the buttons inside the tab */
+/* .tab button {
     align-items: center;
     display: flex;
     font-weight: 500;
@@ -109,38 +128,54 @@ td:last-child {
     text-align: left;
     cursor: pointer;
     font-size: 17px;
-  }
-  
-  /* Change background color of buttons on hover */
-  .tab button:hover {
+} */
+/* .tab-link-item {
+    padding: 10px 15px;
+    margin-bottom: 15px;
+}
+.tab-link-item button {
+    background: none;
+    border: none;
+}
+.tab-link-item .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1;
+    width: 100%;
+}
+/* Change background color of buttons on hover */
+/* .tab button:hover {
     color: rgb(154, 7, 7);
     background-color: rgb(247, 247, 247);
-  }
-  
-  /* Create an active/current "tab button" class */
-  .tab button.active {
+} */
+
+/* Create an active/current "tab button" class */
+/* .tab button.active {
     color: rgb(154, 7, 7);
     background-color: rgb(247, 247, 247);
-  }
-  
-  /* Style the tab content */
-  .tabcontent {
-    float: left;
+} */
+
+/* Style the tab content */
+/* .tabcontent {
+
     padding: 40px;
     border: 1px solid #ccc;
-    width: 70%;
-    border-left: none;
-    display: none;
-  }
-  
-  /* Clear floats after the tab */
-  .clearfix::after {
+    width: 100%;
+    max-width: 550px;
+
+} */
+
+/* Clear floats after the tab */
+/* .clearfix::after {
     content: "";
     clear: both;
     display: table;
-  }
+}
 
-  .modal {
+.tab-links {
+}
+.modal {
     display: none;
     position: fixed;
     z-index: 8;
@@ -151,71 +186,71 @@ td:last-child {
     overflow: auto;
     background-color: rgb(0, 0, 0);
     background-color: rgba(0, 0, 0, 0.4);
-  }
-  .modal-content {
+}
+.modal-content {
     margin: 50px auto;
     margin-top: 10%;
     border: 1px solid #999;
     width: 40%;
     background-color: rgb(239, 239, 239);
-  }
-  .modal-content-info .information{
+}
+.modal-content-info .information {
     color: white;
     background-color: rgb(22, 178, 134);
     display: flex;
     margin-bottom: 3%;
-  }
-  .modal-content-info .information-text{
+}
+.modal-content-info .information-text {
     width: 70%;
     padding: 10px;
-  }
-  .modal-content-info .information-text span{
+}
+.modal-content-info .information-text span {
     text-decoration: underline;
-  }
-  .modal-content-info .information-text p{
+}
+.modal-content-info .information-text p {
     margin-bottom: 3%;
-  }
-  .modal-content-info .information img{
+}
+.modal-content-info .information img {
     margin-left: 5%;
     align-items: center;
     margin-top: 2%;
-  }
-  .modal-content-info .delivery-info{
+}
+.modal-content-info .delivery-info {
     padding-top: 2%;
     padding-bottom: 2%;
     padding-left: 2%;
     background-color: white;
     margin-bottom: 3%;
-  }
-  .modal-content-info .location-info{
+}
+.modal-content-info .location-info {
     padding-top: 2%;
     padding-bottom: 2%;
     padding-left: 2%;
     background-color: white;
     margin-bottom: 3%;
-  }
-  .modal-content-info .product-info{
+}
+.modal-content-info .product-info {
     padding-top: 2%;
     padding-bottom: 2%;
     padding-left: 2%;
     background-color: white;
     margin-bottom: 3%;
-  }
-  .modal-content-info .payment-info{
+}
+.modal-content-info .payment-info {
     padding-top: 2%;
     padding-bottom: 2%;
     padding-left: 2%;
     background-color: white;
     margin-bottom: 3%;
-  }
-  .modal-content-info .product-info img{
-    box-shadow: rgba(0.24, 0.24, 0.24, 0.24) 0px 3px 8px; 
-  }
-  .modal-content-info .info-content{
+}
+.modal-content-info .product-info img {
+    box-shadow: rgba(0.24, 0.24, 0.24, 0.24) 0px 3px 8px;
+}
+.modal-content-info .info-content {
     margin-left: 2%;
     width: 100%;
-  }
-  .modal-content-info .info-content .sevendays{
+}
+.modal-content-info .info-content .sevendays {
     color: red;
     border-style: solid;
     border-width: 1px;
@@ -223,40 +258,171 @@ td:last-child {
     font-size: 12px;
     width: 94px;
     padding: 2%;
-  }
-  .modal-content-info .info-content p{
+}
+.modal-content-info .info-content p {
     margin-bottom: 2%;
-  }
-  .modal-content-info .payment-info .payment-type{
+}
+.modal-content-info .payment-info .payment-type {
     font-size: 14px;
-  }
-  .modal-content-info .button-contact{
+}
+.modal-content-info .button-contact {
     padding-top: 2%;
     padding-bottom: 2%;
     padding-left: 2%;
     background-color: white;
     margin-bottom: 3%;
-  }
-  .modal-content-info .button-contact button{
+}
+.modal-content-info .button-contact button {
     padding: 18px;
     font-size: 16px;
     width: 40%;
     font-weight: 500;
-  }
-  .modal-content-info .button-contact .button-area{
+}
+.modal-content-info .button-contact .button-area {
     display: flex;
     justify-content: center;
     margin-left: auto;
     margin-right: auto;
-  }
-  .modal-content-info .button-contact .button-contact1{
-    background-color: transparent; 
+}
+.modal-content-info .button-contact .button-contact1 {
+    background-color: transparent;
     color: rgb(22, 178, 134);
     border-color: rgb(22, 178, 134);
-  }
-  .modal-content-info .button-contact .button-contact2{
+}
+.modal-content-info .button-contact .button-contact2 {
     background-color: rgb(22, 178, 134);
     color: white;
     border-color: rgb(22, 178, 134);
-  }
-  
+} */
+* {
+    box-sizing: border-box;
+}
+.customer-layout {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    max-width: 1140px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 160px;
+    border: 1px solid #cdcdcd;
+    margin-bottom: 30px;
+}
+.customer-layout .col-left {
+    border-right: 1px solid #cdcdcd;
+    text-align: center;
+}
+.customer-layout .col-left-head {
+    margin-bottom: 60px;
+}
+
+.tab-link-item button {
+    background: none;
+    border: none;
+}
+.tab-link-item .nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex: 1;
+    width: 100%;
+}
+.tab-link-item {
+    padding: 10px 15px;
+    margin-bottom: 15px;
+}
+.col-left-contents {
+}
+.tablinks-left {
+    display: flex;
+    align-items: center;
+}
+.tablinks-left img {
+    margin-right: 15px;
+}
+.customer-layout .col-left,
+.customer-layout .col-right {
+    width: 50%;
+    padding: 30px;
+}
+
+#order table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0 1em;
+}
+#order table tr {
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    border-radius: 25px;
+}
+#order table .order-info {
+    cursor: pointer;
+}
+.table-order {
+    border-collapse: separate;
+    border-spacing: 0 15px;
+    width: 100%;
+}
+.table-order tr td {
+    border-bottom: 1px solid #cdcdcd;
+    border-top: 1px solid #cdcdcd;
+    border-collapse: collapse;
+    padding: 5px 10px;
+}
+td:first-child {
+    border-left: 1px solid #cdcdcd;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+}
+td:last-child {
+    border-right: 1px solid #cdcdcd;
+    border-bottom-right-radius: 10px;
+    border-top-right-radius: 10px;
+}
+#order table td {
+    border: solid 0px #000;
+    border-style: none solid solid none;
+    padding-left: 2%;
+    padding-top: 4%;
+    padding-bottom: 4%;
+}
+
+/*
+* user info
+*/
+.info-items {
+}
+.info-item {
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.bold {
+    font-weight: bold;
+}
+.btn {
+    padding: 10px 20px;
+}
+
+.form-control {
+    margin-bottom: 15px;
+}
+.form-control input {
+    width: 100%;
+    padding: 8px 15px;
+}
+.form-control label {
+    font-weight: bold;
+    margin-bottom: 10px;
+    display: inline-block;
+}
+
+.hidden {
+    display: none;
+}
+.btn-primary {
+    background: #3f51b5;
+    border: 1px solid #0e28b8;
+    color: white;
+}

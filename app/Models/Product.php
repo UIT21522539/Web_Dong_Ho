@@ -12,6 +12,10 @@ class Product extends Model
 {
     use HasFactory;
 
+    protected $table = 'product';
+
+    protected $primaryKey = 'id_product';
+
     public function getAllProduct(){
         $product = DB::select("SELECT * FROM product");
         return $product;

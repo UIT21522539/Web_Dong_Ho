@@ -58,9 +58,21 @@
                     </li>
                     <li class="user">
                         <div>
-                            <a href="#">
-                                <img width="24px" height="24px" src="{{ asset('assets/img/User/layouts/user.png') }}">
-                            </a>
+                              
+                                @if(session()->has('user_session'))
+                                    <a href="{{route('user.profile')}}" class="item-header-user">
+                                        <img width="24px" height="24px" src="{{ asset('assets/img/User/layouts/user.png') }}">
+                                        <span>{{session('user_session')->last_name}},{{session('user_session')->first_name}}</span>
+                                    </a>
+                                @else
+                                <a href="{{route('user.login')}}" class="item-header-user">
+                                    <img width="24px" height="24px" src="{{ asset('assets/img/User/layouts/user.png') }}">
+                                    <span>Đăng nhập</span>
+                                </a>
+                                @endif
+                                
+        
+                         
                         </div>
                     </li>
                     </div>
@@ -69,7 +81,7 @@
         </nav>
     </div>
 </header>
-
+{{-- 
 <div>
     <div id="mySidebar" class="sidebar">
         <div class="sidebar-header">
@@ -337,4 +349,4 @@
     }
         
 
-</script>
+</script> --}}

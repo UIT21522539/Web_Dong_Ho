@@ -7,6 +7,9 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\DashBoardController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -106,13 +109,33 @@ Route::get('/checkout-done', function () {
     return view('checkout-done');
 });
 
-Route::get('/user-info', function () {
-    return view('user-info');
+
+
+Route::group(['middleware' => 'customer'], function () {
+
+
+    Route::get('/user-info', [AuthController::class, "userInfo"])->name('user.info');
+    Route::post('/logout', [AuthController::class, "logout"])->name('user.post.logout');
+    Route::get('/order', [CustomerController::class, "getOrderList"])->name('user.orders');
+    Route::get('/profile', [CustomerController::class, "getUserProfile"])->name('user.profile');
+    Route::post('/profile', [CustomerController::class, "updateUserProfile"])->name('user.update.profile');
+    Route::post('/cart', [CartController::class, "addToCart"])->name('addToCart');
+
 });
 
-Route::get('/login', function () {
-    return view('login');
+Route::group(['middleware' => 'anonymous'], function () {
+
+
+    Route::get('/login', [AuthController::class, "login"])->name('user.login');
+    
+    Route::post('/login', [AuthController::class, "makeLogin"])->name('user.post.login');
+    
+    Route::get('/sign-up', [AuthController::class, 'register'])->name('user.register');
+    
+    Route::post('/sign-up', [AuthController::class, "makeRegister"])->name('user.post.register');
+    
 });
-Route::get('/sign-up', function () {
-    return view('sign-up');
-});
+
+
+
+

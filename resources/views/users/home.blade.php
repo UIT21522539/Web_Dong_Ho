@@ -64,7 +64,7 @@
                     <span class="product_ref_name">{{ $productItem->pdName }}</span>
                     <div class="product_font_price">
                         <b>{{ $productItem->sellprice }}</b>
-                        <del class="product_font_price_discount">2.499.000 đ</del>
+                        {{-- <del class="product_font_price_discount">2.499.000 đ</del> --}}
                     </div>
                 </div>
             </a>
@@ -116,6 +116,13 @@
             </a> --}}
         </div>
     </div>
+    @if (Session::has('success'))
+        <div class="py-2 bg-green-200 rounded-sm px-4 text-green-800 mb-2"><p>{{ Session::get('add_to_cart_success') }}</p></div>
+        <script>
+            alert('add success')
+            </script>
+    @endif
+  
     <div class="bestSell">
         <h1>WOMEN'S BEST SELLERS</h1>
         <a href="#">XEM TẤT CẢ</a>
@@ -123,13 +130,24 @@
     <div class="product_wrapper">
         <div class="product_top">
             @foreach ($productListW as $productItem)    
-            <a href="#">
                 <div class="product_info product_highlight">
                     <img src="{{ $productItem->img_main }}">
                     <b class="product_image_discount">-{{ $productItem->discount }}%</b>
-                    <a class="product_addToCard" href="#" target="_self">
-                        <span class="product_addToCard_font">THÊM VÀO GIỎ</span>
-                    </a>
+                    @if(session()->has('user_session'))
+                        <form method="POST" action="{{route('addToCart')}}" class="add-to-cart-form">
+                            @csrf
+                                <input type="hidden" name="product_id" value={{$productItem->id_product}}/>
+                                <input type="hidden" name="quantity" value="1"/>
+                                <button class="product_addToCard" type="submit">
+                                    <span class="product_addToCard_font">THÊM VÀO GIỎ</span>
+                                </button>
+                        </form>
+                    @else
+                        <a class="product_addToCard" href="#" target="_self">
+                            <span class="product_addToCard_font">THÊM VÀO GIỎ</span>
+                        </a>
+                    @endif 
+                  
                     <p class="product_ref_kind">{{ $productItem->brName }}</p>
                     <span class="product_ref_name">{{ $productItem->pdName }}</span>
                     <div class="product_font_price">
@@ -137,7 +155,7 @@
                         <del class="product_font_price_discount">2.499.000 đ</del>
                     </div>
                 </div>
-            </a>
+         
             @endforeach
         </div>
     </div>
@@ -213,6 +231,7 @@
             var productbutton = document.getElementById("product-button");
             productbutton.style.display="none";
         }
+
 
     </script>
     @endsection

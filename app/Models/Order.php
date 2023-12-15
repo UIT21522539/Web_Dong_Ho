@@ -13,6 +13,11 @@ class Order extends Model
 {
     use HasFactory;
 
+    protected $table = 'order';
+
+    protected $primaryKey = 'id_order';
+
+
     public function getAllOrder(){
         $order = DB::select("SELECT * FROM `order`");
         return $order;

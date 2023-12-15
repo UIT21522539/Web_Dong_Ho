@@ -1,17 +1,17 @@
-*{
-	margin: 0;
-	padding: 0;
-	box-sizing: border-box;
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
-body{
+body {
     background-color: rgb(248, 248, 248);
 }
-.login-bg-bg{
+.login-bg-bg {
     padding: 1%;
     align-items: center;
     margin-left: 16%;
 }
-.login-bg{
+.login-bg {
     display: flex;
     padding: 5%;
     width: 80%;
@@ -19,90 +19,91 @@ body{
     background-color: white;
     align-items: center;
 }
-.wrapper{
-	width: 420px;
+.wrapper {
+    width: 420px;
     background-color: bisque;
     margin-left: 10%;
-	color: rgb(32, 21, 21);
-	background: transparent;
+    color: rgb(32, 21, 21);
+    background: transparent;
 }
-.wrapper h1{
-	font-size: 24px;
+.wrapper h1 {
+    font-size: 24px;
     font-family: Arial, Helvetica, sans-serif;
     margin-bottom: 4%;
 }
-.wrapper h2{
-	font-size: 24px;
+.wrapper h2 {
+    font-size: 24px;
     font-family: Arial, Helvetica, sans-serif;
     margin-bottom: 6%;
 }
-.wrapper .input-box{
-	width: 100%;
-	height: 50px;
-	margin: 30px 0;
-	position: relative;
+.form-control {
+    margin-bottom: 30px;
 }
-.input-box input{
-	width: 100%;
-	height: 100%;
-	border: none;
-	background: transparent;
-	outline: none;
-	border: 1px solid rgb(0, 0, 0);
-	font-size: 16px;
-	padding: 20px 45px 20px 20px;
-	color: rgb(0, 0, 0);
+.wrapper .input-box {
+    width: 100%;
+    height: 50px;
+    position: relative;
 }
-.input-box input::placeholder{
-	color: rgb(0, 0, 0);
+.input-box input {
+    width: 100%;
+    height: 100%;
+    border: none;
+    background: transparent;
+    outline: none;
+    border: 1px solid rgb(0, 0, 0);
+    font-size: 16px;
+    padding: 20px 45px 20px 20px;
+    color: rgb(0, 0, 0);
 }
-.input-box i{
-	position: absolute;
-	right: 20px;
-	top: 50%;
-	font-size: 21px;
-	transform: translateY(-50%);
+.input-box input::placeholder {
+    color: rgb(0, 0, 0);
 }
-.wrapper .remember-forgot{
-	display: flex;
-	justify-content: space-between;
-	font-size: 15px;
-	margin: -5px 0px 24px;
+.input-box i {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    font-size: 21px;
+    transform: translateY(-50%);
 }
-.remember-forgot label input{
-	margin-right: 3px;
-
+.wrapper .remember-forgot {
+    display: flex;
+    justify-content: space-between;
+    font-size: 15px;
+    margin: -5px 0px 24px;
 }
-.remember-forgot a{
-	color: rgb(0, 0, 0);
-	text-decoration: none;
+.remember-forgot label input {
+    margin-right: 3px;
 }
-.remember-forgot a:hover{
-	text-decoration: underline;
+.remember-forgot a {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
 }
-.wrapper .login-button{
-	width: 100%;
-	height: 45px;
-	background: white;
-	border: none;
-	border-radius: 40px;
-	outline: none;
-	cursor: pointer;
-	color: black;
-	font-size: 16px;
-	font-weight: 600;
-	box-shadow: 0 0 4px rgb(148, 148, 148);
+.remember-forgot a:hover {
+    text-decoration: underline;
 }
-.wrapper .register-link{
-	font-size: 16px;
-	margin-top: 15px;
+.wrapper .login-button {
+    width: 100%;
+    height: 45px;
+    background: white;
+    border: none;
+    border-radius: 40px;
+    outline: none;
+    cursor: pointer;
+    color: black;
+    font-size: 16px;
+    font-weight: 600;
+    box-shadow: 0 0 4px rgb(148, 148, 148);
+}
+.wrapper .register-link {
+    font-size: 16px;
+    margin-top: 15px;
     margin-bottom: 6%;
 }
-.register-link p a{
-	text-decoration: underline;
-	font-weight: 600;
-	color: rgb(0, 0, 0);
+.register-link p a {
+    text-decoration: underline;
+    font-weight: 600;
+    color: rgb(0, 0, 0);
 }
 .register-link p {
-	margin-bottom: 3%;
+    margin-bottom: 3%;
 }

@@ -22,8 +22,36 @@ class ProductController extends Controller
     public function combinedHome()
     {
         $product = new Product();
-        $productListB = $product->getTop3ProductB();
-        $productListW = $product->getTop3ProductW();
+        // $productListB = $product->getTop3ProductB();
+        // $productListW = $product->getTop3ProductW();
+
+        $productListB = Product::where([
+            ['gender','nam'],
+        ])->join('brand', 'product.id_brand', '=', 'brand.id_brand')->select('product.*', 'brand.name')->limit(3)->get();
+
+
+        $productListW = Product::where([
+            ['gender','nữ'],
+        ])->join('brand', 'product.id_brand', '=', 'brand.id_brand')->select('product.*', 'brand.name')->limit(3)->get();
+
+
+        // $usersDetails = DB::table('users')
+        //     ->join('contacts', 'users.id', '=', 'contacts.user_id')// joining the contacts table , where user_id and contact_user_id are same
+        //     ->select('users.*', 'contacts.phone')
+        //     ->get();
+
+        // $product = DB::select(
+        //     "SELECT product.name AS pdName, brand.name AS brName, sellprice, img_main, discount FROM product
+        //     INNER JOIN brand
+        //     ON product.id_brand = brand.id_brand
+        //     WHERE gender = 'nam'
+        //     LIMIT 3;
+        //     ");
+
+
+
+
+        // dd($productListB);
         return view('users.home', ['productListB' => $productListB, 'productListW' => $productListW]);
     }
     //Admin

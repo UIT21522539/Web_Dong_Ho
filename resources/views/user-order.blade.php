@@ -55,22 +55,52 @@
                 </div>
             </div>
             <div class="col-right">
-                <div id="user" class="user-info">
-                    <h2 style="margin-bottom: 6%;">Thông tin tài khoản</h2>
-                    @if (session('update_success'))
-                        <div class="message"><p>{{ session('update_success') }}</p></div>
-                    @endif
-
-                    <div class="user-infor infor-items">
-                        <div class="info-item">
-                            <p>Email</p>
-                            <p class="bold">{{session('user_session')->email}}</p> 
-                        </div>
-                        <div class="info-item">
-                            <p>Mật khẩu</p> 
-                            <p class="bold">*****</p> 
-                        </div>
-                    </div>
+           
+                <div id="orders" class="tabcontent order-content">
+                    <h2 style="margin-bottom: 4%;">Danh sách đơn hàng</h2>
+                    @empty($orders)
+                        <table class="table-order">
+                            <thead>
+                                <tr height="80px" class="order-tab">
+                                    <td>Mã đơn hàng</td>
+                                    <td>Đơn hàng</td>
+                                    <td>Thành tiền</td>
+                                    <td>Tình trạng</td>
+                                    <td>Ngày đặt hàng</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach ($orders as $order)
+                                        
+                                    <tr class="order-info" data-modal="modalOne">
+                                        <td>#{{$order->id_order}}</td>
+                                        <td style="display: flex">
+                                            <img width="60px" height="60px" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fcache%2Fd96eb53c23516f6ca600411b8495131f%2Fh%2Fe%2Fheinz_1.png&w=1920&q=75">
+                                            <div class="attr">
+                                                <p style="margin-bottom: 10px">HEINZ</p>
+                                                <p>40MM</p>
+                                            </div>
+                                        </td>
+                                        <td>{{$order->total_order}}</td>
+                                        <td>
+                                            @if ($order->status == 1)
+                                            <input class="pretending" type="button" value="Chờ lấy hàng">
+                                            @endif
+                                        
+                                        </td>
+                                        <td>
+                                            {{$order->day}}
+                                        </td>
+                                    </tr>
+                                @endforeach
+                            </tbody>
+                        </table>
+                    @else
+                        <div>Hiện chưa có đơn hàng nào</div>
+                    @endempty
+                        
+                  
+                </div>
             </div>
         </div>
     </div>
