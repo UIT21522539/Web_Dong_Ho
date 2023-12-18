@@ -1,0 +1,48 @@
+.select-product-form {
+    width: 100%;
+}
+
+.select-product-form .select-form {
+    display: flex;
+    align-items: end;
+}
+.form-control .select {
+    display: block;
+}
+.form-control label {
+    margin-bottom: 10px;
+    display: inline-block;
+}
+.form-control select {
+    padding: 5px 10px;
+    display: block;
+    width: 100%;
+}
+.select-form button {
+    padding: 5px 10px;
+}
+.select-product-form .select-form > div {
+    margin-right: 10px;
+}
+.mb-3 {
+    margin-bottom: 30px;
+}
+.table-product {
+    border-collapse: collapse;
+}
+.table-product tr {
+}
+.table-product thead {
+    background-color: #f1f1f1;
+}
+.table-product tr td,
+.table-product tr th {
+    padding: 5px 10px;
+    border: 1px solid #f1f1f1;
+}
+.table-product input {
+    border-color: transparent;
+}
+.hidden {
+    display: none;
+}

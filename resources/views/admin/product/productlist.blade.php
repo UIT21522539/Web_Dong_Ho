@@ -26,6 +26,7 @@
             </div>
         </form>
 
+       {{-- <img src="" alt="Image"> --}}
         <table>
             <tr class="table-header">
                 <th>Name</th>
@@ -43,7 +44,7 @@
                 <div>
                     <td>{{ $item->name }}</td>
                     <td>
-                        <img src="{{ $item->img_main }}" alt="{{ $item->name }}" width="50">
+                        <img src="{{ asset('images/products/'.$item->img_main.'') }}" alt="{{ $item->name }}" width="50">
                     </td>
                     <td>{{ $item->description }}</td>
                     <td>{{ $item->sellprice }}</td>

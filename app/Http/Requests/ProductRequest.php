@@ -30,9 +30,14 @@ class ProductRequest extends FormRequest
             'pty_store'=> 'required|min:1',
             'discount'=> 'required|integer|min:5|max:50',
             'isdiscount' => 'required|in:0,1',
-            'status' => 'required|in:Đang bán,Ngừng bán,Hết hàng',
-            'img_main' => 'required|url',
-            'img'=>'url'
+            // 'status' => 'required|in:Đang bán,Ngừng bán,Hết hàng',
+            'status' => 'required|boolean',
+            'img_main' => 'required|mimes:jpg,png,jpeg,gif,svg|max:2048',
+            'img1' => 'mimes:jpg,png,jpeg,gif,svg|max:2048',
+            'img2' => 'mimes:jpg,png,jpeg,gif,svg|max:2048',
+            'img3' => 'mimes:jpg,png,jpeg,gif,svg|max:2048',
+            'size' => 'required|in:S,M,L',
+            // 'img'=>'url'
         ];
     }
 
@@ -61,8 +66,17 @@ class ProductRequest extends FormRequest
                 'status.required' => 'Trạng thái không được để trống.',
                 'status.in' => 'Trạng thái không hợp lệ. Chỉ chấp nhận "Đang bán", "Ngừng bán", hoặc "Hết hàng".',
                 'img_main.required' => 'Ảnh chính không được để trống.',
-                'img_main.url' => 'Đường link ảnh chính không hợp lệ.',
-                'img.url' => 'Đường link ảnh không hợp lệ.',
+                'img_main.mimes' => 'Định dạng file ảnh Chính không đúng.',
+                'img_main.max' => 'Dung lượng file ảnh chính không quá 2Mb.',
+                'img1.mimes' => 'Định dạng file ảnh 1 không đúng.',
+                'img2.mimes' => 'Định dạng file ảnh 2 không đúng.',
+                'img3.mimes' => 'Định dạng file ảnh 3 không đúng.',
+                'img1.max' => 'Dung lượng file ảnh 1 không quá 2Mb.',
+                'img2.max' => 'Dung lượng file ảnh 2 không quá 2Mb.',
+                'img3.max' => 'Dung lượng file ảnh 3 không quá 2Mb.',
+                "size.required" =>  "Size không bỏ trống."
+                // 'img_main.url' => 'Đường link ảnh chính không hợp lệ.',
+                // 'img.url' => 'Đường link ảnh không hợp lệ.',
             ],
             
         ];

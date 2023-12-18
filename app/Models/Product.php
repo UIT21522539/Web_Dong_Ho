@@ -16,6 +16,26 @@ class Product extends Model
 
     protected $primaryKey = 'id_product';
 
+    protected $fillable = [
+        'id_brand',
+        'id_category',
+        'name',
+        'description',
+        'sellprice',
+        'qty_store',
+        'discount',
+        'isdiscount',
+        "status",
+        "img_main",
+        "img1",
+        "img2",
+        "img3",
+        "gender",
+        "size"
+    ];
+
+    public $timestamps = false;
+    
     public function getAllProduct(){
         $product = DB::select("SELECT * FROM product");
         return $product;

@@ -84,8 +84,12 @@
                                         <td>{{$order->total_order}}</td>
                                         <td>
                                             @if ($order->status == 1)
-                                            <input class="pretending" type="button" value="Chờ lấy hàng">
-                                            @endif
+                                               
+                                            //1, trạng thái cờ xác nhận user có thể huỷ đơn hàng và chuyển trạng thái về 4 sau đó trả lại số lượng sản phẩm về kho
+                                            // 2, frontend ->  Đã nhận được hàng (nhấn vào sẽ hiển thị thông báo.)
+                                            //3, Trạng thái thành công.
+                                            //4, đơn hàng đã huỷ.
+                                               @endif
                                         
                                         </td>
                                         <td>

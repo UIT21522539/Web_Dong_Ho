@@ -50,12 +50,19 @@
         <a href="#">XEM TẤT CẢ</a>
     </div>
     <div class="product_wrapper">
+        @if (Session::has('success'))
+            <div class="py-2 bg-green-200 rounded-sm px-4 text-green-800 mb-2"><p>{{ Session::get('add_to_cart_success') }}</p></div>
+                <script>
+                    alert('add success')
+                </script>
+        @endif
         <div class="product_top">
         {{-- discount --}}
             @foreach ($productListB as $productItem)    
             <a href="#">
                 <div class="product_info product_highlight">
-                    <img src="{{ $productItem->img_main }}">
+                    {{-- <img src="{{ $productItem->img_main }}"> --}}
+                    <img src="{{ asset('images/products/'.$productItem->img_main.'') }}" alt="{{ $productItem->name }}">
                     <b class="product_image_discount">-{{ $productItem->discount }}%</b>
                     <a class="product_addToCard" href="#" target="_self">
                         <span class="product_addToCard_font">THÊM VÀO GIỎ</span>
@@ -116,12 +123,7 @@
             </a> --}}
         </div>
     </div>
-    @if (Session::has('success'))
-        <div class="py-2 bg-green-200 rounded-sm px-4 text-green-800 mb-2"><p>{{ Session::get('add_to_cart_success') }}</p></div>
-        <script>
-            alert('add success')
-            </script>
-    @endif
+
   
     <div class="bestSell">
         <h1>WOMEN'S BEST SELLERS</h1>
@@ -131,7 +133,7 @@
         <div class="product_top">
             @foreach ($productListW as $productItem)    
                 <div class="product_info product_highlight">
-                    <img src="{{ $productItem->img_main }}">
+                    <img src="{{ asset('images/products/'.$productItem->img_main.'') }}" alt="{{ $productItem->name }}">
                     <b class="product_image_discount">-{{ $productItem->discount }}%</b>
                     @if(session()->has('user_session'))
                         <form method="POST" action="{{route('addToCart')}}" class="add-to-cart-form">

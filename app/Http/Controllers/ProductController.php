@@ -13,11 +13,14 @@ use App\Models\Product;
 use App\Models\Category;
 use App\Models\Brand;
 use App\Models\CT_Product;
-
+use App\Helper\ImageManager;
+use Illuminate\Support\Str;
 use App\Http\Requests\ProductRequest;
+use Illuminate\Support\Facades\File;
 
 class ProductController extends Controller
-{
+{   
+    use ImageManager;
 
     public function combinedHome()
     {
@@ -106,33 +109,99 @@ class ProductController extends Controller
             $title = "Thêm sản phẩm";
             return view('admin.product.productdetailadd', compact('brands','title','categories'));
         }
-            //Thêm sản phẩm
+            //Thêm sản phẩm ProductRequest
         public function addProduct(ProductRequest $request){
                 
-                $dataInsert =[
-                    $request->id_brand,
-                    $request->id_category,
-                    $request->name,
-                    $request->description,
-                    $request->sellprice,
-                    $request->pty_store,
-                    $request->discount,
-                    $request->isdiscount,
-                    $request->status,
-                    $request->gender,
-                    $request->img_main,
-                    $request->img1,
-                    $request->img2,
-                    $request->img3,
-                ];
+            //     $dataInsert =[
+            //         $request->id_brand,
+            //         $request->id_category,
+            //         $request->name,
+            //         $request->description,
+            //         $request->sellprice,
+            //         $request->pty_store,
+            //         $request->discount,
+            //         $request->isdiscount,
+            //         $request->status,
+            //         $request->gender,
+            //         $request->img_main,
+            //         $request->img1,
+            //         $request->img2,
+            //         $request->img3,
+            //     ];
     
     
-            $product = new Product();
-            $product -> addProduct($dataInsert);
-    
+            // $product = new Product();
+            // $product -> addProduct($dataInsert);
+            // $imagePath = $request->file('img_main')->store('public/images');
+
+
+            $destinationPath = 'images/products';
+                
+
+            //getClientOriginalName
+            $file_type  = $request->img_main->getClientOriginalExtension();
+            $main_image = time() . '.'.$file_type;
+            $request->img_main->move(public_path($destinationPath), $main_image);
+                
+            // $file = explode(".", $main_image);
+            
+         
+            if($request->img1){
+
+
+                $image_1 =  time() . '-img-1' . '.'.   $request->img1->getClientOriginalExtension();
+
+                $request->img1->move(public_path($destinationPath), $image_1);
+             
+            }else {
+                $image_1 = "";
+            }
+            if($request->img2){
+                $image_2 =  time() . '-img-2' .  '.'.  $request->img2->getClientOriginalExtension();
+                $request->img2->move(public_path($destinationPath), $image_2);
+            } else{
+                $image_2 = "";
+            }
+            if($request->img3){
+                $image_3 =  time() . '-img-3' . '.'.  $request->img3->getClientOriginalExtension();
+                $request->img3->move(public_path($destinationPath), $image_3);
+            }else{
+                $image_3 = "";
+            }
+        
+         
+            // $request->img_main->move(public_path($destinationPath), $myimage);
+
+            $data = [
+                "id_brand"  =>  $request->id_brand,
+                "id_category" => $request->id_category,
+                "name"  =>  $request->name,
+                "description"  =>  $request->description,
+                "sellprice"  =>  $request->sellprice,
+                "qty_store"  =>  $request->pty_store,
+                "discount"  =>  $request->discount,
+                "size"  =>  $request->size,
+                "isdiscount"  =>  $request->isdiscount,
+                "status"  =>  $request->status,
+                "gender"  =>  $request->gender,
+                "img_main"  => $main_image,
+                "img1"  =>   $image_1,
+                "img2"  =>  $image_2,
+                "img3"  =>   $image_3
+            ];
+      
+            // dd($data);
+
+            $product = Product::create($data);
+
+           
+            if(!$product){
+                return redirect()->back()->with("error", "Tạo sản phẩm thất bại.");
+            }
+
+
             return redirect()->route('products.list')->with('msg','Thêm sản phẩm thành công');
         }
-
         // Màn hình sửa sản phẩm
         public function getProduct(Request $request,$id){
             $title = 'Cập nhật sản phẩm';

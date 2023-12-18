@@ -7,10 +7,27 @@ use Illuminate\Database\Eloquent\Model;
 
 use DB;
 use Carbon\Carbon;
+use App\Models\CT_Supplier;
 
 class Supplier extends Model
 {
     use HasFactory;
+
+    protected $table = 'inventoryreceipt';
+
+    protected $primaryKey = 'id_ir';
+
+    public $timestamps = false;
+
+    protected $fillable = [
+        'day',
+        'total',
+    ];
+
+    public function receipt_detail(){
+        return $this->hasMany(CT_Supplier::class, 'id_ir');
+    }
+
     public function getAllSupplier(){
         $supplier = DB::select("SELECT * FROM inventoryreceipt");
         return $supplier;

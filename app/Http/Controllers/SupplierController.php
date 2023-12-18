@@ -51,7 +51,9 @@ class SupplierController extends Controller
         $title = "Thêm phiếu nhập kho";
         $product = new Product();
         $products = $product->getAllproduct();
-        return view('admin.supplier.supplieradd',compact('title', 'products'));
+        // dd( $products );
+        //return view('admin.supplier.supplieradd',compact('title', 'products'));
+        return view('admin.supplier.add',compact('title', 'products'));
     }
 
     public function addSupplier(Request $request){

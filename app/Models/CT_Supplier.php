@@ -8,10 +8,30 @@ use App\Models\Product;
 use App\Models\Supplier;
 use DB;
 
+
 class CT_Supplier extends Model
 {
     use HasFactory;
 
+
+
+    protected $table = 'ct_ir';
+
+    public $timestamps = false;
+
+    protected $fillable = [
+        'id_ir',
+        'id_product',
+        'qty',
+        'import_price',
+        'total_item'
+    ];
+
+    public function receipt_detail(){
+
+        return $this->belongsTo(Supplier::class, 'inventoryreceipt', 'id_ir');
+
+    }
     public function getCT_SupplierById($id)
     {
         $supplier = DB::select("SELECT * FROM `ct_ir` WHERE id_ir = ?", [$id]);
