@@ -58,15 +58,14 @@
            
                 <div id="orders" class="tabcontent order-content">
                     <h2 style="margin-bottom: 4%;">Danh sách đơn hàng</h2>
-                    @empty($orders)
+                    @if(count($orders) !== 0)
                         <table class="table-order">
                             <thead>
                                 <tr height="80px" class="order-tab">
                                     <td>Mã đơn hàng</td>
-                                    <td>Đơn hàng</td>
-                                    <td>Thành tiền</td>
-                                    <td>Tình trạng</td>
+                                    <td>Tổng tiền</td>
                                     <td>Ngày đặt hàng</td>
+                                    <td>Tình trạng</td>
                                 </tr>
                             </thead>
                             <tbody>
@@ -74,34 +73,49 @@
                                         
                                     <tr class="order-info" data-modal="modalOne">
                                         <td>#{{$order->id_order}}</td>
-                                        <td style="display: flex">
-                                            <img width="60px" height="60px" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fcache%2Fd96eb53c23516f6ca600411b8495131f%2Fh%2Fe%2Fheinz_1.png&w=1920&q=75">
-                                            <div class="attr">
-                                                <p style="margin-bottom: 10px">HEINZ</p>
-                                                <p>40MM</p>
-                                            </div>
-                                        </td>
-                                        <td>{{$order->total_order}}</td>
                                         <td>
-                                            @if ($order->status == 1)
-                                               
-                                            //1, trạng thái cờ xác nhận user có thể huỷ đơn hàng và chuyển trạng thái về 4 sau đó trả lại số lượng sản phẩm về kho
-                                            // 2, frontend ->  Đã nhận được hàng (nhấn vào sẽ hiển thị thông báo.)
-                                            //3, Trạng thái thành công.
-                                            //4, đơn hàng đã huỷ.
-                                               @endif
-                                        
+                                            <div class="attr">
+                                                <p style="margin-bottom: 10px">{{ number_format($order->total_order, 0, ',', '.')}} VND</p>
+                                            </div>
                                         </td>
                                         <td>
                                             {{$order->day}}
                                         </td>
+                                        <td>
+                                            @if ($order->status == 1)
+                                               <p class="status pending">Chờ xác nhận</p>
+                                               <form method="post" action="{{route('user.order.updateStatus')}}">
+                                                @csrf
+                                                <input type="hidden" name="order_id" value="{{$order->id_order}}" />
+                                              <div class="buttons"><button type="submit" class="btn-cancel">Huỷ đơn hàng</button></div>
+                                            </form>
+                                            @endif
+
+                                            @if ($order->status == 2)
+                                                <p class="status info">Đơn hàng đang xử lý</p>
+                                            @endif
+
+                                            @if ($order->status == 3)
+                                                <p class="status completed">Thành công</p>
+                                            @endif
+
+                                            @if ($order->status == 4)
+                                            <p class="status cancel">Đơn hàng đã huỷ</p>
+                                        @endif
+
+                                               {{-- //1, trạng thái cờ xác nhận user có thể huỷ đơn hàng và chuyển trạng thái về 4 sau đó trả lại số lượng sản phẩm về kho
+                                               // 2, frontend ->  Đã nhận được hàng (nhấn vào sẽ hiển thị thông báo.)
+                                               //3, Trạng thái thành công.
+                                               //4, đơn hàng đã huỷ. --}}
+                                        </td>
+                                      
                                     </tr>
                                 @endforeach
                             </tbody>
                         </table>
                     @else
                         <div>Hiện chưa có đơn hàng nào</div>
-                    @endempty
+                    @endif
                         
                   
                 </div>

@@ -1,11 +1,16 @@
-*{
+* {
     margin: 0;
+    font-family: "Arial", Helvetica, sans-serif;
 }
 @keyframes fadeIn {
-    0% { opacity: 0; }
-    100% { opacity: 1; }
-  }
-.banner-button{
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+.banner-button {
     color: white;
     position: absolute;
     z-index: 0;
@@ -13,7 +18,7 @@
     margin-left: 21%;
     text-align: center;
 }
-.banner-button h2{
+.banner-button h2 {
     margin-bottom: 2%;
 }
 .button-57 {
@@ -79,19 +84,19 @@
     transition: all 900ms cubic-bezier(0.48, 0, 0.12, 1);
 }
 
-.banner img{
+.banner img {
     max-width: 100%;
     z-index: -99;
 }
-.info{
-    display:grid;
+.info {
+    display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     padding: 20px;
     justify-content: center;
     background-color: rgb(237, 237, 237);
     margin-bottom: 40px;
 }
-.info h2{
+.info h2 {
     font-size: 16px;
     text-align: center;
     align-items: center;
@@ -100,7 +105,7 @@
     padding-right: 100px; */
 }
 
-.categoryCard{
+.categoryCard {
     display: grid;
     grid-template-columns: repeat(3, minmax(0, 1fr));
     max-width: 1170px;
@@ -112,52 +117,52 @@
     margin-bottom: 40px;
 }
 
-.categoryCard .cat1{
-    background-image: url('https://cms.curnonwatch.com/uploads/Web_Nam_c43ff3abd6.jpg');
+.categoryCard .cat1 {
+    background-image: url("https://cms.curnonwatch.com/uploads/Web_Nam_c43ff3abd6.jpg");
     background-size: cover;
     background-position: center;
-    padding:180px 0px 90px 20px;
+    padding: 180px 0px 90px 20px;
     text-decoration: none;
 }
 
-.categoryCard .cat1 p{
+.categoryCard .cat1 p {
     font-size: 18px;
     color: white;
 }
-.categoryCard .cat2{
-    background-image: url('https://cms.curnonwatch.com/uploads/Web_vong_746015779e.jpg');
+.categoryCard .cat2 {
+    background-image: url("https://cms.curnonwatch.com/uploads/Web_vong_746015779e.jpg");
     background-size: cover;
     background-position: center;
-    padding:180px 0px 90px 20px;
+    padding: 180px 0px 90px 20px;
     text-decoration: none;
 }
 
-.categoryCard .cat2 p{
+.categoryCard .cat2 p {
     font-size: 18px;
     color: white;
 }
-.categoryCard .cat3{
-    background-image: url('https://cms.curnonwatch.com/uploads/Web_nu_11ee0fba3b.jpg');
+.categoryCard .cat3 {
+    background-image: url("https://cms.curnonwatch.com/uploads/Web_nu_11ee0fba3b.jpg");
     background-size: cover;
     background-position: center;
-    padding:180px 0px 90px 20px;
+    padding: 180px 0px 90px 20px;
     text-decoration: none;
 }
 
-.categoryCard .cat3 p{
+.categoryCard .cat3 p {
     font-size: 18px;
     color: white;
 }
 
-.bestSell{
+.bestSell {
     text-align: center;
     margin-bottom: 40px;
 }
-.bestSell h1{
+.bestSell h1 {
     font-weight: 100;
     margin-bottom: 20px;
 }
-.bestSell a{
+.bestSell a {
     font-weight: 20;
     text-decoration: none;
     color: black;
@@ -225,111 +230,134 @@
     color: rgb(0, 0, 0);
 } */
 
-.product_wrapper{
+.product_wrapper {
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 4%;
-    
 }
-.product_top{
-	display:flex;
-    width: 70%;
+.product_top {
+    display: flex;
+    max-width: 1200px;
     text-align: center;
     justify-content: center;
     align-items: center;
     margin-left: auto;
     margin-right: auto;
 }
-.product_top a{
-	padding: 10px;
+.product_top .product-item {
+    padding-left: 15px;
+    padding-right: 15px;
+    width: 33.33%;
+    position: relative;
 }
-.product_top div{
-	flex-basis:24%;
-	box-sizing: border-box;
+
+.product-item .thumb {
+    position: relative;
+    width: 100%;
+    padding-top: 100%;
 }
-.product_info img{
-	max-width: 100%;
-	height:auto;
-	display:block;
+.product-item .thumb img {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
-.product_top .product_info .product_addToCard{
-	background-color: rgb(244, 244, 244);
-	color: black;
-	text-decoration: none;
-	padding: 13px 45px;
-	font-family: Arial;
-	font-weight: bold;
-	font-size: 13px;
-	opacity: 0; 
-	transition: opacity 0.3s ease-in-out;
-	position: absolute;
-    width:100%;
-	top:65%;
-    transform: translate(-50%, -50%);/* Dịch chữ chiều ngang và dọc */
-	
+.product-item .item-content {
+    position: relative;
+    padding: 20px 10px;
+}
+.product_info img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+.product_top .product_info .product_addToCard {
+    background-color: rgb(244, 244, 244);
+    border: 1px solid black;
+    color: black;
+    text-decoration: none;
+    padding: 13px 45px;
+    cursor: pointer;
+    font-weight: bold;
+    font-size: 13px;
+    /* opacity: 0; */
+    transition: opacity 0.3s ease-in-out;
+    width: 80%;
+}
+.notice-message {
+    text-align: center;
+    padding: 10px;
+}
+.notice-message.success {
+    color: green;
+}
+.notice-message.error {
+    color: red;
 }
 .product_info:hover .product_addToCard {
-	opacity: 1;
+    opacity: 1;
 }
-.product_top .product_info .product_addToCard:hover{
-	background-color:black;
-	color:white;
+.product_top .product_info .product_addToCard:hover {
+    background-color: black;
+    color: white;
 }
 .product_ref_kind {
     margin-bottom: 2%;
     text-decoration: none;
     font-family: arial;
     font-weight: lighter;
-	font-size:13px;
-	color:grey;
+    font-size: 13px;
+    color: grey;
 }
-.product_ref_name{
-	text-decoration: none;
-    font-style:normal;
-	font-size:17px;
-	color: black;
-	font-weight: normal;
+.product_ref_name {
+    text-decoration: none;
+    font-style: normal;
+    font-size: 17px;
+    color: black;
+    font-weight: normal;
 }
-.product_font_price{
-	font-size:17px;
-	margin-top:10px;
+.product_font_price {
+    font-size: 17px;
+    margin-top: 10px;
     margin-bottom: 8%;
 }
-.product_font_price_discount{
-	font-size:13px;
+.product_font_price_discount {
+    font-size: 13px;
 }
 .product_highlight {
-	position: relative;
-	overflow: hidden;
-	transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-  }
-  
- .product_highlight:hover {
-	box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
-}
-.product_image_discount{
-	text-decoration: none;
-	border-radius: 150px;
-	background-color: red;
-	color: white;
-	padding: 8px;
-	font-family: Tahoma;
-	position:absolute;
-	top:5%;
-	left: 5%;
-	font-size:16px;
+    position: relative;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
-.curnon-family-content{
+.product_highlight:hover {
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.3);
+}
+.product_image_discount {
+    text-decoration: none;
+    border-radius: 150px;
+    background-color: red;
+    color: white;
+    padding: 8px;
+    font-family: Tahoma;
+    position: absolute;
+    top: 5%;
+    left: 5%;
+    font-size: 16px;
+}
+
+.curnon-family-content {
     text-align: center;
     margin-bottom: 3%;
 }
-.curnon-family-content h2{
+.curnon-family-content h2 {
     font-size: 32px;
     font-weight: 400;
     letter-spacing: 1px;
 }
-.curnon-family-content p{
+.curnon-family-content p {
     font-weight: 200;
     font-size: 15px;
     letter-spacing: 1px;

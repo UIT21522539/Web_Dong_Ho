@@ -51,46 +51,57 @@
     </div>
     <div class="product_wrapper">
         @if (Session::has('success'))
-            <div class="py-2 bg-green-200 rounded-sm px-4 text-green-800 mb-2"><p>{{ Session::get('add_to_cart_success') }}</p></div>
+            <div class="notice-message success"><p>{{ Session::get('success') }}</p></div>
                 <script>
-                    alert('add success')
+                    alert('Thêm sản phẩm thành công')
                 </script>
         @endif
+
+        @if (Session::has('error'))
+         
+            <div class="notice-message error">
+                <p>{{ Session::get('error') }}</p>
+            </div>
+                <script>
+                    alert("Sản phẩm tạm hết hàng")
+                </script>
+        @endif
+
         <div class="product_top">
         {{-- discount --}}
-            @foreach ($productListB as $productItem)    
-            <a href="#">
-                <div class="product_info product_highlight">
-                    {{-- <img src="{{ $productItem->img_main }}"> --}}
-                    <img src="{{ asset('images/products/'.$productItem->img_main.'') }}" alt="{{ $productItem->name }}">
-                    <b class="product_image_discount">-{{ $productItem->discount }}%</b>
-                    <a class="product_addToCard" href="#" target="_self">
-                        <span class="product_addToCard_font">THÊM VÀO GIỎ</span>
-                    </a>
-                    <p class="product_ref_kind">{{ $productItem->brName }}</p>
-                    <span class="product_ref_name">{{ $productItem->pdName }}</span>
-                    <div class="product_font_price">
-                        <b>{{ $productItem->sellprice }}</b>
-                        {{-- <del class="product_font_price_discount">2.499.000 đ</del> --}}
+            @foreach ($productListB as $productItem)
+            <div class="product-item">
+                <a href="#" class="inner">
+                    <div class="product_info product_highlight">
+                        {{-- <img src="{{ $productItem->img_main }}"> --}}
+                        <div class="thumb">
+                            <img src="{{ asset('images/products/'.$productItem->img_main.'') }}" alt="{{ $productItem->name }}">
+                            <b class="product_image_discount">-{{ $productItem->discount }}%</b>
+                        </div>
+                        <div class="item-content">
+                            
+                            <p class="product_ref_kind">{{ $productItem->brand->name }}</p>
+                            <p class="product_ref_name">{{ $productItem->name }}</p>
+                            <div class="product_font_price">
+                                <b>{{ $productItem->sellprice }}</b>
+                                {{-- <del class="product_font_price_discount">2.499.000 đ</del> --}}
+                            </div>
+                            <form method="POST" action="{{route('addToCart')}}" class="add-to-cart-form">
+                                @csrf
+                                    <input type="hidden" name="product_id" value={{$productItem->id_product}}/>
+                                    <input type="hidden" name="quantity" value="1"/>
+                                    <button class="product_addToCard" type="submit">
+                                        <span class="product_addToCard_font">THÊM VÀO GIỎ</span>
+                                    </button>
+                            </form>
+                        </div>
                     </div>
-                </div>
-            </a>
+                </a>
+            </div>
             @endforeach
 
             {{-- Không discount --}}
-            <a href="#">
-                <div class="product_info product_highlight">
-                        <img  alt="Standup image of Ultra-Complication Universelle (RD#4)" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fh%2Fe%2Fherbert.png&w=640&q=75">
-                        <a class="product_addToCard" href="#" target="_self">
-                            <span class="product_addToCard_font">THÊM VÀO GIỎ</span>
-                        </a>
-                        <p class="product_ref_kind">KABHMIR</p>
-                        <span class="product_ref_name">CALM</span>
-                    <div class="product_font_price">
-                        <b>2.124.000 đ</b>
-                    </div>
-                </div>
-            </a>
+          
             {{-- <a href="#">
                 <div class="product_info product_highlight">
                         <img  alt="Standup image of Ultra-Complication Universelle (RD#4)" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fh%2Fe%2Fheinz_1.png&w=640&q=75">
@@ -132,31 +143,34 @@
     <div class="product_wrapper">
         <div class="product_top">
             @foreach ($productListW as $productItem)    
-                <div class="product_info product_highlight">
-                    <img src="{{ asset('images/products/'.$productItem->img_main.'') }}" alt="{{ $productItem->name }}">
-                    <b class="product_image_discount">-{{ $productItem->discount }}%</b>
-                    @if(session()->has('user_session'))
-                        <form method="POST" action="{{route('addToCart')}}" class="add-to-cart-form">
-                            @csrf
-                                <input type="hidden" name="product_id" value={{$productItem->id_product}}/>
-                                <input type="hidden" name="quantity" value="1"/>
-                                <button class="product_addToCard" type="submit">
-                                    <span class="product_addToCard_font">THÊM VÀO GIỎ</span>
-                                </button>
-                        </form>
-                    @else
-                        <a class="product_addToCard" href="#" target="_self">
-                            <span class="product_addToCard_font">THÊM VÀO GIỎ</span>
-                        </a>
-                    @endif 
-                  
-                    <p class="product_ref_kind">{{ $productItem->brName }}</p>
-                    <span class="product_ref_name">{{ $productItem->pdName }}</span>
-                    <div class="product_font_price">
-                        <b>{{ $productItem->sellprice }}</b>
-                        <del class="product_font_price_discount">2.499.000 đ</del>
+            <div class="product-item">
+                <a href="#" class="inner">
+                    <div class="product_info product_highlight">
+                        {{-- <img src="{{ $productItem->img_main }}"> --}}
+                        <div class="thumb">
+                            <img src="{{ asset('images/products/'.$productItem->img_main.'') }}" alt="{{ $productItem->name }}">
+                            <b class="product_image_discount">-{{ $productItem->discount }}%</b>
+                        </div>
+                        <div class="item-content">
+                            
+                            <p class="product_ref_kind">{{ $productItem->brand->name }}</p>
+                            <p class="product_ref_name">{{ $productItem->name }}</p>
+                            <div class="product_font_price">
+                                <b>{{ $productItem->sellprice }}</b>
+                                {{-- <del class="product_font_price_discount">2.499.000 đ</del> --}}
+                            </div>
+                            <form method="POST" action="{{route('addToCart')}}" class="add-to-cart-form">
+                                @csrf
+                                    <input type="hidden" name="product_id" value={{$productItem->id_product}}/>
+                                    <input type="hidden" name="quantity" value="1"/>
+                                    <button class="product_addToCard" type="submit">
+                                        <span class="product_addToCard_font">THÊM VÀO GIỎ</span>
+                                    </button>
+                            </form>
+                        </div>
                     </div>
-                </div>
+                </a>
+            </div>
          
             @endforeach
         </div>

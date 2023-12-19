@@ -25,7 +25,26 @@
                 <td>{{ $item->location }}</td>
                 <td>{{ $item->phone }}</td>
                 <td>{{ $item->total_order }}</td>
-                <td>{{ $item->status }}</td>
+                <td>
+                
+                    @if ($item->status == 1)
+                        <p class="status pending">Chờ xác nhận</p>
+                    
+                    @endif
+
+                    @if ($item->status == 2)
+                        <p class="status info">Đơn hàng đang xử lý</p>
+                    @endif
+
+                    @if ($item->status == 3)
+                        <p class="status completed">Thành công</p>
+                    @endif
+
+                    @if ($item->status == 4)
+                        <p class="status cancel">Đơn hàng đã huỷ</p>
+                    @endif
+
+                </td>
                 <td>{{ $item->day }}</td>
                 <td>{{ $item->note }}</td>
                 <td>

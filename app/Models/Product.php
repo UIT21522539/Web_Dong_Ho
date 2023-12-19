@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use DB;
 
 use App\Http\Requests\ProductRequest;
+use App\Models\Brand;
 
 class Product extends Model
 {
@@ -36,6 +37,11 @@ class Product extends Model
 
     public $timestamps = false;
     
+    public function brand(){
+        return $this->belongsTo(Brand::class, 'id_brand');
+    }
+
+
     public function getAllProduct(){
         $product = DB::select("SELECT * FROM product");
         return $product;

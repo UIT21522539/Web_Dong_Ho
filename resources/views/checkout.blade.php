@@ -1,188 +1,194 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+
+    @push('styles')
     <link rel="stylesheet" href="{{ asset('assets/css/User/checkout.css') }}">
-    <title>Checkout</title>
-</head>
-<body>
-    <div class="checkout">
-        <div class="customer-info">
-            <div class="customer-info-header">
-                <img src="{{ asset('assets/img/User/layouts/curnonlogo.svg') }}">
-                <h1>THÔNG TIN KHÁCH HÀNG</h1>
-            </div>
-
-            <div class="customer-info-input">
-                <form>
-                    <table>
-                        <tr>
-                            <td colspan="2">                
-                                <input style="width: 90%;"type="text" placeholder="Email">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <input type="text" placeholder="Họ tên">
-                            </td>
-                            <td>
-                                <input type="text" placeholder="Số điện thoại">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
-                                <input style="width: 90%" type="text" placeholder="Địa chỉ nhận hàng">
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>
-                                <select id="city" name="city">
-                                    <option value="hcm">Hồ Chí Minh</option>
-                                    <option value="hn">Hà Nội</option>
-                                    <option value="vt">Vũng Tàu</option>
-                                    <option value="dn">Đà Nẵng</option>
-                                </select>
-                            </td>
-                            <td>
-                                <select id="city" name="city">
-                                    <option value="hcm">Hồ Chí Minh</option>
-                                    <option value="hn">Hà Nội</option>
-                                    <option value="vt">Vũng Tàu</option>
-                                    <option value="dn">Đà Nẵng</option>
-                                </select>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2">
-                                <textarea rows="10" cols="72" placeholder="Nhập ghi chú nếu cần"></textarea>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td colspan="2"><p class="info-remind">Phương thức vận chuyển là <span style="color:rgba(0, 188, 38, 0.645)">FREESHIP</span> với đơn hàng từ 700.000đ</p></td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" ><input style="width: 40%" type="button" value="THANH TOÁN NGAY"></td>
-                        </tr>
-                    </table>
-                </form>
-            </div>
-        </div>
-
-        <div class="order-bg">
-            <div class="order">
-                <div class="order-header">
-                    <h1>ĐƠN HÀNG</h1> 
-                </div>
-                <hr>
-                <div class="order-update">
-                    <a  href="#" onclick="toggleProduct()">Sửa</a>
-                </div>
-                <div class="show-product-close">
-                    <script>
-                        deleteProduct(0);
-                    </script>
-                </div>
-                <div class="order-product">
+@endpush
+    @extends('layouts.app')
+    @section('content')
+    <div class="checkout-container ">
+        <form method="POST" action="{{route("user.makeOrder")}}">
+            @csrf
+            <div class="row">
+                <div class="customer-info col">
                     <div>
-                        <button onclick="deleteProduct(0)" style="display: none;" class="showBTN">×</button>
-                    </div>
-                    <img width="84px" height="84px" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fh%2Fe%2Fherbert.png&w=640&q=75">
-                    <div class="pd02">
-                        <p style="margin-bottom: 3%">HERBERT</p>
-                        <p style="margin-bottom: 32%">40MM</p>
-                        <p>Qty: 1</p>
-                    </div>
-                   <p style="margin-left: 50%; margin-top: 4%; font-size: 18px"><b>2.499.000 ₫</b></p>
-                </div>
-                <div class="show-product-close">
-                    <script>
-                        deleteProduct(1);
-                    </script>
-                </div>
-                <div class="order-product">
-                    <div>
-                        <button onclick="deleteProduct(1)" style="display: none;" class="showBTN">×</button>
-                    </div>
-                    <img width="84px" height="84px" src="https://shop.curnonwatch.com/media/catalog/product/cache/d96eb53c23516f6ca600411b8495131f/b/x/bx.swank.png">
-                    <div class="pd02">
-                        <p style="margin-bottom: 3%">HERBERT</p>
-                        <p style="margin-bottom: 32%">40MM</p>
-                        <p>Qty: 1</p>
-                    </div>
-                   <p style="margin-left: 50%; margin-top: 4%; font-size: 18px"><b>2.499.000 ₫</b></p>
-                </div>
-                <div class="show-product-close">
-                    <script>
-                        deleteProduct(2);
-                    </script>
-                </div>
-                <div class="order-product">
-                    <div>
-                        <button onclick="deleteProduct(2)" style="display: none;" class="showBTN">×</button>
-                    </div>
-                    <img width="84px" height="84px" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fh%2Fe%2Fherbert.png&w=640&q=75">
-                    <div class="pd02">
-                        <p style="margin-bottom: 3%">HERBERT</p>
-                        <p style="margin-bottom: 32%">40MM</p>
-                        <p>Qty: 1</p>
-                    </div>
-                   <p style="margin-left: 50%; margin-top: 4%; font-size: 18px"><b>2.499.000 ₫</b></p>
-                </div>
-                <hr style="margin-top: 6%; margin-bottom: 5%">
-                <div class="bill">
-                    <div class="bill-total">
-                        <p style="display: flex;font-size: 18px; margin-bottom: 12px">Thành tiền</p>
-                        <p><b style="right:0; margin-left: 400px" > 4.998.000 ₫</b></p>
-                    </div>
-                    <div class="bill-shipped">
-                        <p>Phí ship</p>
-                        <p><b style="right:0; margin-left: 486px" > 0 ₫</b></p>
-                    </div>
-                    <hr style="margin-top: 6%; margin-bottom: 5%">
-                </div>
-                <div class="order-product-sum">
-                    <p style="font-size: 20px">TỔNG:</p>
-                    <p><h1 style="margin-left: 370px">4.998.000 ₫</h1></p>
-                 </div>
-        </div>
-            
-        </div>
-    </div>
-
-    <script>
-        function toggleProduct(){
-            var divTables = document.getElementsByClassName("showBTN");
-            for (var i = 0; i < divTables.length; i++) {
-                divTables[i].style.display = (divTables[i].style.display === 'none') ? '' : 'none';
-        }
-        }
-
-        function deleteProduct(productIndex) {
-            var divTables = document.getElementsByClassName('show-product-close');
-            var html = `<div class="product-close">
-                        <h3>Đừng làm thế, xin bạn đấy!</h3>
-                            <div>
-                                <button class="bt01" onclick="turnback(${productIndex})">QUAY LẠI</button>
-                                <button class="bt02">XOÁ SẢN PHẨM</button>
+                        <div class="customer-header customer-info-header">
+                            <h1 class="title">THÔNG TIN KHÁCH HÀNG</h1>
+                        </div>
+                        <div class="customer-info-input">
+                            <div class="row">
+                                <div class="col form-control">
+                                    <label>Họ</label>
+                                    <div class="input">
+                                        <input type="text" name="last_name" placeholder="Họ">
+                                        @if($errors->has('last_name'))
+                                            <p class="text-xs py-2 text-red-500">{{ $errors->first('last_name') }}</p>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col form-control">
+                                    <label>Tên đệm và tên</label>
+                                    <div class="input">
+                                        <input type="text" name="first_name" placeholder="Tên đệm và tên">
+                                        @if($errors->has('first_name'))
+                                            <p class="text-xs py-2 text-red-500">{{ $errors->first('first_name') }}</p>
+                                        @endif
+                                    </div>
+                                </div>
                             </div>
-                        </div>`
-            for (var i = 0; i < divTables.length; i++) {
-                if (i === productIndex) {
-                    divTables[i].innerHTML = html;
-                }
-            }
-        }
+                            <div class="row">
+                                <div class="col form-control">
+                                    <label>Địa chỉ email</label>
+                                    <div class="input">
+                                        @if(session()->has('user_session'))
+                                            <input type="email" name="email" disabled placeholder="Email" value="{{session('user_session')->email}}">
+                                        @else 
+                                            <input type="email" name="email" placeholder="Email" value="">
+                                        @endif
+                                        @if($errors->has('email'))
+                                            <p class="text-xs py-2 text-red-500">{{ $errors->first('email') }}</p>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="col form-control">
+                                    <label>Số điện thoại</label>
+                                    <div class="input">
+                                        <input type="text" name="phone" placeholder="Số điện thoại">
+                                        @if($errors->has('phone'))
+                                            <p class="text-xs py-2 text-red-500">{{ $errors->first('phone') }}</p>
+                                        @endif
+                                    </div>
+                                </div>
 
-        function turnback(productIndex){
-            var divTables = document.getElementsByClassName('product-close');
-            for (var i = 0; i < divTables.length; i++) {
-                if (i === productIndex) {
-                    divTables[i].style.display = 'none';
-                }
-            }
-        }
-    </script>
-</body>
-</html>
+                            </div>
+                                <div class="form-control">
+                                    <label>Thành phố</label>
+                                    <div class="input">
+                                        <input type="text" name="location" placeholder="Thành phố">
+                                        @if($errors->has('location'))
+                                            <p class="text-xs py-2 text-red-500">{{ $errors->first('location') }}</p>
+                                        @endif
+                                    </div>
+                                </div>
+                                <div class="form-control">
+                                    <label>Ghi chú</label>
+                                    <div class="input">
+                                        <textarea rows="5" cols="72" name="note" placeholder="Nhập ghi chú nếu cần"></textarea>
+                                        @if($errors->has('note'))
+                                            <p class="text-xs py-2 text-red-500">{{ $errors->first('note') }}</p>
+                                        @endif
+                                    </div>
+                                </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="order-bg col">
+                    <div class="order">
+                        <div class="customer-header order-header">
+                            <h1 class="title">ĐƠN HÀNG</h1> 
+                        </div>
+                        @if (session('error'))
+                            <div class="text-xs text-red-500"><p>{{ session('error') }}</p></div>
+                        @endif
+                        <div class="order-items">
+                                @php
+                        
+                                $isShow = true;
+                                $total = 0;
+                            if(session()->has('cart')){
+                                    $cart = session('cart');
+                                    if(count($cart['items']) == 0){
+                                        $isShow = false;
+                                    }
+                            }else{
+                                $isShow = false;
+                            }
+                            @endphp
+                
+                            @if($isShow)
+                                <table class="table-order">
+                                    <thead>
+                                        <tr>
+                                            <td colspan="2">Sản phẩm</td>
+                                            <td>Số lượng</td>
+                                            <td>Giá tiền</td>
+                                            <td>Tạm tính</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (session('cart')['items'] as $cart)
+                                            <tr>
+                                                <td>
+                                                    <div>
+                                                        <img src="{{asset('images/products/'.$cart['image'].'')}}" alt="product" width="60" height="60"/>
+                                                    </div>
+                                                </td>
+                                                <td><p>{{ $cart['name']}}</p>
+                                                    <input type="hidden" name="items[{{$cart['id']}}][id]" value="{{$cart['id']}}"/>
+                                                </td>
+                                                <td><p>{{ $cart['quantity']}}</p> <input type="hidden" name="items[{{$cart['id']}}][quantity]" value="{{$cart['quantity']}}"/></td>
+                                                <td>{{ $cart['price']}}</td>
+                                                <td>{{ $cart['price'] * $cart['quantity']}}</td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                    <tfoot>
+                                        <tr>
+                                        
+                                            <td colspan="2">Tổng tiền</td>
+                                                <td colspan="3">{{ number_format(session('cart')['total'], 0, ',', '.')}} VND</td>
+                                        </tr>
+                                    </tfoot>
+                                </table>
+                                
+                            @else
+            
+                                <div class="cart-empty">Chưa có sản phẩm nào trong giỏ hàng</div>
+                            
+                            @endif
+                        </div>
+                        <div class="actions">
+                            <button type="submit" class="btn-order">Đặt hàng</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </form>
+  
+    </div>
+@push('scripts')
+<script>
+    // function toggleProduct(){
+    //     var divTables = document.getElementsByClassName("showBTN");
+    //     for (var i = 0; i < divTables.length; i++) {
+    //         divTables[i].style.display = (divTables[i].style.display === 'none') ? '' : 'none';
+    // }
+    // }
+
+    // function deleteProduct(productIndex) {
+    //     var divTables = document.getElementsByClassName('show-product-close');
+    //     var html = `<div class="product-close">
+    //                 <h3>Đừng làm thế, xin bạn đấy!</h3>
+    //                     <div>
+    //                         <button class="bt01" onclick="turnback(${productIndex})">QUAY LẠI</button>
+    //                         <button class="bt02">XOÁ SẢN PHẨM</button>
+    //                     </div>
+    //                 </div>`
+    //     for (var i = 0; i < divTables.length; i++) {
+    //         if (i === productIndex) {
+    //             divTables[i].innerHTML = html;
+    //         }
+    //     }
+    // }
+
+    // function turnback(productIndex){
+    //     var divTables = document.getElementsByClassName('product-close');
+    //     for (var i = 0; i < divTables.length; i++) {
+    //         if (i === productIndex) {
+    //             divTables[i].style.display = 'none';
+    //         }
+    //     }
+    // }
+</script>
+
+@endpush
+  

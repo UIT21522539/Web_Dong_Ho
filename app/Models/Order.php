@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 use DB;
 
 use App\Http\Requests\OrderRequest;
+use App\Models\CT_Order;
 
 class Order extends Model
 {
@@ -16,6 +17,24 @@ class Order extends Model
     protected $table = 'order';
 
     protected $primaryKey = 'id_order';
+
+    public $timestamps = false;
+
+    protected $fillable = [
+        'id_user',
+        'email',
+        'last_name',
+        'first_name',
+        'phone',
+        'location',
+        'note',
+        'status',
+        'total_order'
+    ];
+
+    public function orderDetail(){
+        return $this->hasMany(CT_Order::class, 'id_order');
+    }
 
 
     public function getAllOrder(){

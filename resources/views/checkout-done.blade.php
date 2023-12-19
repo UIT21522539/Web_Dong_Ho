@@ -1,20 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    @push('styles')
     <link rel="stylesheet" href="{{ asset('assets/css/User/checkout-done.css') }}">
-    <title>Checkout Done</title>
-</head>
-<body>
-    <div class="complete">
+@endpush
+    @extends('layouts.app')
+    @section('content')
+    <div class="complete-page">
         <div class="complete-info">
+          {{-- {{dd($order->orderDetail)}}  --}}
+    
             <div class="complete-info-header">
                 <img style=" margin-bottom: 5%;" src="{{ asset('assets/img/User/layouts/curnonlogo.svg') }}"><br>
                 <img width="92px" height="92px" src="{{ asset('assets/img/User/checkout-done/complete.png') }}" alt="">
                 <h1>ĐẶT HÀNG THÀNH CÔNG</h1>
-                <p class="p01">Mã đơn hàng: <span><b>000028674</b></span></p>
+                <p class="p01">Mã đơn hàng: <span><b>{{$order->id_order}}</b></span></p>
                 <p class="p02">Thông tin cụ thể về đơn hàng đã được gửi vào e-mail của bạn.</p>
             </div>
 
@@ -26,68 +24,34 @@
                 <p>Chi nhánh: <span><b>Hà Nội</b></span></p></p>
             </div>  
 
-            <div class="complete-info-banking">
+            <div class="complete-info-customer">
                 <h2>THÔNG TIN KHÁCH HÀNG</h2>
-                <p>Tên người mua: <span><b>Nguyễn Sơn Hà</b></span></p></p>
-                <p>Số điện thoại: <span><b>1234556788</b></span></p></p>
-                <p>Địa chỉ nhận hàng: <span><b>Ký túc xá khu A ĐHQG, Hồ Chí Minh</b></span></p></p>
+                <p>Tên người mua: <span><b>{{$order->last_name .' ' . $order->first_name}}</b></span></p></p>
+                <p>Số điện thoại: <span><b>{{$order->phone}}</b></span></p></p>
+                <p>Thành phố: <span><b>{{$order->location}}</b></span></p></p>
+                <div>
+                    <p>Note</p>
+                    <p>{{$order->note}}</p>
+                </div>
             </div>  
-
-            <button class="button-49" role="button">TIẾP TỤC MUA SẮM</button>
         </div>
-
-        <div class="order-bg">
-            <div class="order">
-                <div class="order-header">
-                    <h1>ĐƠN HÀNG</h1> 
-                </div>
-                <hr>
-                <div class="order-product">
-                    <img width="84px" height="84px" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fh%2Fe%2Fherbert.png&w=640&q=75">
-                    <div class="pd02">
-                        <p style="margin-bottom: 3%">HERBERT</p>
-                        <p style="margin-bottom: 32%">40MM</p>
-                        <p>Qty: 1</p>
-                    </div>
-                   <p style="margin-left: 50%; margin-top: 4%; font-size: 18px"><b>2.499.000 ₫</b></p>
-                </div>
-                <div class="order-product">
-                    <img width="84px" height="84px" src="https://shop.curnonwatch.com/media/catalog/product/cache/d96eb53c23516f6ca600411b8495131f/b/x/bx.swank.png">
-                    <div class="pd02">
-                        <p style="margin-bottom: 3%">HERBERT</p>
-                        <p style="margin-bottom: 32%">40MM</p>
-                        <p>Qty: 1</p>
-                    </div>
-                   <p style="margin-left: 50%; margin-top: 4%; font-size: 18px"><b>2.499.000 ₫</b></p>
-                </div>
-                <div class="order-product">
-                    <img width="84px" height="84px" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fh%2Fe%2Fherbert.png&w=640&q=75">
-                    <div class="pd02">
-                        <p style="margin-bottom: 3%">HERBERT</p>
-                        <p style="margin-bottom: 32%">40MM</p>
-                        <p>Qty: 1</p>
-                    </div>
-                   <p style="margin-left: 50%; margin-top: 4%; font-size: 18px"><b>2.499.000 ₫</b></p>
-                </div>
-                <hr style="margin-top: 6%; margin-bottom: 5%">
-                <div class="bill">
-                    <div class="bill-total">
-                        <p style="display: flex;font-size: 18px; margin-bottom: 12px">Thành tiền</p>
-                        <p><b style="right:0; margin-left: 400px" > 4.998.000 ₫</b></p>
-                    </div>
-                    <div class="bill-shipped">
-                        <p>Phí ship</p>
-                        <p><b style="right:0; margin-left: 486px" > 0 ₫</b></p>
-                    </div>
-                    <hr style="margin-top: 6%; margin-bottom: 5%">
-                </div>
-                <div class="order-product-sum">
-                    <p style="font-size: 20px">TỔNG:</p>
-                    <p><h1 style="margin-left: 370px">4.998.000 ₫</h1></p>
-                 </div>
-        </div>
+        <div class="orders">
+            <div class="order-header">
+                <h1>ĐƠN HÀNG</h1> 
+            </div>
             
+            <div class="order-lists">
+                @foreach ($order->orderDetail as $item)
+                <div class="order-item">
+                    <div class="thumb"></div>
+                    <div class="pd02">
+                    <p>{{$item->product->name}}</p> 
+                        <p>Qty: {{$item->qty}}</p>
+                    </div>
+                <p><b>{{ number_format($item->sellprice, 0, ',', '.')}} VND</b></p>
+                </div>
+                @endforeach
+            </div>
         </div>
     </div>
-</body>
-</html>
+@endsection

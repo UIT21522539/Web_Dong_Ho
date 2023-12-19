@@ -426,3 +426,37 @@ td:last-child {
     border: 1px solid #0e28b8;
     color: white;
 }
+.status {
+    font-size: 13px;
+    padding: 3px 5px;
+    border-radius: 3px;
+    width: fit-content;
+}
+.pending {
+    border: 1px solid green;
+    color: green;
+}
+.cancel {
+    border: 1px solid red;
+    color: red;
+}
+.info {
+    border: 1px solid rgb(255, 170, 0);
+    color: rgb(255, 170, 0);
+}
+.completed {
+    border: 1px solid rgb(10, 114, 212);
+    color: rgb(10, 114, 212);
+}
+.btn-cancel {
+    background-color: red;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    padding: 5px 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+.buttons {
+    padding: 10px 0;
+}

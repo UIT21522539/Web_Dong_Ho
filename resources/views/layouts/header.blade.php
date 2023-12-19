@@ -48,12 +48,22 @@
                     </li>
                     <li class="cart">
                         <div>
-                            <a href="#" onclick="openNav()">
+                            @if(session()->has('user_session'))
+                            <a href="{{route('getCart')}}" class="item-header-user">
                                 <div class="cart-align">
                                     <p style="font-weight: lighter">GIỎ HÀNG</p>
                                     <img width="24px" height="24px" src="{{ asset('assets/img/User/layouts/cart.png') }}">
                                 </div>
                             </a>
+                        @else
+                        <a href="#" onclick="openNav()">
+                            <div class="cart-align">
+                                <p style="font-weight: lighter">GIỎ HÀNG</p>
+                                <img width="24px" height="24px" src="{{ asset('assets/img/User/layouts/cart.png') }}">
+                            </div>
+                        </a>
+                        @endif
+
                         </div>
                     </li>
                     <li class="user">
@@ -70,8 +80,6 @@
                                     <span>Đăng nhập</span>
                                 </a>
                                 @endif
-                                
-        
                          
                         </div>
                     </li>

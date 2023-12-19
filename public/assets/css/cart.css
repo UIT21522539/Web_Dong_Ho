@@ -1,0 +1,21 @@
+.cart-layout {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 200px 0;
+}
+.table-cart {
+    border-collapse: collapse;
+}
+.table-cart tr td,
+.table-cart tr th {
+    padding: 10px 20px;
+    border: 1px solid #f1f1f1;
+}
+.mb-3 {
+    margin-bottom: 30px;
+}
+
+.total-amount {
+    font-weight: bold;
+}

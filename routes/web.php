@@ -10,6 +10,7 @@ use App\Http\Controllers\BrandController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CustomerOrderController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,8 +34,9 @@ Route::prefix('admin')->group(function () {
     Route::get('/orders', [OrderController::class, 'orderList'])->name('orders.list');
         //Thông tin chi tiết đơn hàng
     Route::get('/orders/detail/{id}', [OrderController::class, 'orderDetail'])->name('orders.detail');
+    Route::post('/orders/detail/{id}', [OrderController::class, 'updateOrder'])->name('orders.update.detail');
         //Sửa trạng thái sang xác nhận
-    Route::get('/orders/edit/{id}', [OrderController::class, 'updateOrder'])->name('orders.update');
+    // Route::get('/orders/edit/{id}', [OrderController::class, 'updateOrder'])->name('orders.update');
         //Sửa trạng thái sang đã hủy
     Route::get('/orders/delete/{id}', [OrderController::class, 'deleteOrder'])->name('orders.delete');
     
@@ -101,13 +103,7 @@ Route::get('/aboutMe', function () {
     return view('aboutMe');
 });
 
-Route::get('/checkout', function () {
-    return view('checkout');
-});
 
-Route::get('/checkout-done', function () {
-    return view('checkout-done');
-});
 
 
 
@@ -119,7 +115,19 @@ Route::group(['middleware' => 'customer'], function () {
     Route::get('/order', [CustomerController::class, "getOrderList"])->name('user.orders');
     Route::get('/profile', [CustomerController::class, "getUserProfile"])->name('user.profile');
     Route::post('/profile', [CustomerController::class, "updateUserProfile"])->name('user.update.profile');
+
+    Route::get('/checkout', [CustomerOrderController::class, 'showCheckout'])->name('user.checkout');
+    Route::post('/checkout', [CustomerOrderController::class, 'makeOrder'])->name('user.makeOrder');
+
+    Route::post('/customer-update-order', [CustomerOrderController::class, 'updateStatusOrder'])->name('user.order.updateStatus');
+
+    Route::get('/checkout-done', [CustomerOrderController::class, 'confirmOrder'])->name('user.confirmOrder');
+
+
+    Route::get('/cart', [CartController::class, "getCart"])->name('getCart');
     Route::post('/cart', [CartController::class, "addToCart"])->name('addToCart');
+    Route::delete('/cart/{id}', [CartController::class, "deleteCart"])->name('deleteCart');
+    Route::post('/clearCart', [CartController::class, "clearCart"])->name('clearCart');
 
 });
 

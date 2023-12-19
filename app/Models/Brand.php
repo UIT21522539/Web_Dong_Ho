@@ -8,6 +8,11 @@ use DB;
 class Brand extends Model
 {
     use HasFactory;
+
+    protected $table = 'brand';
+
+    protected $primaryKey = 'id_brand';
+
     public function getAllBrand(){
         $brand = DB::select("SELECT * FROM brand");
         return $brand;

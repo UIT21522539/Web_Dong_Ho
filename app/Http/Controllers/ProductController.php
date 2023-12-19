@@ -30,12 +30,14 @@ class ProductController extends Controller
 
         $productListB = Product::where([
             ['gender','nam'],
-        ])->join('brand', 'product.id_brand', '=', 'brand.id_brand')->select('product.*', 'brand.name')->limit(3)->get();
+            ['status',1],
+        ])->join('brand', 'product.id_brand', '=', 'brand.id_brand')->select('product.*')->limit(3)->get();
 
 
         $productListW = Product::where([
             ['gender','nữ'],
-        ])->join('brand', 'product.id_brand', '=', 'brand.id_brand')->select('product.*', 'brand.name')->limit(3)->get();
+            ['status',1],
+        ])->join('brand', 'product.id_brand', '=', 'brand.id_brand')->select('product.*')->limit(3)->get();
 
 
         // $usersDetails = DB::table('users')

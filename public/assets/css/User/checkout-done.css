@@ -1,207 +1,31 @@
-*{
-    margin: 0;
-    padding: 0;
+.complete-page {
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
 }
-.complete{
-    display: flex;
-}
-.complete-info{
-    margin-top: 4%;
-    width: 50%;
-}
-.complete-info-header{
+.complete-info-header {
     text-align: center;
+    margin-bottom: 60px;
 }
-.complete-info-header img{
-    margin-bottom: 3%;
+.order-lists {
 }
-.complete-info-header h1{
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 22px;
-    font-weight: 600;
-    margin-bottom: 5%;
+.order-item {
+    padding: 10px 0;
 }
-.complete-info-header .p01{
-    font-size: 18px;
-    font-weight: 200;
-    font-family: Arial, Helvetica, sans-serif;
-    margin-bottom: 4%;
+.complete-info-banking {
+    text-align: center;
+    margin-bottom: 30px;
 }
-.complete-info-header .p02{
-    font-size: 18px;
-    font-weight: 100;
-    margin-bottom: 4%;
+.complete-info-customer {
+    text-align: center;
+    margin-bottom: 30px;
 }
-.complete-info-banking{
-    width: 70%;
-    padding: 30px;
+
+.orders {
+    border: 1px solid #cdcdcd;
+    max-width: 500px;
     margin-left: auto;
     margin-right: auto;
-    margin-bottom: 4%;
-
-    border-style:solid;
-    border-width: 1px;
-    border-color: gray  ;
+    margin-bottom: 60px;
+    padding: 20px;
 }
-.complete-info-banking h2{
-    font-size: 16px;
-    letter-spacing: 1px;
-    font-weight: 200;
-    margin-bottom: 3%;
-}
-.complete-info-banking p{
-    letter-spacing: 1px;
-    font-size: 18px;
-    font-weight: 200;
-    margin-bottom: 3%;
-}
-.button-49,
-.button-49:after {
-    cursor: pointer;
-    margin-left:auto;
-    display: block;
-    margin-right: auto;
-    width: 550px;
-    height: 76px;
-    font-size: 20px;
-    font-weight: 600;
-    background: linear-gradient(45deg, transparent 5%, #6ff509 5%);
-    border: 0;
-    color: #fff;
-    letter-spacing: 1px;
-    box-shadow: 6px 0px 0px #00E6F6;
-    outline: transparent;
-    position: relative;
-    user-select: none;
-    -webkit-user-select: none;
-    touch-action: manipulation;
-}
-.button-49:after {
-    --slice-0: inset(50% 50% 50% 50%);
-    --slice-1: inset(80% -6px 0 0);
-    --slice-2: inset(50% -6px 30% 0);
-    --slice-3: inset(10% -6px 85% 0);
-    --slice-4: inset(40% -6px 43% 0);
-    --slice-5: inset(80% -6px 5% 0);
-    
-    content: 'ALTERNATE TEXT';
-    display: block;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background: linear-gradient(45deg, transparent 3%, #00E6F6 3%, #00E6F6 5%, #6ff509 5%);
-    text-shadow: -3px -3px 0px #F8F005, 3px 3px 0px #00E6F6;
-    clip-path: var(--slice-0);
-}
-.button-49:hover:after {
-    animation: 1s glitch;
-    animation-timing-function: steps(2, end);
-}
-@keyframes glitch {
-    0% {
-        clip-path: var(--slice-1);
-        transform: translate(-20px, -10px);
-    }
-    10% {
-        clip-path: var(--slice-3);
-        transform: translate(10px, 10px);
-    }
-    20% {
-        clip-path: var(--slice-1);
-        transform: translate(-10px, 10px);
-    }
-    30% {
-        clip-path: var(--slice-3);
-        transform: translate(0px, 5px);
-    }
-    40% {
-        clip-path: var(--slice-2);
-        transform: translate(-5px, 0px);
-    }
-    50% {
-        clip-path: var(--slice-3);
-        transform: translate(5px, 0px);
-    }
-    60% {
-        clip-path: var(--slice-4);
-        transform: translate(5px, 10px);
-    }
-    70% {
-        clip-path: var(--slice-2);
-        transform: translate(-10px, 10px);
-    }
-    80% {
-        clip-path: var(--slice-5);
-        transform: translate(20px, -10px);
-    }
-    90% {
-        clip-path: var(--slice-1);
-        transform: translate(-10px, 0px);
-    }
-    100% {
-        clip-path: var(--slice-1);
-        transform: translate(0);
-    }
-}
-
-@media (min-width: 768px) {
-    .button-49,
-    .button-49:after {
-        width: 250px;
-        height: 90px;
-        line-height: 88px;
-    }
-}
-
-/* Thông tin đơn hàng */
-.order-bg{
-    margin-top: 4%; 
-    width: 50%;
-}
-.order{
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-}
-.order-header h1{
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 22px;
-    font-weight: 600;
-    margin-bottom: 5%;
-}
-.order-product{
-    display: flex;
-    margin-top: 6%;
-}
-.order-product .pd02{
-    margin-left: 16px;
-}
-.bill-total{
-    display: flex;
-    margin-bottom: 1%;  
-    font-size: 18px;
-}
-.bill-shipped{
-    display: flex;
-    font-size: 18px;
-}
-.order-product-sum{
-    display: flex;
-    align-items: center;
-}
-.info-remind{
-    font-size: 16px;
-    letter-spacing: 1px;
-}
-input[type=button], input[type=submit], input[type=reset] {
-    background-color: #04AA6D;
-    border: none;
-    color: white;
-    font-weight: 600;
-    padding: 16px 32px;
-    text-decoration: none;
-    margin: 4px 2px;
-    cursor: pointer;
-  }
