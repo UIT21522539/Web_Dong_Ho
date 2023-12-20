@@ -55,6 +55,7 @@
         </div>
 
         <div class="order-bg">
+            @if(Session::has("Cart") != null)
             <div class="order">
                 <div class="order-header">
                     <h1>ĐƠN HÀNG</h1> 
@@ -63,8 +64,7 @@
                 <div class="order-update">
                     <a  href="#" onclick="toggleProduct()">Sửa</a>
                 </div>
-                <div style="display: none;">{{ $price = 0 }}</div>
-                @foreach ($user->cartProducts as $product)
+                @foreach (Session::get('Cart')->products as $item)
                 <div class="show-product-close">
                     <script>
                         deleteProduct(0);
@@ -74,13 +74,14 @@
                     <div>
                         <button onclick="deleteProduct(0)" style="display: none;" class="showBTN">×</button>
                     </div>
-                    <img width="84px" height="84px" src="{{ $product->img_main }}">
+                    <img width="84px" height="84px" src="{{ $item['productInfo']->img_main }}">
                     <div class="pd02">
-                        <p style="margin-bottom: 3%;">{{ $product->name }}</p>
-                        <div style="display: none"> {{ $price += $product->sellprice }}</div>
-                        <p style="margin-top: 10%">Qty: 1</p>
+                        <p style="margin-bottom: 3%;">{{ $item['productInfo']->name }}</p>
+                        <p style="margin-top: 10%">Qty:{{ $item["quanty"] }}</p>
                     </div>
-                   <p style=" margin-top: 2%; font-size: 18px; position: absolute; margin-left: 500px"><b>{{ $product->sellprice }} ₫</b></p>
+                    <p style="margin-top: 2%; font-size: 18px; position: absolute; margin-left: 500px">
+                        <b>{{ number_format($item['productInfo']->sellprice * $item["quanty"]) }} ₫</b>
+                    </p>
                 </div>
                 @endforeach
                 
@@ -88,7 +89,7 @@
                 <div class="bill">
                     <div class="bill-total">
                         <p style="display: flex;font-size: 18px; margin-bottom: 12px">Thành tiền</p>
-                        <p><b style="right:0; margin-left: 430px" > {{ $price }} ₫</b></p>
+                        <p><b style="right:0; margin-left: 430px" > {{ number_format(Session::get('Cart')->totalPrice) }} ₫</b></p>
                     </div>
                     <div class="bill-shipped">
                         <p>Phí ship</p>
@@ -98,9 +99,10 @@
                 </div>
                 <div class="order-product-sum">
                     <p style="font-size: 20px">TỔNG:</p>
-                    <p><h1 style="margin-left: 370px">{{ $price }} ₫</h1></p>
+                    <p><h1 style="margin-left: 370px">{{ number_format(Session::get('Cart')->totalPrice) }} ₫</h1></p>
                  </div>
         </div>
+    @endif
             
         </div>
     </div>

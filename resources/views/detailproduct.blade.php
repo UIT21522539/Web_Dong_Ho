@@ -19,7 +19,6 @@
 	<div class="detailproduct_container">
 		<div class="detailproduct_choose">
 			<div class="hinhTron" onclick="showImage(0)">
-<<<<<<< HEAD
 				<img src="{{ $productDetail->img_main }}">
 			</div>
 			<div class="hinhTron" onclick="showImage(1)">
@@ -31,25 +30,6 @@
 			<div class="hinhTron" onclick="showImage(3)">
 				<img src="{{ $productDetail->img3 }}">
 			</div>
-=======
-				{{-- <img src="{{ $productDetail->img1 }}"> --}}
-			</div>
-			<div class="hinhTron" onclick="showImage(1)">
-				{{-- <img src="{{ $productDetail->img2 }}"> --}}
-			</div>
-			<div class="hinhTron" onclick="showImage(2)">
-				{{-- <img src="{{ $productDetail->img3 }}"> --}}
-			</div>
-			{{-- <div class="hinhTron" onclick="showImage(3)">
-				<img src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fc%2Fa%2Fcalm_3.jpg&w=640&q=75">
-			</div>
-			<div class="hinhTron" onclick="showImage(4)">
-				<img src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fc%2Fa%2Fcalm.jpg.jpg&w=640&q=75">
-			</div>
-			<div class="hinhTron" onclick="showImage(5)">
-				<img src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fi%2Fm%2Fimg_1423.jpg&w=640&q=75">
-			</div> --}}
->>>>>>> 8b85670c9ef72a1765105d3e86a462e96caea23b
 		</div>
 		<div class="detailproduct_image">
 				<img id="mainImageDisplay" src="{{ $productDetail->img_main }}">
@@ -62,11 +42,7 @@
 					"{{ $productDetail->img_main }}",
 					"{{ $productDetail->img1 }}",
 					"{{ $productDetail->img2 }}",
-<<<<<<< HEAD
 					"{{ $productDetail->img3 }}",	
-=======
-					"{{ $productDetail->img3 }}"
->>>>>>> 8b85670c9ef72a1765105d3e86a462e96caea23b
 				];
 				// Display the selected image in the mainImageDisplay element
 				document.getElementById("mainImageDisplay").src = mainImages[index];
@@ -74,30 +50,16 @@
 		</script>
 		
 		<div class="detailproduct_info">
-<<<<<<< HEAD
 			<div class="detailproduct_kind"><p>{{$productDetail->name }}</p></div>
 			<div class="detailproduct_name">{{ $brandDetail->name }}</div>
 			<div class="detailproduct_font_price">
 				<b class="detailproduct_price">{{$productDetail->sellprice }} đ</b> 
 				<del class="detailproduct_delprice">2.499.000 đ</del><br>
-=======
-			<div class="detailproduct_kind"></div>
-			<div class="detailproduct_name">{{ $productDetail-> name }}</div>
-			<div class="detailproduct_font_price">
-				<b class="detailproduct_price">{{ $price}} đ</b> 
-				<del class="detailproduct_delprice">{{ $price}}đ</del><br>
->>>>>>> 8b85670c9ef72a1765105d3e86a462e96caea23b
 			</div>
 			<div class="detailproduct_situation">
 				<span>Tình trạng:  </span>
 				<span class="detailproduct_stocking">{{ $status }}</span>
-<<<<<<< HEAD
 				<button class="detailproduct_situation_size" >{{ $categoryDetail->name }}</button>
-=======
-				<img class="detailproduct_situation_line" src="{{ asset('assets/img/User/line.png') }}"> 
-				<i class="fa fa-ruler-vertical"></i>
-				<button class="detailproduct_situation_size" >Cỡ cổ tay </button>
->>>>>>> 8b85670c9ef72a1765105d3e86a462e96caea23b
 			</div>
 			<hr  width="90%" align="center" color="black" size="1px"/>
 			<div class="detailproduct_text_discount">
@@ -121,17 +83,8 @@
 					<button class="moreitem_add">+THÊM</button>
 				</div>
 			</div>
-			<button class="payment highlight" >Thanh Toán Ngay</button> <br>
-			{{-- <button class="addToCart">Thêm vào giỏ</button><br> --}}
-			<form action="/carts" method='POST'>
-				@csrf
-				<a class="product_addToCard" target="_self">
-					<span class="product_addToCard_font">
-						<input type="text" name='id' style="display: none;" value="{{ $productDetail->id_product }}">
-						<input type="submit" value="Thêm vào giỏ">
-					</span>
-				</a>
-			</form>
+			<button class="payment highlight">Thanh Toán Ngay</button> <br>
+			<button class="addToCart">Thêm vào giỏ</button><br>
 		</div>
 		
 	</div>
@@ -164,7 +117,7 @@
 		<hr>
 		<div class="info-tag">
 			<div style="display: none" id="description" class="tabcontent" >
-				<p>{{ $productDetail->description }}</p>
+				<p>Đồng hồ nam Curnon Colosseum Mortar - Thiết kế mạnh mẽ cho người trẻ Việt; Dây da, Kích thước mặt lớn 42mm, Chống nước đến 5ATM, Mặt kính Sapphire chống xước vượt trội...</p>
 			</div>
 			<div style="display: none" id="delivering" class="tabcontent" >
 				<h2>Phí vận chuyển:</h2>
@@ -201,40 +154,6 @@
           document.getElementById(cityName).style.display = "block";
           evt.currentTarget.className += " active";
         }
-</script>
-<script>
-	$(document).ready(function(){
-		var csrf = $('meta[name="csrf-token"]').attr('content');
-		console.log(csrf);
-
-		$(".product_addToCard").click(function(){
-			$.ajaxSetup({
-				headers: {
-					'X-CSRF-TOKEN': csrf
-				}
-			});
-			$.ajax({
-				method: 'POST',
-				url: '/carts',  
-				data: {'id': 4},
-				error:  function () {
-					windows.location = '/login'
-				},
-	
-			})
-		});
-	}); 
-</script>
-<script>
-	function showButton(){
-		var productbutton = document.getElementById("product-button");
-		productbutton.style.display="";
-	}
-	function hideButton(){
-		var productbutton = document.getElementById("product-button");
-		productbutton.style.display="none";
-	}
-
 </script>
 @endsection
 </body>

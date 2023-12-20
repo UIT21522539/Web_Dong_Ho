@@ -36,7 +36,7 @@ class ThanhToanController extends Controller
             CTOrder::create([
                 'id_order' =>$order->id_order,
                 'id_product' => $product->id_product,
-                'qty' => 1,
+                'qty' => $product->qty,
                 'sellprice' => $product->sellprice,
                 'total_item' => $product->sellprice 
             ]);

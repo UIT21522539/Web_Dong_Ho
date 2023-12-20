@@ -88,29 +88,25 @@ Route::prefix('admin')->group(function () {
 
 
 Route::get('/home', [ProductController::class, 'combinedHome'])->name('/users/home');
-<<<<<<< HEAD
 Route::get('/product', [ProductController::class, 'productList2'])->name('/users/product');
 
 Route::get('/blog', function () {
     return view('blog');
 });
 Route::get('/detailProduct/{id}', [ProductController::class, 'detailProduct'])->name('detailProduct');
-=======
-Route::get('/', [ProductController::class, 'combinedHome'])->name('users.home');
+// Route::get('/carts', [CartController::class, 'getProduct']);
+// // Theem gior hangf
+// Route::post('/carts', [CartController::class, 'addProduct'])->middleware('auth');
 
-Route::get('/blog', function () {
-    return view('blog');
-})-> name('blog');
->>>>>>> 8b85670c9ef72a1765105d3e86a462e96caea23b
-Route::get('/carts', [CartController::class, 'getProduct']);
-// Theem gior hangf
-Route::post('/carts', [CartController::class, 'addProduct'])->middleware('auth');
+Route::post('/Add-Cart/{id}', [CartController::class, 'AddCart'])->middleware('auth');
+Route::get('/Delete-Cart/{id}', [CartController::class, 'DeleteItemCart']);
+
 // login
 Route::post('/login', [AuthenticatedSessionController::class, 'store']);
 
 Route::get('/aboutMe', function () {
     return view('aboutMe');
-})-> name('aboutMe');
+});
 
 Route::get('/checkout', function () {
     return view('checkout');
@@ -123,28 +119,17 @@ Route::post('/ct_thanhtoan', [CT_ThanhToanController::class, 'paymentProcessed']
 
 Route::get('/user-info', function () {
     return view('user-info');
-})-> name('userinfo');
+});
 
 Route::get('/login', function () {
     return view('login');
 })->name('login');
+
 Route::get('/sign-up', function () {
     return view('sign-up');
 });
 
 Route::post('/thanhtoan', [ThanhToanController::class, 'paymentProcessing']);
-
-//Hiện thị về danh sách sản phẩm và thông tin sản phầm
-Route::get('/product/men', [ProductController::class, 'productMen'])->name('products.men');
-Route::get('/product/men/clock', [ProductController::class, 'productMen'])->name('products.men.clock');
-Route::get('/product/men/jewelry', [ProductController::class, 'productMen'])->name('products.men.jewelry');
-Route::get('/product/woman', [ProductController::class, 'productWoman'])->name('products.woman');
-Route::get('/product/woman/clock', [ProductController::class, 'productWoman'])->name('products.woman.clock');
-Route::get('/product/woman/jewelry', [ProductController::class, 'productWoman'])->name('products.woman.jewelry');
-Route::get('/product/detailproduct/{id}', [ProductController::class, 'productDetailUser'])->name('user.products.detail');
-
-
-
 
 
 

@@ -30,7 +30,7 @@ class ProductRequest extends FormRequest
             'pty_store'=> 'required|min:1',
             'discount'=> 'required|integer|min:5|max:50',
             'isdiscount' => 'required|in:0,1',
-            'status' => 'required|in:Đang bán,Ngừng bán',
+            'status' => 'required|in:Đang bán,Ngừng bán,Hết hàng',
             'img_main' => 'required|url',
             'img'=>'url'
         ];
