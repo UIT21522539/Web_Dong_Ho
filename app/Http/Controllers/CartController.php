@@ -29,20 +29,20 @@ class CartController extends Controller
         return back();
     }
 
-    public function getProduct(Request $request) {
-        if (!auth()->user()) {
-            return redirect('login');
-        }
-        $products = [];
+    // public function getProduct(Request $request) {
+    //     if (!auth()->user()) {
+    //         return redirect('login');
+    //     }
+    //     $products = [];
 
-        $id_user = auth()->user()->id_user;
-        $carts= Carts::where('id_user', $id_user)->get();
-        foreach ($carts as $cart) {
-            array_push($products, Product::find($cart->id_product));
-        }
-        return $products;
+    //     $id_user = auth()->user()->id_user;
+    //     $carts= Carts::where('id_user', $id_user)->get();
+    //     foreach ($carts as $cart) {
+    //         array_push($products, Product::find($cart->id_product));
+    //     }
+    //     return $products;
 
-    }
+    // }
 }
 
 
