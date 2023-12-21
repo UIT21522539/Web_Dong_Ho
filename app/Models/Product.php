@@ -41,6 +41,26 @@ class Product extends Model
             ");
         return $product;
     }
+
+    public function getAllProductMen(){
+        // Lấy danh sách id_product từ truy vấn ban đầu
+        $product = DB::select(
+            "SELECT *, product.name AS pdName, brand.name AS brName FROM product
+            INNER JOIN brand
+            ON product.id_brand = brand.id_brand
+            WHERE gender = 'nam'
+            ");
+        return $product;
+    } public function getAllProductWoman(){
+        // Lấy danh sách id_product từ truy vấn ban đầu
+        $product = DB::select(
+            "SELECT *, product.name AS pdName, brand.name AS brName FROM product
+            INNER JOIN brand
+            ON product.id_brand = brand.id_brand
+            WHERE gender = 'nữ'
+            ");
+        return $product;
+    }
     public function getCountProduct(){
         $productCount = DB::table('product')->count();
         return $productCount;

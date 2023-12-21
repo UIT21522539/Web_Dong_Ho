@@ -88,7 +88,9 @@ Route::prefix('admin')->group(function () {
 
 
 Route::get('/home', [ProductController::class, 'combinedHome'])->name('/users/home');
-Route::get('/product', [ProductController::class, 'productList2'])->name('/users/product');
+Route::get('/', [ProductController::class, 'combinedHome']);
+Route::get('/product/men', [ProductController::class, 'productListMen'])->name('/users/product/men');
+Route::get('/product/women', [ProductController::class, 'productListWoman'])->name('/users/product/women');
 
 Route::get('/blog', function () {
     return view('blog');

@@ -38,19 +38,19 @@
             </div>
         </div>
         <div class="categoryCard">
-            <a class="cat1" href="#"> 
+            <a class="cat1" href="/product/men"> 
                 <p>ĐỒNG HỒ NAM</p>
             </a>
-            <a class="cat2" href="#"> 
+            <a class="cat2" href="/product/men"> 
                 <p>PHỤ KIỆN</p>
             </a>
-            <a class="cat3" href="#"> 
+            <a class="cat3" href="/product/women"> 
                 <p>ĐỒNG HỒ NỮ</p>
             </a>
         </div>
     <div class="bestSell">
         <h1>MEN'S BEST SELLERS</h1>
-        <a href="#">XEM TẤT CẢ</a>
+        <a href="/product/men">XEM TẤT CẢ</a>
     </div>
     <div class="product_wrapper">
         <div class="product_top">
@@ -84,7 +84,7 @@
     </div>
     <div class="bestSell">
         <h1>WOMEN'S BEST SELLERS</h1>
-        <a href="#">XEM TẤT CẢ</a>
+        <a href="/product/women">XEM TẤT CẢ</a>
     </div>
     <div class="product_wrapper">
         <div class="product_top">

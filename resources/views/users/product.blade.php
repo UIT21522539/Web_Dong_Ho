@@ -5,9 +5,17 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Product</title>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+	<meta name="csrf-token" content="{{ csrf_token() }}">
+	<link href="{{ asset('assets/css/User/home.css') }}" rel="stylesheet">
+	{{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css"> --}}
 	<link href="{{ asset('assets/css/User/product.css') }}" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+	
+	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/lightslider/lightslider.css')}}">
+    <script type="text/javascript" src="{{ asset('assets/js/lightslider/Jquery.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/lightslider/lightslider.js') }}"></script>
+    {{-- <script src="https://code.jquery.com/jquery-migrate-3.4.1.js" integrity="sha256-CfQXwuZDtzbBnpa5nhZmga8QAumxkrhOToWweU52T38=" crossorigin="anonymous"></script> --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
 </head>
 <body>
 	@extends('layouts.app')
@@ -18,10 +26,10 @@
         </div>
         <div class="layer1">
             <h1 style="font-size: 36px">
-                <b>ĐỒNG HỒ NAM</b>    
+                <b>{{ $title }}</b>    
             </h1>
             <div class="flex">
-                <p>Sự tự tin trên cổ tay của người đàn ông hiện đại</p>
+                <p>{{ $des }}</p>
                 <p style="margin-left: 50%"><i>30 trên 30 sản phẩm</i></p>
             </div>
         </div>
@@ -205,7 +213,18 @@
 				</div>
 			</div>
 		</div>
-
+		</div>
+		<script type="text/javascript" src="{{ asset('assets/js/lightslider/script2.js') }}"></script>  
+		</div>
+		<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+		<!-- CSS -->
+		<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+		<!-- Default theme -->
+		<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+		<!-- Semantic UI theme -->
+		<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
+		<!-- Bootstrap theme -->
+		<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
 		<script>
 			// JavaScript để ẩn/hiển thị nội dung Material
 			function toggleMaterial() {
@@ -243,35 +262,112 @@
 	</script>
 		<div class="product_wrapper">
 			<div class="product_top">
-				@foreach ($product as $productItem)  
-				<div class="pd-area">
-					<a href="{{ route('detailProduct',['id'=>$productItem->id_product]) }}">
-						<div class="product_info product_highlight">
-							<img src="{{ $productItem->img_main }}">
-							<b class="product_image_discount">-{{ $productItem->discount }}%</b>
-							<form action="/carts" method='POST'>
-								@csrf
-								<a class="product_addToCard" target="_self">
-									<span class="product_addToCard_font">
-										<input type="text" name='id' style="display: none;" value="{{ $productItem->id_product }}">
-										<input type="submit" value="THÊM VÀO GIỎ">
-									</span>
-								</a>
-							</form>
-							<p class="product_ref_kind">{{ $productItem->brName }}</p>
-							<span class="product_ref_name">{{ $productItem->name }}</span>
-							<div class="product_font_price">
-								<b>{{ $productItem->sellprice }}</b>
-								<del class="product_font_price_discount">2.499.000 đ</del>
-							</div>
-						</div>
-					</a>
-				</div>  
-					
-            	@endforeach
+				@foreach ($product as $productItem)    
+            <a >
+                <div class="product_info product_highlight">
+                    <img src="{{ $productItem->img_main }}">
+                    <b class="product_image_discount">-{{ $productItem->discount }}%</b>
+                    
+                    {{-- <form action="/carts" method='POST'> --}}
+                       
+                        <a class="product_addToCard" target="_self" onclick="AddCart({{ $productItem->id_product }})" href="javascript:">
+                            <span class="product_addToCard_font">
+                                <input type="text" name='id' style="display: none;" value="{{ $productItem->id_product }}">
+                                <input type="submit" value="THÊM VÀO GIỎ">
+                            </span>
+                        </a>
+                  
+                    
+                    <p class="product_ref_kind">{{ $productItem->brName }}</p>
+                    <span class="product_ref_name">{{ $productItem->pdName }}</span>
+                    <div class="product_font_price">
+                        <b>{{ $productItem->sellprice }}</b>
+                        <del class="product_font_price_discount">2.499.000 đ</del>
+                    </div>
+                </div>
+            </a>
+            @endforeach
 			</div>
 		</div>
 	</div>
+
+	<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+    <!-- Default theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+    <!-- Semantic UI theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
+    <!-- Bootstrap theme -->
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
+	<script>
+        function AddCart(id) {
+    // Get the CSRF token from the meta tag in the HTML
+    var csrfToken = $('meta[name="csrf-token"]').attr('content');
+
+    // Include the CSRF token in the AJAX request headers
+    $.ajax({
+        url: 'Add-Cart/' + id,
+        type: 'POST',
+        headers: {
+            'X-CSRF-TOKEN': csrfToken
+        }
+    })
+    .done(function (response) {
+        // Check if the response contains a redirect URL
+        if (response.redirect) {
+            window.location.href = response.redirect;
+        } else {
+            // Process the response as needed
+            // For example, you can update the cart view or show a success message
+            // Here, I assume that your RenderCart function exists
+            RenderCart(response);
+            alertify.success('Đã thêm giỏ hàng thành công');
+        }
+    })
+    .fail(function (xhr, status, error) {
+        // Handle AJAX request failure
+        console.error(error);
+
+        // Check if the response status is 401 (Unauthorized)
+        if (xhr.status === 401) {
+            // Redirect to the login page
+            window.location.href = '/login';
+        }
+    });
+}
+
+
+        
+        $("#changeItemCart").on("click", ".si-close", function(){
+            $.ajax({
+                url: 'Delete-Cart/' + $(this).data("id"),
+                type: 'GET',
+            }).done(function(response){
+                RenderCart(response);
+                alertify.success('Đã xoá giỏ hàng thành công');
+            });
+            
+        });
+
+        function RenderCart(response){
+            $("#changeItemCart").empty();
+            $("#changeItemCart").html(response); 
+        }
+    </script>
+
+    <script>
+        function showButton(){
+            var productbutton = document.getElementById("product-button");
+            productbutton.style.display="";
+        }
+        function hideButton(){
+            var productbutton = document.getElementById("product-button");
+            productbutton.style.display="none";
+        }
+
+    </script>
 	@endsection
 </body>
 </html>

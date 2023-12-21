@@ -27,11 +27,19 @@ class ProductController extends Controller
         return view('users.home', ['productListB' => $productListB, 'productListW' => $productListW]);
     }
 
-    public function productList2(){
-
+    public function productListMen(){
+        $title = 'Đồng hồ nam';
+        $des = 'Sự tự tin trên cổ tay của người đàn ông hiện đại';
         $product = new Product();
-        $product = $product->getAllProduct();
-        return view('users.product', ['product' => $product]);
+        $product = $product->getAllProductMen();
+        return view('users.product', compact('title', 'product','des'));
+    }
+    public function productListWoman(){
+        $title = 'Đồng hồ nữ';
+        $des = 'Sự tự tin trên cổ tay của người phụ nữ hiện đại';
+        $product = new Product();
+        $product = $product->getAllProductWoman();
+        return view('users.product', compact('title', 'product','des'));
     }
 
     public function detailProduct(Request $request,$id){
