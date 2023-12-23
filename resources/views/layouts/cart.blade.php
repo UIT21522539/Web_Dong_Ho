@@ -44,7 +44,7 @@
                 </p>
             </div>
             <div class="sidebar-total-purchase">
-                <a href="/checkout">
+                <a href="javascript:void(0)" onclick="redirectToCheckout()">
                     <button>
                         THANH TOÁN NGAY
                         <img width="12px" height="12px" src="{{ asset('assets/img/User/Blog/arrow.png') }}">
@@ -54,4 +54,50 @@
         </div>
     </div>
 </div>
+<script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+<script>
+    // Đảm bảo rằng mã JavaScript này được đặt trong một tệp script hoặc thẻ <script>
+    $(document).ready(function(){
+        // Nút trừ
+        $(".minus").click(function() {
+            var field = $(this).attr("field");
+            var currentVal = parseInt($("input[name=" + field + "]").val());
+
+            if (!isNaN(currentVal) && currentVal > 0) {
+                $("input[name=" + field + "]").val(currentVal - 1);
+            }
+        });
+
+        // Nút cộng
+        $(".plus").click(function() {
+            var field = $(this).attr("field");
+            var currentVal = parseInt($("input[name=" + field + "]").val());
+
+            if (!isNaN(currentVal)) {
+                $("input[name=" + field + "]").val(currentVal + 1);
+            }
+        });
+    });
+</script>
+<script>
+    function redirectToCheckout() {
+       // Lấy giỏ hàng từ Session
+    var cart = {!! json_encode(Session::get("Cart")) !!};
+
+// Tạo một mảng key-value từ giỏ hàng
+    var queryParams = [];
+    for (var i = 0; i < cart.products.length; i++) {
+        var product = cart.products[i];
+        queryParams.push('products[' + i + '][id]=' + product.productInfo.id_product);
+        queryParams.push('products[' + i + '][quanty]=' + product.quanty);
+        // Thêm các thông tin khác của sản phẩm nếu cần thiết
+    }
+
+    // Tạo chuỗi truy vấn từ mảng key-value
+    var queryString = queryParams.join('&');
+
+    // Chuyển hướng đến trang thanh toán với tham số giỏ hàng
+    window.location.href = '/checkout?' + queryString;
+}
+</script>
 @endif

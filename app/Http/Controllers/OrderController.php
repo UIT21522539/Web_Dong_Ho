@@ -85,4 +85,5 @@ class OrderController extends Controller
 
         return redirect()->route('dashboard')->with('msg',$msg);
     }
+
 }

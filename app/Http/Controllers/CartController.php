@@ -51,6 +51,9 @@ class CartController extends Controller
     public function AddCart(Request $req, $id){
         $product = DB::table('product')->where('id_product', $id)->first();
         if($product != null){
+            if($product->qty_store <= 0){
+                return redirect()->back()->with('error', 'Sản phẩm đã hết hàng');
+            }else{
             $oldCart = session('Cart') ? session('Cart') : null;
             $newCart = new Cart($oldCart);
             $newCart->AddCart($product, $id);
@@ -58,7 +61,7 @@ class CartController extends Controller
             $req->session()->put('Cart', $newCart);
 
             $this->saveCartToDatabase($req, $newCart);
-            
+            }
         }
         return view('/layouts/cart');
     }

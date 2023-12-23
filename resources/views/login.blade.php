@@ -15,13 +15,13 @@
             <img width="420px" src="https://i.pinimg.com/564x/84/65/ce/8465ce7dc68dc5d736a0ea1b655478e1.jpg">
         </div>
         <div class="wrapper">
-            <form action="{{ route('login') }}" method="POST">
+            <form action="/login" method="POST">
                 @csrf
                 <h1>Welcome to CURNON</h1>
                 <h2>Sign In to Continue</h1>
                 <div class="register-link">
                     <p>Don't have an account?
-                        <a href="./Register/Giaodiendangky.html">Create a account</a>
+                        <a href="./sign-up">Create a account</a>
                     </p>
                     <p>It takes less than a minute.</p>
                 </div>

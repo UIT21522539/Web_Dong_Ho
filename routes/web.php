@@ -11,6 +11,7 @@ use App\Http\Controllers\BrandController;
 use App\Http\Controllers\LogInController;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use App\Http\Controllers\ThanhToanController;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\CT_ThanhToanController;
 
 /*
@@ -100,11 +101,19 @@ Route::get('/detailProduct/{id}', [ProductController::class, 'detailProduct'])->
 // // Theem gior hangf
 // Route::post('/carts', [CartController::class, 'addProduct'])->middleware('auth');
 
-Route::post('/Add-Cart/{id}', [CartController::class, 'AddCart'])->middleware('auth');
-Route::get('/Delete-Cart/{id}', [CartController::class, 'DeleteItemCart']);
+
 
 // login
-Route::post('/login', [AuthenticatedSessionController::class, 'store']);
+Route::post('/login', [AuthenticatedSessionController::class, 'makeLogin'])->name('user.post.login');
+Route::post('/sign-up', [AuthenticatedSessionController::class, "makeRegister"])->name('user.post.register');
+Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+Route::get('/login', function () {
+    return view('login');
+})->name('user.login');
+
+Route::get('/sign-up', function () {
+    return view('sign-up');
+});
 
 Route::get('/aboutMe', function () {
     return view('aboutMe');
@@ -119,17 +128,23 @@ Route::get('/checkoutdone', function () {
 
 Route::post('/ct_thanhtoan', [CT_ThanhToanController::class, 'paymentProcessed']);
 
-Route::get('/user-info', function () {
-    return view('user-info');
+
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::post('/Push-Cart/{id}', [CartController::class, 'PushCart']);
+    Route::post('/Minus-Cart/{id}', [CartController::class, 'MinusCart']);
+    Route::post('/Add-Cart/{id}', [CartController::class, 'AddCart']);
+    Route::get('/Delete-Cart/{id}', [CartController::class, 'DeleteItemCart']);
+    Route::get('/user-info', [AuthenticatedSessionController::class, "userInfo"])->name('user.info');
+    Route::post('/logout', [AuthenticatedSessionController::class, "logout"])->name('user.post.logout');
+    Route::get('/order', [CustomerController::class, "getOrderList"])->name('user.orders');
+    Route::get('/profile', [CustomerController::class, "getUserProfile"])->name('user.profile');
+    Route::post('/profile', [CustomerController::class, "updateUserProfile"])->name('user.update.profile');
+    Route::post('/cart', [CartController::class, "addToCart"])->name('addToCart');
+
 });
 
-Route::get('/login', function () {
-    return view('login');
-})->name('login');
 
-Route::get('/sign-up', function () {
-    return view('sign-up');
-});
 
 Route::post('/thanhtoan', [ThanhToanController::class, 'paymentProcessing']);
 

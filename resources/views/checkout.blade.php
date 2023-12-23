@@ -8,6 +8,9 @@
     <title>Checkout</title>
 </head>
 <body>
+    @if (session('msg'))
+    <div class="alert alert-success"> {{ session('msg') }}</div>
+    @endif
     <div style="display: none">{{ $user = auth()->user() }}</div>
     <div class="checkout">
         <div class="customer-info">
@@ -22,20 +25,32 @@
                     <table>
                         <tr>
                             <td colspan="2">                
-                                <input style="width: 90%;"type="text" name="email" placeholder="Email" value='{{ $user->email }}'>
+                                <input style="width: 90%;" type="text" name="email" placeholder="Email" value="{{ old('email') ?: $user->email }}">
+                                @error('email')
+                                <div style="color: red">{{ $message }}</div>
+                                @enderror
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                <input type="text" placeholder="Họ tên" name="name" value="{{ $user->first_name . " " . $user->last_name }}">
+                                <input type="text" placeholder="Họ tên" name="name" value="{{  $user->first_name . " " . $user->last_name }}">
+                                @error('name')
+                                <div style="color: red">{{ $message }}</div>
+                                @enderror
                             </td>
                             <td>
-                                <input type="text" placeholder="Số điện thoại" name="phone" value="{{ $user->phone }}">
+                                <input type="text" placeholder="Số điện thoại" name="phone" value="{{old('phone') ?: $user->phone }}">
+                                @error('phone')
+                                <div style="color: red">{{ $message }}</div>
+                                @enderror
                             </td>
                         </tr>
                         <tr>
                             <td colspan="2">
-                                <input style="width: 90%" type="text" name="location" placeholder="Địa chỉ nhận hàng" value="{{ $user->location }}">
+                                <input style="width: 90%" type="text" name="location" placeholder="Địa chỉ nhận hàng" value="{{old('location') ?: $user->location ?: '' }}">
+                                @error('location')
+                                <div style="color: red">{{ $message }}</div>
+                                @enderror
                             </td>
                         </tr>
                         <tr>

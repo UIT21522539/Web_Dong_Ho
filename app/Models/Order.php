@@ -54,6 +54,10 @@ class Order extends Model
         return DB::update("UPDATE `order` SET status = 'Cancel' WHERE id_order = ?", [$id]);
     }
 
+    public function addOrder( $data ){
+        return DB::insert('INSERT INTO `order` (id_user, first_name, last_name, email, location, phone, total_order, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)', array_values($data));
+    }
+
     public $primaryKey = 'id_order';
 
     public $timestamps = false;

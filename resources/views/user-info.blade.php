@@ -32,7 +32,7 @@
                         </button>
                     </div>
                     <div>
-                        <button class="tablinks" onclick="openCity(event, 'getout')">
+                        <button class="tablinks" onclick="redirectToLogout()">
                             <img width="32px" height="32px" style="margin-left: 2%; margin-right: 3%" src="{{ asset('assets/img/User/user-info/logout.png') }}">
                             Đăng xuất
                             <img width="12px" height="12px" style="margin-left: 58%" src="{{ asset('assets/img/User/Blog/arrow.png') }}">
@@ -250,6 +250,19 @@
             }
       };
     </script>
+    <script>
+        function redirectToLogout() {
+            // Thực hiện chuyển hướng đến route "logout"
+            window.location.href = '/logout'; // Thay đổi '/logout' thành đường dẫn thực tế của route logout trong ứng dụng của bạn
+        }
+    </script>
     @endsection
 </body>
 </html>
+
+{{-- <script>
+        function redirectToLogout() {
+            // Thực hiện chuyển hướng đến route "logout"
+            window.location.href = '/logout'; // Thay đổi '/logout' thành đường dẫn thực tế của route logout trong ứng dụng của bạn
+        }
+    </script> --}}

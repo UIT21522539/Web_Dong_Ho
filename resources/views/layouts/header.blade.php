@@ -58,7 +58,7 @@
                     </li>
                     <li class="user">
                         <div>
-                            <a href="/user-info">
+                            <a href="{{ route('user.info') }}">
                                 <img width="24px" height="24px" src="{{ asset('assets/img/User/layouts/user.png') }}">
                             </a>
                         </div>

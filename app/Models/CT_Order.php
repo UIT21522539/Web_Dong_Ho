@@ -28,5 +28,9 @@ class CT_Order extends Model
         return $order;
         }
     }
+
+    public function getCTOrder( $id ){
+        return DB::select("SELECT * FROM ct_order WHERE id_order = ?",[$id]);
+    }
     
 }
