@@ -71,6 +71,25 @@ class User extends Authenticatable
         return $this->belongsToMany(Product::class, 'ct_cart', 'id_user', 'id_product');
     } 
 
-
+    public function updateUser($data)
+    {
+        return DB::update("
+                UPDATE `user`
+                SET
+                    `email` = ?,
+                    `first_name` = ?,
+                    `last_name` = ?,
+                    `phone` = ?,
+                    `location` = ?
+                WHERE `id_user` = ?
+            ", [
+                $data['email'],
+                $data['first_name'],
+                $data['last_name'],
+                $data['phone'],
+                $data['location'],
+                $data['id_user'],
+            ]);
+    }
     
 }

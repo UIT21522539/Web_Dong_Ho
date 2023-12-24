@@ -2,8 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
     <link rel="stylesheet" href="{{ asset('assets/css/User/user-info.css') }}">
 </head>
 <body>
@@ -52,97 +54,114 @@
                                 <td>Thành tiền</td>
                                 <td>Tình trạng</td>
                             </tr>
+                            @foreach($orderList as $order)
                             <tr class="order-info" data-modal="modalOne">
-                                <td>#12345</td>
+                                <td>#{{ $order-> id_order}}</td>
                                 <td style="display: flex">
-                                    <img width="84px" height="84px" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fcache%2Fd96eb53c23516f6ca600411b8495131f%2Fh%2Fe%2Fheinz_1.png&w=1920&q=75">
+                                    <img width="84px" height="84px" src="{{ $order->img_main }}">
                                     <div>
                                         <p style="margin-bottom: 100%">HEINZ</p>
                                         <p>40MM</p>
                                     </div>
                                 </td>
-                                <td>2.469.000 ₫</td>
+                                <td>{{ $order-> total_order}} ₫</td>
+                                @if($order->status=='1')
                                 <td>
                                     <input class="pretending" type="button" value="Chờ lấy hàng">
                                 </td>
-                            </tr>
-                            <tr class="order-info" data-modal="modalOne">
-                                <td>#12345</td>
-                                <td style="display: flex">
-                                    <img width="84px" height="84px" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fcache%2Fd96eb53c23516f6ca600411b8495131f%2Fh%2Fe%2Fheinz_1.png&w=1920&q=75">
-                                    <div>
-                                        <p style="margin-bottom: 100%">HEINZ</p>
-                                        <p>40MM</p>
-                                    </div>
-                                </td>
-                                <td>2.469.000 ₫</td>
+                                @elseif($order->status=='2')
                                 <td>
-                                    <input class="pretending" type="button" value="Chờ lấy hàng">
+                                    <input class="asking" type="button" value="Đang vận chuyển">
                                 </td>
-                            </tr>
-                            <tr class="order-info" data-modal="modalOne">
-                                <td>#12345</td>
-                                <td style="display: flex">
-                                    <img width="84px" height="84px" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fcache%2Fd96eb53c23516f6ca600411b8495131f%2Fh%2Fe%2Fheinz_1.png&w=1920&q=75">
-                                    <div>
-                                        <p style="margin-bottom: 100%">HEINZ</p>
-                                        <p>40MM</p>
-                                    </div>
-                                </td>
-                                <td>2.469.000 ₫</td>
+                                @elseif($order->status=='3')
                                 <td>
-                                    <input class="asking" type="button" value="Đã nhận được hàng">
+                                    <input class="done" type="button" value="Đã nhận được hàng">
                                 </td>
-                            </tr>
-                            <tr class="order-info" data-modal="modalOne">
-                                <td>#12345</td>
-                                <td style="display: flex">
-                                    <img width="84px" height="84px" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fcache%2Fd96eb53c23516f6ca600411b8495131f%2Fh%2Fe%2Fheinz_1.png&w=1920&q=75">
-                                    <div>
-                                        <p style="margin-bottom: 100%">HEINZ</p>
-                                        <p>40MM</p>
-                                    </div>
-                                </td>
-                                <td>2.469.000 ₫</td>
+                                @elseif($order->status=='4')
                                 <td>
-                                    <input class="done" type="button" value="Đã hoàn tất">
+                                    <input class="cancel" type="button" value="Đã hủy">
                                 </td>
+                                @endif
                             </tr>
+                            @endforeach
+                        
+                            
                     </table>
                 </form>
             </div>
+
             <div id="user" class="tabcontent">
-                <button>Sửa</button>
+                <button onclick="editUserInfo() ">Sửa</button>
                 <h2 style="margin-bottom: 6%;">Thông tin của tôi</h2>
-                <div>
-                    <p>Email</p>
-                    <p>trucquynh13303@gmail.com</p> 
+                {{-- method="POST" action="{{ route('updateUserInfo') }}" --}}
+                <form id="userInfoForm" method="POST" action="{{ route('updateUserInfo',['id'=>$user->id_user]) }}"  style="display:none; margin-top: 20px; padding: 20px; border: 1px solid #ccc;">
+                    @csrf
+                    <div style="margin-bottom: 10px;">
+                        <label for="email" style="display: inline-block; width: 100px; font-weight: bold;">Email</label>
+                        <input type="text" name="email" value="{{ $user->email }}" style="width: 200px; padding: 5px;">
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                        <label for="firstName" style="display: inline-block; width: 100px; font-weight: bold;">Tên</label>
+                        <input type="text" name="firstName" value="{{ $user->first_name }}" style="width: 200px; padding: 5px;">
+                        <br>
+                        <label for="lastName" style="display: inline-block; width: 100px; font-weight: bold;">Họ</label>
+                        <input type="text" name="lastName" value="{{ $user->last_name }}" style="width: 200px; padding: 5px;">
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                        <label for="phone" style="display: inline-block; width: 100px; font-weight: bold;">Số điện thoại</label>
+                        <input type="text" name="phone" value="{{ $user->phone }}" style="width: 200px; padding: 5px;">
+                    </div>
+                    <div style="margin-bottom: 10px;">
+                        <label for="location" style="display: inline-block; width: 100px; font-weight: bold;">Địa chỉ</label>
+                        <input type="text" name="location" value="{{ $user->location }}" style="width: 200px; padding: 5px;">
+                    </div>
+                    <input type="text" id="id" value="{{ $user->id_user }}" style="display:none; width: 200px; padding: 5px;">
+                    <input type="submit" name="submit" value="Sửa">
+                    <button type="buttonm" onclick="saveUserInfo(event)">Hủy</button>
+                </form>                
+                <div id="userInfoDisplay">
+                    <div>
+                        <p>Email</p>
+                        <p>{{ $user->email }}</p>
+                    </div>
+                    <div>
+                        <p>Tên</p>
+                        <p>{{ $user->first_name }} {{ $user->last_name }}</p>
+                    </div>
+                    <div>
+                        <p>Số điện thoại</p>
+                        <p>{{ $user->phone }}</p>
+                    </div>
+                    <div>
+                        <p>Địa chỉ</p>
+                        <p>{{ $user->location }}</p>
+                    </div>
                 </div>
-                <div>
-                    <p>Tên</p> 
-                    <p>Trúc Quỳnh</p> 
-                </div>
-                <div>
-                    <p>Họ</p> 
-                    <p>Trần</p> 
-                </div>
-                <div>
-                    <p>Ngày tháng năm sinh</p> 
-                    <p>12/03/2003</p> 
-                </div>
-                <div>
-                    <p>Số điện thoại</p> 
-                    <p>123134456677</p> 
-                </div>
-                <div>
-                    <p>Giới tính</p> 
-                    <p>Nữ</p> 
-                </div>
-                <div>
-                    <p>Quốc gia</p>
-                    <p>Việt Nam</p> 
-                </div>         
             </div>
+            {{-- <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script> --}}
+            <script>
+                function editUserInfo() {
+                    document.getElementById("userInfoForm").style.display = "block";
+                    document.getElementById("userInfoDisplay").style.display = "none";
+                }
+
+                function saveUserInfo(event) {
+                    event.preventDefault();
+                    // Ẩn form và hiển thị thông tin đã sửa
+                    document.getElementById("userInfoForm").style.display = "none";
+                    document.getElementById("userInfoDisplay").style.display = "block";
+                }
+
+                function updateUserInfoDisplay(data) {
+                    // Cập nhật các thành phần HTML trong #userInfoDisplay dựa trên dữ liệu nhận được
+                    $('#userInfoDisplay #email').text(data.email);
+                    $('#userInfoDisplay #firstName').text(data.first_name);
+                    $('#userInfoDisplay #lastName').text(data.last_name);
+                    $('#userInfoDisplay #phone').text(data.phone);
+                    $('#userInfoDisplay #location').text(data.location);
+                }
+
+            </script>
 
             <div id="getout" class="tabcontent">
                 <h3>Please get out</h3>

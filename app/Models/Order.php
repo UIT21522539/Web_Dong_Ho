@@ -57,7 +57,14 @@ class Order extends Model
     public function addOrder( $data ){
         return DB::insert('INSERT INTO `order` (id_user, first_name, last_name, email, location, phone, total_order, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)', array_values($data));
     }
-
+    public function getOrderByIdUserProduct( $id ){
+        return DB::select("
+            SELECT order.id_order, order.total_order, order.status, product.img_main, product.name
+            FROM `order`
+            JOIN ct_order ON order.id_order = ct_order.id_order
+            JOIN product ON ct_order.id_product = product.id_product
+        ");
+    }
     public $primaryKey = 'id_order';
 
     public $timestamps = false;

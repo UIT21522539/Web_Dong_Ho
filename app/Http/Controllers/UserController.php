@@ -53,4 +53,6 @@ class UserController extends Controller
 
         return view('admin.user.usersearch', ['results' => $results, 'searchKeyword' => $searchKeyword]);
         }
+        
+        
 }

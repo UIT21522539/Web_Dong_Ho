@@ -76,6 +76,9 @@ td:last-child {
 #order .done{
   background-color: #00b61b;
 }
+#order .cancel{
+  background-color: red;
+}
 #user button{
     font-size: 12pt;
     margin-left: 90%;

@@ -128,22 +128,22 @@ Route::get('/checkoutdone', function () {
 
 Route::post('/ct_thanhtoan', [CT_ThanhToanController::class, 'paymentProcessed']);
 
-
-
 Route::group(['middleware' => 'auth'], function () {
     Route::post('/Push-Cart/{id}', [CartController::class, 'PushCart']);
     Route::post('/Minus-Cart/{id}', [CartController::class, 'MinusCart']);
     Route::post('/Add-Cart/{id}', [CartController::class, 'AddCart']);
     Route::get('/Delete-Cart/{id}', [CartController::class, 'DeleteItemCart']);
     Route::get('/user-info', [AuthenticatedSessionController::class, "userInfo"])->name('user.info');
+    Route::post('/user-info/{id}', [AuthenticatedSessionController::class, 'addUser'])->name('updateUserInfo');
     Route::post('/logout', [AuthenticatedSessionController::class, "logout"])->name('user.post.logout');
     Route::get('/order', [CustomerController::class, "getOrderList"])->name('user.orders');
     Route::get('/profile', [CustomerController::class, "getUserProfile"])->name('user.profile');
     Route::post('/profile', [CustomerController::class, "updateUserProfile"])->name('user.update.profile');
     Route::post('/cart', [CartController::class, "addToCart"])->name('addToCart');
+    
+
 
 });
-
 
 
 Route::post('/thanhtoan', [ThanhToanController::class, 'paymentProcessing']);

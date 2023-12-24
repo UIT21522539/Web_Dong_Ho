@@ -62,7 +62,7 @@
                             <p style="margin-bottom: 18%">{{ $product->name }}</p>
                             <p>{{ $item->qty }}</p>
                         </div>
-                        <div style="display: none"> {{ $price += $product->sellprice }}</div>
+                        <div style="display: none"> {{ $price += $item->total_item }}</div>
                     <p style="margin-left: 30%; margin-top: 4%; font-size: 18px"><b>{{ $product->sellprice }} ₫</b></p>
                 </div>
                 @endif

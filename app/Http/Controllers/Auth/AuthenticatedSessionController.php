@@ -10,10 +10,16 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Hash;
-use App\Models\User;
+
 use App\Http\Requests\RegisterRequest;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
+
+use App\Models\Order;
+use App\Models\CT_Order;
+use App\Models\User;
+use App\Models\Product;
+use DB;
 
 
 
@@ -85,6 +91,28 @@ class AuthenticatedSessionController extends Controller
 
     }
     public function userInfo () {
-        return view('user-info');
+        $user = auth()->user();
+        $order= new Order();
+        $orderList = $order->getOrderByIdUserProduct($user->id_user);
+        return view('user-info', compact('user','orderList'));
     }
+    public function addUser(Request $request){
+        // Nhận dữ liệu từ request
+        $id_user = $request->id;
+        $data = [
+            'id_user' => $request->id,
+            'email' => $request->email,
+            'first_name' => $request->firstName,
+            'last_name' => $request->lastName,
+            'phone' => $request->phone,
+            'location' => $request->location,
+        ];
+        
+        $user= new User();
+        $user->updateUser($data);
+        $result = $user-> getUser($id_user);
+
+        return back();
+    }
+    
 }
