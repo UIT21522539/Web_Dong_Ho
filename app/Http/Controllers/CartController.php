@@ -100,4 +100,13 @@ class CartController extends Controller
             );
         }
     }
+
+    public function SaveItemCart(Request $req, $id, $quanty){
+        $oldCart = session('Cart') ? session('Cart') : null;
+        $newCart = new Cart($oldCart);
+        $newCart->UpdateItemCart($id, $quanty);
+        $req->session()->put('Cart', $newCart);
+
+        return view('/layouts/cart');
+    }
 }
