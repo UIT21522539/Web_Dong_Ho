@@ -87,11 +87,11 @@ Route::prefix('admin')->group(function () {
     Route::post('/brands/add', [BrandController::class, 'addBrand'])->name('brands.add');
 });
 
-
-Route::get('/home', [ProductController::class, 'combinedHome'])->name('/users/home');
-Route::get('/', [ProductController::class, 'combinedHome']);
 Route::get('/product/men', [ProductController::class, 'productListMen'])->name('/users/product/men');
 Route::get('/product/women', [ProductController::class, 'productListWoman'])->name('/users/product/women');
+Route::get('/home', [ProductController::class, 'combinedHome'])->name('/users/home');
+Route::get('/', [ProductController::class, 'combinedHome']);
+
 
 Route::get('/blog', function () {
     return view('blog');

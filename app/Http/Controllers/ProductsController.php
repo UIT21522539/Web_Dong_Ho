@@ -14,10 +14,5 @@ use App\Models\Product;
 
 class ProductsController extends Controller
 {
-    public function home(){
-        $product = new Product();
-        $productList = $product->getAllProduct();
-        return view('users.home',['productList'=>$productList]);
-
-    }
+    
 }

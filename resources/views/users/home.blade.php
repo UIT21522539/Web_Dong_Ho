@@ -179,25 +179,6 @@
     <script type="text/javascript" src="{{ asset('assets/js/lightslider/script2.js') }}"></script>  
     </div>
     
-    {{-- Them gio hang --}}
-    {{-- <script>
-        $(document).ready(function(){
-            var csrf = $('meta[name="csrf-token"]').attr('content');
-            console.log(csrf);
-
-            $(".product_addToCard").click(function(){
-                $.ajaxSetup({
-                    headers: {
-                        'X-CSRF-TOKEN': csrf
-                    }
-                });
-                $.ajax({
-                    method: 'POST',
-                    url: '/carts',  
-                })
-            });
-        }); 
-    </script> --}}
 
     <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 
@@ -208,9 +189,13 @@
     // Get the CSRF token from the meta tag in the HTML
         var csrfToken = $('meta[name="csrf-token"]').attr('content');
 
+        // var url = 'Add-Cart/' + id;
+        var url = "{{ url('/Add-Cart') }}/" + id;
+        console.log( "{{ url('/Add-Cart') }}/" + id);
+
         // Include the CSRF token in the AJAX request headers
         $.ajax({
-            url: 'Add-Cart/' + id,
+            url: url,
             type: 'POST',
             headers: {
                 'X-CSRF-TOKEN': csrfToken
@@ -237,33 +222,22 @@
         });
     }
         
-        $("#changeItemCart").on("click", ".si-close", function(){
-            
-            $.ajax({
-                url: 'Delete-Cart/' + $(this).data("id"),
-                type: 'GET',
-            }).done(function(response){
-                RenderCart(response);
-                alertify.success('Đã xoá giỏ hàng thành công');
-            });
-        });
+        
 
-        function RenderCart(response){
-            $("#changeItemCart").empty();
-            $("#changeItemCart").append(response);
-            if(temp == 1){
-                openNav();
-            }
+    function RenderCart(response){
+        $("#changeItemCart").empty();
+        $("#changeItemCart").append(response);
+        if(temp == 1){
+            openNav();
         }
-        function RenderCart(response , id){
-            $("#changeItemCart").empty();
-            $("#changeItemCart").append(response);
-            if(temp == 1){
-                openNav();
-            }
-            
+    }
+    function RenderCart(response , id){
+        $("#changeItemCart").empty();
+        $("#changeItemCart").append(response);
+        if(temp == 1){
+            openNav();
         }
-
+    }
     </script>
 
     <script>

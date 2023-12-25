@@ -5,12 +5,26 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link href="{{ asset('assets/css/User/detailProduct.css') }}" rel="stylesheet">
+	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" >
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 	<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300&family=Raleway:wght@200&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link href="{{ asset('assets/css/User/detailproduct.css') }}" rel="stylesheet">
+	<!-- Include alertify script -->
+<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+
+<!-- Include alertify CSS -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+<!-- Default theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+<!-- Semantic UI theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
+<!-- Bootstrap theme -->
+<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
+
 	<title>Sản phẩm</title>
 </head>
 <body>
@@ -84,7 +98,7 @@
 				</div>
 			</div>
 			<button class="payment highlight" >Thanh Toán Ngay</button> <br>
-			<button class="addToCart">Thêm vào giỏ</button><br>
+			<button class="addToCart" onclick="AddCart({{ $productDetail->id_product }})" href="javascript:">Thêm vào giỏ</button><br>
 		</div>
 		
 	</div>
@@ -141,6 +155,7 @@
 </div>
 
 <script>
+	
 	function openCity(evt, cityName) {
           var i, tabcontent, tablinks;
           tabcontent = document.getElementsByClassName("tabcontent");
@@ -154,6 +169,49 @@
           document.getElementById(cityName).style.display = "block";
           evt.currentTarget.className += " active";
         }
+
+	function AddCart(id) {
+		// console.log("{{ url('/Add-Cart') }}/" + id);
+		var csrfToken = $('meta[name="csrf-token"]').attr('content');
+		var url = "{{ url('/Add-Cart') }}/" + id;
+
+		$.ajax({
+			url: url,
+			type: 'POST',
+			headers: {
+				'X-CSRF-TOKEN': csrfToken
+			}
+		})
+		.done(function (response) {
+			if (response.redirect) {
+				window.location.href = response.redirect;
+			} else {
+				RenderCart(response, id);
+				alertify.success('Đã thêm giỏ hàng thành công');
+			}
+		})
+		.fail(function (xhr, status, error) {
+			console.error(error);
+
+			if (xhr.status === 401) {
+				window.location.href = '/login';
+			}
+		});
+	}
+	function RenderCart(response){
+		$("#changeItemCart").empty();
+		$("#changeItemCart").append(response);
+		if(temp == 1){
+			openNav();
+		}
+	}
+	function RenderCart(response , id){
+		$("#changeItemCart").empty();
+		$("#changeItemCart").append(response);
+		if(temp == 1){
+			openNav();
+		}
+	}
 </script>
 @endsection
 </body>

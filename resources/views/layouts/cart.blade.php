@@ -79,30 +79,33 @@
 </script>
 <script>
 
-    function SaveItemCart(id){
-    $.ajax({
-            url: 'Save-Cart/' + id+'/' +$('#quanty-item-' + id).val(),
+    $("#changeItemCart").on("click", ".si-close", function(){
+
+    var url = "{{ url('/Delete-Cart/') }}/" + $(this).data('id');
+
+        $.ajax({
+            url: url,
             type: 'GET',
         }).done(function(response){
             RenderCart(response);
-            alertify.success('Đã thêm sản phẩm thành công');
+            alertify.success('Đã xoá giỏ hàng thành công');
         });
-    }
+    });
 
-    function RenderCart(response){
-        $("#changeItemCart").empty();
-        $("#changeItemCart").append(response);
-        if(temp == 1){
-            openNav();
-        }
-    }
-    function RenderCart(response , id){
-        $("#changeItemCart").empty();
-        $("#changeItemCart").append(response);
-        if(temp == 1){
-            openNav();
-        }
-        
+    function SaveItemCart(id){
+
+    var url = "{{ url('/Save-Cart/') }}/" + id + '/' + $('#quanty-item-' + id).val();
+
+    // console.log('Save-Cart/' + id+'/' +$('#quanty-item-' + id).val());
+    // console.log("{{ url('/Save-Cart/') }}/" + id + '/' + $('#quanty-item-' + id).val());
+
+    $.ajax({
+        url: url,
+        type: 'GET',
+    }).done(function(response){
+        RenderCart(response);
+        alertify.success('Đã thêm sản phẩm thành công');
+    });
     }
 
     function redirectToCheckout() {

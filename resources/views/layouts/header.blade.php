@@ -350,10 +350,28 @@
             }
         });
     });
+    $("#changeItemCart").on("click", ".si-close", function(){
+
+        var url = "{{ url('/Delete-Cart/') }}/" + $(this).data('id');
+
+            $.ajax({
+                url: url,
+                type: 'GET',
+            }).done(function(response){
+                RenderCart(response);
+                alertify.success('Đã xoá giỏ hàng thành công');
+            });
+        });
 
     function SaveItemCart(id){
+
+        var url = "{{ url('/Save-Cart/') }}/" + id + '/' + $('#quanty-item-' + id).val();
+
+        // console.log('Save-Cart/' + id+'/' +$('#quanty-item-' + id).val());
+        // console.log("{{ url('/Save-Cart/') }}/" + id + '/' + $('#quanty-item-' + id).val());
+
     $.ajax({
-            url: 'Save-Cart/' + id+'/' +$('#quanty-item-' + id).val(),
+            url: url,
             type: 'GET',
         }).done(function(response){
             RenderCart(response);
