@@ -49,7 +49,7 @@ class CT_Supplier extends Model
         }
 
         // Thêm bản ghi vào bảng ct_ir
-        return DB::insert('INSERT INTO ct_ir (id_ir, id_product, size, qty, import_price, item_total) VALUES (?, ?, ?, ?, ?, ?);', [$idIrToUse, $productId, $data['size'], $data['quantity'], $data['importPrice'], $data['total']]);
+        return DB::insert('INSERT INTO ct_ir (id_ir, id_product, size, qty, import_price, total_item) VALUES (?, ?, ?, ?, ?, ?);', [$idIrToUse, $productId, $data['size'], $data['quantity'], $data['importPrice'], $data['total']]);
     }
    
 }

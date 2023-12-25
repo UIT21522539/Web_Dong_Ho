@@ -132,6 +132,7 @@ class ProductController extends Controller
                     $request->isdiscount,
                     $request->status,
                     $request->gender,
+                    $request->size,
                     $request->img_main,
                     $request->img1,
                     $request->img2,

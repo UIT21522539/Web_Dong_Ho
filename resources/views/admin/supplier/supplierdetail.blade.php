@@ -36,7 +36,7 @@
                     <td>{{ $item->product_name }}</td>
                     <td>{{ $item->qty }}</td>
                     <td>{{ $item->import_price }}</td>
-                    <td>{{ $item->item_total }}</td>
+                    <td>{{ $item->total_item }}</td>
                 </tr>
                 @endforeach 
             </table>

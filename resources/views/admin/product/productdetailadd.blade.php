@@ -33,7 +33,7 @@
                         @enderror
                     </div>
                     <div class="mb-3">
-                        <label for="branch" class="form-label">Branch</label>
+                        <label for="branch" class="form-label">Brand</label>
                         <select name="id_brand" class="form-control" id="branch">
                             @foreach($brands as $brand)
                                 <option value="{{ $brand->id_brand }}">{{ $brand->name }}</option>
@@ -112,6 +112,7 @@
                         <span style="color: red">{{ $message }}</span>
                         @enderror
                     </div>
+
                     <div class="mb-3">
                         <label for="gender" class="form-label">Gender</label>
                         <select name="gender" class="form-control" id="gender">
@@ -121,6 +122,15 @@
                         @error('gender')
                             <span style="color: red">{{ $message }}</span>
                         @enderror
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="size" class="form-label">Size</label>
+                        <select name="size" class="form-control" id="size">
+                            <option value="S" {{ (old('size') ) === 'S' ? 'selected' : '' }}>S</option>
+                            <option value="M" {{ (old('size') ) === 'M' ? 'selected' : '' }}>M</option>
+                            <option value="L" {{ (old('size') ) === 'L' ? 'selected' : '' }}>L</option>
+                        </select>
                     </div>
 
                     <div class="mb-3">
