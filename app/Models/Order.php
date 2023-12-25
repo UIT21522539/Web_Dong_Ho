@@ -99,6 +99,7 @@ class Order extends Model
             FROM `order`
             JOIN ct_order ON order.id_order = ct_order.id_order
             JOIN product ON ct_order.id_product = product.id_product
+            ORDER BY order.id_order DESC
         ");
     }
     public $primaryKey = 'id_order';

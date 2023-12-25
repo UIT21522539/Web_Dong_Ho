@@ -150,6 +150,6 @@ Route::group(['middleware' => 'auth'], function () {
 });
 
 
-Route::post('/thanhtoan', [ThanhToanController::class, 'paymentProcessing']);
+Route::post('/thanhtoan', [ThanhToanController::class, 'paymentProcessing'])->name('paymentProcessing');;
 
 require __DIR__.'/auth.php';

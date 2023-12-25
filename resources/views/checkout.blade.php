@@ -71,7 +71,14 @@
                             <td colspan="2"><p class="info-remind">Phương thức vận chuyển là <span style="color:rgba(0, 188, 38, 0.645)">FREESHIP</span> với đơn hàng từ 700.000đ</p></td>
                         </tr>
                         <tr>
-                                <td colspan="2" ><input style="width: 40%" type="submit" value="THANH TOÁN NGAY"></td>
+                            @if(Session::has("Cart") != null)
+                            <input type="hidden" name="total_momo" value="{{(Session::get('Cart')->totalPrice) }}">
+                            <input type="hidden" name="id_user" value="{{ $user->id_user }}">
+                            @endif
+                            <td colspan="2" ><input name="payUrl" style="width: 40%" type="submit" value="THANH TOÁN MOMO"></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2" ><input name="cod" style="width: 40%" type="submit" value="THANH TOÁN COD"></td>
                         </tr>
                     </table>
                 </form>
