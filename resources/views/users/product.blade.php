@@ -262,30 +262,40 @@
 		<div class="product_wrapper">
 			<div class="product_top">
 			{{-- discount --}}
-				@foreach ($product as $productItem)    
-				<a href="{{ route('detailProduct',['id'=>$productItem->id_product]) }}">
-					<div class="product_info product_highlight">
-						<img src="{{ $productItem->img_main }}">
-						<b class="product_image_discount">-{{ $productItem->discount }}%</b>
-						
-						{{-- <form action="/carts" method='POST'> --}}
-						   
-							<a class="product_addToCard" target="_self" onclick="AddCart({{ $productItem->id_product }})" href="javascript:">
-								<span class="product_addToCard_font">
-									<input type="text" name='id' style="display: none;" value="{{ $productItem->id_product }}">
-									<input type="submit" value="THÊM VÀO GIỎ">
-								</span>
-							</a>
-					  
-						
-						<p class="product_ref_kind">{{ $productItem->brName }}</p>
-						<span class="product_ref_name">{{ $productItem->pdName }}</span>
-						<div class="product_font_price">
-							<b>{{ number_format($productItem->sellprice) }} đ</b>
-							<del class="product_font_price_discount">2.499.000 đ</del>
-						</div>
-					</div>
-				</a>
+				@foreach ($product as $productItem) 
+					<a  href="{{ route('detailProduct',['id'=>$productItem->id_product]) }}">
+						<div class="product_info product_highlight">
+							<img src="{{ $productItem->img_main }}">
+								@if( $productItem->qty_store == '0')
+									<a  class="product_addToCard_out" target="_self">
+										<span class="product_addToCard_font_out">
+											<input type="button" value="HẾT HÀNG">
+										</span>
+									</a>
+									<p class="product_ref_kind">{{ $productItem->brName }}</p>
+									<span class="product_ref_name">{{ $productItem->pdName }}</span>
+									<div class="product_font_price">
+										<b>{{ number_format($productItem->sellprice) }} đ</b>
+									</div>
+								@else
+									<b class="product_image_discount">-{{ $productItem->discount }}%</b>
+									<a class="product_addToCard" target="_self" onclick="AddCart({{ $productItem->id_product }})" href="javascript:">
+										<span class="product_addToCard_font">
+											<input type="text" name='id' style="display: none;" value="{{ $productItem->id_product }}">
+											<input type="submit" value="THÊM VÀO GIỎ">
+										</span>
+									</a>
+									<p class="product_ref_kind">{{ $productItem->brName }}</p>
+									<span class="product_ref_name">{{ $productItem->pdName }}</span>
+									<div class="product_font_price">
+										<b>{{ number_format($productItem->sellprice) }} đ</b>
+										<del class="product_font_price_discount">2.499.000 đ</del>
+									</div>
+								@endif 
+							</div>
+						</a>
+					
+					
 				@endforeach
 			</div>
 		</div>
@@ -299,6 +309,10 @@
             var productbutton = document.getElementById("product-button");
             productbutton.style.display="none";
         }
+
+		function Test(id){
+			console.log(id);
+		}
 
        
     function AddCart(id) {

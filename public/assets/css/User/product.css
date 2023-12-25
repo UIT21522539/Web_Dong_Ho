@@ -38,6 +38,9 @@
 .pd-area{
 	margin: 4%;
 }
+.product_highlight{
+	margin: 20px;
+}
 .product_top a{
 	padding:  20px 20px 20px 0px;
     cursor: pointer;
@@ -80,6 +83,24 @@
     background-color: black;
     color: white;
 }
+
+.product_top .product_info .product_addToCard_out input{
+	background-color: rgb(244, 244, 244);
+	color: black;
+	text-decoration: none;
+	padding: 13px;
+    border: none;
+    cursor: pointer;
+	font-family: Arial;
+	font-weight: bold;
+	font-size: 13px; 
+	position: absolute;
+    width:100%;
+	top:65%;
+    transform: translate(-50%, -50%);/* Dịch chữ chiều ngang và dọc */
+	
+}
+
 .product_highlight {
 	position: relative;
 	overflow: hidden;

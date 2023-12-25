@@ -97,8 +97,12 @@
 					<button class="moreitem_add">+THÊM</button>
 				</div>
 			</div>
-			<button class="payment highlight" >Thanh Toán Ngay</button> <br>
-			<button class="addToCart" onclick="AddCart({{ $productDetail->id_product }})" href="javascript:">Thêm vào giỏ</button><br>
+			@if($status == "Hết hàng")
+				<button class="payment highlight" style="cursor: default; background-color: rgb(108, 108, 108)">HẾT HÀNG</button> <br>
+			@else
+				<button class="payment highlight" >Thanh Toán Ngay</button> <br>
+				<button class="addToCart" onclick="AddCart({{ $productDetail->id_product }})" href="javascript:">Thêm vào giỏ</button><br>
+			@endif
 		</div>
 		
 	</div>
