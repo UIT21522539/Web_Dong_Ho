@@ -83,7 +83,7 @@
 					<button class="moreitem_add">+THÊM</button>
 				</div>
 			</div>
-			<button class="payment highlight">Thanh Toán Ngay</button> <br>
+			<button class="payment highlight" >Thanh Toán Ngay</button> <br>
 			<button class="addToCart">Thêm vào giỏ</button><br>
 		</div>
 		

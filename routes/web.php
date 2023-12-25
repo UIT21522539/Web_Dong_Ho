@@ -141,7 +141,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/profile', [CustomerController::class, "updateUserProfile"])->name('user.update.profile');
     Route::post('/cart', [CartController::class, "addToCart"])->name('addToCart');
     
-
+    
 
 });
 
