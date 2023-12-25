@@ -5,24 +5,14 @@
                 <ul class="menu">
                     <li>
                         <div class="d">
-                            <button class="d-btn">NAM GIỚI</button>
+                            <button class="d-btn" onmouseover="openDivHeaderMen()">NAM GIỚI</button>
                             <div class="divTable"></div>
-                            <script>
-                                window.onload = function() {
-                                openDivHeaderMen();
-                            };
-                            </script>
                         </div>
                     </li>
                     <li>
                         <div class="d">
-                            <button class="d-btn">NỮ GIỚI</button>
+                            <button class="d-btn" onmouseover="openDivHeaderWomen()">NỮ GIỚI</button>
                             <div class="divTable"></div>
-                            <script>
-                                window.onload = function() {
-                                openDivHeaderWomen();
-                            };
-                            </script>
                         </div>
                     </li>
                     <li>
@@ -50,7 +40,7 @@
                         <div>
                             <a href="javascript:" onclick="openNav()">
                                 <div class="cart-align">
-                                    <p style="font-weight: lighter">GIỎ HÀNG</p>
+                                    <p style="font-weight: lighter; color: black">GIỎ HÀNG</p>
                                     <img width="24px" height="24px" src="{{ asset('assets/img/User/layouts/cart.png') }}">
                                 </div>
                             </a>
@@ -97,10 +87,11 @@
                 <div class="pd03">
                     <p class="tien">{{ number_format($item['productInfo']->sellprice) }} đ</p>
                     <div class="Qty">
-                        <form>
+                        <form class='quantity' id="qtySave">
                             <input type='button' value='-' class='qtyminus minus' field='quantity' />
-                            <input type='text' name='quantity' value='{{ $item["quanty"] }}' class='qty' />
+                            <input id="quanty-item-{{ $item['productInfo']->id_product }}" type='text' name='quantity' value='{{ $item["quanty"] }}' class='qty' />
                             <input type='button' value='+' class='qtyplus plus' field='quantity' />
+                            <input type='button' value='Save' onclick="SaveItemCart({{ $item['productInfo']->id_product }})" field='quantity' class='qtySave2'/>
                         </form>
                     </div>
                 </div>
@@ -108,7 +99,7 @@
 
             @endforeach
         </div>
-        <div class="sidebar-total">
+        <div class="sidebar-total" style="margin-top: 1%">
             <hr>
             <div class="sidebar-total-content">
                 <div style="display: flex; margin-bottom: 10%">
@@ -129,6 +120,9 @@
     </div>
     @endif
 </div>
+
+
+
 <script>
     function openDivHeaderMen(){
         var divTables = document.getElementsByClassName('divTable');
@@ -305,7 +299,7 @@
         }
         evt.currentTarget.className += " active";
     }
-
+    var temp = 0;
     const body = document.body;
     let lastScroll = 0;
     window.addEventListener("scroll", () => {
@@ -329,13 +323,17 @@
     });
 
     function openNav() {
-      document.getElementById("mySidebar").style.width = "400px";
+        document.getElementById("mySidebar").style.width = "400px";
+        temp = 1;
     }
     
     function closeNav() {
-      document.getElementById("mySidebar").style.width = "0";
+        document.getElementById("mySidebar").style.width = "0";
+        temp = 0;
     }
 
+    
+   
     jQuery(document).ready(($) => {
         $('.quantity').on('click', '.plus, .minus', function (e) {
             let $form = $(this).closest('form.quantity');
@@ -350,24 +348,18 @@
                     $input.val(val - 1).change();
                 }
             }
-
-            // Cập nhật thành tiền
-            let newTotal = $input.val() * price;
-            updateTotal();
         });
-
-        function updateTotal() {
-            let total = 0;
-            $('.pd03').each(function () {
-                let $form = $(this).find('form.quantity');
-                let quantity = parseInt($form.find('input.qty').val());
-                let price = parseInt($(this).find('.tien').text().replace(/\D/g, ''));
-                total += quantity * price;
-            });
-
-            $('#result').text(total.toLocaleString('vi-VN'));
-        }
     });
+
+    function SaveItemCart(id){
+    $.ajax({
+            url: 'Save-Cart/' + id+'/' +$('#quanty-item-' + id).val(),
+            type: 'GET',
+        }).done(function(response){
+            RenderCart(response);
+            alertify.success('Đã thêm sản phẩm thành công');
+        });
+    }
 
     function deleteProduct(productIndex) {
         var divTables = document.getElementsByClassName('show-product-close');
@@ -393,7 +385,5 @@
         }
     }
 
-    
-        
-
 </script>
+

@@ -9,8 +9,8 @@
     <link rel="stylesheet" type="text/css" href="{{ asset('assets/css/lightslider/lightslider.css')}}">
     <script type="text/javascript" src="{{ asset('assets/js/lightslider/Jquery.js')}}"></script>
     <script type="text/javascript" src="{{ asset('assets/js/lightslider/lightslider.js') }}"></script>
-    {{-- <script src="https://code.jquery.com/jquery-migrate-3.4.1.js" integrity="sha256-CfQXwuZDtzbBnpa5nhZmga8QAumxkrhOToWweU52T38=" crossorigin="anonymous"></script> --}}
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-migrate-3.4.1.js" integrity="sha256-CfQXwuZDtzbBnpa5nhZmga8QAumxkrhOToWweU52T38=" crossorigin="anonymous"></script>
+    {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script> --}}
     <title>Home</title>
 </head>
 <body>
@@ -74,7 +74,7 @@
                     <p class="product_ref_kind">{{ $productItem->brName }}</p>
                     <span class="product_ref_name">{{ $productItem->pdName }}</span>
                     <div class="product_font_price">
-                        <b>{{ $productItem->sellprice }}</b>
+                        <b>{{ number_format($productItem->sellprice) }} đ</b>
                         <del class="product_font_price_discount">2.499.000 đ</del>
                     </div>
                 </div>
@@ -108,7 +108,7 @@
                     <p class="product_ref_kind">{{ $productItem->brName }}</p>
                     <span class="product_ref_name">{{ $productItem->pdName }}</span>
                     <div class="product_font_price">
-                        <b>{{ $productItem->sellprice }}</b>
+                        <b>{{ number_format($productItem->sellprice) }} đ</b>
                         <del class="product_font_price_discount">2.499.000 đ</del>
                     </div>
                 </div>
@@ -201,55 +201,44 @@
 
     <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
-    <!-- Default theme -->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
-    <!-- Semantic UI theme -->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
-    <!-- Bootstrap theme -->
-    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
+    
 
     <script>
         function AddCart(id) {
     // Get the CSRF token from the meta tag in the HTML
-    var csrfToken = $('meta[name="csrf-token"]').attr('content');
+        var csrfToken = $('meta[name="csrf-token"]').attr('content');
 
-    // Include the CSRF token in the AJAX request headers
-    $.ajax({
-        url: 'Add-Cart/' + id,
-        type: 'POST',
-        headers: {
-            'X-CSRF-TOKEN': csrfToken
-        }
-    })
-    .done(function (response) {
-        // Check if the response contains a redirect URL
-        if (response.redirect) {
-            window.location.href = response.redirect;
-        } else {
-            // Process the response as needed
-            // For example, you can update the cart view or show a success message
-            // Here, I assume that your RenderCart function exists
-            RenderCart(response);
-            alertify.success('Đã thêm giỏ hàng thành công');
-        }
-    })
-    .fail(function (xhr, status, error) {
-        // Handle AJAX request failure
-        console.error(error);
+        // Include the CSRF token in the AJAX request headers
+        $.ajax({
+            url: 'Add-Cart/' + id,
+            type: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': csrfToken
+            }
+        })
+        .done(function (response) {
+            // Check if the response contains a redirect URL
+            if (response.redirect) {
+                window.location.href = response.redirect;
+            } else {
+                RenderCart(response, id);
+                alertify.success('Đã thêm giỏ hàng thành công');
+            }
+        })
+        .fail(function (xhr, status, error) {
+            // Handle AJAX request failure
+            console.error(error);
 
-        // Check if the response status is 401 (Unauthorized)
-        if (xhr.status === 401) {
-            // Redirect to the login page
-            window.location.href = '/login';
-        }
-    });
-}
-
-
+            // Check if the response status is 401 (Unauthorized)
+            if (xhr.status === 401) {
+                // Redirect to the login page
+                window.location.href = '/login';
+            }
+        });
+    }
         
         $("#changeItemCart").on("click", ".si-close", function(){
+            
             $.ajax({
                 url: 'Delete-Cart/' + $(this).data("id"),
                 type: 'GET',
@@ -257,13 +246,24 @@
                 RenderCart(response);
                 alertify.success('Đã xoá giỏ hàng thành công');
             });
-            
         });
 
         function RenderCart(response){
             $("#changeItemCart").empty();
-            $("#changeItemCart").html(response); 
+            $("#changeItemCart").append(response);
+            if(temp == 1){
+                openNav();
+            }
         }
+        function RenderCart(response , id){
+            $("#changeItemCart").empty();
+            $("#changeItemCart").append(response);
+            if(temp == 1){
+                openNav();
+            }
+            
+        }
+
     </script>
 
     <script>
