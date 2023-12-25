@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="{{ asset('assets/css/Admin/order/orderdetail.css')}}">
 @extends('layouts.admin.sidebar')
 @section('content')
     @if (session('msg'))

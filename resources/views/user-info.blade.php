@@ -175,9 +175,23 @@
                                 </div>
                             </div>
                             <div class="button-contact">
+                                {{-- rgb(22, 178, 134) --}}
                                 <div class="button-area">
-                                    <button onclick="test({{ $order->id_order }}_{{ $order->id_product }})" class="button-contact1">Yêu cầu Trả hàng/Hoàn tiền</button>
-                                    <button class="button-contact2">Đã nhận được hàng</button>
+                                    @if($order->status=='1')
+                                        <form method="POST" action={{route('user.order.updateStatus')}}>
+                                            @csrf
+                                            <input type="hidden" name="order_id" value="{{$order->id_order}}" />
+                                            <div class="buttons"><button type="submit" class="button-contact2" style="background-color: rgb(194, 45, 45);">Yêu cầu huỷ đơn hàng</button></div>
+                                        </form>
+                                        {{-- <button class="button-contact1" style="border-color: rgb(134, 134, 134); color: rgb(134, 134, 134);">Yêu cầu Trả hàng/Hoàn tiền</button> --}}
+                                        {{-- <button class="button-contact1" style="border-color: rgb(134, 134, 134); color: rgb(134, 134, 134);">Yêu cầu Trả hàng/Hoàn tiền</button> --}}
+                                    @elseif($order->status=='2')
+                                        <p style="color: rgb(22, 178, 134);">Đơn hàng đang vận chuyển</p>
+                                    @elseif($order->status=='3')
+                                        <p style="color: rgb(22, 178, 134);">Đơn hàng được giao thành công</p>
+                                    @elseif($order->status=='4')
+                                        <p style="color: rgb(22, 178, 134);">Đơn hàng bị huỷ</p>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -186,6 +200,7 @@
             @endforeach
             <script>
                 function test(id){
+                    // onclick="test({{ $order->id_order }}_{{ $order->id_product }})"
                     console.log(id);
                 }
             </script>

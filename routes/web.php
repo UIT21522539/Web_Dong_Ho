@@ -136,18 +136,16 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/user-info/{id}', [AuthenticatedSessionController::class, 'addUser'])->name('updateUserInfo');
     Route::post('/logout', [AuthenticatedSessionController::class, "logout"])->name('user.post.logout');
     Route::get('/order', [CustomerController::class, "getOrderList"])->name('user.orders');
-    
+
+    Route::post('/customer-update-order', [CustomerController::class, "updateStatusOrder"])->name('user.order.updateStatus');
+
     Route::get('/profile', [CustomerController::class, "getUserProfile"])->name('user.profile');
     Route::post('/profile', [CustomerController::class, "updateUserProfile"])->name('user.update.profile');
     Route::post('/cart', [CartController::class, "addToCart"])->name('addToCart');
     
-    
-
 });
 
 
 Route::post('/thanhtoan', [ThanhToanController::class, 'paymentProcessing']);
-
-
 
 require __DIR__.'/auth.php';

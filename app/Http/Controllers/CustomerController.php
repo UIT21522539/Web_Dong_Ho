@@ -63,6 +63,24 @@ class CustomerController extends Controller
 
     }
 
+    public function updateStatusOrder (Request $request) {
+        dd(session('user_session')->id_user);
+        $userId = session('user_session')->id_user;
+
+        $order = Order::where([
+            ['id_order', $request->order_id],
+            ['id_user', $userId]
+        ])->first();
+
+        if( $order){
+            $order->status = 4;
+            $order->save();
+    
+            return redirect()->back()->with('success', 'Huỷ đơn hàng #'.$order->order_id.' thành công');
+        }
+        return redirect()->back()->with('error', "Huỷ đơn hàng thất bại");
+    }
+
     // public function getOrderList () {
 
     //     $user = session('user_session');
