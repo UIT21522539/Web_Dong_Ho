@@ -178,19 +178,22 @@
                                 {{-- rgb(22, 178, 134) --}}
                                 <div class="button-area">
                                     @if($order->status=='1')
-                                        <form method="POST" action={{route('user.order.updateStatus')}}>
+                                        {{-- <form method="POST" action={{route('user.order.updateStatus')}}> --}}
+                                        <form method="POST" action="{{ route('user.order.updateStatus',['id'=>$user->id_user]) }}">
                                             @csrf
                                             <input type="hidden" name="order_id" value="{{$order->id_order}}" />
-                                            <div class="buttons"><button type="submit" class="button-contact2" style="background-color: rgb(194, 45, 45);">Yêu cầu huỷ đơn hàng</button></div>
+                                            <button type="submit" class="button-contact2" style="background-color: rgb(194, 45, 45);">Yêu cầu huỷ đơn hàng</button>
                                         </form>
-                                        {{-- <button class="button-contact1" style="border-color: rgb(134, 134, 134); color: rgb(134, 134, 134);">Yêu cầu Trả hàng/Hoàn tiền</button> --}}
-                                        {{-- <button class="button-contact1" style="border-color: rgb(134, 134, 134); color: rgb(134, 134, 134);">Yêu cầu Trả hàng/Hoàn tiền</button> --}}
                                     @elseif($order->status=='2')
-                                        <p style="color: rgb(22, 178, 134);">Đơn hàng đang vận chuyển</p>
+                                        <form method="POST" action="{{ route('user.order.updateStatus',['id'=>$user->id_user]) }}">
+                                            @csrf
+                                            <input type="hidden" name="order_id" value="{{$order->id_order}}" />
+                                            <button type="submit" class="button-contact2" style="background-color: rgb(22, 178, 134);">Đã nhận được hàng</button>
+                                        </form>
                                     @elseif($order->status=='3')
                                         <p style="color: rgb(22, 178, 134);">Đơn hàng được giao thành công</p>
                                     @elseif($order->status=='4')
-                                        <p style="color: rgb(22, 178, 134);">Đơn hàng bị huỷ</p>
+                                        <p style="color: rgb(0, 0, 0);">Đơn hàng đã bị huỷ</p>
                                     @endif
                                 </div>
                             </div>

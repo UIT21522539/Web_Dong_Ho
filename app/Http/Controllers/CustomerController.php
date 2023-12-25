@@ -64,12 +64,12 @@ class CustomerController extends Controller
     }
 
     public function updateStatusOrder (Request $request) {
-        dd(session('user_session')->id_user);
-        $userId = session('user_session')->id_user;
+    
+        $user = session('user_session');
 
         $order = Order::where([
             ['id_order', $request->order_id],
-            ['id_user', $userId]
+            ['id_user', $user->id_user]
         ])->first();
 
         if( $order){

@@ -257,6 +257,7 @@ td:last-child {
   }
   .modal-content-info .button-contact .button-contact2{
     color: white;
+    width: 200px;
     /* border-color: rgb(22, 178, 134); */
     border:none;
   }

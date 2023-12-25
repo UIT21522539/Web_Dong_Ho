@@ -114,5 +114,25 @@ class AuthenticatedSessionController extends Controller
 
         return back();
     }
+
+    public function updateStatusOrder (Request $request) {
+    
+        $id_user = $request->id;
+
+        $order = Order::where([
+            ['id_order', $request->order_id],
+            ['id_user',$id_user]
+        ])->first();
+
+        if($order->status == '1'){
+            $order->status = 4;
+        }
+        if($order->status == '2'){
+            $order->status = 3;
+        }
+
+        $order->save();
+        return redirect()->back();
+    }
     
 }

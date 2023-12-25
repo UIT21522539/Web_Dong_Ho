@@ -134,13 +134,17 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/Delete-Cart/{id}', [CartController::class, 'DeleteItemCart']);
     Route::get('/user-info', [AuthenticatedSessionController::class, "userInfo"])->name('user.info');
     Route::post('/user-info/{id}', [AuthenticatedSessionController::class, 'addUser'])->name('updateUserInfo');
+
+    Route::post('/user-info2/{id}', [AuthenticatedSessionController::class, "updateStatusOrder"])->name('user.order.updateStatus');
+
     Route::post('/logout', [AuthenticatedSessionController::class, "logout"])->name('user.post.logout');
     Route::get('/order', [CustomerController::class, "getOrderList"])->name('user.orders');
 
-    Route::post('/customer-update-order', [CustomerController::class, "updateStatusOrder"])->name('user.order.updateStatus');
+    
 
     Route::get('/profile', [CustomerController::class, "getUserProfile"])->name('user.profile');
     Route::post('/profile', [CustomerController::class, "updateUserProfile"])->name('user.update.profile');
+    
     Route::post('/cart', [CartController::class, "addToCart"])->name('addToCart');
     
 });
