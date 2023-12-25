@@ -6,14 +6,14 @@
         <img class="img01"width="62px" src="{{ asset('assets/img/Admin/dashboard/newspaper.png')}}">
             <div class="content-block">
                 <h3>Doanh thu trong ngày</h3>
-                <h3 class="info-content">2,000,000 VND</h3>  
+                <h3 class="info-content">{{ $profitDay }} VND</h3>  
             </div>
         </div>
         <div class="bg-block">
             <img class="img02" width="62px" src="{{ asset('assets/img/Admin/dashboard/clipboard.png')}}">
             <div class="content-block">
                 <h3>Doanh thu trong tháng</h3>
-                <h3 class="info-content">50,000,000 VND</h3>
+                <h3 class="info-content">{{ $profitMonth }} VND</h3>
             </div>
         </div>
         <div class="bg-block">
@@ -64,14 +64,7 @@
                                 <td>{{ $item->note }}</td>
                                 <td>
                                     <a href="{{ route('orders.detail',['id'=>$item->id_order]) }}">Detail </a>
-                                </td>
-                                <td>
-                                    <a href="{{ route('orders.update',['id'=>$item->id_order]) }}">Confirm </a>
-                                </td>
-                                <td>
-                                    <a href="{{ route('orders.delete',['id'=>$item->id_order]) }}">Cancel </a>
-                                </td>
-                                
+                                </td>                            
                             </tr>
                         @endforeach 
                     </table>
