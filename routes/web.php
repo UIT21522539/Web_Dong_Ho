@@ -37,7 +37,7 @@ Route::prefix('admin')->group(function () {
         //Thông tin chi tiết đơn hàng
     Route::get('/orders/detail/{id}', [OrderController::class, 'orderDetail'])->name('orders.detail');
         //Sửa trạng thái sang xác nhận
-    Route::get('/orders/edit/{id}', [OrderController::class, 'updateOrder'])->name('orders.update');
+    Route::post('/orders/edit/{id}', [OrderController::class, 'updateOrder'])->name('orders.update.detail');
         //Sửa trạng thái sang đã hủy
     Route::get('/orders/delete/{id}', [OrderController::class, 'deleteOrder'])->name('orders.delete');
     
@@ -136,6 +136,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/user-info/{id}', [AuthenticatedSessionController::class, 'addUser'])->name('updateUserInfo');
     Route::post('/logout', [AuthenticatedSessionController::class, "logout"])->name('user.post.logout');
     Route::get('/order', [CustomerController::class, "getOrderList"])->name('user.orders');
+    
     Route::get('/profile', [CustomerController::class, "getUserProfile"])->name('user.profile');
     Route::post('/profile', [CustomerController::class, "updateUserProfile"])->name('user.update.profile');
     Route::post('/cart', [CartController::class, "addToCart"])->name('addToCart');
