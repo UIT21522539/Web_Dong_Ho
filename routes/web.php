@@ -131,7 +131,7 @@ Route::post('/ct_thanhtoan', [CT_ThanhToanController::class, 'paymentProcessed']
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/Save-Cart/{id}/{quanty}', [CartController::class, 'SaveItemCart']);
     Route::post('/Add-Cart/{id}', [CartController::class, 'AddCart']);
-    Route::get('/Delete-Cart/{id}', [CartController::class, 'DeleteItemCart']);
+    Route::get('/Delete-Cart/{id}/{type}', [CartController::class, 'DeleteItemCart']);
     Route::get('/user-info', [AuthenticatedSessionController::class, "userInfo"])->name('user.info');
     Route::post('/user-info/{id}', [AuthenticatedSessionController::class, 'addUser'])->name('updateUserInfo');
 

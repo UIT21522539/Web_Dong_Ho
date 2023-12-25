@@ -66,7 +66,7 @@ class CartController extends Controller
         return view('/layouts/cart');
     }
 
-    public function DeleteItemCart(Request $req, $id){
+    public function DeleteItemCart(Request $req, $id, $type){
         
         $oldCart = session('Cart') ? session('Cart') : null;
         $newCart = new Cart($oldCart);
@@ -81,8 +81,12 @@ class CartController extends Controller
 
         $this->deleteProductFromDatabase($req, $id);
 
-        return view('/layouts/cart');
-
+        if($type == 1){
+            return view('/layouts/cart');
+        }
+        else{
+            return view('/layouts/paycart');
+        }
     }
     private function deleteProductFromDatabase($req, $id) {
         $user_id = auth()->user()->id_user; 

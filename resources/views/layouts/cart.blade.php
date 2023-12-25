@@ -81,7 +81,7 @@
 
     $("#changeItemCart").on("click", ".si-close", function(){
 
-    var url = "{{ url('/Delete-Cart/') }}/" + $(this).data('id');
+    var url = "{{ url('/Delete-Cart/') }}/" + $(this).data('id') +'/'+ 1;
 
         $.ajax({
             url: url,
