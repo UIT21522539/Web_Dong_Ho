@@ -44,9 +44,41 @@ class Order extends Model
     public function getOrderByIdUser( $id ){
         return DB::select("SELECT * FROM `order` WHERE id_user = ?",[$id]);
     }
+    public function getProfitByDay($day)
+    {
+        $result = DB::select("SELECT SUM(total_order) AS total_profit FROM `order` WHERE day = ?", [$day]);
+
+        // Kiểm tra xem có kết quả không
+        if (!empty($result)) {
+            // Truy xuất trực tiếp giá trị từ đối tượng stdClass
+            $totalProfit = $result[0]->total_profit;
+
+            // Sử dụng $totalProfit trong logic của bạn
+            return $totalProfit;
+        }
+
+        // Trả về 0 hoặc giá trị mặc định khác nếu không có kết quả
+        return 0;
+    }
+
+    public function getProfitByMonth( $month ){
+        $result = DB::select("SELECT SUM(total_order) AS total_profit FROM `order` WHERE MONTH(day) = ?", [$month]);
+
+        // Kiểm tra xem có kết quả không
+        if (!empty($result)) {
+            // Truy xuất trực tiếp giá trị từ đối tượng stdClass
+            $totalProfit = $result[0]->total_profit;
+
+            // Sử dụng $totalProfit trong logic của bạn
+            return $totalProfit;
+        }
+
+        // Trả về 0 hoặc giá trị mặc định khác nếu không có kết quả
+        return 0;
+    }
 
     public function getOrderByStatus(){
-        return DB::select("SELECT * FROM `order` WHERE status = 'Waiting'");
+        return DB::select("SELECT * FROM `order` WHERE status = '1'");
     }
     
     public function updateOrder($id){
