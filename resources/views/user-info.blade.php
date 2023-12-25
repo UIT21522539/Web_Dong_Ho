@@ -5,8 +5,9 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    
+    <meta name="csrf-token" content="{{ csrf_token() }}"> 
     <link rel="stylesheet" href="{{ asset('assets/css/User/user-info.css') }}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
     @extends('layouts.app')
@@ -55,16 +56,16 @@
                                 <td>Tình trạng</td>
                             </tr>
                             @foreach($orderList as $order)
-                            <tr class="order-info" data-modal="modalOne">
+                            <tr class="order-info" data-modal="{{ $order->id_order }}_{{ $order->id_product }}">
                                 <td>#{{ $order-> id_order}}</td>
                                 <td style="display: flex">
                                     <img width="84px" height="84px" src="{{ $order->img_main }}">
                                     <div>
-                                        <p style="margin-bottom: 100%">HEINZ</p>
-                                        <p>40MM</p>
+                                        <p style="margin-bottom: 10%">Name: {{ $order->name }}</p>
+                                        <p>Qty: {{ $order->qty }}</p>
                                     </div>
                                 </td>
-                                <td>{{ $order-> total_order}} ₫</td>
+                                <td>{{  number_format($order-> total_item)}} ₫</td>
                                 @if($order->status=='1')
                                 <td>
                                     <input class="pretending" type="button" value="Chờ lấy hàng">
@@ -83,13 +84,129 @@
                                 </td>
                                 @endif
                             </tr>
-                            @endforeach
-                        
-                            
+                            @endforeach   
                     </table>
                 </form>
             </div>
-
+            @foreach($orderList as $order)
+                <div id="{{ $order->id_order }}_{{ $order->id_product }}" class="modal">
+                    <div class="modal-content">
+                        <div class="modal-content-info">
+                            <div class="information">
+                                <div class="information-text">
+                                    @if($order->status == '1')
+                                        <p>Người bán đang chuẩn bị đơn hàng</p>
+                                        <p>Đơn hàng của bạn sẽ được chuẩn bị và sẽ chuyển đi trước <br> <span>{{ $order->day }}</span></p>
+                                        <img width="74px" height="74px" src="{{ asset('assets/img/User/user-info/delivery-truck.png') }}">
+                                    @elseif($order->status == '2')
+                                    <td>
+                                        <p>Đơn hàng đang được vận chuyển</p>
+                                        <p>Đơn hàng của bạn đang được vận chuyển và sẽ chuyển đi trước <br> <span>{{ $order->day }}</span></p>
+                                        <img width="74px" height="74px" src="{{ asset('assets/img/User/user-info/delivery-truck.png') }}">
+                                    </td>
+                                    @elseif($order->status == '3')
+                                    <td>
+                                        <p>Đơn hàng đã được giao thành công</p>
+                                        <p>Cảm ơn bạn đã mua hàng sản phẩm bên chúng tôi</span></p>
+                                        <img width="74px" height="74px" src="{{ asset('assets/img/User/user-info/delivery-truck.png') }}">
+                                    </td>
+                                    @elseif($order->status == '4')
+                                    <td>
+                                        <p>Đơn hàng đã bị huỷ bỏ</p>
+                                        <p>Cảm ơn bạn đã sử dụng dịch vụ chúng tôi</span></p>
+                                        <img width="74px" height="74px" src="{{ asset('assets/img/User/user-info/delivery-truck.png') }}">
+                                    </td>
+                                    @endif
+                                </div>
+                            </div>
+                            <div class="delivery-info">
+                                <div style="display: flex">
+                                    <img width="26px" height="26px"src="{{ asset('assets/img/User/user-info/delivery-van.png') }}">
+                                    <div class="info-content">
+                                        <p>Thông tin vận chuyển</p>
+                                        <p>Mã đơn hàng: <span>#{{ $order->id_order }}</span></p>
+                                        @if($order->status=='1')
+                                            <p style="color: rgb(22, 178, 134);">Đơn hàng đang chờ được lấy</p>
+                                        @elseif($order->status=='2')
+                                            <p style="color: rgb(22, 178, 134);">Đơn hàng đang vận chuyển</p>
+                                        @elseif($order->status=='3')
+                                            <p style="color: rgb(22, 178, 134);">Đơn hàng được giao thành công</p>
+                                        @elseif($order->status=='4')
+                                            <p style="color: rgb(22, 178, 134);">Đơn hàng bị huỷ</p>
+                                        @endif
+                                    </div>  
+                                </div>
+                            </div>
+                            <div class="location-info">
+                                <div style="display: flex">
+                                    <img width="20px" height="20px" src="{{ asset('assets/img/User/user-info/location.png') }}">
+                                    <div class="info-content">
+                                        <p>{{ $user->first_name }} {{ $user->last_name }}</p>
+                                        <p>{{ $user->phone }}</p>
+                                        <p>{{ $user->location}}</p>
+                                    </div>  
+                                </div>
+                            </div>
+                            <div class="product-info">
+                                <div style="display: flex; align-content: center">
+                                    <img width="84px" height="84px" src="{{ $order->img_main}}">
+                                    <div class="info-content">
+                                        <p>{{ $order->name}}</p>
+                                        <div style="display: flex">
+                                            <div >
+                                                <p style="margin-bottom: 12%">{{ $order->size}}</p>
+                                                <p class="sevendays">7 ngày trả hàng</p>
+                                            </div>
+                                            <div style="margin-left: 40%">
+                                                <p style="margin-bottom: 12%">x {{ $order->qty}}</p>
+                                                <p>{{number_format($order-> total_item)}} ₫</p>
+                                            </div>
+                                        </div>
+                                    </div>  
+                                </div>
+                            </div>
+                            <div class="payment-info">
+                                <div style="display: flex">
+                                    <img width="20px" height="20px" src="{{ asset('assets/img/User/user-info/payment.png') }}">
+                                    <div class="info-content">
+                                        <p style="font-weight: 500">Phương thức thanh toán</p>
+                                        <p class="payment-type">Thanh toán khi nhận hàng</p>
+                                    </div>  
+                                </div>
+                            </div>
+                            <div class="button-contact">
+                                {{-- rgb(22, 178, 134) --}}
+                                <div class="button-area">
+                                    @if($order->status=='1')
+                                        {{-- <form method="POST" action={{route('user.order.updateStatus')}}> --}}
+                                        <form method="POST" action="{{ route('user.order.updateStatus',['id'=>$user->id_user]) }}">
+                                            @csrf
+                                            <input type="hidden" name="order_id" value="{{$order->id_order}}" />
+                                            <button type="submit" class="button-contact2" style="background-color: rgb(194, 45, 45);">Yêu cầu huỷ đơn hàng</button>
+                                        </form>
+                                    @elseif($order->status=='2')
+                                        <form method="POST" action="{{ route('user.order.updateStatus',['id'=>$user->id_user]) }}">
+                                            @csrf
+                                            <input type="hidden" name="order_id" value="{{$order->id_order}}" />
+                                            <button type="submit" class="button-contact2" style="background-color: rgb(22, 178, 134);">Đã nhận được hàng</button>
+                                        </form>
+                                    @elseif($order->status=='3')
+                                        <p style="color: rgb(22, 178, 134);">Đơn hàng được giao thành công</p>
+                                    @elseif($order->status=='4')
+                                        <p style="color: rgb(0, 0, 0);">Đơn hàng đã bị huỷ</p>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+            <script>
+                function test(id){
+                    // onclick="test({{ $order->id_order }}_{{ $order->id_product }})"
+                    console.log(id);
+                }
+            </script>
             <div id="user" class="tabcontent">
                 <button onclick="editUserInfo() ">Sửa</button>
                 <h2 style="margin-bottom: 6%;">Thông tin của tôi</h2>
@@ -169,72 +286,7 @@
             </div>
         </div>
     </div>
-    <div id="modalOne" class="modal">
-        <div class="modal-content">
-            <div class="modal-content-info">
-                <div class="information">
-                    <div class="information-text">
-                        <p>Người bán đang chuẩn bị đơn hàng</p>
-                        <p>Đơn hàng của bạn sẽ được chuẩn bị và chuyển đi trước <br> <span>15-12-2023</span></p>
-                    </div>
-                    <img width="74px" height="74px" src="{{ asset('assets/img/User/user-info/delivery-truck.png') }}">
-                </div>
-                <div class="delivery-info">
-                    <div style="display: flex">
-                        <img width="26px" height="26px"src="{{ asset('assets/img/User/user-info/delivery-van.png') }}">
-                        <div class="info-content">
-                            <p>Thông tin vận chuyển</p>
-                            <p>Mã đơn hàng: <span>#12345</span></p>
-                            <p style="color: rgb(22, 178, 134);">Đơn hàng đang chờ được lấy</p>
-                        </div>  
-                    </div>
-                </div>
-                <div class="location-info">
-                    <div style="display: flex">
-                        <img width="20px" height="20px" src="{{ asset('assets/img/User/user-info/location.png') }}">
-                        <div class="info-content">
-                            <p>Nguyễn Sơn Hà</p>
-                            <p>0367306824</p>
-                            <p>Tạ Quang Bửu, Ký túc xá Khu A, Đại học quốc gia TP.HCM</p>
-                        </div>  
-                    </div>
-                </div>
-                <div class="product-info">
-                    <div style="display: flex; align-content: center">
-                        <img width="84px" height="84px" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fcache%2Fd96eb53c23516f6ca600411b8495131f%2Fh%2Fe%2Fheinz_1.png&w=1920&q=75">
-                        <div class="info-content">
-                            <p>HEINZ</p>
-                            <div style="display: flex">
-                                <div >
-                                    <p style="margin-bottom: 12%">40MM</p>
-                                    <p class="sevendays">7 ngày trả hàng</p>
-                                </div>
-                                <div style="margin-left: 40%">
-                                    <p style="margin-bottom: 12%">x1</p>
-                                    <p>2.469.000 ₫</p>
-                                </div>
-                            </div>
-                        </div>  
-                    </div>
-                </div>
-                <div class="payment-info">
-                    <div style="display: flex">
-                        <img width="20px" height="20px" src="{{ asset('assets/img/User/user-info/payment.png') }}">
-                        <div class="info-content">
-                            <p style="font-weight: 500">Phương thức thanh toán</p>
-                            <p class="payment-type">Thanh toán khi nhận hàng</p>
-                        </div>  
-                    </div>
-                </div>
-                <div class="button-contact">
-                    <div class="button-area">
-                        <button class="button-contact1">Yêu cầu Trả hàng/Hoàn tiền</button>
-                        <button class="button-contact2">Đã nhận được hàng</button>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+    
     <script>
         function openCity(evt, cityName) {
           var i, tabcontent, tablinks;
