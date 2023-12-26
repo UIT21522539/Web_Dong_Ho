@@ -47,9 +47,15 @@ class CT_Supplier extends Model
             // Ở đây, chúng ta sẽ chọn giá trị mặc định là 1.
             $idIrToUse = 1;
         }
+        $currentQuantity = DB::table('product')->where('id_product', $productId)->value('qty_store');
+        $newProductQuantity = $currentQuantity + $data['quantity'];
+
+        DB::table('product')
+            ->where('id_product', $productId)
+            ->update(['qty_store' => $newProductQuantity]);
 
         // Thêm bản ghi vào bảng ct_ir
-        return DB::insert('INSERT INTO ct_ir (id_ir, id_product, size, qty, import_price, total_item) VALUES (?, ?, ?, ?, ?, ?);', [$idIrToUse, $productId, $data['size'], $data['quantity'], $data['importPrice'], $data['total']]);
+        return DB::insert('INSERT INTO ct_ir (id_ir, id_product, qty, import_price, total_item) VALUES (?, ?, ?, ?, ?);', [$idIrToUse, $productId, $data['quantity'], $data['importPrice'], $data['total']]);
     }
    
 }
