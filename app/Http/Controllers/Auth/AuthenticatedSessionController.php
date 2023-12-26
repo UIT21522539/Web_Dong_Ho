@@ -98,7 +98,8 @@ class AuthenticatedSessionController extends Controller
         $user = auth()->user();
         $order= new Order();
         $orderList = $order->getOrderByIdUserProduct($user->id_user);
-        return view('user-info', compact('user','orderList'));
+        $orderListA = $order->getOrderByIdUser($user->id_user);
+        return view('user-info', compact('user','orderList', 'orderListA'));
     }
     public function addUser(Request $request){
         // Nhận dữ liệu từ request

@@ -51,21 +51,21 @@
                     <table>
                             <tr height="44px" class="order-tab">
                                 <td>Mã đơn hàng</td>
-                                <td>Đơn hàng</td>
+                                <td>Ngày đặt hàng</td>
                                 <td>Thành tiền</td>
                                 <td>Tình trạng</td>
                             </tr>
-                            @foreach($orderList as $order)
-                            <tr class="order-info" data-modal="{{ $order->id_order }}_{{ $order->id_product }}">
+                            @foreach($orderListA as $order)
+                            <tr class="order-info" data-modal="{{ $order->id_order }}" onclick="test({{ $order->id_order }})">
                                 <td>#{{ $order-> id_order}}</td>
                                 <td style="display: flex">
-                                    <img width="84px" height="84px" src="{{ $order->img_main }}">
+                                    {{-- <img width="84px" height="84px" src="{{ $order->img_main }}"> --}}
                                     <div>
-                                        <p style="margin-bottom: 10%">Name: {{ $order->name }}</p>
-                                        <p>Qty: {{ $order->qty }}</p>
+                                        <p style="margin-bottom: 10%">{{ $order->day}}</p>
+                                        {{-- <p>Qty: {{ $order->qty }}</p> --}}
                                     </div>
                                 </td>
-                                <td>{{  number_format($order-> total_item)}} ₫</td>
+                                <td>{{  number_format($order-> total_order)}} ₫</td>
                                 @if($order->status=='1')
                                 <td>
                                     <input class="pretending" type="button" value="Chờ lấy hàng">
@@ -88,8 +88,8 @@
                     </table>
                 </form>
             </div>
-            @foreach($orderList as $order)
-                <div id="{{ $order->id_order }}_{{ $order->id_product }}" class="modal">
+            @foreach($orderListA as $order)
+                <div id="{{ $order->id_order }}" class="modal">
                     <div class="modal-content">
                         <div class="modal-content-info">
                             <div class="information">
@@ -147,24 +147,29 @@
                                     </div>  
                                 </div>
                             </div>
-                            <div class="product-info">
-                                <div style="display: flex; align-content: center">
-                                    <img width="84px" height="84px" src="{{ $order->img_main}}">
-                                    <div class="info-content">
-                                        <p>{{ $order->name}}</p>
-                                        <div style="display: flex">
-                                            <div >
-                                                {{-- <p style="margin-bottom: 12%">{{ $order->size}}</p> --}}
-                                                <p class="sevendays">7 ngày trả hàng</p>
-                                            </div>
-                                            <div style="margin-left: 40%">
-                                                <p style="margin-bottom: 12%">x {{ $order->qty}}</p>
-                                                <p>{{number_format($order-> total_item)}} ₫</p>
+                            @foreach ($orderList as $item)
+                            @if(($item->id_order) == $order->id_order)
+                                <div class="product-info">
+                                    <div style="display: flex; align-content: center">
+                                        <img width="84px" height="84px" src="{{ $item->img_main }}">
+                                        <div class="info-content">
+                                            <p>{{ $item->name }}</p>
+                                            <div style="display: flex">
+                                                <div>
+                                                    {{-- <p style="margin-bottom: 12%">{{ $order->size}}</p> --}}
+                                                    <p class="sevendays">7 ngày trả hàng</p>
+                                                </div>
+                                                <div style="margin-left: 40%">
+                                                    <p style="margin-bottom: 12%">x {{ $item->qty }}</p>
+                                                    <p>{{ number_format($item->total_item) }} ₫</p>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>  
+                                    </div>
                                 </div>
-                            </div>
+                            @endif
+                        @endforeach
+
                             <div class="payment-info">
                                 <div style="display: flex">
                                     <img width="20px" height="20px" src="{{ asset('assets/img/User/user-info/payment.png') }}">
@@ -203,7 +208,7 @@
             @endforeach
             <script>
                 function test(id){
-                    // onclick="test({{ $order->id_order }}_{{ $order->id_product }})"
+            
                     console.log(id);
                 }
             </script>
