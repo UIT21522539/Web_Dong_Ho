@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use App\Models\User;
 use App\Models\Order;
+use App\Models\Product;
 
 class CustomerController extends Controller
 {
@@ -81,10 +82,11 @@ class CustomerController extends Controller
         return redirect()->back()->with('error', "Huỷ đơn hàng thất bại");
     }
 
-    // public function getOrderList () {
+    public function checkOutFast (Request $request, $id) {
 
-    //     $user = session('user_session');
-
-    //     return view('user-order', ['orders' => $user]);
-    // }
+        $product = new Product();
+        $productDetail = $product->getProduct($id);
+        $productDetail= $productDetail[0];
+        return view('checkoutfast', compact('productDetail'));
+    }
 }

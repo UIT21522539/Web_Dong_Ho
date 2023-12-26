@@ -148,9 +148,18 @@ Route::group(['middleware' => 'auth'], function () {
     
     Route::post('/cart', [CartController::class, "addToCart"])->name('addToCart');
     
+    Route::get('/checkout', function () {
+        return view('checkout');
+    });
+    Route::get('/checkoutdone', function () {
+        return view('checkoutdone');
+    });
+    
+Route::post('/thanhtoan', [ThanhToanController::class, 'paymentProcessing'])->name('paymentProcessing');
+Route::post('/thanhtoanfast/{id}', [ThanhToanController::class, 'paymentProcessingFast'])->name('paymentProcessingFast');
+    Route::get('/checkout/{id}', [CustomerController::class, "checkOutFast"])->name('user.checkout');
 });
 
 
-Route::post('/thanhtoan', [ThanhToanController::class, 'paymentProcessing'])->name('paymentProcessing');;
 
 require __DIR__.'/auth.php';
