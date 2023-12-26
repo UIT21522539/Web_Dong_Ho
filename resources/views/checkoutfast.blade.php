@@ -29,7 +29,7 @@
             </div>
 
             <div class="customer-info-input">
-                <form action='/thanhtoan' method="POST">
+                <form action='{{ route('paymentProcessingFast',['id'=> $productDetail->id_product]) }}' method="POST">
                     @csrf
                     <table>
                         <tr>
@@ -71,10 +71,10 @@
                             <td colspan="2"><p class="info-remind">Phương thức vận chuyển là <span style="color:rgba(0, 188, 38, 0.645)">FREESHIP</span> với đơn hàng từ 700.000đ</p></td>
                         </tr>
                         <tr>
-                            @if(Session::has("Cart") != null)
+                            {{-- @if(Session::has("Cart") != null)
                             <input type="hidden" name="total_momo" value="{{(Session::get('Cart')->totalPrice) }}">
                             <input type="hidden" name="id_user" value="{{ $user->id_user }}">
-                            @endif
+                            @endif --}}
                             <td colspan="2" ><input name="payUrl" style="width: 40%" type="submit" value="THANH TOÁN MOMO"></td>
                         </tr>
                         <tr>
@@ -86,7 +86,7 @@
         </div>
 
         <div class="order-bg" id="changeItemCart2">
-            @if(Session::has("Cart") != null)
+            {{-- @if(Session::has("Cart") != null) --}}
             <div class="order">
                 <div class="order-header">
                     <h1>ĐƠN HÀNG</h1> 
@@ -97,45 +97,43 @@
                 </div>
                 @php
                     $Price = 0;
-                    
                 @endphp
-                @foreach (Session::get('Cart')->products as $item)
-                    <div class="show-product-close" id="{{$item['productInfo']->id_product }}">
-                        {{-- <script>
-                            deleteProduct({{$item['productInfo']->id_product }});
-                        </script> --}}
-                        
+                {{-- @foreach (Session::get('Cart')->products as $item) --}}
+                    <div class="show-product-close" id="{{$productDetail->id_product }}">
+                        <script>
+                            deleteProduct({{$productDetail->id_product }});
+                        </script>
                     </div>
                     <div class="order-product">
                         <div>
-                            <button onclick="deleteProduct({{$item['productInfo']->id_product }})" style="display: none;" class="showBTN">×</button>
+                            <button onclick="deleteProduct({{$productDetail->id_product }})" style="display: none;" class="showBTN">×</button>
                         </div>
-                        <img width="84px" height="84px" src="{{ $item['productInfo']->img_main }}">
+                        <img width="84px" height="84px" src="{{ $productDetail->img_main }}">
                         <div class="pd02">
-                            <p style="margin-bottom: 3%;">{{ $item['productInfo']->name }}</p>
-                            <p style="margin-top: 10%">Qty:{{ $item["quanty"] }}</p>
+                            <p style="margin-bottom: 3%;">{{ $productDetail->name }}</p>
+                            <p style="margin-top: 10%">Qty:1</p>
                         </div>
                         <p style="margin-top: 2%; font-size: 18px; position: absolute; margin-left: 500px">
-                            @if($item['productInfo']->isdiscount == '1')
+                            @if($productDetail->isdiscount == '1')
                                 @php
-                                    $discountedPrice =($item['productInfo']->sellprice - $item['productInfo']->sellprice * ($item['productInfo']->discount / 100))*$item["quanty"] ;
+                                    $discountedPrice =($productDetail->sellprice - $productDetail->sellprice * ($productDetail->discount / 100))*1 ;
                                     $finalPrice = number_format($discountedPrice) . ' đ';
-                                    $Price =$Price+ $discountedPrice;
+                                    $Price= $discountedPrice;
                                 @endphp
                                 {{-- <b>{{ $finalPrice }}</b> --}}
                                 <b>{{ $finalPrice }} ₫</b>
                                 {{-- <p class="tien">{{ $finalPrice }}</p> --}}
                                 
                             @else
-                                <b>{{ number_format($item['productInfo']->sellprice * $item["quanty"]) }} ₫</b>
+                                <b>{{ number_format($productDetail->sellprice * 1) }} ₫</b>
                                 @php
-                                $Price = $Price + $item['productInfo']->sellprice * $item["quanty"];
+                                $Price = $Price + $productDetail->sellprice * 1;
                                 @endphp
                             @endif
                             
                         </p>
                     </div>
-                @endforeach
+                {{-- @endforeach --}}
                 
                 <hr style="margin-top: 6%; margin-bottom: 5%">
                 <div class="bill">
@@ -161,14 +159,9 @@
                     <p style="font-size: 20px">TỔNG:</p>
                     
                     <p><h1 style="margin-left: 370px">{{ number_format($Price) }} ₫</h1></p>
-                 </div> 
+                 </div>
         </div>
-    @else
-    <script>
-        window.location.replace("{{ url('/') }}");
-    </script>
-    @endif
-
+    {{-- @endif --}}
             
     </div>
     </div>
@@ -180,43 +173,6 @@
                 divTables[i].style.display = (divTables[i].style.display === 'none') ? '' : 'none';
         }
         }
-
-        function AddCart(id) {
-    // Get the CSRF token from the meta tag in the HTML
-        var csrfToken = $('meta[name="csrf-token"]').attr('content');
-
-        // var url = 'Add-Cart/' + id;
-        var url = "{{ url('/Add-Cart') }}/" + id;
-        console.log( "{{ url('/Add-Cart') }}/" + id);
-
-        // Include the CSRF token in the AJAX request headers
-        $.ajax({
-            url: url,
-            type: 'POST',
-            headers: {
-                'X-CSRF-TOKEN': csrfToken
-            }
-        })
-        .done(function (response) {
-            // Check if the response contains a redirect URL
-            if (response.redirect) {
-                window.location.href = response.redirect;
-            } else {
-                RenderCart(response, id);
-                alertify.success('Đã thêm giỏ hàng thành công');
-            }
-        })
-        .fail(function (xhr, status, error) {
-            // Handle AJAX request failure
-            console.error(error);
-
-            // Check if the response status is 401 (Unauthorized)
-            if (xhr.status === 401) {
-                // Redirect to the login page
-                window.location.href = '/login';
-            }
-        });
-    }
 
         function deleteProduct(productIndex) {
             var divTables = document.getElementById(productIndex);
@@ -240,23 +196,21 @@
 
         $(document).on("click", ".bt02", function() {
             // console.log("{{ url('/Delete-Cart/') }}/" + $(this).data('id') +'/'+ 2) ;
-           
-            var url = "{{ url('/Delete-Cart/') }}/" + $(this).data('id') +'/'+ 2;
+            // var url = "{{ url('/Delete-Cart/') }}/" + $(this).data('id') +'/'+ 2;
 
-            $.ajax({
-                url: url,
-                type: 'GET',
-            }).done(function(response){
-                RenderCart(response);
-                // alertify.success('Đã xoá giỏ hàng thành công');
-            });
+            // $.ajax({
+            //     url: url,
+            //     type: 'GET',
+            // }).done(function(response){
+            //     RenderCart(response);
+            //     alertify.success('Đã xoá giỏ hàng thành công');
+            // });
+            window.location.href = "{{ url('/') }}";
         });
 
         function RenderCart(response){
             $("#changeItemCart2").empty();
             $("#changeItemCart2").append(response);
-            
-            
         }
     </script>
 </body>

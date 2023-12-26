@@ -43,6 +43,7 @@ use App\Http\Controllers\CT_ThanhToanController;
         //Sửa trạng thái sang xác nhận
     Route::post('/orders/edit/{id}', [OrderController::class, 'updateOrder'])->name('orders.update.detail');
     Route::get('/orders/status/{id}', [OrderController::class, 'updateOrderStatus'])->name('orders.update.status');
+    Route::get('/orders/ship/{id}', [OrderController::class, 'updateOrderShip'])->name('orders.ship');
         //Sửa trạng thái sang đã hủy
     Route::get('/orders/delete/{id}', [OrderController::class, 'deleteOrder'])->name('orders.delete');
     
@@ -153,9 +154,18 @@ Route::post('/ct_thanhtoan', [CT_ThanhToanController::class, 'paymentProcessed']
     
     Route::post('/cart', [CartController::class, "addToCart"])->name('addToCart');
     
+    Route::get('/checkout', function () {
+        return view('checkout');
+    });
+    Route::get('/checkoutdone', function () {
+        return view('checkoutdone');
+    });
+    
+Route::post('/thanhtoan', [ThanhToanController::class, 'paymentProcessing'])->name('paymentProcessing');
+Route::post('/thanhtoanfast/{id}', [ThanhToanController::class, 'paymentProcessingFast'])->name('paymentProcessingFast');
+    Route::get('/checkout/{id}', [CustomerController::class, "checkOutFast"])->name('user.checkout');
 });
 
 
-Route::post('/thanhtoan', [ThanhToanController::class, 'paymentProcessing'])->name('paymentProcessing');;
 
 require __DIR__.'/auth.php';

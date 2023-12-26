@@ -13,7 +13,7 @@
         <div class="py-2 bg-green-200 rounded-sm px-4 text-green-800 mb-2"><p>{{ session('success') }}</p></div>
     @endif
     <form method="post" action="{{route('orders.update.detail', $orderDetail->id_order)}}">
-        <input type="hidden" name="user_id" value="{{$orderDetail->id_user}}"/>
+        <input type="hidden" name="user_id" value="{{$orderDetail->id_user}}" >
         <div class="mb-3">
             <label for="first_name" class="form-label">First Name</label>
             <input type="text" name="first_name" value="{{ old('first_name') ?? $orderDetail->first_name }}" class="form-control" id="first_name" aria-describedby="emailHelp" readonly>
@@ -56,12 +56,12 @@
             <span style="color: red">{{ $message }}</span>
             @enderror
         </div>
-        <div class="mb-3">
+        {{-- <div class="mb-3">
             <label for="status" class="form-label">Status</label>
             <select name="status" id="status">
                 <option value="1" {{old('status') ??  $orderDetail->status === '1' ? 'selected' : ""}}>Chờ xác nhận</option>
                 <option value="2"  {{old('status') ??  $orderDetail->status === "2" ? 'selected' : ""}}>Xác nhận xử lý</option>
-                <option value="3"  {{old('status') ??  $orderDetail->status === '3' ? 'selected' : ""}}>Đã giao và nhận hàng</option>
+                <option value="3"  {{old('status') ??  $orderDetail->status === '3' ? 'selected' : ""}}>Đang giao hàng</option>
                 <option value="4"  {{old('status') ??  $orderDetail->status === '4' ? 'selected' : ""}}>Huỷ đơn hàng</option>
             </select>
 
@@ -70,7 +70,28 @@
             @error('status')
             <span style="color: red">{{ $message }}</span>
             @enderror
-        </div>
+        </div> --}}
+        <div class="mb-3">
+            <label for="status" class="form-label">Status</label>
+            
+            @if($orderDetail->status == '1')
+                <div>Chờ xác nhận</div>
+            @elseif($orderDetail->status == '2')
+                <div>Xác nhận xử lý</div>
+            @elseif($orderDetail->status == '3')
+                <div>Đang giao hàng</div>
+            @elseif($orderDetail->status == '4')
+                <div>Huỷ đơn hàng</div>
+            @elseif($orderDetail->status == '5')
+                <div>Đã nhận được hàng</div>
+            @else
+                <div>Trạng thái không xác định</div>
+            @endif
+        
+            @error('status')
+                <span style="color: red">{{ $message }}</span>
+            @enderror
+        </div>        
         <div class="mb-3">
             <label for="day" class="form-label">Day</label>
             <input type="text" name="day" value="{{ old('day') ?? $orderDetail->day }}" class="form-control" id="day" readonly>
@@ -103,7 +124,12 @@
                 </tr>
             @endforeach 
         </table>
-        <button type="submit">Cập nhật đơn hàng</button>
+        @if($orderDetail->status=='1')
+            <a href="{{ route('orders.update.status',['id'=>$orderDetail->id_order]) }}">Confirm </a>
+        @elseif($orderDetail->status=='2')
+            <a href="{{ route('orders.ship',['id'=>$orderDetail->id_order]) }}">Shipped </a>
+        @endif
+        
         <!-- Các trường khác của form và nút submit -->
         
         @csrf 

@@ -87,6 +87,7 @@ class CartController extends Controller
         else{
             return view('/layouts/paycart');
         }
+        
     }
     private function deleteProductFromDatabase($req, $id) {
         $user_id = auth()->user()->id_user; 

@@ -138,7 +138,7 @@
                         @enderror
                     </div>
      
-                    <table border="1">
+                    {{-- <table border="1">
                         <tr>
                             <th>Size</th>
                             <th>Quantity</th>
@@ -149,7 +149,7 @@
                                 <td>{{ $item->qty_store}}</td>    
                             </tr>
                             @endforeach 
-                    </table>
+                    </table> --}}
                 </div>
             </div>
             @csrf 

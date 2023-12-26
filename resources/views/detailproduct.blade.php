@@ -67,8 +67,17 @@
 			<div class="detailproduct_kind"><p>{{$productDetail->name }}</p></div>
 			<div class="detailproduct_name">{{ $brandDetail->name }}</div>
 			<div class="detailproduct_font_price">
+				@if($productDetail->isdiscount == '1')
+					@php
+						$discountedPrice =$productDetail->sellprice - $productDetail->sellprice * ($productDetail->discount / 100);
+						$finalPrice = number_format($discountedPrice) . ' đ';
+					@endphp
+					<b class="detailproduct_price">{{ $finalPrice }} đ</b> 
+					{{-- <b>{{ $finalPrice }}</b> --}}
+				@else
 				<b class="detailproduct_price">{{$productDetail->sellprice }} đ</b> 
-				<del class="detailproduct_delprice">2.499.000 đ</del><br>
+				@endif 
+				<del class="detailproduct_delprice">{{ number_format($productDetail->sellprice) }} đ</del><br>
 			</div>
 			<div class="detailproduct_situation">
 				<span>Tình trạng:  </span>
@@ -100,7 +109,7 @@
 			@if($status == "Hết hàng")
 				<button class="payment highlight" style="cursor: default; background-color: rgb(108, 108, 108)">HẾT HÀNG</button> <br>
 			@else
-				<button class="payment highlight" >Thanh Toán Ngay</button> <br>
+				<button class="payment highlight" data-href="{{ route('user.checkout', ['id' => $productDetail->id_product]) }}">Thanh Toán Ngay</button> <br>
 				<button class="addToCart" onclick="AddCart({{ $productDetail->id_product }})" href="javascript:">Thêm vào giỏ</button><br>
 			@endif
 		</div>
@@ -217,6 +226,21 @@
 		}
 	}
 </script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var paymentButton = document.querySelector('.payment');
+
+        if (paymentButton) {
+            paymentButton.addEventListener('click', function() {
+                var url = paymentButton.getAttribute('data-href');
+                if (url) {
+                    window.location.href = url;
+                }
+            });
+        }
+    });
+</script>
+
 @endsection
 </body>
 </html>

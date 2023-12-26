@@ -29,11 +29,11 @@
         @enderror
 
         
-        <select id="size" name="size">
+        {{-- <select id="size" name="size">
             <option value="S">S</option>
             <option value="M">M</option>
             <option value="L">L</option>
-        </select>
+        </select> --}}
         <button onclick="addRow()">
             Thêm
         </button>
@@ -48,11 +48,11 @@
                 <tr class="table-header">
                     <th>Id</th>
                     <th>Product</th>
-                    <th>Size</th>
+                    {{-- <th>Size</th> --}}
                     <th>Quantity</th>
                     <th>Import price</th>
                     <th>Total</th>
-                    <th>Sell price</th>
+                    {{-- <th>Sell price</th> --}}
                     <th>Action</th>
                 </tr>
             </thead>
@@ -75,11 +75,11 @@
                     <tr class="table-header">
                         <th>Id</th>
                         <th>Product</th>
-                        <th>Size</th>
+                        {{-- <th>Size</th> --}}
                         <th>Quantity</th>
                         <th>Import price</th>
                         <th>Total</th>
-                        <th>Sell price</th>
+                        {{-- <th>Sell price</th> --}}
                     </tr>
                 </thead>
                 <tbody>
@@ -98,22 +98,21 @@
     function addRow() {
 
         var productSelect = document.getElementById('product');
-        var sizeSelect = document.getElementById('size');
+        // var sizeSelect = document.getElementById('size');
 
-        // Lấy giá trị Product và Size đã chọn
+        // // Lấy giá trị Product và Size đã chọn
         var selectedProduct = productSelect.options[productSelect.selectedIndex].text;
         var selectedIdProduct = productSelect.options[productSelect.selectedIndex].value;
-        var selectedSize = sizeSelect.value;
+        // var selectedSize = sizeSelect.value;
 
-        // Kiểm tra xem cặp Product và Size đã tồn tại trong bảng hay chưa
+        // // Kiểm tra xem cặp Product và Size đã tồn tại trong bảng hay chưa
         var table = document.getElementById('productTable').getElementsByTagName('tbody')[0];
         for (var i = 0; i < table.rows.length; i++) {
             var cells = table.rows[i].cells;
             var existingProduct = cells[1].innerHTML;
-            var existingSize = cells[2].innerHTML;
 
-            if (existingProduct === selectedProduct && existingSize === selectedSize) {
-                alert("Product and Size combination already exists in the table. Please choose a different combination.");
+            if (existingProduct === selectedProduct ) {
+                alert("Sản phẩm đã tồn tại trong phiếu nhập");
                 return;
             }
         }
@@ -123,20 +122,20 @@
         newRow.className = "table-content";
         var cellId = newRow.insertCell(0);
         var cellProduct = newRow.insertCell(1);
-        var cellSize = newRow.insertCell(2);
-        var cellQuantity = newRow.insertCell(3);
-        var cellImportPrice = newRow.insertCell(4);
-        var cellTotal = newRow.insertCell(5);
-        var cellSellPrice = newRow.insertCell(6);
-        var cellDelete = newRow.insertCell(7);
+        //var cellSize = newRow.insertCell(2);
+        var cellQuantity = newRow.insertCell(2);
+        var cellImportPrice = newRow.insertCell(3);
+        var cellTotal = newRow.insertCell(4);
+        // var cellSellPrice = newRow.insertCell(5);
+        var cellDelete = newRow.insertCell(5);
 
         cellId.innerHTML = '#' + selectedIdProduct;
         cellProduct.innerHTML = selectedProduct;
-        cellSize.innerHTML = selectedSize;
+        // cellSize.innerHTML = selectedSize;
         cellQuantity.innerHTML = '<input class="number-input" type="number" name="quantity[]" value="0" oninput="updateTotal(this)">';
         cellImportPrice.innerHTML = '<input class="number-input" type="text" name="import_price[]" value="0" oninput="updateTotal(this)" onkeypress="return isNumberKey(event)">';
         cellTotal.innerHTML = '<input class="number-input" type="text" name="total[]" value="0" readonly>';
-        cellSellPrice.innerHTML = '<input class="number-input" type="text" name="sell_price[]" value="0" oninput="validateNumberInput(this)" onkeypress="return isNumberKey(event)">';
+        // cellSellPrice.innerHTML = '<input class="number-input" type="text" name="sell_price[]" value="0" oninput="validateNumberInput(this)" onkeypress="return isNumberKey(event)">';
         cellDelete.innerHTML = '<button onclick="deleteRow(this)">Xóa</button>';
 
     }
@@ -151,12 +150,12 @@
 
     function updateTotal(input) {
         var row = input.parentNode.parentNode; // Dòng chứa input
-        var quantity = row.cells[3].getElementsByTagName('input')[0].value;
-        var importPrice = row.cells[4].getElementsByTagName('input')[0].value;
+        var quantity = row.cells[2].getElementsByTagName('input')[0].value;
+        var importPrice = row.cells[3].getElementsByTagName('input')[0].value;
         var total = quantity * importPrice;
 
         // Cập nhật giá trị của ô Total
-        row.cells[5].getElementsByTagName('input')[0].value = total;
+        row.cells[4].getElementsByTagName('input')[0].value = total;
 
         // Cập nhật tổng giá trị ("Amount")
         updateAmount();
@@ -171,7 +170,7 @@
         // Tính tổng giá trị từ các ô Total
         for (var i = 1; i < rows.length; i++) {
             var cells = rows[i].cells;
-            var total = parseFloat(cells[5].getElementsByTagName('input')[0].value);
+            var total = parseFloat(cells[4].getElementsByTagName('input')[0].value);
             totalAmount += isNaN(total) ? 0 : total;
         }
 
@@ -209,11 +208,11 @@
             var rowData = {
                 id: cells[0].innerHTML,
                 product: cells[1].innerHTML,
-                size: cells[2].innerHTML,
-                quantity: cells[3].getElementsByTagName('input')[0].value,
-                import_price: cells[4].getElementsByTagName('input')[0].value,
-                total: cells[5].getElementsByTagName('input')[0].value,
-                sell_price: cells[6].getElementsByTagName('input')[0].value,
+                // size: cells[2].innerHTML,
+                quantity: cells[2].getElementsByTagName('input')[0].value,
+                import_price: cells[3].getElementsByTagName('input')[0].value,
+                total: cells[4].getElementsByTagName('input')[0].value,
+                // sell_price: cells[5].getElementsByTagName('input')[0].value,
             };
             invoiceData.push(rowData);
         }
@@ -237,19 +236,19 @@
             newRow.className = "table-content";
             var cellId = newRow.insertCell(0);
             var cellProduct = newRow.insertCell(1);
-            var cellSize = newRow.insertCell(2);
-            var cellQuantity = newRow.insertCell(3);
-            var cellImportPrice = newRow.insertCell(4);
-            var cellTotal = newRow.insertCell(5);
-            var cellSellPrice = newRow.insertCell(6);
+            // var cellSize = newRow.insertCell(2);
+            var cellQuantity = newRow.insertCell(2);
+            var cellImportPrice = newRow.insertCell(3);
+            var cellTotal = newRow.insertCell(4);
+            // var cellSellPrice = newRow.insertCell(5);
 
             cellId.innerHTML = invoiceData[i].id;
             cellProduct.innerHTML = invoiceData[i].product;
-            cellSize.innerHTML = invoiceData[i].size;
+            // cellSize.innerHTML = invoiceData[i].size;
             cellQuantity.innerHTML = invoiceData[i].quantity;
             cellImportPrice.innerHTML = invoiceData[i].import_price;
             cellTotal.innerHTML = invoiceData[i].total;
-            cellSellPrice.innerHTML = invoiceData[i].sell_price;
+            // cellSellPrice.innerHTML = invoiceData[i].sell_price;
 
             resultAmount += parseFloat(invoiceData[i].total);
         }
@@ -273,11 +272,11 @@
         var rowData = {
             id: cells[0].innerText,
             product: cells[1].innerText,
-            size: cells[2].innerText,
-            quantity: cells[3].innerText,
-            importPrice: cells[4].innerText,
-            total: cells[5].innerText,
-            sellPrice: cells[6].innerText
+            // size: cells[2].innerText,
+            quantity: cells[2].innerText,
+            importPrice: cells[3].innerText,
+            total: cells[4].innerText,
+            // sellPrice: cells[5].innerText
         };
         data.push(rowData);
         }

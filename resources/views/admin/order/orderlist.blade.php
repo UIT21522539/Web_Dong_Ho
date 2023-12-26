@@ -49,6 +49,7 @@
                     <td>{{ $item->note }}</td>
                     <td>
                         <a href="{{ route('orders.detail',['id'=>$item->id_order]) }}">Detail </a>
+                        <a href="{{ route('orders.ship',['id'=>$item->id_order]) }}">Shipped </a>
                     </td>
                 </tr>
             @endforeach 
