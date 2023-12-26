@@ -24,7 +24,7 @@
             <button class="button-57" role="button"><span class="text">MUA NGAY</span><span>MUA ĐI</span></button>
         </div>
         <div class="banner">
-            <img src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fcms.curnonwatch.com%2Fuploads%2FWeb_2_dd00957b0f.jpg&w=3840&q=100">
+            <img src="{{ asset('assets/img/User/Home/banner.jpg') }}">
         </div>
         <div class="info">
             <div>
