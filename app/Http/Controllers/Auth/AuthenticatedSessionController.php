@@ -32,6 +32,10 @@ class AuthenticatedSessionController extends Controller
     {
         return view('auth.login');
     }
+
+    public function makeAdminLogin() {
+            return redirect('/admin');
+    }
     public function makeLogin(LoginRequest $request) {
 
 

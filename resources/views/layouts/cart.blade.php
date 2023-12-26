@@ -16,10 +16,16 @@
                 $Price = 0;
             @endphp
             @foreach(Session::get('Cart')->products as $item)
-        
+            <div class="show-product-close" id="{{$item['productInfo']->id_product }}">
+                {{-- <script>
+                    deleteProduct({{$item['productInfo']->id_product }});
+                </script> --}}
+            </div>
             <div class="product01">
                 <div class="pd01">
-                    <button class="si-close" data-id="{{$item['productInfo']->id_product }}">×</button>
+                    <div>
+                        <button onclick="deleteProduct({{$item['productInfo']->id_product }})" class="showBTN">×</button>
+                    </div>
                     <img width="84px" height="84px" src="{{ $item['productInfo']->img_main }}">
                 </div>
                 <div class="pd02">
@@ -60,7 +66,6 @@
             <div class="sidebar-total-content">
                 <div style="display: flex; margin-bottom: 10%">
                     <p style="color:black">Thành tiền:</p>
-                    {{-- <p style="color:red; margin-left: 45%"><b id="result">{{ number_format(Session::get('Cart')->totalPrice) }} đ</b> --}}
                     <p style="color:red; margin-left: 45%"><b id="result">{{ number_format($Price) }} đ</b>
                     </p>
                 </div>
@@ -98,34 +103,52 @@
 </script>
 <script>
 
-    $("#changeItemCart").on("click", ".si-close", function(){
+        function SaveItemCart(id){
 
-    var url = "{{ url('/Delete-Cart/') }}/" + $(this).data('id') +'/'+ 1;
+        var url = "{{ url('/Save-Cart/') }}/" + id + '/' + $('#quanty-item-' + id).val();
+
+        // console.log('Save-Cart/' + id+'/' +$('#quanty-item-' + id).val());
+        // console.log("{{ url('/Save-Cart/') }}/" + id + '/' + $('#quanty-item-' + id).val());
 
         $.ajax({
             url: url,
             type: 'GET',
         }).done(function(response){
             RenderCart(response);
-            alertify.success('Đã xoá giỏ hàng thành công');
+            alertify.success('Đã thêm sản phẩm thành công');
         });
-    });
+        }
+        function deleteProduct(productIndex) {
+            var divTables = document.getElementById(productIndex);
+            divTables.style.display = ''
+            var html = `<div class="product-close">
+                        <h3>Đừng làm thế, xin bạn đấy!</h3>
+                            <div>
+                                <button class="bt01" onclick="turnback(${productIndex})">QUAY LẠI</button>
+                                <button class="bt02" data-id="${productIndex}">XOÁ SẢN PHẨM</button>
+                            </div>
+                        </div>`
 
-    function SaveItemCart(id){
+            divTables.innerHTML = html;    
+        }
 
-    var url = "{{ url('/Save-Cart/') }}/" + id + '/' + $('#quanty-item-' + id).val();
+        function turnback(productIndex){
+            var divTables = document.getElementById(productIndex);
+            divTables.style.display = 'none';
+        }
 
-    // console.log('Save-Cart/' + id+'/' +$('#quanty-item-' + id).val());
-    // console.log("{{ url('/Save-Cart/') }}/" + id + '/' + $('#quanty-item-' + id).val());
+        $("#changeItemCart").on("click", ".bt02", function(){
 
-    $.ajax({
-        url: url,
-        type: 'GET',
-    }).done(function(response){
-        RenderCart(response);
-        alertify.success('Đã thêm sản phẩm thành công');
-    });
-    }
+        var url = "{{ url('/Delete-Cart/') }}/" + $(this).data('id') +'/'+ 1;
+            console.log(url);
+            $.ajax({
+                url: url,
+                type: 'GET',
+            }).done(function(response){
+                RenderCart(response);
+                alertify.success('Đã xoá giỏ hàng thành công');
+            });
+        });
 
     function redirectToCheckout() {
         // Lấy giỏ hàng từ Session
@@ -146,6 +169,7 @@
         // Chuyển hướng đến trang thanh toán với tham số giỏ hàng
         window.location.href = '/checkout?' + queryString;
     }
+
 
     
 </script>

@@ -78,10 +78,16 @@
                 $Price = 0;
             @endphp
             @foreach(Session::get('Cart')->products as $item)
-        
+            <div class="show-product-close" id="{{$item['productInfo']->id_product }}">
+                {{-- <script>
+                    deleteProduct({{$item['productInfo']->id_product }});
+                </script> --}}
+            </div>
             <div class="product01">
                 <div class="pd01">
-                    <button class="si-close" data-id="{{$item['productInfo']->id_product }}">×</button>
+                    <div>
+                        <button onclick="deleteProduct({{$item['productInfo']->id_product }})" class="showBTN">×</button>
+                    </div>
                     <img width="84px" height="84px" src="{{ $item['productInfo']->img_main }}">
                 </div>
                 <div class="pd02">
@@ -368,18 +374,7 @@
             }
         });
     });
-    $("#changeItemCart").on("click", ".si-close", function(){
-
-        var url = "{{ url('/Delete-Cart/') }}/" + $(this).data('id') +'/'+ 1;
-
-            $.ajax({
-                url: url,
-                type: 'GET',
-            }).done(function(response){
-                RenderCart(response);
-                alertify.success('Đã xoá giỏ hàng thành công');
-            });
-        });
+    
 
     function SaveItemCart(id){
 
@@ -397,29 +392,44 @@
         });
     }
 
-    function deleteProduct(productIndex) {
-        var divTables = document.getElementsByClassName('show-product-close');
-        var html = `<div class="product-close">
-            <h3>Đừng làm thế, xin bạn đấy!</h3>
-                        <div>
-                            <button class="bt01" onclick="turnback(${productIndex})">QUAY LẠI</button>
-                            <button class="bt02">XOÁ SẢN PHẨM</button>
-                        </div>
-                    </div>`
-        for (var i = 0; i < divTables.length; i++) {
-            if(i == productIndex)
-                divTables[i].innerHTML += html;
+    function toggleProduct(){
+            var divTables = document.getElementsByClassName("showBTN");
+            for (var i = 0; i < divTables.length; i++) {
+                divTables[i].style.display = (divTables[i].style.display === 'none') ? '' : 'none';
         }
-    }
+        }
 
-    function turnback(productIndex){
-        var divTables = document.getElementsByClassName('product-close');
-        for (var i = 0; i < divTables.length; i++) {
-            if (i === productIndex) {
-                divTables[i].style.display = 'none';
-            }
+        function deleteProduct(productIndex) {
+            var divTables = document.getElementById(productIndex);
+            divTables.style.display = '';
+            var html = `<div class="product-close">
+                        <h3>Đừng làm thế, xin bạn đấy!</h3>
+                            <div>
+                                <button class="bt01" onclick="turnback(${productIndex})">QUAY LẠI</button>
+                                <button class="bt02" data-id="${productIndex}">XOÁ SẢN PHẨM</button>
+                            </div>
+                        </div>`
+
+            divTables.innerHTML = html;    
         }
-    }
+
+        function turnback(productIndex){
+            var divTables = document.getElementById(productIndex);
+            divTables.style.display = 'none';
+        }
+
+        $("#changeItemCart").on("click", ".bt02", function(){
+
+        var url = "{{ url('/Delete-Cart/') }}/" + $(this).data('id') +'/'+ 1;
+            console.log(url);
+            $.ajax({
+                url: url,
+                type: 'GET',
+            }).done(function(response){
+                RenderCart(response);
+                alertify.success('Đã xoá giỏ hàng thành công');
+            });
+        });
 
 </script>
 

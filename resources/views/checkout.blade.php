@@ -174,6 +174,43 @@
         }
         }
 
+        function AddCart(id) {
+    // Get the CSRF token from the meta tag in the HTML
+        var csrfToken = $('meta[name="csrf-token"]').attr('content');
+
+        // var url = 'Add-Cart/' + id;
+        var url = "{{ url('/Add-Cart') }}/" + id;
+        console.log( "{{ url('/Add-Cart') }}/" + id);
+
+        // Include the CSRF token in the AJAX request headers
+        $.ajax({
+            url: url,
+            type: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': csrfToken
+            }
+        })
+        .done(function (response) {
+            // Check if the response contains a redirect URL
+            if (response.redirect) {
+                window.location.href = response.redirect;
+            } else {
+                RenderCart(response, id);
+                alertify.success('Đã thêm giỏ hàng thành công');
+            }
+        })
+        .fail(function (xhr, status, error) {
+            // Handle AJAX request failure
+            console.error(error);
+
+            // Check if the response status is 401 (Unauthorized)
+            if (xhr.status === 401) {
+                // Redirect to the login page
+                window.location.href = '/login';
+            }
+        });
+    }
+
         function deleteProduct(productIndex) {
             var divTables = document.getElementById(productIndex);
             divTables.style.display = '';
@@ -203,7 +240,7 @@
                 type: 'GET',
             }).done(function(response){
                 RenderCart(response);
-                alertify.success('Đã xoá giỏ hàng thành công');
+                // alertify.success('Đã xoá giỏ hàng thành công');
             });
         });
 

@@ -1,7 +1,7 @@
-<form method="POST" action="{{ route('login') }}">
+<form method="POST" action="{{ route('admin.login2') }}">
     @csrf
-    <label for="account">Account:</label>
-    <input type="text" name="account" required>
+    <label for="email">Email:</label>
+    <input type="text" name="email" required>
 
     <label for="password">Password:</label>
     <input type="password" name="password" required>

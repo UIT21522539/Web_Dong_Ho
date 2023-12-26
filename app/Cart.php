@@ -16,17 +16,15 @@ class Cart{
 
     public function AddCart($product, $id){ 
         $newProduct = ['quanty' => 0, 'price' => $product->sellprice, 'productInfo' => $product];
-        if($this->products){
-            if(array_key_exists($id, $this->products)){
-                $newProduct = $this->products[$id];
-            }
+        if($this->products && array_key_exists($id, $this->products)){
+            $newProduct = $this->products[$id];
         }
-        $newProduct['quanty']++;
+        $newProduct['quanty'] = isset($newProduct['quanty']) ? $newProduct['quanty'] + 1 : 1;
         $newProduct['price'] = $newProduct['quanty'] * $product->sellprice;
         $this->products[$id] = $newProduct;
         $this->totalPrice += $product->sellprice;
         $this->totalQuanty++;
-    }
+    }    
 
     public function DeleteItemCart($id){
         $this->totalQuanty -= $this->products[$id]['quanty'];

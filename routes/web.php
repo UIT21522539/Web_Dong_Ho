@@ -25,11 +25,15 @@ use App\Http\Controllers\CT_ThanhToanController;
 |
 */
 // Đường dẫn trang home
-
-
-//Đường dẫn vào admin
-Route::prefix('admin')->group(function () {
+    Route::post('/login3', [AuthenticatedSessionController::class, 'makeAdminLogin'])->name('admin.login2');
+    Route::get('/login2', function () {
+        return view('admin/auth/login');
+    })->name('admin.login');
+    // Đường dẫn vào admin
+    // Route::prefix('admin')->middleware('custom.auth:1')->group(function () {
+    Route::prefix('admin')->middleware('auth')->group(function () {
     //Vào trang chủ->Xong
+    
     Route::get('/', [DashBoardController::class, 'view'])->name('dashboard');
 
     //Quản lí danh sách đơn hàng->Xong
@@ -129,7 +133,8 @@ Route::get('/checkoutdone', function () {
 
 Route::post('/ct_thanhtoan', [CT_ThanhToanController::class, 'paymentProcessed']);
 
-Route::group(['middleware' => 'auth'], function () {
+    Route::group(['middleware' => 'auth'], function () {
+    // Route::prefix('user')->middleware('auth')->group(function () {
     Route::get('/Save-Cart/{id}/{quanty}', [CartController::class, 'SaveItemCart']);
     Route::post('/Add-Cart/{id}', [CartController::class, 'AddCart']);
     Route::get('/Delete-Cart/{id}/{type}', [CartController::class, 'DeleteItemCart']);
