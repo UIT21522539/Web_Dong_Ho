@@ -95,6 +95,9 @@
                 <div class="order-update">
                     <a  href="#" onclick="toggleProduct()">Sửa</a>
                 </div>
+                @php
+                    $Price = 0;
+                @endphp
                 @foreach (Session::get('Cart')->products as $item)
                     <div class="show-product-close" id="{{$item['productInfo']->id_product }}">
                         {{-- <script>
@@ -111,7 +114,23 @@
                             <p style="margin-top: 10%">Qty:{{ $item["quanty"] }}</p>
                         </div>
                         <p style="margin-top: 2%; font-size: 18px; position: absolute; margin-left: 500px">
-                            <b>{{ number_format($item['productInfo']->sellprice * $item["quanty"]) }} ₫</b>
+                            @if($item['productInfo']->isdiscount == '1')
+                                @php
+                                    $discountedPrice =($item['productInfo']->sellprice - $item['productInfo']->sellprice * ($item['productInfo']->discount / 100))*$item["quanty"] ;
+                                    $finalPrice = number_format($discountedPrice) . ' đ';
+                                    $Price =$Price+ $discountedPrice;
+                                @endphp
+                                {{-- <b>{{ $finalPrice }}</b> --}}
+                                <b>{{ $finalPrice }} ₫</b>
+                                {{-- <p class="tien">{{ $finalPrice }}</p> --}}
+                                
+                            @else
+                                <b>{{ number_format($item['productInfo']->sellprice * $item["quanty"]) }} ₫</b>
+                                @php
+                                $Price = $Price + $item['productInfo']->sellprice * $item["quanty"];
+                                @endphp
+                            @endif
+                            
                         </p>
                     </div>
                 @endforeach
@@ -120,17 +139,26 @@
                 <div class="bill">
                     <div class="bill-total">
                         <p style="display: flex;font-size: 18px; margin-bottom: 12px">Thành tiền</p>
-                        <p><b style="right:0; margin-left: 430px" > {{ number_format(Session::get('Cart')->totalPrice) }} ₫</b></p>
+                        <p><b style="right:0; margin-left: 430px" > {{ number_format($Price) }} ₫</b></p>
                     </div>
                     <div class="bill-shipped">
                         <p>Phí ship</p>
+                        @if($Price<=700000)
+                        <p><b style="right:0; margin-left: 486px" > 30.000 ₫</b></p>
+                        @php
+                            $Price = $Price + 30000;
+                        @endphp
+                        @else
                         <p><b style="right:0; margin-left: 486px" > 0 ₫</b></p>
+                        @endif
+                        
                     </div>
                     <hr style="margin-top: 6%; margin-bottom: 5%">
                 </div>
                 <div class="order-product-sum">
                     <p style="font-size: 20px">TỔNG:</p>
-                    <p><h1 style="margin-left: 370px">{{ number_format(Session::get('Cart')->totalPrice) }} ₫</h1></p>
+                    
+                    <p><h1 style="margin-left: 370px">{{ number_format($Price) }} ₫</h1></p>
                  </div>
         </div>
     @endif

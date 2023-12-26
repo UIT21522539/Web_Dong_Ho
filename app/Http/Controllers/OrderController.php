@@ -74,26 +74,26 @@ class OrderController extends Controller
 
     }
 
-    // public function updateOrder(Request $request, $id){
-    //     if(!empty($id)){
-    //         $order = new Order();
-    //         $orderDetail = $order->getOrderById($id);
-    //         if(!empty($orderDetail[0])){
-    //             $updateSatus = $order -> updateOrder($id);
-    //             if($updateSatus){
-    //                 $msg = 'Cập nhật đơn hàng thành công';
-    //             }else{
-    //                 $msg = 'Bạn không thể cập nhật đơn hàng lúc này. Vui lòng thử lại sau!';
-    //             }
-    //         }else{
-    //             $msg = 'Liên kết không tồn tại';
-    //         }
-    //     }else{
-    //         $msg = 'Liên kết không tồn tại';
-    //     }
+    public function updateOrderStatus(Request $request, $id){
+        if(!empty($id)){
+            $order = new Order();
+            $orderDetail = $order->getOrderById($id);
+            if(!empty($orderDetail[0])){
+                $updateSatus = $order -> updateOrder($id);
+                if($updateSatus){
+                    $msg = 'Cập nhật đơn hàng thành công';
+                }else{
+                    $msg = 'Bạn không thể cập nhật đơn hàng lúc này. Vui lòng thử lại sau!';
+                }
+            }else{
+                $msg = 'Liên kết không tồn tại';
+            }
+        }else{
+            $msg = 'Liên kết không tồn tại';
+        }
 
-    //     return redirect()->route('dashboard')->with('msg',$msg);
-    // }
+        return redirect()->route('dashboard')->with('msg',$msg);
+    }
     public function deleteOrder(Request $request, $id ){
         if(!empty($id)){
             $order = new Order();

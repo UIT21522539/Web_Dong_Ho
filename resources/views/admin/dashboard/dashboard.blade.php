@@ -59,11 +59,20 @@
                                 <td>{{ $item->location }}</td>
                                 <td>{{ $item->phone }}</td>
                                 <td>{{ $item->total_order }}</td>
-                                <td>{{ $item->status }}</td>
+                                @if($item->status=='1')
+                                <td>Chờ xác nhận</td>
+                                @elseif($item->status=='2')
+                                <td>Đã xác nhận</td>
+                                @elseif($item->status=='3')
+                                <td>Đang giao hàng</td>
+                                @elseif($item->status=='4')
+                                <td>Đã nhận được hàng</td>
+                                @endif
                                 <td>{{ $item->day }}</td>
                                 <td>{{ $item->note }}</td>
                                 <td>
                                     <a href="{{ route('orders.detail',['id'=>$item->id_order]) }}">Detail </a>
+                                    <a href="{{ route('orders.update.status',['id'=>$item->id_order]) }}">Confirm </a>
                                 </td>                            
                             </tr>
                         @endforeach 

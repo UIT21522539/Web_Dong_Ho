@@ -74,8 +74,16 @@
                     <p class="product_ref_kind">{{ $productItem->brName }}</p>
                     <span class="product_ref_name">{{ $productItem->pdName }}</span>
                     <div class="product_font_price">
-                        <b>{{ number_format($productItem->sellprice) }} đ</b>
-                        <del class="product_font_price_discount">2.499.000 đ</del>
+                        @if($productItem->isdiscount == '1')
+                            @php
+                                $discountedPrice =$productItem->sellprice - $productItem->sellprice * ($productItem->discount / 100);
+                                $finalPrice = number_format($discountedPrice) . ' đ';
+                            @endphp
+                            <b>{{ $finalPrice }}</b>
+                        @else
+                            <b>{{ number_format($productItem->sellprice) }} đ</b>
+                        @endif
+                        <del class="product_font_price_discount">{{ number_format($productItem->sellprice) }} đ</del>
                     </div>
                 </div>
             </a>
@@ -108,8 +116,16 @@
                     <p class="product_ref_kind">{{ $productItem->brName }}</p>
                     <span class="product_ref_name">{{ $productItem->pdName }}</span>
                     <div class="product_font_price">
-                        <b>{{ number_format($productItem->sellprice) }} đ</b>
-                        <del class="product_font_price_discount">2.499.000 đ</del>
+                        @if($productItem->isdiscount == '1')
+                            @php
+                                $discountedPrice =$productItem->sellprice - $productItem->sellprice * ($productItem->discount / 100);
+                                $finalPrice = number_format($discountedPrice) . ' đ';
+                            @endphp
+                            <b>{{ $finalPrice }}</b>
+                        @else
+                            <b>{{ number_format($productItem->sellprice) }} đ</b>
+                        @endif
+                        <del class="product_font_price_discount">{{ number_format($productItem->sellprice) }} đ</del>
                     </div>
                 </div>
             </a>

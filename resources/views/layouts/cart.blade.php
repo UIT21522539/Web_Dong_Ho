@@ -12,6 +12,9 @@
             <p style="font-size:12px; color: black; margin-left: 12px">MIỄN PHÍ VẬN CHUYỂN ĐƠN HÀNG > 700K</p>
         </div>
         <div class="sidebar-product">
+            @php
+                $Price = 0;
+            @endphp
             @foreach(Session::get('Cart')->products as $item)
         
             <div class="product01">
@@ -23,7 +26,22 @@
                     <p>{{$item['productInfo']->name }}</p>
                 </div>
                 <div class="pd03">
-                    <p class="tien">{{ number_format($item['productInfo']->sellprice) }} đ</p>
+                    @if($item['productInfo']->isdiscount == '1')
+                            @php
+                                $discountedPrice =$item['productInfo']->sellprice - $item['productInfo']->sellprice * ($item['productInfo']->discount / 100) ;
+                                $finalPrice = number_format($discountedPrice) . ' đ';
+                                $Price =$Price+ $discountedPrice*$item["quanty"];
+                            @endphp
+                            {{-- <b>{{ $finalPrice }}</b> --}}
+                            <p class="tien">{{ $finalPrice }}</p>
+                            
+                        @else
+                            <p class="tien">{{ number_format($item['productInfo']->sellprice) }} đ</p>
+                            @php
+                            $Price = $Price + $item['productInfo']->sellprice * $item["quanty"];
+                            @endphp
+                        @endif
+                    {{-- <p class="tien">{{ number_format($item['productInfo']->sellprice) }} đ</p> --}}
                     <div class="Qty">
                         <form class='quantity' id="qtySave">
                             <input type='button' value='-' class='qtyminus minus' field='quantity' />
@@ -42,7 +60,8 @@
             <div class="sidebar-total-content">
                 <div style="display: flex; margin-bottom: 10%">
                     <p style="color:black">Thành tiền:</p>
-                    <p style="color:red; margin-left: 45%"><b id="result">{{ number_format(Session::get('Cart')->totalPrice) }} đ</b>
+                    {{-- <p style="color:red; margin-left: 45%"><b id="result">{{ number_format(Session::get('Cart')->totalPrice) }} đ</b> --}}
+                    <p style="color:red; margin-left: 45%"><b id="result">{{ number_format($Price) }} đ</b>
                     </p>
                 </div>
                 <div class="sidebar-total-purchase">
