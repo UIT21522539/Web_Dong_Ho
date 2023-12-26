@@ -12,7 +12,7 @@ body{
     width: 93%;
     align-items: center;
     margin-bottom: 2%;
-    margin-top: 6%;
+    margin-top: 1%;
 }
 .product-header .product-header-img{
     background-color: white;
@@ -74,6 +74,7 @@ body{
     margin-left: 20px;
 }
 .product-description-bg{
+    height: 980px;
     background-color:rgb(255, 255, 255);
     padding: 20px;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px; 

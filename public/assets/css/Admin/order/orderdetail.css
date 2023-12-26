@@ -10,7 +10,7 @@ body{
     background-color: rgb(246, 246, 246);
     align-items: center;
     margin-bottom: 3%;
-    margin-top: 2%;
+    margin-top: 1%;
 }
 .order-header .order-header-img{
     background-color: white;
@@ -29,12 +29,11 @@ body{
     color: gray;
 }
 form{
-    /* display: flex; */
-    width: 90%;
+    background-color: white;
+    display: flex;
     margin: auto;
 }
 .order-body{
-    background-color: white;
     width: 50%;
 }
 .order-body-content{
@@ -62,7 +61,17 @@ form{
     color: brown;
     text-decoration: none;
 }
-
+.product-status{
+    margin-top: 8%;
+    text-align: right;
+}
+.product-status a{
+    color: white;
+    font-size:20px;
+    text-decoration: none;
+    background-color: rgb(8, 120, 113);
+    padding: 20px;
+}
 .user-detail{
     margin-top: 0.5%;
     margin-left: 3%;

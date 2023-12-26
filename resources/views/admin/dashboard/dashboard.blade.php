@@ -49,6 +49,7 @@
                             <th>Status</th>
                             <th>Day</th>
                             <th>Note</th>
+                            <th colspan="2">Action</th>
                         </tr>
                         @foreach ($orderList as $item)
                             <tr class="table-content"> 

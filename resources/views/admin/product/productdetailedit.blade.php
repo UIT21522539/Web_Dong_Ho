@@ -172,7 +172,6 @@
             </tr>
                 @foreach ($ct_productList as $item)
                 <tr>
-                    <td>{{ $item->size }}</td>
                     <td>{{ $item->qty_store }}</td>
                     <td>
                         <a href="{{ route('products.detail',['id'=>$item->id_product]) }}" >Edit</a>

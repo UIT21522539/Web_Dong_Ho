@@ -7,7 +7,7 @@
     background-color: rgb(246, 246, 246);
     align-items: center;
     margin-bottom: 3%;
-    margin-top: 2%;
+    margin-top: 1%;
 }
 .user-header .user-header-img{
     background-color: white;
@@ -54,6 +54,7 @@ form{
 }
 
 .user-detail{
+    height: 540px;
     padding:2%;
     background-color: white;
     box-shadow: rgba(0, 0, 0, 0.24) 0px 1px 3px; 
