@@ -245,7 +245,15 @@ class ThanhToanController extends Controller
             $user = auth()->user();
             $order = new Order();
             $orderList = $order->getOrderByIdUserProduct($user->id_user);
-
+            $p = new Product();
+            $product = $p-> getProduct($id);
+            $product = $product[0];
+            if($product->isdiscount=='1'){
+                $sellprice = $product->sellprice - $product->sellprice * $product->discount/100;
+            }
+            else{
+                $sellprice = $product->sellprice;
+            }
             $orderData = [
                 'id_user' => $user->id_user,
                 'first_name' => $request->name,
@@ -253,24 +261,17 @@ class ThanhToanController extends Controller
                 'email' => $request->email,
                 'location' => $request->location,
                 'phone' => $request->phone,
-                'total_order' => 0,
+                'total_order' => $sellprice,
                 'status' => 1,
             ];
     
             $order= new Order();
             $order->addOrder($orderData);
             $ctorder = new CT_Order();
-            $p = new Product();
-            $product = $p-> getProduct($id);
-            $product = $product[0];
+            
             $latestOrder = Order::where('id_user', $user->id_user)->latest('id_order')->first();
            
-            if($product->isdiscount=='1'){
-                $sellprice = $product->sellprice - $product->sellprice * $product->discount/100;
-            }
-            else{
-                $sellprice = $product->sellprice;
-            }
+            
             CTOrder::create([
                 'id_order' => $latestOrder->id_order,
                 'id_product' => $product->id_product,
@@ -278,19 +279,15 @@ class ThanhToanController extends Controller
                 'sellprice' => $sellprice,
                 'total_item' => $sellprice ,
             ]);
-
-            $price = $sellprice;
             }
     
-            $latestOrder->total_order = $price;
-            $latestOrder->save();
 
             $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
             $partnerCode = 'MOMOBKUN20180529';
             $accessKey = 'klm05TvNBzhg7h7j';
             $secretKey = 'at67qH6mk8w5Y1nAyMoYKMWACiEi2bsa';
             $orderInfo = "Thanh toán qua MoMo";
-            $amount = $price;
+            $amount = $sellprice;
             $orderId = "0" . $orderList[0]->id_order + 1;
             $redirectUrl = "http://127.0.0.1:8000/home";
             $ipnUrl = "http://127.0.0.1:8000/home";

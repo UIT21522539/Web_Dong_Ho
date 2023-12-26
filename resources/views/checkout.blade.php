@@ -97,12 +97,14 @@
                 </div>
                 @php
                     $Price = 0;
+                    
                 @endphp
                 @foreach (Session::get('Cart')->products as $item)
                     <div class="show-product-close" id="{{$item['productInfo']->id_product }}">
                         {{-- <script>
                             deleteProduct({{$item['productInfo']->id_product }});
                         </script> --}}
+                        
                     </div>
                     <div class="order-product">
                         <div>
@@ -159,9 +161,14 @@
                     <p style="font-size: 20px">TỔNG:</p>
                     
                     <p><h1 style="margin-left: 370px">{{ number_format($Price) }} ₫</h1></p>
-                 </div>
+                 </div> 
         </div>
+    @else
+    <script>
+        window.location.replace("{{ url('/') }}");
+    </script>
     @endif
+
             
     </div>
     </div>
@@ -196,6 +203,7 @@
 
         $(document).on("click", ".bt02", function() {
             // console.log("{{ url('/Delete-Cart/') }}/" + $(this).data('id') +'/'+ 2) ;
+           
             var url = "{{ url('/Delete-Cart/') }}/" + $(this).data('id') +'/'+ 2;
 
             $.ajax({
@@ -210,6 +218,8 @@
         function RenderCart(response){
             $("#changeItemCart2").empty();
             $("#changeItemCart2").append(response);
+            
+            
         }
     </script>
 </body>

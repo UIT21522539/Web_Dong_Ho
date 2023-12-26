@@ -65,7 +65,7 @@
                                 <td>Đã xác nhận</td>
                                 @elseif($item->status=='3')
                                 <td>Đang giao hàng</td>
-                                @elseif($item->status=='4')
+                                @elseif($item->status=='5')
                                 <td>Đã nhận được hàng</td>
                                 @endif
                                 <td>{{ $item->day }}</td>

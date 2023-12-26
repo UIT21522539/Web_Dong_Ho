@@ -39,6 +39,7 @@ Route::prefix('admin')->group(function () {
         //Sửa trạng thái sang xác nhận
     Route::post('/orders/edit/{id}', [OrderController::class, 'updateOrder'])->name('orders.update.detail');
     Route::get('/orders/status/{id}', [OrderController::class, 'updateOrderStatus'])->name('orders.update.status');
+    Route::get('/orders/ship/{id}', [OrderController::class, 'updateOrderShip'])->name('orders.ship');
         //Sửa trạng thái sang đã hủy
     Route::get('/orders/delete/{id}', [OrderController::class, 'deleteOrder'])->name('orders.delete');
     

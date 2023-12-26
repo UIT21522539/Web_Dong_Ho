@@ -86,6 +86,11 @@ class Order extends Model
         return DB::update("UPDATE `order` SET status = '2' WHERE id_order = ?", [$id]);
     }
 
+    public function updateOrderShip($id){
+
+        return DB::update("UPDATE `order` SET status = '3' WHERE id_order = ?", [$id]);
+    }
+
     public function cancelOrder( $id ){
         return DB::update("UPDATE `order` SET status = 'Cancel' WHERE id_order = ?", [$id]);
     }

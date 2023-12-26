@@ -154,7 +154,7 @@
                                         <p>{{ $order->name}}</p>
                                         <div style="display: flex">
                                             <div >
-                                                <p style="margin-bottom: 12%">{{ $order->size}}</p>
+                                                {{-- <p style="margin-bottom: 12%">{{ $order->size}}</p> --}}
                                                 <p class="sevendays">7 ngày trả hàng</p>
                                             </div>
                                             <div style="margin-left: 40%">
