@@ -61,9 +61,9 @@
                     <td>
                         <a href="{{ route('products.get',['id'=>$item->id_product]) }}" >Edit</a>
                     </td>
-                    <td>
+                    {{-- <td>
                         <a onclick="return confirm('Bạn có chắc chắn muốn xóa')" href="{{ route('products.delete',['id'=>$item->id_product]) }}" >Delete</a>  
-                    </td>
+                    </td> --}}
                 </div>
             </tr>
             @endforeach  
