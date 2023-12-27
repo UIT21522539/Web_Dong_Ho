@@ -60,7 +60,7 @@
                         <img width="84px" height="84px" src="{{ $product->img_main }}">
                         <div class="pd02">
                             <p style="margin-bottom: 18%">{{ $product->name }}</p>
-                            <p>{{ $item->qty }}</p>
+                            <p>Qty: {{ $item->qty }}</p>
                         </div>
                         <div style="display: none"> {{ $price += $item->total_item }}</div>
                     <p style="margin-left: 30%; margin-top: 4%; font-size: 18px"><b>{{ $product->sellprice }} ₫</b></p>

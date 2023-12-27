@@ -58,12 +58,11 @@
                             @foreach($orderListA as $order)
                             <tr class="order-info" data-modal="{{ $order->id_order }}" onclick="test({{ $order->id_order }})">
                                 <td>#{{ $order-> id_order}}</td>
-                                <td style="display: flex">
+                                <td >
                                     {{-- <img width="84px" height="84px" src="{{ $order->img_main }}"> --}}
-                                    <div>
-                                        <p style="margin-bottom: 10%">{{ $order->day}}</p>
+
+                                        {{ $order->day}}
                                         {{-- <p>Qty: {{ $order->qty }}</p> --}}
-                                    </div>
                                 </td>
                                 <td>{{  number_format($order-> total_order)}} ₫</td>
                                 @if($order->status=='1')
@@ -95,26 +94,42 @@
                             <div class="information">
                                 <div class="information-text">
                                     @if($order->status == '1')
-                                        <p>Người bán đang chuẩn bị đơn hàng</p>
-                                        <p>Đơn hàng của bạn sẽ được chuẩn bị và sẽ chuyển đi trước <br> <span>{{ $order->day }}</span></p>
-                                        <img width="74px" height="74px" src="{{ asset('assets/img/User/user-info/delivery-truck.png') }}">
+                                    <div style="display: flex">
+                                        <div>
+                                            <p>Người bán đang chuẩn bị đơn hàng</p>
+                                            <p>Đơn hàng của bạn sẽ được chuẩn bị và sẽ chuyển đi trước ngày <span>{{ $order->day }}</span></p>
+                                        </div>
+                                        <img width="74px" height="74px" src="{{ asset('assets/img/User/user-info/product2.png') }}">
+                                    </div>
                                     @elseif($order->status == '2')
                                     <td>
-                                        <p>Đơn hàng đang được vận chuyển</p>
-                                        <p>Đơn hàng của bạn đang được vận chuyển và sẽ chuyển đi trước <br> <span>{{ $order->day }}</span></p>
-                                        <img width="74px" height="74px" src="{{ asset('assets/img/User/user-info/delivery-truck.png') }}">
+                                        <div style="display: flex">
+                                            <div>
+                                                <p>Đơn hàng đang được vận chuyển</p>
+                                                <p>Đơn hàng của bạn đang được vận chuyển và sẽ chuyển đi trước ngày <span>{{ $order->day }}</span></p>
+                                            </div>
+                                            <img width="74px" height="74px" src="{{ asset('assets/img/User/user-info/delivery-truck.png') }}">
+                                        </div>
                                     </td>
                                     @elseif($order->status == '3')
                                     <td>
-                                        <p>Đơn hàng đã được giao thành công</p>
-                                        <p>Cảm ơn bạn đã mua hàng sản phẩm bên chúng tôi</span></p>
-                                        <img width="74px" height="74px" src="{{ asset('assets/img/User/user-info/delivery-truck.png') }}">
+                                        <div style="display: flex">
+                                            <div>
+                                                <p>Đơn hàng đã được giao thành công</p>
+                                                <p>Cảm ơn bạn đã mua hàng sản phẩm bên chúng tôi</p>
+                                            </div>
+                                            <img width="74px" height="74px" src="{{ asset('assets/img/User/user-info/product2.png') }}">
+                                        </div>
                                     </td>
                                     @elseif($order->status == '4')
                                     <td>
-                                        <p>Đơn hàng đã bị huỷ bỏ</p>
-                                        <p>Cảm ơn bạn đã sử dụng dịch vụ chúng tôi</span></p>
-                                        <img width="74px" height="74px" src="{{ asset('assets/img/User/user-info/delivery-truck.png') }}">
+                                        <div style="display: flex">
+                                            <div>
+                                                <p>Đơn hàng đã bị huỷ bỏ</p>
+                                                <p>Cảm ơn bạn đã sử dụng dịch vụ chúng tôi</p>
+                                            </div>
+                                            <img width="74px" height="74px" src="{{ asset('assets/img/User/user-info/setting2.png') }}">
+                                        </div>
                                     </td>
                                     @endif
                                 </div>
@@ -213,7 +228,7 @@
                 }
             </script>
             <div id="user" class="tabcontent">
-                <button onclick="editUserInfo() ">Sửa</button>
+                <button class="editUser" style="font-size: 20px; " onclick="editUserInfo()">Sửa</button>
                 <h2 style="margin-bottom: 6%;">Thông tin của tôi</h2>
                 {{-- method="POST" action="{{ route('updateUserInfo') }}" --}}
                 <form id="userInfoForm" method="POST" action="{{ route('updateUserInfo',['id'=>$user->id_user]) }}"  style="display:none; margin-top: 20px; padding: 20px; border: 1px solid #ccc;">
@@ -238,8 +253,8 @@
                         <input type="text" name="location" value="{{ $user->location }}" style="width: 200px; padding: 5px;">
                     </div>
                     <input type="text" id="id" value="{{ $user->id_user }}" style="display:none; width: 200px; padding: 5px;">
-                    <input type="submit" name="submit" value="Sửa">
-                    <button type="buttonm" onclick="saveUserInfo(event)">Hủy</button>
+                    <input style="background-color: rgb(22, 178, 134)" type="submit" name="submit" value="Sửa">
+                    <button style="font-size: 20px"type="buttonm" onclick="saveUserInfo(event)">Hủy</button>
                 </form>                
                 <div id="userInfoDisplay">
                     <div>

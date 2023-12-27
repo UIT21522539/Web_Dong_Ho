@@ -44,6 +44,9 @@ class Order extends Model
     public function getOrderByIdUser( $id ){
         return DB::select("SELECT * FROM `order` WHERE id_user = ?",[$id]);
     }
+    public function getOrderByIdUser2( $id ){
+        return DB::select("SELECT * FROM `order` WHERE id_user = ? ORDER BY id_order DESC", [$id]);
+    }
     public function getProfitByDay($day, $month, $year)
     {
         $result = DB::select("SELECT SUM(total_order) AS total_profit FROM `order` WHERE DAY(day) = ? and MONTH(day)=? and YEAR(day)=?", [$day, $month, $year]);
