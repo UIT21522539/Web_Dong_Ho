@@ -125,7 +125,12 @@
                     
                     <div class="mb-3">
                         <label for="status" class="form-label">Status</label>
-                        <input type="text" name="status" value="{{ old('status') ?? $productDetail->status }}" class="form-control" id="status" readonly>
+                        @if($productDetail->status =='1')
+                        <input type="text" name="status" value="{{ old('status') ?? 'Đang bán'}}" class="form-control" id="status" readonly>
+                        @elseif($productDetail->status=='0')
+                        <input type="text" name="status" value="{{ old('status') ?? 'Ngừng bán'}}" class="form-control" id="status" readonly>
+                        @endif
+                        
                         @error('status')
                         <span style="color: red">{{ $message }}</span>
                         @enderror

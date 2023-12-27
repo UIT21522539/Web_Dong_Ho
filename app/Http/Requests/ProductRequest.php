@@ -30,9 +30,11 @@ class ProductRequest extends FormRequest
             'pty_store'=> 'required|min:1',
             'discount'=> 'required|integer|min:5|max:50',
             'isdiscount' => 'required|in:0,1',
-            'status' => 'required|in:Đang bán,Ngừng bán,Hết hàng',
+            'status' => 'required|in:1,0',
             'img_main' => 'required|url',
-            'img'=>'url'
+            'img1'=> 'required|url',
+            'img2' => 'required|url',
+            'img3'=> 'required|url',
         ];
     }
 
@@ -59,10 +61,17 @@ class ProductRequest extends FormRequest
                 'isdiscount.required' => 'Trường giảm giá có sẵn không được để trống.',
                 'isdiscount.in' => 'Giá trị của trường giảm giá có sẵn không hợp lệ.',
                 'status.required' => 'Trạng thái không được để trống.',
-                'status.in' => 'Trạng thái không hợp lệ. Chỉ chấp nhận "Đang bán", "Ngừng bán", hoặc "Hết hàng".',
+                'status.in' => 'Trạng thái không hợp lệ. Chỉ chấp nhận "Đang bán", "Ngừng bán".',
                 'img_main.required' => 'Ảnh chính không được để trống.',
                 'img_main.url' => 'Đường link ảnh chính không hợp lệ.',
                 'img.url' => 'Đường link ảnh không hợp lệ.',
+                'img1.required' => 'Ảnh chính không được để trống.',
+                'img1.url' => 'Đường link ảnh chính không hợp lệ.',
+                'img2.required' => 'Ảnh chính không được để trống.',
+                'img2.url' => 'Đường link ảnh chính không hợp lệ.',
+                'img3.required' => 'Ảnh chính không được để trống.',
+                'img3.url' => 'Đường link ảnh chính không hợp lệ.',
+                
             ],
             
         ];

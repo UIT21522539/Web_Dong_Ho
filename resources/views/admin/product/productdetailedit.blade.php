@@ -106,10 +106,16 @@
             <div class="mb-3">
                 <label for="status" class="form-label">Status</label>
                 <select name="status" class="form-control" id="status">
-                    <option value="Đang bán" {{ (old('status') ?? $productDetail->status) === 'Đang bán' ? 'selected' : '' }}>Đang bán</option>
-                    <option value="Đừng bán" {{ (old('status') ?? $productDetail->status) === 'Đừng bán' ? 'selected' : '' }}>Đừng bán</option>
-                    <option value="Hết hàng" {{ (old('status') ?? $productDetail->status) === 'Hết hàng' ? 'selected' : '' }}>Hết hàng</option>
+                    @if($productDetail->status == '1')
+                    <option value="1" selected>Đang bán</option>
+                    <option value="0" >Ngừng bán</option>
+                    @elseif($productDetail->status == '0')
+                    <option value="1" >Đang bán</option>
+                    <option value="0" selected>Ngừng bán</option>
+                    @endif
                 </select>
+                
+                
                 @error('status')
                     <span style="color: red">{{ $message }}</span>
                 @enderror
@@ -163,7 +169,7 @@
             @csrf 
         </form>
 
-        <table border="1">
+        {{-- <table border="1">
             <tr>
                 
                 <th>Size</th>
@@ -182,7 +188,7 @@
                     
                 </tr>
                 @endforeach 
-        </table>
+        </table> --}}
     </div>
     <script>
     function addImageField() {
