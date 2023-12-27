@@ -98,7 +98,8 @@ class ThanhToanController extends Controller
                             'sellprice' => $sellprice,
                             'total_item' => $sellprice * $cartProduct['quanty'],
                         ]);
-    
+                        $p = new Product();
+                        $p -> updateQty($product->id_product, $cartProduct['quanty']);
                         $price += $sellprice * $cartProduct['quanty'];
                         
                     }
@@ -295,6 +296,8 @@ class ThanhToanController extends Controller
                 'sellprice' => $sellprice,
                 'total_item' => $sellprice ,
             ]);
+            $p = new Product();
+            $p -> updateQty($product->id_product, '1');
             }
     
 

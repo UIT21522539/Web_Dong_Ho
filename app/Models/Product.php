@@ -11,7 +11,12 @@ use App\Http\Requests\ProductRequest;
 class Product extends Model
 {
     use HasFactory;
-
+    protected $fillable = [
+        // Các trường khác
+        'qty_store',
+        // ...
+    ];
+    public $timestamps = false;
     public function getAllProduct(){
         $product = DB::select("SELECT *, product.name AS name, brand.name AS brName FROM product
         INNER JOIN brand
@@ -89,6 +94,33 @@ class Product extends Model
             ->where('name', 'LIKE', '%' . $searchKeyword . '%')
             ->get();
         return $results;
+    }
+
+    public function updateQty($id, $qty){
+        $product = Product::find($id);
+
+    if ($product) {
+        // Lấy số lượng hiện tại
+        $currentQty = $product->qty_store;
+
+        // Kiểm tra xem có đủ số lượng để cập nhật hay không
+        if ($currentQty >= $qty) {
+            // Trừ đi số lượng mới từ số lượng hiện tại
+            $updatedQty = $currentQty - $qty;
+
+            // Cập nhật số lượng mới vào cơ sở dữ liệu
+            $product->update(['qty_store' => $updatedQty]);
+
+            // Trả về true nếu cập nhật thành công
+            return true;
+        } else {
+            // Trả về false nếu không đủ số lượng để cập nhật
+            return false;
+        }
+    } else {
+        // Trả về false nếu không tìm thấy sản phẩm
+        return false;
+    }
     }
 
     public $primaryKey = 'id_product';
