@@ -22,7 +22,8 @@ class Authenticate extends Middleware
             if (!Session::has('user_session'))
                 return route('user.login');
             }
-        }
+        
 
-        return null; // If user is authenticated, return null to continue the request
+        return null;
+    } // If user is authenticated, return null to continue the request
 }
