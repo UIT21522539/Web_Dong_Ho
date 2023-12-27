@@ -21,6 +21,7 @@ class Order extends Model
         'location',
         'phone',
         'total_order',
+        'payment',
         'status'
     ];
 
@@ -99,7 +100,7 @@ class Order extends Model
     }
 
     public function addOrder( $data ){
-        return DB::insert('INSERT INTO `order` (id_user, first_name, last_name, email, location, phone, total_order, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)', array_values($data));
+        return DB::insert('INSERT INTO `order` (id_user, first_name, last_name, email, location, phone, total_order, payment, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)', array_values($data));
     }
     public function getOrderByIdUserProduct( $id ){
         return DB::select("
