@@ -16,6 +16,7 @@
     <!-- Bootstrap theme -->
     <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
 </head>
 <body>
     @if (session('msg'))
@@ -237,23 +238,55 @@
             divTables.style.display = 'none';
         }
 
-        $(document).on("click", ".bt02", function() {
-            // console.log("{{ url('/Delete-Cart/') }}/" + $(this).data('id') +'/'+ 2) ;
+        // $(document).on("click", ".bt02", function() {
+        //     // console.log("{{ url('/Delete-Cart/') }}/" + $(this).data('id') +'/'+ 2) ;
            
-            var url = "{{ url('/Delete-Cart/') }}/" + $(this).data('id') +'/'+ 2;
+        //     var url = "{{ url('/Delete-Cart/') }}/" + $(this).data('id') +'/'+ 2;
 
-            $.ajax({
-                url: url,
-                type: 'GET',
-            }).done(function(response){
-                RenderCart(response);
-                // alertify.success('Đã xoá giỏ hàng thành công');
-            });
+        //     $.ajax({
+        //         url: url,
+        //         type: 'GET',
+        //     }).done(function(response){
+        //         RenderCart(response);
+        //         alertify.success('Đã xoá giỏ hàng thành công');
+        //     });
+        // });
+
+        $(document).on("click", ".bt02", function() {
+            var productId = $(this).data('id');
+            var remainingItemCount = $(".show-product-close").length;
+
+            // Kiểm tra nếu còn 1 sản phẩm thì xóa và chuyển hướng về trang chủ
+            if (remainingItemCount === 1) {
+                    var url = "{{ url('/Delete-Cart/') }}/" + productId + '/' + 2;
+                    $.ajax({
+                        url: url,
+                        type: 'GET',
+                    }).done(function(response){
+                        window.location.href = "{{ url('/') }}";
+                    });
+            } else {
+                // Nếu còn nhiều hơn 1 sản phẩm, thực hiện xóa thông thường
+                var url = "{{ url('/Delete-Cart/') }}/" + productId + '/' + 2;
+                $.ajax({
+                    url: url,
+                    type: 'GET',
+                }).done(function(response){
+                    RenderCart(response);
+                    alertify.success('Đã xoá giỏ hàng thành công');
+                });
+            }
         });
 
+
         function RenderCart(response){
+            // $("#changeItemCart2").empty();
+            // $("#changeItemCart2").append(response);
             $("#changeItemCart2").empty();
             $("#changeItemCart2").append(response);
+
+            
+            
             
             
         }
