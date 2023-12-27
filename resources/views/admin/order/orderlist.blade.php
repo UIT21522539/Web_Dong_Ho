@@ -26,6 +26,7 @@
                 <th>Total Order</th>
                 <th>Status</th>
                 <th>Day</th>
+                <th>Payment</th>
                 <th>Note</th>
                 <th>Action</th>
             </tr>
@@ -48,6 +49,7 @@
                     <td>Đã nhận được hàng</td>
                     @endif
                     <td>{{ $item->day }}</td>
+                    <td>{{ $item->payment }}</td>
                     <td>{{ $item->note }}</td>
                     <td>
                         <a href="{{ route('orders.detail',['id'=>$item->id_order]) }}">Detail </a>
