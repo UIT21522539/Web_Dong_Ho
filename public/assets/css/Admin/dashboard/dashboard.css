@@ -81,6 +81,10 @@ body{
     background-color: rgb(244, 244, 244);
 }
 .product-body-content table .table-content a{
-    color: brown;
+    background-color: brown;
+    color: white;
+    padding: 10px;
+    margin: 4px;
+    border-radius: 20px;
     text-decoration: none;
 }

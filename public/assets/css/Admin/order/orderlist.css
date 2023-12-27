@@ -75,6 +75,10 @@ body{
     height: 70px;
 }
 .order-body-content table .table-content a{
-    color: brown;
+    background-color: brown;
+    color: white;
+    padding: 10px;
+    margin: 5px;
+    border-radius: 20px;
     text-decoration: none;
 }

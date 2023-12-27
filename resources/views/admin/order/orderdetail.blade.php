@@ -1,4 +1,6 @@
 <link rel="stylesheet" href="{{ asset('assets/css/Admin/order/orderdetail.css')}}">
+<link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/img/User/layouts/curnonlogo.svg') }}" />
+<title>Order</title>
 @extends('layouts.admin.sidebar')
 @section('content')
 

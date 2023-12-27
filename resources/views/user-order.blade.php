@@ -1,6 +1,7 @@
 
 @push('styles')
 <link rel="stylesheet" href="{{ asset('assets/css/User/user-info.css') }}">
+<link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/img/User/layouts/curnonlogo.svg') }}" />
 @endpush
     @extends('layouts.app')
     @section('content')

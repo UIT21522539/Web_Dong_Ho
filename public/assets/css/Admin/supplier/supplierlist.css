@@ -63,6 +63,10 @@ table .table-header{
     height: 70px;
 }
 table .table-content a{
-    color: brown;
+    background-color: brown;
+    color: white;
+    padding: 10px;
+    margin: 4px;
+    border-radius: 20px;
     text-decoration: none;
 }   

@@ -2,8 +2,9 @@
 <html lang="en" >
 <head>
   <meta charset="UTF-8">
-  <title>CodePen - Hacker Login Form</title>
+  <title>Login Admin</title>
   <link rel="stylesheet" href="{{ asset('assets/css/Admin/login.css') }}">
+  <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/img/User/layouts/curnonlogo.svg') }}" />
 
 </head>
 <body>
