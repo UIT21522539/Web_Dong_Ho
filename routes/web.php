@@ -26,12 +26,12 @@ use App\Http\Controllers\CT_ThanhToanController;
 */
 // Đường dẫn trang home
     Route::post('/login3', [AuthenticatedSessionController::class, 'makeAdminLogin'])->name('admin.login2');
-    Route::get('/login2', function () {
+    Route::get('/loginAdmin', function () {
         return view('admin/auth/login');
     })->name('admin.login');
     // Đường dẫn vào admin
     // Route::prefix('admin')->middleware('custom.auth:1')->group(function () {
-    Route::prefix('admin')->middleware('auth')->group(function () {
+    Route::prefix('admin')->group(function () {
     //Vào trang chủ->Xong
     
     Route::get('/', [DashBoardController::class, 'view'])->name('dashboard');

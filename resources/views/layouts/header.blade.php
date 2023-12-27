@@ -127,7 +127,7 @@
             <hr>
             <div class="sidebar-total-content">
                 <div style="display: flex; margin-bottom: 10%">
-                    <p style="color:black">Thành tiền:</p>
+                    <p style="color:black"><b>Thành tiền:</b></p>
                     <p style="color:red; margin-left: 45%"><b id="result">{{ number_format($Price) }} đ</b>
                     </p>
                 </div>

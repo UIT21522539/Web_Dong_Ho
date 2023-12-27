@@ -75,10 +75,8 @@
                             <input type="hidden" name="total_momo" value="{{(Session::get('Cart')->totalPrice) }}">
                             <input type="hidden" name="id_user" value="{{ $user->id_user }}">
                             @endif
-                            <td colspan="2" ><input name="payUrl" style="width: 40%" type="submit" value="THANH TOÁN MOMO"></td>
-                        </tr>
-                        <tr>
-                            <td colspan="2" ><input name="cod" style="width: 40%" type="submit" value="THANH TOÁN COD"></td>
+                            <td ><input class="momo" name="payUrl" style="width: 80%" type="submit" value="THANH TOÁN MOMO"></td>
+                            <td ><input class="cod" name="cod" style="width: 80%" type="submit" value="THANH TOÁN COD"></td>
                         </tr>
                     </table>
                 </form>
