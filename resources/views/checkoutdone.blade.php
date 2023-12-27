@@ -18,7 +18,6 @@
                 <img style=" margin-bottom: 5%;" src="{{ asset('assets/img/User/layouts/curnonlogo.svg') }}"><br>
                 <img width="92px" height="92px" src="{{ asset('assets/img/User/checkout-done/complete.png') }}" alt="">
                 <h1>ĐẶT HÀNG THÀNH CÔNG</h1>
-                <p class="p01">Mã đơn hàng: <span><b></b></span></p>
                 <p class="p02">Thông tin cụ thể về đơn hàng đã được gửi vào e-mail của bạn.</p>
             </div>
 
