@@ -199,7 +199,8 @@ class ThanhToanController extends Controller
                             'sellprice' => $product->sellprice,
                             'total_item' => $product->sellprice * $cartProduct['quanty'],
                         ]);
-    
+                        $p = new Product();
+                        $p -> updateQty($product->id_product, $cartProduct['quanty']);
                         $price += $product->sellprice * $cartProduct['quanty'];
                     }
                 }
@@ -282,7 +283,7 @@ class ThanhToanController extends Controller
             ]);
             $p = new Product();
             $p -> updateQty($product->id_product, '1');
-            }
+            
     
 
             $endpoint = "https://test-payment.momo.vn/v2/gateway/api/create";
@@ -333,10 +334,87 @@ class ThanhToanController extends Controller
             
     
             return redirect()->to($jsonResult['payUrl']);
-
-            // return redirect()->to($jsonResult['payUrl']);
-                
-            // return view('checkoutdone', compact('name','location','phone','result'));
+    }
+        elseif(isset($_POST['cod']))
+        {
+            $request->validate([
+                'name' => 'required|string',
+                'email' => 'required|email|ends_with:@gmail.com',
+                'location' => 'required|string',
+                'phone' => 'required|string|digits:10|numeric',
+            ], [
+                'name.required' => 'Vui lòng nhập tên.',
+                'email.required' => 'Vui lòng nhập email.',
+                'email.email' => 'Email không hợp lệ.',
+                'email.ends_with' => 'Email phải kết thúc bằng "@gmail.com".',
+                'location.required' => 'Vui lòng nhập địa chỉ.',
+                'phone.required' => 'Vui lòng nhập số điện thoại.',
+                'phone.digits' => 'Số điện thoại phải chứa đúng 10 chữ số.',
+                'phone.numeric' => 'Số điện thoại phải là số.',
+            ]);
+            
+            
+    
+            $user = auth()->user();
+    
+            $orderData = [
+                'id_user' => $user->id_user,
+                'first_name' => $request->name,
+                'last_name' => $request->name,
+                'email' => $request->email,
+                'location' => $request->location,
+                'phone' => $request->phone,
+                'total_order' => 0,
+                'status' => 1,
+            ];
+    
+            $user = auth()->user();
+            $order = new Order();
+            $orderList = $order->getOrderByIdUserProduct($user->id_user);
+            $p = new Product();
+            $product = $p-> getProduct($id);
+            $product = $product[0];
+            if($product->isdiscount=='1'){
+                $sellprice = $product->sellprice - $product->sellprice * $product->discount/100;
+            }
+            else{
+                $sellprice = $product->sellprice;
+            }
+            $orderData = [
+                'id_user' => $user->id_user,
+                'first_name' => $request->name,
+                'last_name' => $request->name,
+                'email' => $request->email,
+                'location' => $request->location,
+                'phone' => $request->phone,
+                'total_order' => $sellprice,
+                'status' => 1,
+            ];
+    
+            $order= new Order();
+            $order->addOrder($orderData);
+            $ctorder = new CT_Order();
+            
+            $latestOrder = Order::where('id_user', $user->id_user)->latest('id_order')->first();
+           
+            
+            CTOrder::create([
+                'id_order' => $latestOrder->id_order,
+                'id_product' => $product->id_product,
+                'qty' => 1,
+                'sellprice' => $sellprice,
+                'total_item' => $sellprice ,
+            ]);
+            $p = new Product();
+            $p -> updateQty($product->id_product, '1');
+            $name = $latestOrder -> first_name;
+            $location = $latestOrder->location;
+            $phone = $latestOrder->phone;
+            $result= $ctorder->getCTOrder($latestOrder -> id_order);
+            
+    
+            return view('checkoutdone', compact('name','location','phone','result'));
+        }
         }
         
     }
