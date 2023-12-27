@@ -42,6 +42,22 @@ class ThanhToanController extends Controller
             return redirect('/login');
         }
         if(isset($_POST['payUrl'])){
+
+            $request->validate([
+                'name' => 'required|string',
+                'email' => 'required|email|ends_with:@gmail.com',
+                'location' => 'required|string',
+                'phone' => 'required|string|digits:10|numeric',
+            ], [
+                'name.required' => 'Vui lòng nhập tên.',
+                'email.required' => 'Vui lòng nhập email.',
+                'email.email' => 'Email không hợp lệ.',
+                'email.ends_with' => 'Email phải kết thúc bằng "@gmail.com".',
+                'location.required' => 'Vui lòng nhập địa chỉ.',
+                'phone.required' => 'Vui lòng nhập số điện thoại.',
+                'phone.digits' => 'Số điện thoại phải chứa đúng 10 chữ số.',
+                'phone.numeric' => 'Số điện thoại phải là số.',
+            ]);
             
             $user = auth()->user();
             $order = new Order();
