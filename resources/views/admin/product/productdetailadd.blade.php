@@ -8,9 +8,9 @@
     @endif
     <div class="add-product">
         <div class="product-header">
-            @if ($errors->any())
+            {{-- @if ($errors->any())
             <div class="alert alert-danger">Dữ liệu nhập vào không hợp lệ</div>
-            @endif
+            @endif --}}
             <div class="product-header-img">
                 <img width="38px"src="{{ asset('assets/img/Admin/product/tag.png')}}">
             </div>
@@ -125,20 +125,10 @@
                             <span style="color: red">{{ $message }}</span>
                         @enderror
                     </div>
-
-                    <div class="mb-3">
-                        <label for="size" class="form-label">Size</label>
-                        <select name="size" class="form-control" id="size">
-                            <option value="S" {{ (old('size') ) === 'S' ? 'selected' : '' }}>S</option>
-                            <option value="M" {{ (old('size') ) === 'M' ? 'selected' : '' }}>M</option>
-                            <option value="L" {{ (old('size') ) === 'L' ? 'selected' : '' }}>L</option>
-                        </select>
-                    </div>
-
                     <div class="mb-3">
                         <label for="img_main" class="form-label">Image main</label>
                         <input placeholder="Type here" type="text" name="img_main" value="{{ old('img_main')  }}" class="form-control" id="img_main">
-                        @error('image')
+                        @error('img_main')
                             <span style="color: red">{{ $message }}</span>
                         @enderror
                     </div>
@@ -146,7 +136,7 @@
                     <div class="mb-3">
                         <label for="img1" class="form-label">Image 1</label>
                         <input placeholder="Type here" type="text" name="img1" value="{{ old('img1')  }}" class="form-control" id="img1">
-                        @error('image')
+                        @error('img1')
                             <span style="color: red">{{ $message }}</span>
                         @enderror
                     </div>
@@ -154,7 +144,7 @@
                     <div class="mb-3">
                         <label for="img2" class="form-label">Image 2</label>
                         <input placeholder="Type here" type="text" name="img2" value="{{ old('img2')  }}" class="form-control" id="img2">
-                        @error('image')
+                        @error('img2')
                             <span style="color: red">{{ $message }}</span>
                         @enderror
                     </div>
@@ -162,7 +152,7 @@
                     <div class="mb-3">
                         <label for="img3" class="form-label">Image 3</label>
                         <input placeholder="Type here" type="text" name="img3" value="{{ old('img3')  }}" class="form-control" id="img3">
-                        @error('image')
+                        @error('img3')
                             <span style="color: red">{{ $message }}</span>
                         @enderror
                     </div>

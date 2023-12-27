@@ -52,7 +52,11 @@
                     <td>{{ $item->qty_store }}</td>
                     <td>{{ $item->discount  }}</td>
                     <td>{{ $item->isdiscount }}</td>
-                    <td>{{ $item->status  }}</td>
+                    @if( $item->status =='0')
+                    <td>Ngừng bán</td>
+                    @elseif( $item->status=='1')
+                    <td>Đang bán</td>
+                    @endif
                     <td>
                         <a href="{{ route('products.detail',['id'=>$item->id_product]) }}" >Detail</a>
                     </td>

@@ -48,7 +48,7 @@ class Product extends Model
             "SELECT *, product.name AS pdName, brand.name AS brName FROM product
             INNER JOIN brand
             ON product.id_brand = brand.id_brand
-            WHERE gender = 'nam'
+            WHERE gender = 'nam' and status='1'
             ");
         return $product;
     } public function getAllProductWoman(){
@@ -57,7 +57,7 @@ class Product extends Model
             "SELECT *, product.name AS pdName, brand.name AS brName FROM product
             INNER JOIN brand
             ON product.id_brand = brand.id_brand
-            WHERE gender = 'nữ'
+            WHERE gender = 'nữ' and status='1'
             ");
         return $product;
     }
