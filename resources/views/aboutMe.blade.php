@@ -9,6 +9,7 @@
     <script type="text/javascript" src="{{ asset('assets/js/lightslider/Jquery.js')}}"></script>
     <script type="text/javascript" src="assets/js/lightslider/lightslider.js"></script>
     <title>About Me</title>
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/img/User/layouts/curnonlogo.svg') }}" />
 </head>
 <body>
     @extends('layouts.app')

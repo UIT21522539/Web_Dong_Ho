@@ -14,6 +14,7 @@
 <!-- css -->
 <link href="{{ asset('assets/css/User/font-awesome.min.css') }}" rel="stylesheet" type="text/css" media="all" />
 <link href="{{ asset('assets/css/User/sign-up.css') }}" rel='stylesheet' type='text/css' media="all" />
+<link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/img/User/layouts/curnonlogo.svg') }}" />
 <script src="https://cdn.tailwindcss.com"></script>
 <!-- /css -->
 </head>

@@ -1,4 +1,6 @@
 <link rel="stylesheet" href="{{ asset('assets/css/Admin/user/userlist.css')}}">
+<link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/img/User/layouts/curnonlogo.svg') }}" />
+<title>User</title>
 @extends('layouts.admin.sidebar')
 @section('content')
 <div class="user-header">  

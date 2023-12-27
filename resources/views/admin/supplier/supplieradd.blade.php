@@ -1,4 +1,6 @@
 <link rel="stylesheet" href="{{ asset('assets/css/Admin/supplier/supplieradd.css')}}">
+<link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/img/User/layouts/curnonlogo.svg') }}" />
+<title>Supplier</title>
 @extends('layouts.admin.sidebar')
 @section('content')
 @if (session('msg'))

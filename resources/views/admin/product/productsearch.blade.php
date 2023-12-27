@@ -1,4 +1,5 @@
 <link rel="stylesheet" href="{{ asset('assets/css/Admin/product/productlist.css')}}">
+<link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/img/User/layouts/curnonlogo.svg') }}" />
 @extends('layouts.admin.sidebar')
 @section('content')
 <div class="product-header">  
