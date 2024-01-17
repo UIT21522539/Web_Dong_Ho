@@ -5,9 +5,18 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Product</title>
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+	<meta name="csrf-token" content="{{ csrf_token() }}">
+	<link href="{{ asset('assets/css/User/home.css') }}" rel="stylesheet">
+	{{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css"> --}}
 	<link href="{{ asset('assets/css/User/product.css') }}" rel="stylesheet">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+	
+	<link rel="stylesheet" type="text/css" href="{{ asset('assets/css/lightslider/lightslider.css')}}">
+    <script type="text/javascript" src="{{ asset('assets/js/lightslider/Jquery.js')}}"></script>
+    <script type="text/javascript" src="{{ asset('assets/js/lightslider/lightslider.js') }}"></script>
+    {{-- <script src="https://code.jquery.com/jquery-migrate-3.4.1.js" integrity="sha256-CfQXwuZDtzbBnpa5nhZmga8QAumxkrhOToWweU52T38=" crossorigin="anonymous"></script> --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/img/User/layouts/curnonlogo.svg') }}" />
 </head>
 <body>
 	@extends('layouts.app')
@@ -18,10 +27,10 @@
         </div>
         <div class="layer1">
             <h1 style="font-size: 36px">
-                <b>ĐỒNG HỒ NAM</b>    
+                <b>{{ $title }}</b>    
             </h1>
             <div class="flex">
-                <p>Sự tự tin trên cổ tay của người đàn ông hiện đại</p>
+                <p>{{ $des }}</p>
                 <p style="margin-left: 50%"><i>30 trên 30 sản phẩm</i></p>
             </div>
         </div>
@@ -205,7 +214,17 @@
 				</div>
 			</div>
 		</div>
-
+		<script type="text/javascript" src="{{ asset('assets/js/lightslider/script2.js') }}"></script>  
+	
+		<script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+		<!-- CSS -->
+		<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css"/>
+		<!-- Default theme -->
+		<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/default.min.css"/>
+		<!-- Semantic UI theme -->
+		<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/semantic.min.css"/>
+		<!-- Bootstrap theme -->
+		<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/themes/bootstrap.min.css"/>
 		<script>
 			// JavaScript để ẩn/hiển thị nội dung Material
 			function toggleMaterial() {
@@ -243,144 +262,112 @@
 	</script>
 		<div class="product_wrapper">
 			<div class="product_top">
-				<a href="#">
-					<div class="product_info product_highlight">
-							<img  alt="Standup image of Ultra-Complication Universelle (RD#4)" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fw%2Fi%2Fwind.png&w=640&q=75">
-							<b class="product_image_discount">-8%</b>
-							<a class="product_addToCard" href="#" target="_self">
-								<span class="product_addToCard_font">THÊM VÀO GIỎ</span>
-							</a>
-							<p class="product_ref_kind">KABHMIR</p>
-							<span class="product_ref_name">CALM</span>
-						<div class="product_font_price">
-							<b>2.124.000 đ</b>
-							<del class="product_font_price_discount">2.499.000 đ</del>
-						</div>
-					</div>
-				</a>
-				<a href="#">
-					<div class="product_info product_highlight">
-							<img  alt="Standup image of Ultra-Complication Universelle (RD#4)" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fw%2Fi%2Fwind.png&w=640&q=75">
-							<b class="product_image_discount">-8%</b>
-							<a class="product_addToCard" href="#" target="_self">
-								<span class="product_addToCard_font">THÊM VÀO GIỎ</span>
-							</a>
-							<p class="product_ref_kind">KABHMIR</p>
-							<span class="product_ref_name">CALM</span>
-						<div class="product_font_price">
-							<b>2.124.000 đ</b>
-							<del class="product_font_price_discount">2.499.000 đ</del>
-						</div>
-					</div>
-				</a>
-				<a href="#">
-					<div class="product_info product_highlight">
-							<img  alt="Standup image of Ultra-Complication Universelle (RD#4)" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fw%2Fi%2Fwind.png&w=640&q=75">
-							<b class="product_image_discount">-8%</b>
-							<a class="product_addToCard" href="#" target="_self">
-								<span class="product_addToCard_font">THÊM VÀO GIỎ</span>
-							</a>
-							<p class="product_ref_kind">KABHMIR</p>
-							<span class="product_ref_name">CALM</span>
-						<div class="product_font_price">
-							<b>2.124.000 đ</b>
-							<del class="product_font_price_discount">2.499.000 đ</del>
-						</div>
-					</div>
-				</a>
-				<a href="#">
-					<div class="product_info product_highlight">
-							<img  alt="Standup image of Ultra-Complication Universelle (RD#4)" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fw%2Fi%2Fwind.png&w=640&q=75">
-							<b class="product_image_discount">-8%</b>
-							<a class="product_addToCard" href="#" target="_self">
-								<span class="product_addToCard_font">THÊM VÀO GIỎ</span>
-							</a>
-							<p class="product_ref_kind">KABHMIR</p>
-							<span class="product_ref_name">CALM</span>
-						<div class="product_font_price">
-							<b>2.124.000 đ</b>
-							<del class="product_font_price_discount">2.499.000 đ</del>
-						</div>
-					</div>
-				</a>
-				<a href="#">
-					<div class="product_info product_highlight">
-							<img  alt="Standup image of Ultra-Complication Universelle (RD#4)" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fw%2Fi%2Fwind.png&w=640&q=75">
-							<b class="product_image_discount">-8%</b>
-							<a class="product_addToCard" href="#" target="_self">
-								<span class="product_addToCard_font">THÊM VÀO GIỎ</span>
-							</a>
-							<p class="product_ref_kind">KABHMIR</p>
-							<span class="product_ref_name">CALM</span>
-						<div class="product_font_price">
-							<b>2.124.000 đ</b>
-							<del class="product_font_price_discount">2.499.000 đ</del>
-						</div>
-					</div>
-				</a>
-				<a href="#">
-					<div class="product_info product_highlight">
-							<img  alt="Standup image of Ultra-Complication Universelle (RD#4)" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fw%2Fi%2Fwind.png&w=640&q=75">
-							<b class="product_image_discount">-8%</b>
-							<a class="product_addToCard" href="#" target="_self">
-								<span class="product_addToCard_font">THÊM VÀO GIỎ</span>
-							</a>
-							<p class="product_ref_kind">KABHMIR</p>
-							<span class="product_ref_name">CALM</span>
-						<div class="product_font_price">
-							<b>2.124.000 đ</b>
-							<del class="product_font_price_discount">2.499.000 đ</del>
-						</div>
-					</div>
-				</a>
-				<a href="#">
-					<div class="product_info product_highlight">
-							<img  alt="Standup image of Ultra-Complication Universelle (RD#4)" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fw%2Fi%2Fwind.png&w=640&q=75">
-							<b class="product_image_discount">-8%</b>
-							<a class="product_addToCard" href="#" target="_self">
-								<span class="product_addToCard_font">THÊM VÀO GIỎ</span>
-							</a>
-							<p class="product_ref_kind">KABHMIR</p>
-							<span class="product_ref_name">CALM</span>
-						<div class="product_font_price">
-							<b>2.124.000 đ</b>
-							<del class="product_font_price_discount">2.499.000 đ</del>
-						</div>
-					</div>
-				</a>
-				<a href="#">
-					<div class="product_info product_highlight">
-							<img  alt="Standup image of Ultra-Complication Universelle (RD#4)" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fw%2Fi%2Fwind.png&w=640&q=75">
-							<b class="product_image_discount">-8%</b>
-							<a class="product_addToCard" href="#" target="_self">
-								<span class="product_addToCard_font">THÊM VÀO GIỎ</span>
-							</a>
-							<p class="product_ref_kind">KABHMIR</p>
-							<span class="product_ref_name">CALM</span>
-						<div class="product_font_price">
-							<b>2.124.000 đ</b>
-							<del class="product_font_price_discount">2.499.000 đ</del>
-						</div>
-					</div>
-				</a>
-				<a href="#">
-					<div class="product_info product_highlight">
-							<img  alt="Standup image of Ultra-Complication Universelle (RD#4)" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fw%2Fi%2Fwind.png&w=640&q=75">
-							<b class="product_image_discount">-8%</b>
-							<a class="product_addToCard" href="#" target="_self">
-								<span class="product_addToCard_font">THÊM VÀO GIỎ</span>
-							</a>
-							<p class="product_ref_kind">KABHMIR</p>
-							<span class="product_ref_name">CALM</span>
-						<div class="product_font_price">
-							<b>2.124.000 đ</b>
-							<del class="product_font_price_discount">2.499.000 đ</del>
-						</div>
-					</div>
-				</a> 
+			{{-- discount --}}
+				@foreach ($product as $productItem) 
+					<a  href="{{ route('detailProduct',['id'=>$productItem->id_product]) }}">
+						<div class="product_info product_highlight">
+							<img src="{{ $productItem->img_main }}">
+								@if( $productItem->qty_store == '0')
+									<a  class="product_addToCard_out" target="_self">
+										<span class="product_addToCard_font_out">
+											<input type="button" value="HẾT HÀNG">
+										</span>
+									</a>
+									<p class="product_ref_kind">{{ $productItem->brName }}</p>
+									<span class="product_ref_name">{{ $productItem->pdName }}</span>
+									<div class="product_font_price">
+										<b>{{ number_format($productItem->sellprice) }} đ</b>
+									</div>
+								@else
+									<b class="product_image_discount">-{{ $productItem->discount }}%</b>
+									<a class="product_addToCard" target="_self" onclick="AddCart({{ $productItem->id_product }})" href="javascript:">
+										<span class="product_addToCard_font">
+											<input type="text" name='id' style="display: none;" value="{{ $productItem->id_product }}">
+											<input type="submit" value="THÊM VÀO GIỎ">
+										</span>
+									</a>
+									<p class="product_ref_kind">{{ $productItem->brName }}</p>
+									<span class="product_ref_name">{{ $productItem->pdName }}</span>
+									<div class="product_font_price">
+										@if($productItem->isdiscount == '1')
+											@php
+												$discountedPrice =$productItem->sellprice - $productItem->sellprice * ($productItem->discount / 100);
+												$finalPrice = number_format($discountedPrice) . ' đ';
+											@endphp
+											<b>{{ $finalPrice }}</b>
+										@else
+											<b>{{ number_format($productItem->sellprice) }} đ</b>
+										@endif
+										<del class="product_font_price_discount">{{ number_format($productItem->sellprice) }} đ</del>
+									</div>
+								@endif 
+							</div>
+						</a>
+					
+					
+				@endforeach
 			</div>
 		</div>
-	</div>
+
+    <script>
+        function showButton(){
+            var productbutton = document.getElementById("product-button");
+            productbutton.style.display="";
+        }
+        function hideButton(){
+            var productbutton = document.getElementById("product-button");
+            productbutton.style.display="none";
+        }
+
+		function Test(id){
+			console.log(id);
+		}
+
+       
+    function AddCart(id) {
+        var csrfToken = $('meta[name="csrf-token"]').attr('content');
+        var url = "{{ url('/Add-Cart') }}/" + id;
+
+        $.ajax({
+            url: url,
+            type: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': csrfToken
+            }
+        })
+        .done(function (response) {
+            if (response.redirect) {
+                window.location.href = response.redirect;
+            } else {
+                RenderCart(response, id);
+                alertify.success('Đã thêm giỏ hàng thành công');
+            }
+        })
+        .fail(function (xhr, status, error) {
+            console.error(error);
+
+            if (xhr.status === 401) {
+                window.location.href = '/login';
+            }
+        });
+    }  
+        
+		function RenderCart(response){
+			$("#changeItemCart").empty();
+			$("#changeItemCart").append(response);
+			if(temp == 1){
+				openNav();
+			}
+		}
+		function RenderCart(response , id){
+			$("#changeItemCart").empty();
+			$("#changeItemCart").append(response);
+			if(temp == 1){
+				openNav();
+			}
+		}
+    </script>
+
 	@endsection
 </body>
 </html>

@@ -4,9 +4,15 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\DashBoardController;
 use App\Http\Controllers\SupplierController;
 use App\Http\Controllers\BrandController;
+use App\Http\Controllers\LogInController;
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Http\Controllers\ThanhToanController;
+use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\CT_ThanhToanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,11 +25,15 @@ use App\Http\Controllers\BrandController;
 |
 */
 // Đường dẫn trang home
-
-
-//Đường dẫn vào admin
-Route::prefix('admin')->group(function () {
+    Route::post('/login3', [AuthenticatedSessionController::class, 'makeAdminLogin'])->name('admin.login2');
+    Route::get('/loginAdmin', function () {
+        return view('admin/auth/login');
+    })->name('admin.login');
+    // Đường dẫn vào admin
+    // Route::prefix('admin')->middleware('custom.auth:1')->group(function () {
+    Route::prefix('admin')->group(function () {
     //Vào trang chủ->Xong
+    
     Route::get('/', [DashBoardController::class, 'view'])->name('dashboard');
 
     //Quản lí danh sách đơn hàng->Xong
@@ -31,7 +41,9 @@ Route::prefix('admin')->group(function () {
         //Thông tin chi tiết đơn hàng
     Route::get('/orders/detail/{id}', [OrderController::class, 'orderDetail'])->name('orders.detail');
         //Sửa trạng thái sang xác nhận
-    Route::get('/orders/edit/{id}', [OrderController::class, 'updateOrder'])->name('orders.update');
+    Route::post('/orders/edit/{id}', [OrderController::class, 'updateOrder'])->name('orders.update.detail');
+    Route::get('/orders/status/{id}', [OrderController::class, 'updateOrderStatus'])->name('orders.update.status');
+    Route::get('/orders/ship/{id}', [OrderController::class, 'updateOrderShip'])->name('orders.ship');
         //Sửa trạng thái sang đã hủy
     Route::get('/orders/delete/{id}', [OrderController::class, 'deleteOrder'])->name('orders.delete');
     
@@ -81,14 +93,32 @@ Route::prefix('admin')->group(function () {
     Route::post('/brands/add', [BrandController::class, 'addBrand'])->name('brands.add');
 });
 
+Route::get('/product/men', [ProductController::class, 'productListMen'])->name('/users/product/men');
+Route::get('/product/women', [ProductController::class, 'productListWoman'])->name('/users/product/women');
+Route::get('/home', [ProductController::class, 'combinedHome'])->name('/users/home');
+Route::get('/', [ProductController::class, 'combinedHome']);
 
-
-Route::get('/home', function () {
-    return view('home');
-});
 
 Route::get('/blog', function () {
     return view('blog');
+});
+Route::get('/detailProduct/{id}', [ProductController::class, 'detailProduct'])->name('detailProduct');
+// Route::get('/carts', [CartController::class, 'getProduct']);
+// // Theem gior hangf
+// Route::post('/carts', [CartController::class, 'addProduct'])->middleware('auth');
+
+
+
+// login
+Route::post('/login', [AuthenticatedSessionController::class, 'makeLogin'])->name('user.post.login');
+Route::post('/sign-up', [AuthenticatedSessionController::class, "makeRegister"])->name('user.post.register');
+Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])->name('logout');
+Route::get('/login', function () {
+    return view('login');
+})->name('user.login');
+
+Route::get('/sign-up', function () {
+    return view('sign-up');
 });
 
 Route::get('/aboutMe', function () {
@@ -98,18 +128,44 @@ Route::get('/aboutMe', function () {
 Route::get('/checkout', function () {
     return view('checkout');
 });
-
-Route::get('/checkout-done', function () {
-    return view('checkout-done');
+Route::get('/checkoutdone', function () {
+    return view('checkoutdone');
 });
 
-Route::get('/user-info', function () {
-    return view('user-info');
+Route::post('/ct_thanhtoan', [CT_ThanhToanController::class, 'paymentProcessed']);
+
+    Route::group(['middleware' => 'auth'], function () {
+    // Route::prefix('user')->middleware('auth')->group(function () {
+    Route::get('/Save-Cart/{id}/{quanty}', [CartController::class, 'SaveItemCart']);
+    Route::post('/Add-Cart/{id}', [CartController::class, 'AddCart']);
+    Route::get('/Delete-Cart/{id}/{type}', [CartController::class, 'DeleteItemCart']);
+    Route::get('/user-info', [AuthenticatedSessionController::class, "userInfo"])->name('user.info');
+    Route::post('/user-info/{id}', [AuthenticatedSessionController::class, 'addUser'])->name('updateUserInfo');
+
+    Route::post('/user-info2/{id}', [AuthenticatedSessionController::class, "updateStatusOrder"])->name('user.order.updateStatus');
+
+    Route::post('/logout', [AuthenticatedSessionController::class, "logout"])->name('user.post.logout');
+    Route::get('/order', [CustomerController::class, "getOrderList"])->name('user.orders');
+
+    
+
+    Route::get('/profile', [CustomerController::class, "getUserProfile"])->name('user.profile');
+    Route::post('/profile', [CustomerController::class, "updateUserProfile"])->name('user.update.profile');
+    
+    Route::post('/cart', [CartController::class, "addToCart"])->name('addToCart');
+    
+    Route::get('/checkout', function () {
+        return view('checkout');
+    });
+    Route::get('/checkoutdone', function () {
+        return view('checkoutdone');
+    });
+    
+Route::post('/thanhtoan', [ThanhToanController::class, 'paymentProcessing'])->name('paymentProcessing');
+Route::post('/thanhtoanfast/{id}', [ThanhToanController::class, 'paymentProcessingFast'])->name('paymentProcessingFast');
+    Route::get('/checkout/{id}', [CustomerController::class, "checkOutFast"])->name('user.checkout');
 });
 
-Route::get('/login', function () {
-    return view('login');
-});
-Route::get('/sign-up', function () {
-    return view('sign-up');
-});
+
+
+require __DIR__.'/auth.php';

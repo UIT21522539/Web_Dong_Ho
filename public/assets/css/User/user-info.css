@@ -76,6 +76,9 @@ td:last-child {
 #order .done{
   background-color: #00b61b;
 }
+#order .cancel{
+  background-color: red;
+}
 #user button{
     font-size: 12pt;
     margin-left: 90%;
@@ -250,13 +253,11 @@ td:last-child {
     margin-right: auto;
   }
   .modal-content-info .button-contact .button-contact1{
-    background-color: transparent; 
-    color: rgb(22, 178, 134);
-    border-color: rgb(22, 178, 134);
+    background-color: transparent;
   }
   .modal-content-info .button-contact .button-contact2{
-    background-color: rgb(22, 178, 134);
     color: white;
-    border-color: rgb(22, 178, 134);
+    width: 200px;
+    /* border-color: rgb(22, 178, 134); */
+    border:none;
   }
-  

@@ -246,10 +246,29 @@ a{
 
 }
 .product01{
+    border-style: solid;
+    border-bottom-width: 1px ;
+    border-top-width: 1px ;
+    border-left-width: 0px ;
+    border-right-width: 0px ;
     height: 90px;
+    padding: 10px;
     display: flex;
     margin-bottom: 12%;
 }
+#myform {
+    text-align: center;
+    padding: 5px;
+    width: 100%;
+    margin-top: 30%;
+}
+.qty {
+    width: 40px;
+    height: 25px;
+    text-align: center;
+}
+input.qtyplus { width:25px; height:25px;}
+input.qtyminus { width:25px; height:25px;}
 .pd01 button {
     background-color: rgb(238, 238, 238); 
     color: black; 
@@ -264,32 +283,13 @@ a{
 }
 .sidebar-product .pd02{
     margin-left: 10%;
+    width: 35%;
     letter-spacing: 1px;
 }
 .sidebar-product .pd03{
-    margin-left: 10%;
+    margin-left: 2%;
     letter-spacing: 1px;
     text-align: center;
-}
-.pd03 .Qty {
-    margin-top: 45%;
-}   
-.pd03 button{
-    background-color: rgb(104, 104, 104); 
-    color: white; 
-    border: none;
-    padding:4px 7px 4px 7px;
-    font-size: 13px;
-    cursor: pointer;
-}
-.pd03 .Qty .quantity-container {
-    display: flex;
-    align-items: center;
-}   
-.quantity-input {
-    width: 50px;
-    text-align: center;
-    margin: 0 2px;
 }
 .sidebar-total{
     margin-top: 45%;
@@ -297,7 +297,7 @@ a{
 .sidebar-total-content{
     text-align: center;
     margin-top: 8%;
-    width: 80%;
+    width: 90%;
     margin-left: auto;
     margin-right: auto;
 }
@@ -342,4 +342,25 @@ a{
 .product-close .bt02{
     background:none;
     text-decoration: underline;
+}
+#qtySave{
+    margin-top: 6%;
+}
+.qtyminus{
+    border: none;
+    color: white;
+    padding: 4px 4px;
+    background-color: rgb(17, 109, 180);
+}
+.qtyplus{
+    border: none;
+    color: white;
+    padding: 4px 4px;
+    background-color: rgb(17, 109, 180);
+}
+.qtySave2{
+    border: none;
+    color: white;
+    padding: 4px 8px;
+    background-color: rgb(0, 183, 79);
 }

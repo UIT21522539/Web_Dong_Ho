@@ -1,3 +1,7 @@
+@keyframes fadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
 *{
     margin: 0;
     padding: 0;
@@ -33,15 +37,28 @@
     width: 300px;
     height: 60px;
 }
-.customer-info-input input{
-    width: 80%;
-    height: 80%;
+.customer-info-input input[type=text]{
+    width: 90%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
 }
 .customer-info-input select{
     height: 80%;
     width: 82%;
 }
 textarea{
+    margin-top: 2%;
+    width: 90%;
+    height: 150px;
+    padding: 12px 20px;
+    box-sizing: border-box;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    background-color: #f8f8f8;
     resize: none;
 }
 
@@ -50,7 +67,8 @@ textarea{
     width: 50%;
 }
 .order{
-    width: 80%;
+    /* width:80%; */
+    width:600px;
     margin-left: auto;
     margin-right: auto;
 }
@@ -60,9 +78,58 @@ textarea{
     font-weight: 600;
     margin-bottom: 5%;
 }
+.order-update a{
+    font-size: 22px;
+}
+.order-update{
+    margin-left: 88%;
+    margin-top: 2%;
+    margin-bottom: 4%;
+}
 .order-product{
+    border-style: solid;
+    border-bottom-width: 1px ;
+    border-top-width: 1px ;
+    border-left-width: 0px ;
+    border-right-width: 0px ;
+    height: 90px;
+    padding: 10px;
     display: flex;
-    margin-top: 6%;
+    margin-bottom: 5%;
+}
+.order-product button{
+    padding: 4px;
+}
+.product-close{
+    position: absolute;
+    background-color: rgba(255, 255, 255, 0.971);
+    width: 40%;
+    height:14%;
+    text-align: center;
+    animation: fadeIn 0.5s; 
+}
+.product-close h3{
+    margin-top: 4%;
+    margin-bottom: 3%;
+    font-size: 20px;
+    font-weight: 600;
+}
+.product-close button{
+    letter-spacing: 1px;
+    border: none;
+    margin: 0px 12px 0px 12px;
+    cursor: pointer;
+}
+.product-close .bt01{
+    padding: 5px 22px 5px 22px;
+    font-size: 16px;
+    background-color: black;
+    color: white;
+}
+.product-close .bt02{
+    font-size: 16px;
+    background:none;
+    text-decoration: underline;
 }
 .order-product .pd02{
     margin-left: 16px;
@@ -81,11 +148,11 @@ textarea{
     align-items: center;
 }
 .info-remind{
-    font-size: 16px;
+    font-size: 17px;
     letter-spacing: 1px;
 }
 input[type=button], input[type=submit], input[type=reset] {
-    background-color: #04AA6D;
+    /* background-color: #04AA6D; */
     border: none;
     color: white;
     font-weight: 600;
@@ -94,3 +161,11 @@ input[type=button], input[type=submit], input[type=reset] {
     margin: 4px 2px;
     cursor: pointer;
   }
+
+.momo{
+    background-color: #db0f72;
+}
+
+.cod{
+    background-color: #04AA6D;
+}

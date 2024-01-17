@@ -1,0 +1,63 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+.brand-header{
+    display: flex;
+    background-color: rgb(246, 246, 246);
+    align-items: center;
+    margin-bottom: 3%;
+    margin-top: 1%;
+}
+.brand-header .brand-header-img{
+    background-color: white;
+    margin-left: 2%;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 2px 4px; 
+    padding: 1.7%;
+}
+.brand-header .brand-header-content{
+    margin-left: 4%;
+}
+.brand-header .brand-header-content h2{
+    font-size: 22px;
+    font-weight: 600;
+}
+
+.brand-detail{
+    padding:2%;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 1px 3px; 
+    margin-top: 0.5%;
+    width: 20%;
+}
+.brand-detail label{
+    font-size: 20px;
+    color: rgb(8, 120, 113);
+    margin-right: 4%;
+}
+.brand-detail .mb-3{
+    margin-bottom: 10%;
+}
+.brand-detail .mb-3 input{
+    width: 90%;
+    height: 40px;
+    padding: 6px;
+    font-size: 16px;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 1px 3px; 
+    
+}
+.brand-detail button{
+    width: 40%;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 12px;
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 1px 2px; 
+    align-items: center;
+    background-color:rgb(8, 120, 113);
+    height: 40px;
+    font-size: 16px;
+    
+}

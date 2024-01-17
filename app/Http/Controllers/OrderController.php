@@ -23,6 +23,7 @@ class OrderController extends Controller
         return view('admin.order.orderlist', ['order' => $order]);
     }
 
+
     public function orderDetail(Request $request, $id){
 
         $title = 'Thông tin chi tiết đơn hàng';
@@ -45,7 +46,35 @@ class OrderController extends Controller
     
             return view('admin.order.orderdetail',compact('title','orderDetail','ct_orderList'));
     }
+
+    // public function orderDetail(Request $request, $id){
+
+  
+    //     $order = Order::where([
+    //         ['id_order', $id]
+    //     ])->first();
+        
+    //     return view('admin.order.orderdetail',compact('order'));
+    // }
+
     public function updateOrder(Request $request, $id){
+        
+    
+        $order = Order::where([
+            ['id_order', $id],
+            ['id_user', $request->user_id]
+        ])->first();
+
+        $order->status = $request->status;
+        $order->save();
+
+        // return redirect()->route('dashboard')->with('order', $order);
+
+           return redirect()->back()->with('success', "cập nhật đơn hàng thành công");
+
+    }
+
+    public function updateOrderStatus(Request $request, $id){
         if(!empty($id)){
             $order = new Order();
             $orderDetail = $order->getOrderById($id);
@@ -63,7 +92,28 @@ class OrderController extends Controller
             $msg = 'Liên kết không tồn tại';
         }
 
-        return redirect()->route('dashboard')->with('msg',$msg);
+        return back();
+    }
+
+    public function updateOrderShip(Request $request, $id){
+        if(!empty($id)){
+            $order = new Order();
+            $orderDetail = $order->getOrderById($id);
+            if(!empty($orderDetail[0])){
+                $updateSatus = $order -> updateOrderShip($id);
+                if($updateSatus){
+                    $msg = 'Cập nhật đơn hàng thành công';
+                }else{
+                    $msg = 'Bạn không thể cập nhật đơn hàng lúc này. Vui lòng thử lại sau!';
+                }
+            }else{
+                $msg = 'Liên kết không tồn tại';
+            }
+        }else{
+            $msg = 'Liên kết không tồn tại';
+        }
+
+        return back();
     }
     public function deleteOrder(Request $request, $id ){
         if(!empty($id)){

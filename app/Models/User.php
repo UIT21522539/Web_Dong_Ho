@@ -19,11 +19,13 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
         'email',
         'password',
     ];
 
+    protected $primaryKey = 'id_user';
     /**
      * The attributes that should be hidden for serialization.
      *
@@ -60,6 +62,34 @@ class User extends Authenticatable
         ->get();
         
     return $results;
+    }
+    public $timestamps = false;
+    protected $table = 'user';
+
+    public function cartProducts()
+    {
+        return $this->belongsToMany(Product::class, 'ct_cart', 'id_user', 'id_product');
+    } 
+
+    public function updateUser($data)
+    {
+        return DB::update("
+                UPDATE `user`
+                SET
+                    `email` = ?,
+                    `first_name` = ?,
+                    `last_name` = ?,
+                    `phone` = ?,
+                    `location` = ?
+                WHERE `id_user` = ?
+            ", [
+                $data['email'],
+                $data['first_name'],
+                $data['last_name'],
+                $data['phone'],
+                $data['location'],
+                $data['id_user'],
+            ]);
     }
     
 }

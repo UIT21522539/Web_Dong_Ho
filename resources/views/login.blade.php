@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/img/User/layouts/curnonlogo.svg') }}" />
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -15,21 +16,22 @@
             <img width="420px" src="https://i.pinimg.com/564x/84/65/ce/8465ce7dc68dc5d736a0ea1b655478e1.jpg">
         </div>
         <div class="wrapper">
-            <form action="">
+            <form action="/login" method="POST">
+                @csrf
                 <h1>Welcome to CURNON</h1>
                 <h2>Sign In to Continue</h1>
                 <div class="register-link">
                     <p>Don't have an account?
-                        <a href="./Register/Giaodiendangky.html">Create a account</a>
+                        <a href="./sign-up">Create a account</a>
                     </p>
                     <p>It takes less than a minute.</p>
                 </div>
                 <div class="input-box">
-                    <input type="text" placeholder="Username" required>
+                    <input type="text" name="email" placeholder="Username" required>
                     <i class='bx bxs-user' ></i>
                 </div>
                 <div class="input-box">
-                    <input type="password" placeholder="Password" required>
+                    <input type="password" name="password" placeholder="Password" required>
                     <i class='bx bxs-lock-alt' ></i>
                 </div>
                 <div class="remember-forgot">

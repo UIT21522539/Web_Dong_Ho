@@ -6,15 +6,19 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{ asset('assets/css/User/checkout-done.css') }}">
     <title>Checkout Done</title>
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('assets/img/User/layouts/curnonlogo.svg') }}" />
 </head>
 <body>
+    
     <div class="complete">
         <div class="complete-info">
             <div class="complete-info-header">
+                <div style="display: none">{{ $user = auth()->user() }}</div>
+                <div style="display: none">{{ $order = auth()->user()->orderProducts  }}</div>
                 <img style=" margin-bottom: 5%;" src="{{ asset('assets/img/User/layouts/curnonlogo.svg') }}"><br>
                 <img width="92px" height="92px" src="{{ asset('assets/img/User/checkout-done/complete.png') }}" alt="">
                 <h1>ĐẶT HÀNG THÀNH CÔNG</h1>
-                <p class="p01">Mã đơn hàng: <span><b>000028674</b></span></p>
+                <p class="p01">Mã đơn hàng:<span><b></b></span></p>
                 <p class="p02">Thông tin cụ thể về đơn hàng đã được gửi vào e-mail của bạn.</p>
             </div>
 
@@ -25,15 +29,21 @@
                 <p>Tên ngân hàng: <span><b>Bản Việt (Viet Capital)</b></span></p></p>
                 <p>Chi nhánh: <span><b>Hà Nội</b></span></p></p>
             </div>  
-
+            
+            
             <div class="complete-info-banking">
                 <h2>THÔNG TIN KHÁCH HÀNG</h2>
-                <p>Tên người mua: <span><b>Nguyễn Sơn Hà</b></span></p></p>
-                <p>Số điện thoại: <span><b>1234556788</b></span></p></p>
-                <p>Địa chỉ nhận hàng: <span><b>Ký túc xá khu A ĐHQG, Hồ Chí Minh</b></span></p></p>
+                <p>Tên người mua: <span><b>{{ $name }}</b></span></p>
+                <p>Số điện thoại: <span><b>{{ $phone }}</b></span></p>
+                <p>Địa chỉ nhận hàng: <span><b>{{ $location }}</b></span></p>
+
             </div>  
 
-            <button class="button-49" role="button">TIẾP TỤC MUA SẮM</button>
+            <form  class="form-button"action="/ct_thanhtoan" method="POST">
+                
+                <input class="button-49" type="submit" name="" id="" value="TIẾP TỤC MUA SẮM">
+                @csrf
+            </form>
         </div>
 
         <div class="order-bg">
@@ -42,49 +52,41 @@
                     <h1>ĐƠN HÀNG</h1> 
                 </div>
                 <hr>
+                
+                <div style="display: none;">{{ $price = 0 }}</div>
+                @foreach (auth()->user()->cartProducts as $product)
+                @foreach ($result as $item)
+                @if($product->id_product==$item->id_product)
                 <div class="order-product">
-                    <img width="84px" height="84px" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fh%2Fe%2Fherbert.png&w=640&q=75">
-                    <div class="pd02">
-                        <p style="margin-bottom: 3%">HERBERT</p>
-                        <p style="margin-bottom: 32%">40MM</p>
-                        <p>Qty: 1</p>
-                    </div>
-                   <p style="margin-left: 50%; margin-top: 4%; font-size: 18px"><b>2.499.000 ₫</b></p>
+                        <img width="84px" height="84px" src="{{ $product->img_main }}">
+                        <div class="pd02">
+                            <p style="margin-bottom: 18%">{{ $product->name }}</p>
+                            <p>Qty: {{ $item->qty }}</p>
+                        </div>
+                        <div style="display: none"> {{ $price += $item->total_item }}</div>
+                    <p style="margin-left: 30%; margin-top: 4%; font-size: 18px"><b>{{ $product->sellprice }} ₫</b></p>
                 </div>
-                <div class="order-product">
-                    <img width="84px" height="84px" src="https://shop.curnonwatch.com/media/catalog/product/cache/d96eb53c23516f6ca600411b8495131f/b/x/bx.swank.png">
-                    <div class="pd02">
-                        <p style="margin-bottom: 3%">HERBERT</p>
-                        <p style="margin-bottom: 32%">40MM</p>
-                        <p>Qty: 1</p>
-                    </div>
-                   <p style="margin-left: 50%; margin-top: 4%; font-size: 18px"><b>2.499.000 ₫</b></p>
-                </div>
-                <div class="order-product">
-                    <img width="84px" height="84px" src="https://curnonwatch.com/_next/image/?url=https%3A%2F%2Fshop.curnonwatch.com%2Fmedia%2Fcatalog%2Fproduct%2Fh%2Fe%2Fherbert.png&w=640&q=75">
-                    <div class="pd02">
-                        <p style="margin-bottom: 3%">HERBERT</p>
-                        <p style="margin-bottom: 32%">40MM</p>
-                        <p>Qty: 1</p>
-                    </div>
-                   <p style="margin-left: 50%; margin-top: 4%; font-size: 18px"><b>2.499.000 ₫</b></p>
-                </div>
+                @endif
+                @endforeach
+                @endforeach
                 <hr style="margin-top: 6%; margin-bottom: 5%">
+                
                 <div class="bill">
                     <div class="bill-total">
                         <p style="display: flex;font-size: 18px; margin-bottom: 12px">Thành tiền</p>
-                        <p><b style="right:0; margin-left: 400px" > 4.998.000 ₫</b></p>
+                        <p><b style="right:0; margin-left: 380px" >  {{ $price }} ₫</b></p>
                     </div>
                     <div class="bill-shipped">
                         <p>Phí ship</p>
-                        <p><b style="right:0; margin-left: 486px" > 0 ₫</b></p>
+                        <p><b style="right:0; margin-left: 450px" > 0 ₫</b></p>
                     </div>
                     <hr style="margin-top: 6%; margin-bottom: 5%">
                 </div>
                 <div class="order-product-sum">
                     <p style="font-size: 20px">TỔNG:</p>
-                    <p><h1 style="margin-left: 370px">4.998.000 ₫</h1></p>
+                    <p><h1 style="margin-left: 340px"> {{ $price }} ₫</h1></p>
                  </div>
+                 
         </div>
             
         </div>

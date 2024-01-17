@@ -19,12 +19,53 @@ use App\Http\Requests\ProductRequest;
 class ProductController extends Controller
 {
 
-        public function home(){
-            $product = new Product();
-            $productList = $product->getTop3Product();
-            return view('users.home',['productList'=>$productList]);
+    public function combinedHome()
+    {
+        $product = new Product();
+        $productListB = $product->getTop3ProductB();
+        $productListW = $product->getTop3ProductW();
+        return view('users.home', ['productListB' => $productListB, 'productListW' => $productListW]);
+    }
 
-        }
+    public function productListMen(){
+        $title = 'Đồng hồ nam';
+        $des = 'Sự tự tin trên cổ tay của người đàn ông hiện đại';
+        $product = new Product();
+        $product = $product->getAllProductMen();
+        return view('users.product', compact('title', 'product','des'));
+    }
+    public function productListWoman(){
+        $title = 'Đồng hồ nữ';
+        $des = 'Sự tự tin trên cổ tay của người phụ nữ hiện đại';
+        $product = new Product();
+        $product = $product->getAllProductWoman();
+        return view('users.product', compact('title', 'product','des'));
+    }
+
+    public function detailProduct(Request $request,$id){
+            $product = new Product();
+            $productDetail = $product->getProduct($id);
+            $request->session()->put('id',$id);
+            $productDetail = $productDetail[0];
+            $status="Hết hàng";
+            if($productDetail->status == 1){
+                $status="Còn hàng";
+            }
+
+            $brand = new Brand();
+            $id_brand = $productDetail->id_brand;
+            $brandDetail = $brand->getBrand($id_brand);
+            $brands = $brand->getAllBrand();
+
+            $category = new Category();
+            $id_category = $productDetail->id_category;
+            $categoryDetail = $category->getCategory($id_category);
+            $categories = $category->getAllCategory();
+
+            $ct_product = new CT_Product();
+            $ct_productList = $ct_product ->getAllCtProduct($id);
+        return view('detailproduct',compact('productDetail','status','brands','categories','brandDetail','categoryDetail','ct_productList'));
+    }
     //Admin
         //Xem danh sách
         public function productList(){
@@ -89,7 +130,7 @@ class ProductController extends Controller
                     $request->pty_store,
                     $request->discount,
                     $request->isdiscount,
-                    $request->status,
+                    '1',
                     $request->gender,
                     $request->img_main,
                     $request->img1,
