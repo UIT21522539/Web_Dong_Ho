@@ -96,7 +96,7 @@ class ThanhToanController extends Controller
                             'id_product' => $product->id_product,
                             'qty' => $cartProduct['quanty'],
                             'sellprice' => $sellprice,
-                            'payment' => "momo",
+                            // 'payment' => "momo",
                             'total_item' => $sellprice * $cartProduct['quanty'],
                         ]);
                         $p = new Product();
@@ -195,7 +195,7 @@ class ThanhToanController extends Controller
                 'location' => $request->location,
                 'phone' => $request->phone,
                 'total_order' => 0,
-                'payment' => "cod",
+                // 'payment' => "cod",
                 'status' => 1,
             ];
     

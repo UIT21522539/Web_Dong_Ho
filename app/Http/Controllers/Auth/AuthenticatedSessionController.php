@@ -132,12 +132,13 @@ class AuthenticatedSessionController extends Controller
         if($order->status == '1'){
             $order->status = 4;
         }
-        if($order->status == '2'){
-            $order->status = 3;
+        if($order->status == '3'){
+            $order->status = 5;
         }
 
         $order->save();
         return redirect()->back();
     }
+
     
 }

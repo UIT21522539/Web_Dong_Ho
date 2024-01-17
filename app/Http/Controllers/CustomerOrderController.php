@@ -35,4 +35,5 @@ class CustomerOrderController extends Controller
         return redirect()->back()->with('error', "Huỷ đơn hàng thất bại");
     }
 
+
 }
