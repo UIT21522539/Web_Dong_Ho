@@ -46,14 +46,16 @@
                     @elseif($item->status=='3')
                     <td>Đang giao hàng</td>
                     @elseif($item->status=='4')
+                    <td>Đã huỷ hàng</td>
+                    @elseif($item->status=='5')
                     <td>Đã nhận được hàng</td>
                     @endif
                     <td>{{ $item->day }}</td>
-                    <td>{{ $item->payment }}</td>
+                    {{-- <td>{{ $item->payment }}</td> --}}
                     <td>{{ $item->note }}</td>
                     <td>
                         <a href="{{ route('orders.detail',['id'=>$item->id_order]) }}">Detail </a>
-                        <a href="{{ route('orders.ship',['id'=>$item->id_order]) }}">Shipped </a>
+            
                     </td>
                 </tr>
             @endforeach 

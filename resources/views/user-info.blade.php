@@ -73,15 +73,20 @@
                                 </td>
                                 @elseif($order->status=='2')
                                 <td>
-                                    <input class="asking" type="button" value="Đang vận chuyển">
+                                    <input class="asking" type="button" value="Đã xác nhận">
                                 </td>
                                 @elseif($order->status=='3')
                                 <td>
-                                    <input class="done" type="button" value="Đã nhận được hàng">
+                                    <input class="asking" type="button" value="Đang giao hàng">
                                 </td>
                                 @elseif($order->status=='4')
                                 <td>
                                     <input class="cancel" type="button" value="Đã hủy">
+                                </td>
+                                
+                                @elseif($order->status=='5')
+                                <td>
+                                    <input class="done" type="button" value="Đã nhận được hàng">
                                 </td>
                                 @endif
                             </tr>
@@ -145,11 +150,13 @@
                                         @if($order->status=='1')
                                             <p style="color: rgb(22, 178, 134);">Đơn hàng đang chờ được lấy</p>
                                         @elseif($order->status=='2')
-                                            <p style="color: rgb(22, 178, 134);">Đơn hàng đang vận chuyển</p>
+                                            <p style="color: rgb(22, 178, 134);">Đơn hàng đã xác nhận</p>
                                         @elseif($order->status=='3')
-                                            <p style="color: rgb(22, 178, 134);">Đơn hàng được giao thành công</p>
+                                            <p style="color: rgb(22, 178, 134);">Đơn hàng đang được giao</p>
                                         @elseif($order->status=='4')
                                             <p style="color: rgb(22, 178, 134);">Đơn hàng bị huỷ</p>
+                                        @elseif($order->status=='5')
+                                            <p style="color: rgb(22, 178, 134);">Đơn hàng giao thành công</p>
                                         @endif
                                     </div>  
                                 </div>
@@ -206,13 +213,13 @@
                                             <input type="hidden" name="order_id" value="{{$order->id_order}}" />
                                             <button type="submit" class="button-contact2" style="background-color: rgb(194, 45, 45);">Yêu cầu huỷ đơn hàng</button>
                                         </form>
-                                    @elseif($order->status=='2')
+                                    @elseif($order->status=='3')
                                         <form method="POST" action="{{ route('user.order.updateStatus',['id'=>$user->id_user]) }}">
                                             @csrf
                                             <input type="hidden" name="order_id" value="{{$order->id_order}}" />
                                             <button type="submit" class="button-contact2" style="background-color: rgb(22, 178, 134);">Đã nhận được hàng</button>
                                         </form>
-                                    @elseif($order->status=='3')
+                                    @elseif($order->status=='5')
                                         <p style="color: rgb(22, 178, 134);">Đơn hàng được giao thành công</p>
                                     @elseif($order->status=='4')
                                         <p style="color: rgb(0, 0, 0);">Đơn hàng đã bị huỷ</p>
